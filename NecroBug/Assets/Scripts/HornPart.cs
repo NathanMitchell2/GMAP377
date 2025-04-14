@@ -18,5 +18,7 @@ public class HornPart : ModularBugPart
 
     public override void Activate()
     {
+        GameObject hitbox = Instantiate(hornHitbox, transform.parent);
+        hitbox.transform.SetLocalPositionAndRotation(offset, new Quaternion());
     }
 }

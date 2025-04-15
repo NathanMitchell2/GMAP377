@@ -60,4 +60,13 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    void OnClick(InputValue value)
+    {
+        ModularBugPart clickPart = GetComponent<ModularBugPart>();
+        if (value.isPressed && clickPart)
+        {
+            clickPart.Activate();
+        }
+    }
+
 }

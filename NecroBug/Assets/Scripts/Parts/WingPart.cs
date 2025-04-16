@@ -11,7 +11,7 @@ public class WingPart : ModularBugPart
             Rigidbody rigid = parent.GetComponent<Rigidbody>();
             if(rigid)
             {
-                rigid.linearVelocity = new Vector3(rigid.linearVelocity.x, jumpForce, rigid.linearVelocity.y);
+                rigid.linearVelocity = new Vector3(rigid.linearVelocity.x, jumpForce, rigid.linearVelocity.z);
             }
         }
     }

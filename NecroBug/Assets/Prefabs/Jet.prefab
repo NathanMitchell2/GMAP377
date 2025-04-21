@@ -269,9 +269,9 @@ GameObject:
   - component: {fileID: 7750489798096026027}
   - component: {fileID: 3954378017648843528}
   - component: {fileID: 9199494259473087630}
-  - component: {fileID: 7697997116613268454}
+  - component: {fileID: 7620470384480401035}
   m_Layer: 0
-  m_Name: Wings
+  m_Name: Jet
   m_TagString: Wings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 3
---- !u!114 &7697997116613268454
+--- !u!114 &7620470384480401035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,12 +340,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6788982746073355530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1c845272d39624e9a7a3537973fe3f, type: 3}
+  m_Script: {fileID: 11500000, guid: eff17e90cb671094ea82b0eaeaadab49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1.2, z: -1}
-  rotOffset: {x: 270, y: 180, z: 0}
-  jumpForce: 10
+  offset: {x: 0, y: -0.25, z: -2}
+  rotOffset: {x: 0, y: 180, z: 0}
+  dashForce: 20
 --- !u!1 &6815843708371360649
 GameObject:
   m_ObjectHideFlags: 0

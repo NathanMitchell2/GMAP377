@@ -112,7 +112,7 @@ public class EnemyAI : MonoBehaviour
     private void Idle()
     {
         idleTimer += Time.deltaTime;
-        agent.SetDestination(transform.position);
+        SetDestination(transform.position);
         if (idleTimer >= idleDuration)
         {
             idleTimer = 0f;
@@ -127,7 +127,7 @@ public class EnemyAI : MonoBehaviour
 
         if (walkPointSet)
         {
-            agent.SetDestination(walkPoint);
+            SetDestination(walkPoint);
 
             Vector3 distanceToWalkPoint = transform.position - walkPoint;
             if (distanceToWalkPoint.magnitude < 1f)
@@ -151,16 +151,24 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = true;
     }
 
+    private void SetDestination(Vector3 pos)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(pos, out hit, 1.0f, NavMesh.AllAreas)) {
+            agent.SetDestination(hit.position);
+        }
+    }
+
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        SetDestination(player.position);
     }
 
     private void RetreatFromPlayer()
     {
         Vector3 retreatDirection = (transform.position - player.position).normalized;
         Vector3 retreatPosition = transform.position + retreatDirection * 5f;
-        agent.SetDestination(retreatPosition);
+        SetDestination(retreatPosition);
     }
 
     private void ChargeAttack()
@@ -172,7 +180,7 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator ChargeAndSmash()
     {
         isCharging = true;
-        agent.SetDestination(transform.position);
+        SetDestination(transform.position);
         transform.LookAt(player);
 
         yield return new WaitForSeconds(chargeUpTime);

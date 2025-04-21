@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected int health = 100;
 
-    // Update is called once per frame
-    void Update()
+    public void dealDamage(int dmg)
     {
-        
+        health -= dmg;
+        checkDeath();
+    }
+    private void checkDeath()
+    {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -27,7 +27,9 @@ public class EnemyAI : MonoBehaviour
 
     // Charging
     public float chargeUpTime = 1.5f;
-    private bool isCharging = false;
+    public float jumpForce = 15f;
+    public float maxPlayerSpeedCharge = 5f;
+    [SerializeField] private bool isCharging = false;
 
     // Idle
     private float idleTimer;
@@ -68,7 +70,7 @@ public class EnemyAI : MonoBehaviour
             {
                 SetState(State.Retreat);
             }
-            else if (playerInAttackRange && playerSpeed < 1f)
+            else if (playerInAttackRange && playerSpeed < maxPlayerSpeedCharge)
             {
                 SetState(State.ChargeAttack);
             }
@@ -127,7 +129,7 @@ public class EnemyAI : MonoBehaviour
 
         if (walkPointSet)
         {
-            SetDestination(walkPoint);
+            agent.SetDestination(walkPoint);
 
             Vector3 distanceToWalkPoint = transform.position - walkPoint;
             if (distanceToWalkPoint.magnitude < 1f)
@@ -182,6 +184,7 @@ public class EnemyAI : MonoBehaviour
         isCharging = true;
         SetDestination(transform.position);
         transform.LookAt(player);
+        Vector3 posAtLookAt = player.position;
 
         yield return new WaitForSeconds(chargeUpTime);
 
@@ -193,8 +196,7 @@ public class EnemyAI : MonoBehaviour
             yield break;
         }
 
-        Vector3 jumpDirection = (player.position - transform.position).normalized;
-        float jumpForce = 15f;
+        Vector3 jumpDirection = (posAtLookAt - transform.position).normalized;
 
         agent.enabled = false;
         rb.isKinematic = false;

@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.29, y: 0.7, z: 47.26}
-  m_LocalScale: {x: 150, y: 150, z: 150}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 300, y: 300, z: 300}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,6 +172,9 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   chargeUpTime: 1.5
+  jumpForce: 35
+  maxPlayerSpeedCharge: 3
+  isCharging: 0
   idleDuration: 3
 --- !u!195 &604390345361080852
 NavMeshAgent:

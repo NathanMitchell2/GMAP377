@@ -31,7 +31,7 @@ public class Hitbox : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-            rb.AddForce(gameObject.transform.forward*knockback,ForceMode.Impulse);
+            rb.AddForce(gameObject.transform.forward*knockback,ForceMode.VelocityChange);
             other.transform.GetComponent<EnemyHealth>().dealDamage(dmg);
         }
     }

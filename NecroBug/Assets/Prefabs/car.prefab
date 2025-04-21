@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 883233362413963835}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheels
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,9 +50,9 @@ GameObject:
   - component: {fileID: 9088103768445184440}
   - component: {fileID: 1159392893715828965}
   - component: {fileID: 3774181690293777629}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (2)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,9 +135,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1738025112120319346}
   - component: {fileID: 277931669687136654}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: backLeftWheelCol
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,9 +207,9 @@ GameObject:
   - component: {fileID: 3036563924266336016}
   - component: {fileID: 4139220204796178340}
   - component: {fileID: 830605431438383330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (3)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,9 +291,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5469430196450610420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackRightWheel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,9 +325,9 @@ GameObject:
   - component: {fileID: 6358799252421008138}
   - component: {fileID: 7640429061459755711}
   - component: {fileID: 288695295021377494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,9 +411,13 @@ GameObject:
   - component: {fileID: 7174151278275579687}
   - component: {fileID: 3476620253880233501}
   - component: {fileID: 7908505440710472612}
-  m_Layer: 0
+  - component: {fileID: 1195641067962025735}
+  - component: {fileID: 3162622929594733171}
+  - component: {fileID: 8858329393499569411}
+  - component: {fileID: 6197005958255090924}
+  m_Layer: 6
   m_Name: car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,6 +437,9 @@ Transform:
   m_Children:
   - {fileID: 7245839156664188148}
   - {fileID: 883233362413963835}
+  - {fileID: 32071722686287129}
+  - {fileID: 4634594532384319158}
+  - {fileID: 3294425015178247311}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3476620253880233501
@@ -482,6 +489,78 @@ MonoBehaviour:
   driverSpeed: 600
   steerSpeed: 40
   wingsPickedUp: 0
+--- !u!114 &1195641067962025735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &3162622929594733171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c79bb8babaea2744a54a3f923898b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpStrat: {fileID: 6197005958255090924}
+  moveStrat: {fileID: 8858329393499569411}
+  jumpStrat: {fileID: 0}
+  clickStrat: {fileID: 0}
+--- !u!114 &8858329393499569411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54df27399a6aa84e8c506ddcdbc392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: 2
+--- !u!114 &6197005958255090924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad5d3b428a5a874a95adc59a005c6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: 1
 --- !u!1 &3826026136217325694
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,9 +571,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7915688622807877583}
   - component: {fileID: 8126907073641150315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: frontLeftWheelCol
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -562,9 +641,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1772268252389383347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: frontRightWheel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,6 +664,72 @@ Transform:
   - {fileID: 6358799252421008138}
   m_Father: {fileID: 883233362413963835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4815284830239154656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3294425015178247311}
+  - component: {fileID: 1798998497685312773}
+  - component: {fileID: 5303832182605978300}
+  m_Layer: 6
+  m_Name: PickupRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3294425015178247311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815284830239154656}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7174151278275579687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798998497685312773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815284830239154656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ee39317c1f0044abcd8af8f5b24c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &5303832182605978300
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815284830239154656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5828325952478211216
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,9 +741,9 @@ GameObject:
   - component: {fileID: 8031973673791783369}
   - component: {fileID: 430894624667793315}
   - component: {fileID: 1998675404665342535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,9 +828,9 @@ GameObject:
   - component: {fileID: 7075728902433437554}
   - component: {fileID: 4303534983715115995}
   - component: {fileID: 5494866987329222516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: carbody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,9 +934,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5854530492636597013}
   - component: {fileID: 7971005534545902853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: frontRightWheelCol
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -850,6 +995,37 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!1 &7163543968423679721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32071722686287129}
+  m_Layer: 6
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &32071722686287129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163543968423679721}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7174151278275579687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7376447461960875542
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,9 +1036,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3083419034180817296}
   - component: {fileID: 8607094966702913907}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: backRightWheelCol
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -930,9 +1106,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6721711453876605071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: frontLeftWheel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,9 +1138,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6653584815112890792}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: backLeftWheel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -984,4 +1160,35 @@ Transform:
   m_Children:
   - {fileID: 9088103768445184440}
   m_Father: {fileID: 883233362413963835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9112500555322124625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4634594532384319158}
+  m_Layer: 6
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4634594532384319158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112500555322124625}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7174151278275579687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

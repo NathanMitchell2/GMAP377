@@ -35,7 +35,7 @@ public class WingsPIckUp : MonoBehaviour
         {
             pickedUp = true;
             car.wingsPickedUp = true;
-            playerControl.wingsPickedUp = true;
+            //playerControl.wingsPickedUp = true;
             GetComponent<Collider>().enabled = false;
             allowPickup = false;
             gameObject.transform.parent = target;

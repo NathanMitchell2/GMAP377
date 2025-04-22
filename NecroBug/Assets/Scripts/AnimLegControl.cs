@@ -14,6 +14,7 @@ public class AnimLegControl : MonoBehaviour
 
     [field: Header("References")]
 
+    public GameObject tip;
     public GameObject tipController;
 
     void Update()
@@ -45,12 +46,12 @@ public class AnimLegControl : MonoBehaviour
         distance = Vector3.Distance(transform.position, tipController.transform.position);
         if (distance > distanceBeforeSnap)
         {
-            MoveLeg();
+            MoveLegController();
         }
     }
 
-    void MoveLeg()
+    void MoveLegController()
     {
-        tipController.transform.position = Vector3.Lerp(tipController.transform.position, transform.position, moveTime * Time.deltaTime);
+        tipController.transform.position = transform.position;
     }
 }

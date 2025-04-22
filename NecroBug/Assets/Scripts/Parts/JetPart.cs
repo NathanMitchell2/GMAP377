@@ -18,4 +18,13 @@ public class JetPart : ModularBugPart
             }
         }
     }
+
+    public float getDash()
+    {
+        return dashForce;
+    }
+    public void setDash(float speed)
+    {
+        dashForce = speed;
+    }
 }

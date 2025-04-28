@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8148302431069141627}
   - component: {fileID: 604390345361080852}
   - component: {fileID: 216531384345388473}
+  - component: {fileID: 6631373023061904936}
   m_Layer: 0
   m_Name: JetBeetle
   m_TagString: Enemy
@@ -211,3 +212,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &6631373023061904936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876015489555194247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032a15b7cb4065b4783ca5c3c6f47abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 6788982746073355530, guid: f151fda40277be44390288baee9511ea, type: 3}

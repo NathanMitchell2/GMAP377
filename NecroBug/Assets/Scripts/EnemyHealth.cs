@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(health <= 0)
         {
+            BroadcastMessage("OnDeath");
             Destroy(gameObject);
         }
     }

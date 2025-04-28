@@ -1,3 +1,4 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,34 +12,67 @@ public class InputManager : MonoBehaviour
 
     public void SetStrat(InputStrategy strat)
     {
-        if(!hasStrat(strat))
+        switch(strat.position)
         {
-            switch(strat.position)
-            {
-                case 1:
+            case 1:
+                if (pickUpStrat != null) removeStrat(pickUpStrat);
                 pickUpStrat = strat;
                 break;
 
-                case 2:
+            case 2:
+                if (moveStrat != null) removeStrat(moveStrat);
                 moveStrat = strat;
                 break;
 
-                case 3:
+            case 3:
+                if (jumpStrat != null) removeStrat(jumpStrat);
                 jumpStrat = strat;
                 break;
 
-                case 4:
+            case 4:
+                if (clickStrat != null) removeStrat(clickStrat);
                 clickStrat = strat;
                 break;
 
-                case 5:
+            case 5:
+                if (menuStrat != null) removeStrat(menuStrat);
                 menuStrat = strat;
                 break;
 
-                default:
+            default:
                 break;
-            }
+        }
+        
+    }
 
+    private void removeStrat(InputStrategy strat)
+    {
+        if (hasStrat(strat))
+        {
+            Vector3 tempPos = strat.transform.position;
+            strat.transform.parent = null;
+            strat.transform.position = tempPos;
+
+            switch (strat.position)
+            {
+                case 1:
+                    pickUpStrat = null;
+                    break;
+                case 2:
+                    moveStrat = null;
+                    break;
+                case 3:
+                    jumpStrat = null;
+                    break;
+                case 4:
+                    clickStrat = null;
+                    break;
+                case 5:
+                    menuStrat = null;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

@@ -5,6 +5,12 @@ using UnityEngine;
 public class PickupManager : MonoBehaviour
 {
     private List<Collider> pickups = new List<Collider>();
+
+    private InputManager manager;
+    private void Start()
+    {
+        manager = transform.parent.GetComponent<InputManager>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<ModularBugPart>())
@@ -25,9 +31,9 @@ public class PickupManager : MonoBehaviour
         foreach(Collider pickup in pickups)
         {
             pickup.transform.parent = transform.parent;
-            InputManager manager = transform.parent.GetComponent<InputManager>();
             manager.SetStrat(pickup.GetComponent<InputStrategy>());
             pickup.GetComponent<ModularBugPart>().OffsetPosition();
+            pickups.Remove(pickup);
         }
     }
 }

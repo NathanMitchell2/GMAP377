@@ -45,7 +45,7 @@ public class ChargeAttackState : IState
 
         enemy.agent.enabled = false;
         enemy.rb.isKinematic = false;
-        enemy.rb.AddForce(jumpDirection * enemy.jumpForce * 1600f + Vector3.up * 3200f, ForceMode.Impulse);
+        enemy.rb.AddForce(jumpDirection * enemy.jumpForce * enemy.rb.mass + Vector3.up * enemy.rb.mass*2, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1.5f);
 

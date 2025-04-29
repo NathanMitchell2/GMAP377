@@ -119,6 +119,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &261286263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4876015489555194247, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+  m_PrefabInstance: {fileID: 3184142533647405955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &261286265 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 604390345361080852, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+  m_PrefabInstance: {fileID: 3184142533647405955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &261286266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261286263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1120f148602b33248b03b265634f4f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 261286265}
+  rb: {fileID: 261286267}
+  player: {fileID: 967988421}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  sightRange: 25
+  attackRange: 15
+  retreatRange: 5
+  walkPointRange: 25
+  timeBetweenAttacks: 2
+  idleDuration: 5
+  chargeUpTime: 2
+  jumpForce: 20
+  maxPlayerSpeedCharge: 5
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  alreadyAttacked: 0
+  isCharging: 0
+  lastPlayerPosition: {x: 0, y: 0, z: 0}
+  playerSpeed: 0
+--- !u!54 &261286267 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 186762200383192340, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+  m_PrefabInstance: {fileID: 3184142533647405955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &303870681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,10 +1061,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 967988421}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4876015489555194247, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 261286266}
   m_SourcePrefab: {fileID: 100100000, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

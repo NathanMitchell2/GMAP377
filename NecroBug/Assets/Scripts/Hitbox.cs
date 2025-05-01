@@ -4,6 +4,7 @@ public class Hitbox : MonoBehaviour
 {
     public float time = 1f;
     public float knockback = 100f;
+    public int dmg = 25;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +27,12 @@ public class Hitbox : MonoBehaviour
         {
             Rigidbody rb = other.transform.GetComponent<Rigidbody>();
             rb.AddForce(gameObject.transform.forward*knockback,ForceMode.Impulse);
+        }
+        if (other.tag == "Enemy")
+        {
+            Rigidbody rb = other.transform.GetComponent<Rigidbody>();
+            rb.AddForce(gameObject.transform.forward*knockback,ForceMode.VelocityChange);
+            other.transform.GetComponent<EnemyHealth>().dealDamage(dmg);
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class JetPart : ModularBugPart
 {
-    [SerializeField] private float dashForce = 20f;
+    [SerializeField] static private float dashForce = 20f;
     public override void Activate()
     {
         Transform parent = transform.parent;
@@ -17,5 +17,14 @@ public class JetPart : ModularBugPart
                 //rigid.linearVelocity = new Vector3(rigid.linearVelocity.x, jumpForce, rigid.linearVelocity.y);
             }
         }
+    }
+
+    public static float getDash()
+    {
+        return dashForce;
+    }
+    public static void setDash(float speed)
+    {
+        dashForce = speed;
     }
 }

@@ -8,10 +8,13 @@ public class carControler : MonoBehaviour
     public float driverSpeed, steerSpeed;
     float horizontalInput, verticalInput;
     public bool wingsPickedUp = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void setDriverSpeed(float speed)
     {
-        
+        driverSpeed = speed;
+    }
+    public void setSteerSpeed(float speed)
+    {
+        steerSpeed = speed;
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class carControler : MonoBehaviour
         wheel1.steerAngle = steerSpeed * horizontalInput;
         wheel2.steerAngle = steerSpeed * horizontalInput;
     }
+
     void OnJump(InputValue value)
     {
         /*

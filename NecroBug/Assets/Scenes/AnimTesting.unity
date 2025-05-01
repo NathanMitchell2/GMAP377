@@ -219,6 +219,114 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &60206863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60206867}
+  - component: {fileID: 60206866}
+  - component: {fileID: 60206865}
+  - component: {fileID: 60206864}
+  m_Layer: 0
+  m_Name: e
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &60206864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60206863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &60206865
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60206863}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &60206866
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60206863}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &60206867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60206863}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.42052376, w: 0.9072816}
+  m_LocalPosition: {x: -7.5, y: 2.5, z: 4}
+  m_LocalScale: {x: 16, y: 1, z: 24}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -49.735}
 --- !u!1 &106808653
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,8 +625,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.52
-  moveTime: 1
+  distanceBeforeSnap: 0.5
+  distanceFromRoot: 1
+  moveTime: 0.1
+  heightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.97952163
+      outSlope: 0.97952163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.209309
+    - serializedVersion: 3
+      time: 0.503952
+      value: 0.2022171
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9888909
+      value: -0.0060333014
+      inSlope: -1.0643867
+      outSlope: -1.0643867
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19712315
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  root: {fileID: 899559350}
   tip: {fileID: 1013099297}
   tipController: {fileID: 1477260189}
 --- !u!135 &127908936
@@ -1373,8 +1516,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.52
-  moveTime: 1
+  distanceBeforeSnap: 0.5
+  distanceFromRoot: 1
+  moveTime: 0.1
+  heightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.97952163
+      outSlope: 0.97952163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.209309
+    - serializedVersion: 3
+      time: 0.503952
+      value: 0.2022171
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9888909
+      value: -0.0060333014
+      inSlope: -1.0643867
+      outSlope: -1.0643867
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19712315
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  root: {fileID: 117205623}
   tip: {fileID: 2044433204}
   tipController: {fileID: 911150185}
 --- !u!135 &384782516
@@ -1850,8 +2028,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.52
-  moveTime: 1
+  distanceBeforeSnap: 0.5
+  distanceFromRoot: 1
+  moveTime: 0.1
+  heightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.97952163
+      outSlope: 0.97952163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.209309
+    - serializedVersion: 3
+      time: 0.503952
+      value: 0.2022171
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9888909
+      value: -0.0060333014
+      inSlope: -1.0643867
+      outSlope: -1.0643867
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19712315
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  root: {fileID: 2098904699}
   tip: {fileID: 2107522947}
   tipController: {fileID: 137071050}
 --- !u!135 &478007571
@@ -1982,8 +2195,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.52
-  moveTime: 1
+  distanceBeforeSnap: 0.5
+  distanceFromRoot: 1
+  moveTime: 0.1
+  heightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.97952163
+      outSlope: 0.97952163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.209309
+    - serializedVersion: 3
+      time: 0.503952
+      value: 0.2022171
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9888909
+      value: -0.0060333014
+      inSlope: -1.0643867
+      outSlope: -1.0643867
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19712315
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  root: {fileID: 242667013}
   tip: {fileID: 753766980}
   tipController: {fileID: 126687954}
 --- !u!135 &597367730
@@ -3570,8 +3818,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.52
-  moveTime: 1
+  distanceBeforeSnap: 0.5
+  distanceFromRoot: 1
+  moveTime: 0.1
+  heightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.97952163
+      outSlope: 0.97952163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.209309
+    - serializedVersion: 3
+      time: 0.503952
+      value: 0.2022171
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9888909
+      value: -0.0060333014
+      inSlope: -1.0643867
+      outSlope: -1.0643867
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19712315
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  root: {fileID: 1185424613}
   tip: {fileID: 1384283795}
   tipController: {fileID: 1845099352}
 --- !u!135 &1313407552
@@ -3846,6 +4129,7 @@ GameObject:
   - component: {fileID: 1424207319}
   - component: {fileID: 1424207318}
   - component: {fileID: 1424207317}
+  - component: {fileID: 1424207321}
   m_Layer: 0
   m_Name: Tip_Controller
   m_TagString: Untagged
@@ -3942,6 +4226,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1424207321
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424207316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 224aff5241e49ba4d81eaa10be75d9cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1436035924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4125,8 +4431,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.52
-  moveTime: 1
+  distanceBeforeSnap: 0.5
+  distanceFromRoot: 1
+  moveTime: 0.1
+  heightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.97952163
+      outSlope: 0.97952163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.209309
+    - serializedVersion: 3
+      time: 0.503952
+      value: 0.2022171
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9888909
+      value: -0.0060333014
+      inSlope: -1.0643867
+      outSlope: -1.0643867
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19712315
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  root: {fileID: 1133139104}
   tip: {fileID: 435259646}
   tipController: {fileID: 1424207316}
 --- !u!1 &1462988941
@@ -4141,7 +4482,6 @@ GameObject:
   - component: {fileID: 1462988945}
   - component: {fileID: 1462988944}
   - component: {fileID: 1462988943}
-  - component: {fileID: 1462988942}
   - component: {fileID: 1462988947}
   m_Layer: 0
   m_Name: Body
@@ -4150,28 +4490,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1462988942
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462988941}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!135 &1462988943
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5320,3 +5638,4 @@ SceneRoots:
   - {fileID: 106808657}
   - {fileID: 1254978024}
   - {fileID: 50499048}
+  - {fileID: 60206867}

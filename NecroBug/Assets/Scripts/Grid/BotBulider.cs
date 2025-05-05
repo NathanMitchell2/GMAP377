@@ -19,9 +19,9 @@ public class BotBulider : MonoBehaviour
     private void Awake()
     {
         grid = new BotGrid(x, y, z, empty);
-        GameObject bot = Instantiate(this.bot, transform);
-        this.selectedPart = bot.GetComponent<BotPart>();
-        parts.Add(selectedPart);
+        //GameObject bot = Instantiate(this.bot, transform);
+        //this.selectedPart = bot.GetComponent<BotPart>();
+        //parts.Add(selectedPart);
 
         gridDisplayCells = new GridDisplayCell[x, y, z];
         for (int i = 0; i < x; i++)
@@ -91,9 +91,8 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemovePart(int index)
     {
-        Debug.Log("a");
         if (parts[index].Remove(grid))
-            parts.Remove(parts[index]);
+            return parts.Remove(parts[index]);
         return false;
     }
 
@@ -129,5 +128,9 @@ public class BotBulider : MonoBehaviour
             return parts.Remove(selectedPart);
         return false;
 
+    }
+    public BotPart GetSelected()
+    {
+        return selectedPart;
     }
 }

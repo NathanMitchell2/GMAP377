@@ -11,13 +11,13 @@ public class BotGrid
     public BotGrid(Vector3 size, Tile empty)
     {
         grid = new Stack<Tile>[(int)size.x, (int)size.y, (int)size.z];
-        this.empty = new EmptyTile(null);
+        this.empty = new EmptyTile(null, null);
         ClearGrid();
     }
     public BotGrid(int x, int y, int z, Tile empty)
     {
         grid = new Stack<Tile>[x, y, z];
-        this.empty = new EmptyTile(null);
+        this.empty = new EmptyTile(null, null);
         ClearGrid();
     }
 

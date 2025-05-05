@@ -6,6 +6,7 @@ public abstract class Tile
 {
     private TileType type;
     private Tile dependent;
+    private Block parent; // Isn't used
     public enum TileType
     {
         Empty,
@@ -13,10 +14,16 @@ public abstract class Tile
         Solid,
         SolidCheck
     }
-    public Tile(Tile dependent, TileType type)
+    public Tile(Tile dependent, Block parent, TileType type)
     {
         this.dependent = dependent;
+        this.parent = parent;
         this.type = type;
+    }
+
+    public Block GetParent()
+    {
+        return parent;
     }
 
     public bool CheckTile()
@@ -35,7 +42,7 @@ public abstract class Tile
         return type;
     }
 
-    public abstract Tile CreateTile(Tile dependent);
+    public abstract Tile CreateTile(Tile dependent, Block parent);
     public abstract bool internalCheck(Tile other);
 
 

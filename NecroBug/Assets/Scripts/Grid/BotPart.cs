@@ -6,28 +6,29 @@ public class BotPart : MonoBehaviour
 {
     [SerializeField] private Vector3 pos;
     [SerializeField] private Vector3 axis;
-    [SerializeField] protected List<Block> blocks = new List<Block>();
+    protected List<Block> blocks = new List<Block>();
 
-    void Start()
+    void Awake()
     {
         blocks.AddRange(transform.GetComponentsInChildren<Block>());
+        //For some reason when this is Start not Awake when Place is called this code hasnt been, but it has been for remove?? lol
     }
     public void Place(BotGrid grid)
     {
         foreach (var block in blocks)
         {
-            Debug.Log("placingblock");
             block.Place(pos, axis, grid);
         }
     }
 
     public bool Remove(BotGrid grid)
     {
-        Debug.Log("a");
         if (!CanRemove(grid)) return false;
 
-        foreach(var block in blocks)
-            block.Remove(pos,axis,grid);
+        foreach (var block in blocks)
+        {
+            block.Remove(pos, axis, grid);
+        }
 
         return true;
     }
@@ -79,11 +80,11 @@ public class BotPart : MonoBehaviour
     public void SetPos(Vector3 pos)
     {
         this.pos = pos;
-        transform.position = pos;
+        //transform.position = pos;
     }
     public void SetAxis(Vector3 axis)
     {
         this.axis = axis;
-        transform.rotation *= Quaternion.FromToRotation(Vector3.right, axis);
+        //transform.rotation *= Quaternion.FromToRotation(Vector3.right, axis);
     }
 }

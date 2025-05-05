@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class SolidTile : Tile
 {
-    public SolidTile(Tile dependent) : base(dependent, TileType.Solid)
+    public SolidTile(Tile dependent, Block parent) : base(dependent, parent, TileType.Solid)
     {
 
     }
-    public override Tile CreateTile(Tile dependent)
+    public override Tile CreateTile(Tile dependent, Block parent)
     {
-        return new SolidTile(dependent);
+        return new SolidTile(dependent, parent);
     }
 
     public override bool internalCheck(Tile other)

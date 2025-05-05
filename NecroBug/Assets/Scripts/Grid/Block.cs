@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -14,7 +15,7 @@ public class Block : MonoBehaviour
         this.tile = tile;
     }
 
-    private void Start()
+    private void Awake()
     {
         tiles = new List<Tile>();
     }
@@ -24,11 +25,11 @@ public class Block : MonoBehaviour
         switch (tile)
         {
             case Tile.TileType.Solid:
-                return new SolidTile(dependent);
+                return new SolidTile(dependent, this);
             case Tile.TileType.Empty:
-                return new EmptyTile(dependent);
+                return new EmptyTile(dependent, this);
             default:
-                return new EmptyTile(dependent);
+                return new EmptyTile(dependent, this);
         }
     }
 
@@ -36,15 +37,15 @@ public class Block : MonoBehaviour
     {
         Vector3 size = GetSizeByAxis(axis);
 
-        for (int i = 0; i < size.x; i++)
+        for (int i = 0; i < Math.Abs(size.x); i++)
         {
-            for (int j = 0; j < size.y; j++)
+            for (int j = 0; j < Math.Abs(size.y); j++)
             {
-                for (int k = 0; k < size.z; k++)
+                for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    int x = (int)pos.x + i;
-                    int y = (int)pos.y + j;
-                    int z = (int)pos.z + k;
+                    int x = (int)pos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + k * Math.Sign(size.z);
 
                     Tile tile;
                     if (grid.GetCell(x, y, z).Count == 0)
@@ -54,33 +55,30 @@ public class Block : MonoBehaviour
 
 
                     grid.GetCell(x, y, z).Push(tile);
-                    //Debug.Log(tile);
-                    //Debug.Log(tiles);
-                    //tiles.Add(tile);
+                    tiles.Add(tile);
                 }
             }
         }
     }
     public bool Remove(Vector3 pos, Vector3 axis, BotGrid grid)
     {
-        Debug.Log("c");
         if (!CanRemove(pos, axis, grid))
             return false;
 
         Vector3 size = GetSizeByAxis(axis);
 
-        for (int i = 0; i < size.x; i++)
+        for (int i = 0; i < Math.Abs(size.x); i++)
         {
-            for (int j = 0; j < size.y; j++)
+            for (int j = 0; j < Math.Abs(size.y); j++)
             {
-                for (int k = 0; k < size.z; k++)
+                for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    int x = (int)pos.x + i;
-                    int y = (int)pos.y + j;
-                    int z = (int)pos.z + k;
+                    int x = (int)pos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + k * Math.Sign(size.z);
 
                     Tile tile = grid.GetCell(x, y, z).Pop();
-                    //tiles.Remove(tile);
+                    tiles.Remove(tile);
                 }
             }
         }
@@ -89,18 +87,20 @@ public class Block : MonoBehaviour
 
     public bool CanRemove(Vector3 pos, Vector3 axis, BotGrid grid)
     {
-        return true;
         Vector3 size = GetSizeByAxis(axis);
 
-        for (int i = 0; i < size.x; i++)
+        for (int i = 0; i < Math.Abs(size.x); i++)
         {
-            for (int j = 0; j < size.y; j++)
+            for (int j = 0; j < Math.Abs(size.y); j++)
             {
-                for (int k = 0; k < size.z; k++)
+                for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    int x = (int)pos.x + i;
-                    int y = (int)pos.y + j;
-                    int z = (int)pos.z + k;
+                    int x = (int)pos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + k * Math.Sign(size.z);
+
+                    if (grid.GetCell(x, y, z).Peek().GetTileType() == Tile.TileType.Empty)
+                        return false;
 
                     if (!tiles.Contains(grid.GetCell(x, y, z).Peek()))
                         return false;

@@ -5,8 +5,52 @@ using static UnityEditor.PlayerSettings;
 
 public class BotBulider : MonoBehaviour
 {
-    private BotGrid grid = new BotGrid(12, 12, 12);
+    private const int x = 12;
+    private const int y = 12;
+    private const int z = 12;
+    [SerializeField] GameObject bot;
+    [SerializeField] GameObject cell;
+    [SerializeField] Tile empty;
+    private BotGrid grid;
     private List<BotPart> parts = new List<BotPart>();
+    private BotPart selectedPart;
+    private GridDisplayCell[,,] gridDisplayCells;
+
+    private void Awake()
+    {
+        grid = new BotGrid(x, y, z, empty);
+        GameObject bot = Instantiate(this.bot, transform);
+        this.selectedPart = bot.GetComponent<BotPart>();
+        parts.Add(selectedPart);
+
+        gridDisplayCells = new GridDisplayCell[x, y, z];
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                for (int k = 0; k < z; k++)
+                {
+                    GameObject newCell = Instantiate(cell, new Vector3(i,j,k), new Quaternion());
+                    //Debug.Log(newCell==null);
+                    gridDisplayCells[i,j,k] = newCell.GetComponent<GridDisplayCell>();
+                }
+            }
+        }
+    }
+
+    public void UpdateDisplayCells()
+    {
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                for (int k = 0; k < z; k++)
+                {
+                    gridDisplayCells[i, j, k].ProcessStack(grid.GetCell(i,j,k));
+                }
+            }
+        }
+    }
 
     public int GetCount()
     {
@@ -16,110 +60,74 @@ public class BotBulider : MonoBehaviour
     {
         return parts[index];
     }
-    public bool AddPart(BotPart part)
+    public void AddPart(BotPart part)
     {
-        if (part == null)
-            return false;
-        if (!CheckPart(part)) 
-            return false;
-
-        for (int i = 0; i < part.GetCount(); i++)
-        {
-            Block block = part.GetIndex(i);
-            grid.SetBlock(block);
-        }
+        part.Place(grid);
         parts.Add(part);
-        return true;
-
     }
     public bool MovePart(BotPart part, Vector3 pos)
     {
-        Vector3 ogPos = part.GetPos();
-        RemovePart(part);
-        part.SetPos(pos);
-        if(!AddPart(part))
-        {
-            part.SetPos(ogPos);
-            AddPart(part);
-            return false;
-        }
-        return true;
+        return part.Move(pos, grid);
     }
     public bool MovePart(BotPart part, int x, int y, int z)
     {
-        Vector3 ogPos = part.GetPos();
-        RemovePart(part);
-        part.SetPos(new Vector3(x,y,z));
-        if (!AddPart(part))
-        {
-            part.SetPos(ogPos);
-            AddPart(part);
-            return false;
-        }
-        return true;
+        return part.Move(new Vector3(x,y,z), grid);
     }
 
     public bool RotatePart(BotPart part, Vector3 axis)
     {
-        Vector3 ogAxis = part.GetAxis();
-        RemovePart(part);
-        part.SetAxis(axis);
-        if (!AddPart(part))
-        {
-            part.SetAxis(ogAxis);
-            AddPart(part);
-            return false;
-        }
-        return true;
+        return part.Rotate(axis, grid);
     }
     public bool RotatePart(BotPart part, int x, int y, int z)
     {
-        Vector3 ogAxis = part.GetAxis();
-        RemovePart(part);
-        part.SetAxis(new Vector3(x, y, z));
-        if (!AddPart(part))
-        {
-            part.SetAxis(ogAxis);
-            AddPart(part);
-            return false;
-        }
-        return true;
+        return part.Rotate(new Vector3(x, y, z), grid);
     }
-
     public bool RemovePart(BotPart part)
     {
-        if (part == null) return false;
-        parts.Remove(part);
-        RebuildGrid();
-        return true;
-    }
+        if(part.Remove(grid))
+            return parts.Remove(part);
+        return false;
 
+    }
     public bool RemovePart(int index)
     {
-        if (index == null) return false;
-        parts.RemoveAt(index);
-        RebuildGrid();
-        return true;
-    }
-    private bool CheckPart(BotPart part)
-    {
-        for (int i = 0; i < part.GetCount(); i++) {
-            Block block = part.GetIndex(i);
-            if(!grid.CheckBlock(block)) return false;
-        }
-        return true;
+        Debug.Log("a");
+        if (parts[index].Remove(grid))
+            parts.Remove(parts[index]);
+        return false;
     }
 
-    private void RebuildGrid()
+
+    public void SetSelected(int index)
     {
-        grid.ClearGrid();
-        foreach (BotPart part in parts)
-        {
-            for (int i = 0; i < part.GetCount(); i++)
-            {
-                Block block = part.GetIndex(i);
-                grid.SetBlock(block);
-            }
-        }
+        selectedPart = parts[index];
+    }
+    public void SetSelected(BotPart part)
+    {
+        if(parts.Contains(part))
+            selectedPart = part;
+    }
+    public bool MoveSelected(Vector3 pos)
+    {
+        return selectedPart.Move(pos, grid);
+    }
+    public bool MoveSelected(int x, int y, int z)
+    {
+        return selectedPart.Move(new Vector3(x, y, z), grid);
+    }
+    public bool RotateSelected(Vector3 axis)
+    {
+        return selectedPart.Rotate(axis, grid);
+    }
+    public bool RotateSelected(int x, int y, int z)
+    {
+        return selectedPart.Rotate(new Vector3(x, y, z), grid);
+    }
+    public bool RemoveSelected()
+    {
+        if (selectedPart.Remove(grid))
+            return parts.Remove(selectedPart);
+        return false;
+
     }
 }

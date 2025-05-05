@@ -6,16 +6,24 @@ using UnityEngine;
 
 public class BotGrid
 {
-    private string[,,] grid;
-    public BotGrid(Vector3 size)
+    private Tile empty;
+    private Stack<Tile>[,,] grid;
+    public BotGrid(Vector3 size, Tile empty)
     {
-        grid = new string[(int)size.x, (int)size.y, (int)size.z];
+        grid = new Stack<Tile>[(int)size.x, (int)size.y, (int)size.z];
+        this.empty = new EmptyTile(null);
         ClearGrid();
     }
-    public BotGrid(int x, int y, int z)
+    public BotGrid(int x, int y, int z, Tile empty)
     {
-        grid = new string[x, y, z];
+        grid = new Stack<Tile>[x, y, z];
+        this.empty = new EmptyTile(null);
         ClearGrid();
+    }
+
+    public Stack<Tile> GetCell(int x, int y, int z)
+    {
+        return grid[x, y, z];
     }
 
     public void ClearGrid()
@@ -26,68 +34,21 @@ public class BotGrid
             {
                 for (int k = 0; k < grid.GetLength(2); k++)
                 {
-                    SetGrid(i, j, k, "empty");
+                    Stack<Tile> stack = new Stack<Tile>();
+                    stack.Push(empty);
+                    grid[i, j, k] = stack;
                 }
             }
         }
     }
 
-    public bool CheckBlock(Block block)
+    public bool Check()
     {
-        Vector3 pos = block.GetPos();
-        Vector3 size = block.GetSize();
-        for (int i = 0; i < (int)size.x; i++)
+        foreach(var tile in grid)
         {
-            for (int j = 0; j < (int)size.y; j++)
-            {
-                for (int k = 0; k < (int)size.z; k++)
-                {
-                    string locName = GetGrid((int)pos.x + i, (int)pos.y + j, (int)pos.z + k);
-                    bool check = block.CanPlace(locName);
-
-                    if (!check)
-                        return false;
-                }
-            }
+            if(!tile.Peek().CheckTile()) return false;
         }
         return true;
-    }
-    public void SetBlock(Block block)
-    {
-        Vector3 pos = block.GetPos();
-        Vector3 size = block.GetSize();
-        for (int i = 0; i < (int)size.x; i++)
-        {
-            for (int j = 0; j < (int)size.y; j++)
-            {
-                for (int k = 0; k < (int)size.z; k++)
-                {
-                    SetGrid((int)pos.x + i, (int)pos.y + j, (int)pos.z + k, block.GetName());
-                }
-            }
-        }
-    }
-    private void SetGrid(Vector3 loc, string name)
-    {
-        if(inBounds(loc))
-            grid[(int)loc.x, (int)loc.y, (int)loc.z] = name;
-    }
-    private void SetGrid(int x, int y, int z, string name)
-    {
-        if (inBounds(x,y,z))
-            grid[x, y, z] = name;
-    }
-    private string GetGrid(Vector3 loc)
-    {
-        if (inBounds(loc))
-            return "null";
-        return grid[(int)loc.x, (int)loc.y, (int)loc.z];
-    }
-    private string GetGrid(int x, int y, int z)
-    {
-        if (inBounds(x,y,z))
-            return "null";
-        return grid[x, y, z];
     }
 
     private bool inBounds(Vector3 loc)

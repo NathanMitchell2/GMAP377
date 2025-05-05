@@ -26,15 +26,14 @@ public class BuilderUI : MonoBehaviour
     }
     private GameObject GetPart(string option)
     {
-        Debug.Log(option);
         switch (option)
         {
             case "NecroBug":
-                return Instantiate(parts[0]);
+                return Instantiate(parts[0],transform);
             case "Horn":
-                return Instantiate(parts[1]);
+                return Instantiate(parts[1], transform);
             case "Jet":
-                return Instantiate(parts[2]);
+                return Instantiate(parts[2], transform);
             default:
                 return null;
         }
@@ -47,11 +46,13 @@ public class BuilderUI : MonoBehaviour
         BotPart bPart = part.GetComponent<BotPart>();
         bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         builder.AddPart(bPart);
+        builder.UpdateDisplayCells();
     }
 
     public void RemovePart()
     {
         BotBulider builder = GetComponent<BotBulider>();
         builder.RemovePart(int.Parse(removeIndex.text));
+        builder.UpdateDisplayCells();
     }
 }

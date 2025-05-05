@@ -3,17 +3,13 @@ using UnityEngine;
 
 public abstract class Block : MonoBehaviour
 {
-    [SerializeField] private Vector3 pos;
     [SerializeField] private Vector3 size;
-    [SerializeField] private Vector3 axis;
-    [SerializeField] protected string name;
+    protected string name;
 
-    public abstract bool CanPlace(string other);
-    public Block(Vector3 pos, Vector3 size, Vector3 axis, string name)
+    public 
+    public Block(Vector3 pos, Vector3 size, Vector3 axis, Tile name)
     {
-        this.pos = pos;
         this.size = size;
-        this.axis = axis;
         this.name = name;
     }
 

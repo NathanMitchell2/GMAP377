@@ -28,6 +28,7 @@ public class BotBulider : MonoBehaviour
             Block block = part.GetIndex(i);
             grid.SetBlock(block);
         }
+        parts.Add(part);
         return true;
 
     }
@@ -89,6 +90,14 @@ public class BotBulider : MonoBehaviour
     {
         if (part == null) return false;
         parts.Remove(part);
+        RebuildGrid();
+        return true;
+    }
+
+    public bool RemovePart(int index)
+    {
+        if (index == null) return false;
+        parts.RemoveAt(index);
         RebuildGrid();
         return true;
     }

@@ -52,6 +52,8 @@ public class BuilderUI : MonoBehaviour
                 return Instantiate(parts[1], transform);
             case "Jet":
                 return Instantiate(parts[2], transform);
+            case "Wing":
+                return Instantiate(parts[3], transform);
             default:
                 return null;
         }

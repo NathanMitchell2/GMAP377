@@ -11,6 +11,7 @@ public class BotBulider : MonoBehaviour
     [SerializeField] GameObject bot;
     [SerializeField] GameObject cell;
     [SerializeField] Tile empty;
+    [SerializeField] Transform camera;
     private BotGrid grid;
     private List<BotPart> parts = new List<BotPart>();
     private BotPart selectedPart;
@@ -30,7 +31,8 @@ public class BotBulider : MonoBehaviour
             {
                 for (int k = 0; k < z; k++)
                 {
-                    GameObject newCell = Instantiate(cell, new Vector3(i,j,k), new Quaternion());
+                    GameObject newCell = Instantiate(cell, camera);
+                    newCell.transform.SetLocalPositionAndRotation(new Vector3(i, j, k), new Quaternion());
                     //Debug.Log(newCell==null);
                     gridDisplayCells[i,j,k] = newCell.GetComponent<GridDisplayCell>();
                 }

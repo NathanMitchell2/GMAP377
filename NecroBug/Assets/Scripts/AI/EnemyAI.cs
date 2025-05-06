@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
 
     private IState currentState;
 
+    public bool playerInSightRange, playerInAttackRange;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -58,14 +60,13 @@ public class EnemyAI : MonoBehaviour
 
     private void UpdatePlayerDetection()
     {
-        bool playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         float distance = Vector3.Distance(transform.position, player.position);
         playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
 
         currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distance);
     }
-
     public Coroutine ChangeStateCoroutine(IEnumerator coroutine)
     {
         return StartCoroutine(coroutine);

@@ -72,7 +72,7 @@ public class AnimLegControl : MonoBehaviour
     void TrackDistance()
     {
         tipDistance = Vector3.Distance(transform.position, tipController.transform.position);
-        if (tipDistance > distanceBeforeSnap)
+        if (tipDistance > distanceBeforeSnap && isMoving == false)
         {
             // direction = (tipController.transform.position - transform.position) / moveTime;
             // Debug.Log(direction);

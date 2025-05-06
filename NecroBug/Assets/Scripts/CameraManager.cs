@@ -25,11 +25,12 @@ public class CameraManager : MonoBehaviour
     {
         JetPart.setDash(speed);
     }
+    
     public carControler GetCar()
     {
         return car;
     }
-
+    
 
     public void SetMenu(int index)
     {

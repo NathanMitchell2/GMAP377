@@ -11,11 +11,13 @@ public class AnimLegControl : MonoBehaviour
     public float distanceFromRoot;
     public float moveTime;
     public AnimationCurve heightCurve;
+    public float postResetDelay = 0.2f;
 
+    private float resetCooldown = 0f;
     private float tipDistance = 1;
     private bool isMoving = false;
-    // private Vector3 direction;
     private Vector3 startPosition;
+    private Vector3 defaultTipLocalPosition;
     private float timer = 0;
 
     [field: Header("References")]
@@ -24,6 +26,13 @@ public class AnimLegControl : MonoBehaviour
     public GameObject tip;
     public GameObject tipController;
 
+    private void Awake()
+    {
+        if (tipController != null)
+        {
+            defaultTipLocalPosition = transform.localPosition;
+        }
+    }
     void Update()
     {
         // MoveLegController() triggered in TrackDistance()
@@ -52,6 +61,16 @@ public class AnimLegControl : MonoBehaviour
         timer += 1 * Time.deltaTime;
         // Visualize the ray in Scene view
         Debug.DrawRay(transform.position + transform.up * upwardRaycast, -transform.up * downwardRaycast, Color.red);
+
+
+        if (resetCooldown > 0f)
+        {
+            resetCooldown -= Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetTipController();
+        }
     }
 
     void StickToGround()
@@ -65,24 +84,15 @@ public class AnimLegControl : MonoBehaviour
                 hit.point.y,
                 transform.position.z
             );
-            // Debug.Log("Raycast hit: " + hit.point);
         }
     }
 
     void TrackDistance()
     {
         tipDistance = Vector3.Distance(transform.position, tipController.transform.position);
-        if (tipDistance > distanceBeforeSnap && isMoving == false)
+        if (tipDistance > distanceBeforeSnap && isMoving == false && resetCooldown <= 0f)
         {
-            // direction = (tipController.transform.position - transform.position) / moveTime;
-            // Debug.Log(direction);
-            // MoveLegController(direction);
             MoveLegController();
-        }
-
-        if ( Vector3.Distance(transform.position, root.transform.position) != distanceFromRoot)
-        {
-            // Vector3.MoveTowards(transform.position, root.transform.position, 1);
         }
     }
 
@@ -96,7 +106,6 @@ public class AnimLegControl : MonoBehaviour
         {
             moveTime = moveTime / (Vector3.Distance(startPosition, transform.position) * 2);
             distanceBeforeSnap = distanceBeforeSnap / (Vector3.Distance(startPosition, transform.position) * 2);
-            // Debug.Log(moveTime);
         }
         else
         {
@@ -104,5 +113,16 @@ public class AnimLegControl : MonoBehaviour
             moveTime = 0.15f;
             distanceBeforeSnap = 0.7f;
         }
+    }
+
+    public void ResetTipController()
+    {
+
+        transform.SetParent(root.transform);
+        transform.localPosition = defaultTipLocalPosition;
+        transform.localRotation = Quaternion.identity;
+        isMoving = false;
+        timer = 0f;
+        resetCooldown = postResetDelay;
     }
 }

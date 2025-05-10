@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         car = (carControler)FindFirstObjectByType(typeof(carControler));
         GetComponentInChildren<CinemachineCamera>().Target.TrackingTarget = car.transform;
     }

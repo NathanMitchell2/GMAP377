@@ -20,6 +20,9 @@ public class AnimLegControl : MonoBehaviour
     private Vector3 defaultTipLocalPosition;
     private float timer = 0;
 
+    [field: Header("Raycast Settings")]
+    public LayerMask groundMask;
+
     [field: Header("References")]
 
     public GameObject root;
@@ -59,6 +62,7 @@ public class AnimLegControl : MonoBehaviour
         }
 
         timer += 1 * Time.deltaTime;
+
         // Visualize the ray in Scene view
         Debug.DrawRay(transform.position + transform.up * upwardRaycast, -transform.up * downwardRaycast, Color.red);
 
@@ -77,7 +81,7 @@ public class AnimLegControl : MonoBehaviour
     {
         RaycastHit hit;
         // Start the ray higher to avoid hitting the object itself
-        if (Physics.Raycast(transform.position + transform.up * upwardRaycast, -transform.up, out hit, downwardRaycast))
+        if (Physics.Raycast(transform.position + transform.up * upwardRaycast, -transform.up, out hit, downwardRaycast, groundMask))
         {
             transform.position = new Vector3(
                 transform.position.x,

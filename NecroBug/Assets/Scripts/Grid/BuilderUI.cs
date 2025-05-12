@@ -148,4 +148,9 @@ public class BuilderUI : MonoBehaviour
         builder.RemovePart(int.Parse(removeIndex.text));
         builder.UpdateDisplayCells();
     }
+
+    public void CreateBot()
+    {
+        builder.CreateBot();
+    }
 }

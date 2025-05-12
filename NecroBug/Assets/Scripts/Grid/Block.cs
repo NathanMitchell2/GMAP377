@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    [SerializeField] private Vector3 pos;
     [SerializeField] private Vector3 size;
     [SerializeField] private Tile.TileType tile;
     [SerializeField] private List<Tile> tiles = new List<Tile>();
@@ -27,14 +28,17 @@ public class Block : MonoBehaviour
                 return new SolidTile(dependent, this);
             case Tile.TileType.Empty:
                 return new EmptyTile(dependent, this);
+            case Tile.TileType.SolidCheck:
+                return new ReqsSolidTile(dependent, this);
             default:
                 return new EmptyTile(dependent, this);
         }
     }
 
-    public void Place(Vector3 pos, Vector3 axis, BotGrid grid)
+    public bool inBounds(Vector3 pos, Vector3 axis, BotGrid grid)
     {
         Vector3 size = GetSizeByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis);
 
         for (int i = 0; i < Math.Abs(size.x); i++)
         {
@@ -42,29 +46,74 @@ public class Block : MonoBehaviour
             {
                 for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    int x = (int)pos.x + i * Math.Sign(size.x);
-                    int y = (int)pos.y + j * Math.Sign(size.y);
-                    int z = (int)pos.z + k * Math.Sign(size.z);
+                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
+
+                    if (!grid.inBounds(new Vector3(x, y, z)))
+                        return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public bool Place(Vector3 pos, Vector3 axis, BotGrid grid)
+    {
+        if (!inBounds(pos, axis, grid))
+            return false;
+
+        Vector3 size = GetSizeByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis);
+
+        for (int i = 0; i < Math.Abs(size.x); i++)
+        {
+            for (int j = 0; j < Math.Abs(size.y); j++)
+            {
+                for (int k = 0; k < Math.Abs(size.z); k++)
+                {
+                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
 
                     Tile tile;
                     if (grid.GetCell(x, y, z).Count == 0)
                         tile = GenTile(null);
                     else
-                        tile = GenTile(grid.GetCell(x, y, z).Peek());
+                        tile = GenTile(grid.GetCell(x, y, z)[grid.GetCell(x,y,z).Count-1]);
 
 
-                    grid.GetCell(x, y, z).Push(tile);
+                    grid.GetCell(x, y, z).Add(tile);
                     tiles.Add(tile);
                 }
             }
         }
+        return true;
     }
+    private int GetIndexInCell(List<Tile> cell)
+    {
+        for (int i = 0; i < cell.Count; i++)
+        {
+            if (tiles.Contains(cell[i]))
+                return i;
+        }
+        return -1;
+    }
+
+
     public bool Remove(Vector3 pos, Vector3 axis, BotGrid grid)
     {
+
+
         if (!CanRemove(pos, axis, grid))
             return false;
 
+        if (!inBounds(pos, axis, grid))
+            return false;
+
         Vector3 size = GetSizeByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis);
 
         for (int i = 0; i < Math.Abs(size.x); i++)
         {
@@ -72,21 +121,34 @@ public class Block : MonoBehaviour
             {
                 for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    int x = (int)pos.x + i * Math.Sign(size.x);
-                    int y = (int)pos.y + j * Math.Sign(size.y);
-                    int z = (int)pos.z + k * Math.Sign(size.z);
+                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
 
-                    Tile tile = grid.GetCell(x, y, z).Pop();
-                    tiles.Remove(tile);
+                    List<Tile> cell = grid.GetCell(x, y, z);
+                    int index = GetIndexInCell(cell);
+
+                    tiles.Remove(cell[index]);
+                    cell.RemoveAt(index);
                 }
             }
         }
         return true;
     }
 
+
     public bool CanRemove(Vector3 pos, Vector3 axis, BotGrid grid)
     {
+
+
+        if (!inBounds(pos, axis, grid))
+            return false;
+
+        if (!inBounds(pos, axis, grid))
+            return false;
+
         Vector3 size = GetSizeByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis);
 
         for (int i = 0; i < Math.Abs(size.x); i++)
         {
@@ -94,15 +156,23 @@ public class Block : MonoBehaviour
             {
                 for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    int x = (int)pos.x + i * Math.Sign(size.x);
-                    int y = (int)pos.y + j * Math.Sign(size.y);
-                    int z = (int)pos.z + k * Math.Sign(size.z);
+                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
 
-                    if (grid.GetCell(x, y, z).Peek().GetTileType() == Tile.TileType.Empty)
+
+                    List<Tile> cell = grid.GetCell(x, y, z);
+                    int index = GetIndexInCell(cell);
+
+                    if(index == -1)
                         return false;
+                    /*
+                    if (grid.GetCell(x, y, z).Peek().GetTileType() == Tile.TileType.Empty)
+                    return false;
 
                     if (!tiles.Contains(grid.GetCell(x, y, z).Peek()))
-                        return false;
+                    return false;
+                    */
                 }
             }
         }
@@ -113,6 +183,12 @@ public class Block : MonoBehaviour
     {
         Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
         return rotation.MultiplyVector(size);
+    }
+
+    private Vector3 GetPosByAxis(Vector3 axis)
+    {
+        Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
+        return rotation.MultiplyVector(pos);
     }
 
 }

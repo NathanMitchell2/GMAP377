@@ -63,6 +63,8 @@ public class BuilderUI : MonoBehaviour
                 return Instantiate(parts[3], transform);
             case "Generic":
                 return Instantiate(parts[4], transform);
+            case "Legs":
+                return Instantiate(parts[5], transform);
             default:
                 return null;
         }

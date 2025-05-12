@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         player = ((PlayerInput)FindFirstObjectByType(typeof(PlayerInput))).gameObject;
         GetComponentInChildren<CinemachineCamera>().Target.TrackingTarget = player.GetComponentInChildren<FollowCar>().gameObject.transform;
     }

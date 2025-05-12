@@ -5,10 +5,31 @@ using UnityEngine.InputSystem;
 public class MenuChanger : MonoBehaviour
 {
     [SerializeField] private List<GameObject> menus = new List<GameObject>();
+    
+    private bool flipFlop = true;
+    private CameraManager camManager;
     private void Awake()
     {
         // Mouse is enabled in CameraManager at start
         // EnableMouseControl();
+
+        camManager = GetComponentInParent<CameraManager>();
+    }
+    public void FlipFlopMenus()
+    {
+        flipFlop = !flipFlop;
+        if (flipFlop)
+        {
+            SetMenu(0);
+            camManager.SetCamera(1);
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Off();
+            camManager.SetCamera(0);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
     public void SetMenu(int index)
     {

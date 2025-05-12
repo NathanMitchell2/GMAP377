@@ -1,14 +1,16 @@
+using System.Transactions;
 using UnityEngine;
+using static Tile;
 
-public class SolidTile : Tile
+public class ReqsSolidTile : Tile
 {
-    public SolidTile(Tile dependent, Block parent) : base(dependent, parent, TileType.Solid)
+    public ReqsSolidTile(Tile dependent, Block parent) : base(dependent, parent, TileType.SolidCheck)
     {
 
     }
     public override Tile CreateTile(Tile dependent, Block parent)
     {
-        return new SolidTile(dependent, parent);
+        return new ReqsSolidTile(dependent, parent);
     }
 
     public override bool internalCheck(Tile other)

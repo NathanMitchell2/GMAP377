@@ -10,11 +10,13 @@ public class BotBulider : MonoBehaviour
     [SerializeField] GameObject bot;
     [SerializeField] GameObject cell;
     [SerializeField] Tile empty;
-    [SerializeField] Transform camera;
+    [SerializeField] Transform gridTransform;
     private BotGrid grid;
     private List<BotPart> parts = new List<BotPart>();
     private BotPart selectedPart;
     private GridDisplayCell[,,] gridDisplayCells;
+    [SerializeField] private Transform buildTransform;
+    private List<GameObject> builtParts = new List<GameObject>();
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class BotBulider : MonoBehaviour
             {
                 for (int k = 0; k < z; k++)
                 {
-                    GameObject newCell = Instantiate(cell, camera);
+                    GameObject newCell = Instantiate(cell, gridTransform);
                     newCell.transform.SetLocalPositionAndRotation(new Vector3(i, j, k), new Quaternion());
                     //Debug.Log(newCell==null);
                     gridDisplayCells[i,j,k] = newCell.GetComponent<GridDisplayCell>();
@@ -92,7 +94,7 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemovePart(int index)
     {
-        if (parts[index].Remove(grid))
+        if (parts[index].Remove(grid)&&index!=0) //HARD CODED, can't remove first item in list (for car)
             return parts.Remove(parts[index]);
         return false;
     }
@@ -133,5 +135,52 @@ public class BotBulider : MonoBehaviour
     public BotPart GetSelected()
     {
         return selectedPart;
+    }
+
+    private void DestroyBot()
+    {
+        foreach (GameObject part in builtParts)
+        {
+            Destroy(part.gameObject);
+        }
+    }
+    public void CreateBot()
+    {
+        if (!grid.Check())
+            return;
+        DestroyBot();
+        GameObject car = null;
+        builtParts = new List<GameObject>();
+
+        foreach (var part in parts)
+        {
+            GameObject builtPart = part.BuildPart(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
+            builtPart.transform.SetParent(buildTransform.transform);
+
+            if (builtPart.GetComponent<carControler>() != null)
+                car = builtPart;
+
+            builtParts.Add(builtPart);
+        }
+
+        foreach (var part in builtParts)
+        {
+            //Debug.Log(buildTransform.GetComponent<InputManager>().name);
+            //Debug.Log(part.GetComponentInChildren<InputStrategy>().name);
+            buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
+            if (car != null)
+            {
+                if (part != car)
+                {
+                    part.transform.SetParent(car.transform);
+                }
+            }
+            else
+            {
+                Debug.Log("No NecroBug Part");
+            }
+        }
+
+        //car.transform.SetParent(buildTransform,false);
     }
 }

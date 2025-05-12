@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 604390345361080852}
+  rb: {fileID: 0}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -161,22 +162,21 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  projectile: {fileID: 0}
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointSet: 0
-  walkPointRange: 25
-  timeBetweenAttacks: 1
-  alreadyAttacked: 0
   sightRange: 25
   attackRange: 15
   retreatRange: 7.5
-  playerInSightRange: 0
-  playerInAttackRange: 0
+  walkPointRange: 25
+  timeBetweenAttacks: 1
+  idleDuration: 3
   chargeUpTime: 1.5
   jumpForce: 35
   maxPlayerSpeedCharge: 3
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  alreadyAttacked: 0
   isCharging: 0
-  idleDuration: 3
+  lastPlayerPosition: {x: 0, y: 0, z: 0}
+  playerSpeed: 0
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -225,4 +225,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 6788982746073355530, guid: f151fda40277be44390288baee9511ea, type: 3}
+  - {fileID: 6788982746073355530, guid: bba721c7fd053be4b9d9ee12a71a5d3e, type: 3}

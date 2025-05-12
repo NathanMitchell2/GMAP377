@@ -328,7 +328,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5215173797715663484, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1276388906}
+    - targetCorrespondingSourceObject: {fileID: 5215173797715663484, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1276388905}
   m_SourcePrefab: {fileID: 100100000, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
 --- !u!1 &366360182
 GameObject:
@@ -1290,6 +1296,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+--- !u!1 &1276388902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5215173797715663484, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+  m_PrefabInstance: {fileID: 319835306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1276388905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276388902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1662047719
+      Data2: 1198423207
+      Data3: -1667162701
+      Data4: -923559210
+    Path: event:/BGM
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1276388906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276388902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &1306560738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,6 +2840,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+--- !u!1 &1862781990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8367340573365117291, guid: b93ee25abe7765b449bcccc3bf9f6560, type: 3}
+  m_PrefabInstance: {fileID: 2129248975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1862781995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862781990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSoundEvent:
+    Guid:
+      Data1: -678345244
+      Data2: 1171208262
+      Data3: 191609516
+      Data4: -1785987300
+    Path: event:/Robot/Robot Movement
+  movementThreshold: 0.3
 --- !u!1 &1914091104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,7 +3180,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8367340573365117291, guid: b93ee25abe7765b449bcccc3bf9f6560, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1862781995}
   m_SourcePrefab: {fileID: 100100000, guid: b93ee25abe7765b449bcccc3bf9f6560, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

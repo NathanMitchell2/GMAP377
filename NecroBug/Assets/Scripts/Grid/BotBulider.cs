@@ -94,7 +94,7 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemovePart(int index)
     {
-        if (parts[index].Remove(grid))
+        if (parts[index].Remove(grid)&&index!=0) //HARD CODED, can't remove first item in list (for car)
             return parts.Remove(parts[index]);
         return false;
     }

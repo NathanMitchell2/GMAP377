@@ -12,7 +12,8 @@ public abstract class Tile
         Empty,
         Outside,
         Solid,
-        SolidCheck
+        SolidCheck,
+        Transparent
     }
     public Tile(Tile dependent, Block parent, TileType type)
     {

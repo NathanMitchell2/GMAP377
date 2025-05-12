@@ -19,7 +19,7 @@ public class BotPart : MonoBehaviour
     {
         Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
         Vector3 pos = rotation.MultiplyVector(this.pos) * GridPositionToLocalPosition+transform.position;
-        Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis);
+        Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis)*bugPart.transform.rotation;
         return Instantiate(bugPart, pos, rot, transform);
     }
     public void Place(BotGrid grid)

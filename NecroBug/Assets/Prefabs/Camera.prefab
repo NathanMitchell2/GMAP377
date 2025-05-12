@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 3776639774303079915}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212339, y: 0, z: 0, w: 0.98836154}
-  m_LocalPosition: {x: -0.593, y: 3.649058, z: -7.8771696}
+  m_LocalPosition: {x: 178.86987, y: 16.843197, z: 25.98613}
   m_LocalScale: {x: 0.5, y: 1.0669873, z: 1.9330131}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -288,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 4691008863850794662}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212339, y: 0, z: 0, w: 0.98836154}
-  m_LocalPosition: {x: -0.59298706, y: 3.649063, z: -7.8771667}
+  m_LocalPosition: {x: 178.86987, y: 16.843197, z: 25.98613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -698,7 +698,7 @@ Transform:
   m_GameObject: {fileID: 7794546220920916588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -100, z: 0}
+  m_LocalPosition: {x: 0, y: -200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -920,10 +920,22 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 6311205398060400144}
+    - target: {fileID: 4887485975714897892, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: gridTransform
+      value: 
+      objectReference: {fileID: 6311205398060400144}
     - target: {fileID: 7184098192964616342, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 3807539217939535578}
+    - target: {fileID: 8130331959745066589, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: parts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130331959745066589, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: 'parts.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2025769284591637103, guid: 88613fd13e0fe4644b8b2cd8c013338c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

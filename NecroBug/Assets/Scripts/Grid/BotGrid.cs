@@ -48,7 +48,7 @@ public class BotGrid
         {
             if (!tile[tile.Count - 1].CheckTile())
             {
-                Debug.Log("Check Fail");
+                //Debug.Log("Check Fail");
                 return false;
             }
         }

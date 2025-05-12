@@ -15,7 +15,7 @@ public class ReqsSolidTile : Tile
 
     public override bool internalCheck(Tile other)
     {
-        return (other.GetTileType() == TileType.SolidCheck)&&(dependent.GetTileType()==TileType.Solid);
+        return (other.GetTileType() == TileType.SolidCheck);
 
     }
 }

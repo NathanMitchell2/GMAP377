@@ -30,6 +30,8 @@ public class Block : MonoBehaviour
                 return new EmptyTile(dependent, this);
             case Tile.TileType.SolidCheck:
                 return new ReqsSolidTile(dependent, this);
+            case Tile.TileType.Transparent:
+                return new TransparentTile(dependent, this);
             default:
                 return new EmptyTile(dependent, this);
         }
@@ -67,15 +69,15 @@ public class Block : MonoBehaviour
         Vector3 size = GetSizeByAxis(axis);
         Vector3 rPos = GetPosByAxis(axis);
 
-        for (int i = 0; i < Math.Abs(size.x); i++)
+        for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
-            for (int j = 0; j < Math.Abs(size.y); j++)
+            for (int j = 0; j < (int)Math.Floor(Math.Abs(size.y)); j++)
             {
-                for (int k = 0; k < Math.Abs(size.z); k++)
+                for (int k = 0; k < (int)Math.Floor(Math.Abs(size.z)); k++)
                 {
-                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
-                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
-                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
+                    int x = (int)Math.Floor(pos.x + rPos.x) + i * Math.Sign(size.x);
+                    int y = (int)Math.Floor(pos.y + rPos.y) + j * Math.Sign(size.y);
+                    int z = (int)Math.Floor(pos.z + rPos.z) + k * Math.Sign(size.z);
 
                     Tile tile;
                     if (grid.GetCell(x, y, z).Count == 0)
@@ -115,15 +117,15 @@ public class Block : MonoBehaviour
         Vector3 size = GetSizeByAxis(axis);
         Vector3 rPos = GetPosByAxis(axis);
 
-        for (int i = 0; i < Math.Abs(size.x); i++)
+        for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
-            for (int j = 0; j < Math.Abs(size.y); j++)
+            for (int j = 0; j < (int)Math.Floor(Math.Abs(size.y)); j++)
             {
-                for (int k = 0; k < Math.Abs(size.z); k++)
+                for (int k = 0; k < (int)Math.Floor(Math.Abs(size.z)); k++)
                 {
-                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
-                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
-                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
+                    int x = (int)Math.Floor(pos.x + rPos.x) + i * Math.Sign(size.x);
+                    int y = (int)Math.Floor(pos.y + rPos.y) + j * Math.Sign(size.y);
+                    int z = (int)Math.Floor(pos.z + rPos.z) + k * Math.Sign(size.z);
 
                     List<Tile> cell = grid.GetCell(x, y, z);
                     int index = GetIndexInCell(cell);
@@ -150,15 +152,15 @@ public class Block : MonoBehaviour
         Vector3 size = GetSizeByAxis(axis);
         Vector3 rPos = GetPosByAxis(axis);
 
-        for (int i = 0; i < Math.Abs(size.x); i++)
+        for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
-            for (int j = 0; j < Math.Abs(size.y); j++)
+            for (int j = 0; j < (int)Math.Floor(Math.Abs(size.y)); j++)
             {
-                for (int k = 0; k < Math.Abs(size.z); k++)
+                for (int k = 0; k < (int)Math.Floor(Math.Abs(size.z)); k++)
                 {
-                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
-                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
-                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
+                    int x = (int)Math.Floor(pos.x + rPos.x) + i * Math.Sign(size.x);
+                    int y = (int)Math.Floor(pos.y + rPos.y) + j * Math.Sign(size.y);
+                    int z = (int)Math.Floor(pos.z + rPos.z) + k * Math.Sign(size.z);
 
 
                     List<Tile> cell = grid.GetCell(x, y, z);

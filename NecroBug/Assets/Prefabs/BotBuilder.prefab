@@ -757,7 +757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &749954610302973648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   bot: {fileID: 0}
   cell: {fileID: 0}
   gridTransform: {fileID: 0}
+  buildTransform: {fileID: 0}
 --- !u!114 &8130331959745066589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,7 +1079,6 @@ MonoBehaviour:
   - {fileID: 3997798886352531281, guid: 820de3f89e13b46469b68295562103b9, type: 3}
   - {fileID: 2025769284591637103, guid: a6a88172b08880546a41eb55f021427f, type: 3}
   - {fileID: 2025769284591637103, guid: 137390f8488f1c140bee126072be2b39, type: 3}
-  buildTransform: {fileID: 0}
 --- !u!1 &1399125127510068640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,7 +4813,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Build Part
+  m_text: Build Bot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5223,9 +5223,6 @@ MonoBehaviour:
   m_MultiSelect: 0
   m_Options:
     m_Options:
-    - m_Text: NecroBug
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: Horn
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5233,6 +5230,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: Wing
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: Generic
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:

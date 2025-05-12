@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8681902992525147215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Documents/FMOD Studio/Necrobug/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638826378282953712
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-7068602463642064242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot/Necrobug Robot Attachment
+  m_EditorClassIdentifier: 
+  Path: event:/Robot/Necrobug Robot Attachment
+  Guid:
+    Data1: -1742759309
+    Data2: 1313331073
+    Data3: 629914014
+    Data4: 902339535
+  Banks:
+  - {fileID: 740538155897571798}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1116
+--- !u!114 &-5916396045521326825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot/Robot Movement
+  m_EditorClassIdentifier: 
+  Path: event:/Robot/Robot Movement
+  Guid:
+    Data1: -678345244
+    Data2: 1171208262
+    Data3: 191609516
+    Data4: -1785987300
+  Banks:
+  - {fileID: 740538155897571798}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4934955814855805211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,7 +91,7 @@ MonoBehaviour:
     Data3: -307475056
     Data4: 1232367388
   Banks:
-  - {fileID: 3096536068026943390}
+  - {fileID: 740538155897571798}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -27,24 +99,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-2959999478936198754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../Documents/FMOD Studio/Necrobug/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638817735302975980
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-2939803322130326965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +118,7 @@ MonoBehaviour:
     Data3: -223191122
     Data4: 17518143
   Banks:
-  - {fileID: 3096536068026943390}
+  - {fileID: 740538155897571798}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -72,7 +126,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-2018514503394808219
+--- !u!114 &-439130025574310688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,23 +136,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Robot Movement
+  m_Name: event:/Robot/Necrobug Robot Idle_mixdown
   m_EditorClassIdentifier: 
-  Path: event:/Robot Movement
+  Path: event:/Robot/Necrobug Robot Idle_mixdown
   Guid:
-    Data1: -678345244
-    Data2: 1171208262
-    Data3: 191609516
-    Data4: -1785987300
+    Data1: -906303825
+    Data2: 1251212079
+    Data3: 551805071
+    Data4: -140333455
   Banks:
-  - {fileID: 3096536068026943390}
-  IsStream: 1
-  Is3D: 0
+  - {fileID: 740538155897571798}
+  IsStream: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1595
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,48 +166,37 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 3087677471524705272}
-  - {fileID: -2959999478936198754}
-  - {fileID: 3096536068026943390}
+  - {fileID: 1860318385154772047}
+  - {fileID: -8681902992525147215}
+  - {fileID: 740538155897571798}
   EditorEvents:
   - {fileID: -4934955814855805211}
   - {fileID: -2939803322130326965}
-  - {fileID: -2018514503394808219}
+  - {fileID: 5003338293222876325}
+  - {fileID: -7068602463642064242}
+  - {fileID: -439130025574310688}
+  - {fileID: -5916396045521326825}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2959999478936198754}
+  - {fileID: -8681902992525147215}
   StringsBanks:
-  - {fileID: 3087677471524705272}
+  - {fileID: 1860318385154772047}
   cacheVersion: 131847
-  cacheTime: 638817735307724706
+  cacheTime: 638826393855480517
   SerializableEventsDict:
   - key: event:/Terrain/Mushroom explosion
     index: 0
   - key: event:/Bug/Beetle Movement
     index: 1
-  - key: event:/Robot Movement
+  - key: event:/BGM
     index: 2
---- !u!114 &3087677471524705272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../Documents/FMOD Studio/Necrobug/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638817735302996100
-  FileSizes:
-  - Name: 
-    Value: 940
-  Exists: 1
---- !u!114 &3096536068026943390
+  - key: event:/Robot/Necrobug Robot Attachment
+    index: 3
+  - key: event:/Robot/Necrobug Robot Idle_mixdown
+    index: 4
+  - key: event:/Robot/Robot Movement
+    index: 5
+--- !u!114 &740538155897571798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,9 +208,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/sfx.bank
   m_EditorClassIdentifier: 
-  Path: ../../../../Documents/FMOD Studio/Necrobug/Build/Desktop/sfx.bank
+  Path: ../../../Documents/FMOD Studio/Necrobug/Build/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638817735307724706
+  lastModified: 638826393855480517
   FileSizes: []
   Exists: 1
+--- !u!114 &1860318385154772047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Documents/FMOD Studio/Necrobug/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638826378282974044
+  FileSizes:
+  - Name: 
+    Value: 1114
+  Exists: 1
+--- !u!114 &5003338293222876325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BGM
+  m_EditorClassIdentifier: 
+  Path: event:/BGM
+  Guid:
+    Data1: -1662047719
+    Data2: 1198423207
+    Data3: -1667162701
+    Data4: -923559210
+  Banks:
+  - {fileID: 740538155897571798}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 136000

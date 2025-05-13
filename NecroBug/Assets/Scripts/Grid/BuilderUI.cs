@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
 
 public class BuilderUI : MonoBehaviour
@@ -24,6 +25,7 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private TMP_InputField selectIndex;
     [SerializeField] private TMP_InputField rotationEnum;
     [SerializeField] private List<GameObject> parts = new List<GameObject>();
+    [SerializeField] private GameObject tipController;
     BotBulider builder;
 
 
@@ -148,6 +150,7 @@ public class BuilderUI : MonoBehaviour
     public void AddPart()
     {
         GameObject part = GetPart(partDropdown.captionText.text);
+        
         BotPart bPart = part.GetComponent<BotPart>();
         //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         bPart.SetPos(new Vector3(0,0,0));

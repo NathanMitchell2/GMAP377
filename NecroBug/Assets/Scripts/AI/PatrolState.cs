@@ -5,6 +5,7 @@ public class PatrolState : IState
     public void Enter(EnemyAI enemy)
     {
         enemy.walkPointSet = false;
+        enemy.isInCombat = false;
     }
 
     public void Update(EnemyAI enemy)
@@ -17,7 +18,7 @@ public class PatrolState : IState
             enemy.agent.SetDestination(enemy.walkPoint);
             if (Vector3.Distance(enemy.transform.position, enemy.walkPoint) < 1f)
             {
-                enemy.ChangeState(new IdleState());
+                enemy.ChangeState(new TransitionState(0.5f,new IdleState()));
             }
         }
     }
@@ -29,12 +30,12 @@ public class PatrolState : IState
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
     {
-        if (distance < enemy.retreatRange)
-            enemy.ChangeState(new RetreatState());
-        else if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge)
-            enemy.ChangeState(new ChargeAttackState());
+        if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge && enemy.stamina >= enemy.staminaDrainPerCharge && enemy.attackCooldown <= 0f)
+            enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
         else if (playerInSightRange)
-            enemy.ChangeState(new ChaseState());
+            enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
+        else if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
+            enemy.ChangeState(new TransitionState(0.5f, new RetreatState()));
     }
 
     private void SearchWalkPoint(EnemyAI enemy)

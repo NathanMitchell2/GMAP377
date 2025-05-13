@@ -32,6 +32,7 @@ public class PickupManager : MonoBehaviour
     {
         foreach(Collider pickup in pickups)
         {
+            pickups.Remove(pickup);
             Destroy(pickup.gameObject);
             //pickup.transform.parent = transform.parent;
             //manager.SetStrat(pickup.GetComponent<InputStrategy>());

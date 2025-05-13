@@ -3,6 +3,8 @@ using UnityEngine;
 public class HornPart : ModularBugPart
 {
     public GameObject hornHitbox;
+
+    public GameObject effect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +15,11 @@ public class HornPart : ModularBugPart
     void Update()
     {
 
+    }
+
+    void OnDestroy(){
+        //Instantiate(effect, transform.position, Quaternion.identity);
+        //Destroy(effect);
     }
 
     public override void Activate()

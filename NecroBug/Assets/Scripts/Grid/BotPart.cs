@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class BotPart : MonoBehaviour
 {
+    public static float GridPositionToLocalPosition = 1f;
+    [SerializeField] private GameObject bugPart;
     [SerializeField] private Vector3 pos;
     [SerializeField] private Vector3 axis;
     protected List<Block> blocks = new List<Block>();
@@ -13,9 +15,20 @@ public class BotPart : MonoBehaviour
         blocks.AddRange(transform.GetComponentsInChildren<Block>());
         //For some reason when this is Start not Awake when Place is called this code hasnt been, but it has been for remove?? lol
     }
+    public GameObject BuildPart(Transform transform)
+    {
+        Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
+        Vector3 pos = rotation.MultiplyVector(this.pos) * GridPositionToLocalPosition+transform.position;
+        Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis)*bugPart.transform.rotation;
+        return Instantiate(bugPart, pos, rot, transform);
+    }
     public void Place(BotGrid grid)
     {
         foreach (var block in blocks)
+        {
+            block.inBounds(pos, axis, grid);
+        }
+        foreach(var block in blocks)
         {
             block.Place(pos, axis, grid);
         }
@@ -42,6 +55,12 @@ public class BotPart : MonoBehaviour
 
     public bool Move(Vector3 pos, BotGrid grid)
     {
+        foreach (var block in blocks)
+        {
+            if (!block.inBounds(pos, axis, grid))
+                return false;
+        }
+
         if (!Remove(grid)) return false;
 
         SetPos(pos);
@@ -52,7 +71,14 @@ public class BotPart : MonoBehaviour
 
     public bool Rotate(Vector3 axis, BotGrid grid)
     {
+        foreach (var block in blocks)
+        {
+            if (!block.inBounds(pos, axis, grid))
+                return false;
+        }
+
         if (!Remove(grid)) return false;
+
 
         SetAxis(axis);
         Place(grid);

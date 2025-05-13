@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -49,9 +48,10 @@ public class InputManager : MonoBehaviour
     {
         if (hasStrat(strat))
         {
-            Vector3 tempPos = strat.transform.position;
-            strat.transform.parent = null;
-            strat.transform.position = tempPos;
+            Destroy(strat.transform.gameObject);
+            //Vector3 tempPos = strat.transform.position;
+            //strat.transform.parent = null;
+            //strat.transform.position = tempPos;
 
             switch (strat.position)
             {

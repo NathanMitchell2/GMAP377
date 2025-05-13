@@ -30,6 +30,13 @@ public class BuilderUI : MonoBehaviour
     private void Awake()
     {
         builder = GetComponent<BotBulider>();
+
+        GameObject part = GetPart("NecroBug");
+        BotPart bPart = part.GetComponent<BotPart>();
+        bPart.SetPos(new Vector3(4, 4, 4));
+        builder.AddPart(bPart);
+        builder.UpdateDisplayCells();
+        CreateBot();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,6 +61,10 @@ public class BuilderUI : MonoBehaviour
                 return Instantiate(parts[2], transform);
             case "Wing":
                 return Instantiate(parts[3], transform);
+            case "Generic":
+                return Instantiate(parts[4], transform);
+            case "Legs":
+                return Instantiate(parts[5], transform);
             default:
                 return null;
         }
@@ -138,7 +149,8 @@ public class BuilderUI : MonoBehaviour
     {
         GameObject part = GetPart(partDropdown.captionText.text);
         BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
+        //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
+        bPart.SetPos(new Vector3(0,0,0));
         builder.AddPart(bPart);
         builder.UpdateDisplayCells();
     }
@@ -147,5 +159,10 @@ public class BuilderUI : MonoBehaviour
     {
         builder.RemovePart(int.Parse(removeIndex.text));
         builder.UpdateDisplayCells();
+    }
+
+    public void CreateBot()
+    {
+        builder.CreateBot();
     }
 }

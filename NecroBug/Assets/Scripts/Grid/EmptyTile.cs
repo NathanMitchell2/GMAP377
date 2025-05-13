@@ -13,7 +13,7 @@ public class EmptyTile : Tile
 
     public override bool internalCheck(Tile other)
     {
-        return true;
+        return (other.GetTileType() != TileType.SolidCheck);
 
     }
 }

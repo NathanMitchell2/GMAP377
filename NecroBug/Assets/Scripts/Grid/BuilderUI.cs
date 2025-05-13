@@ -149,7 +149,8 @@ public class BuilderUI : MonoBehaviour
     {
         GameObject part = GetPart(partDropdown.captionText.text);
         BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
+        //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
+        bPart.SetPos(new Vector3(0,0,0));
         builder.AddPart(bPart);
         builder.UpdateDisplayCells();
     }

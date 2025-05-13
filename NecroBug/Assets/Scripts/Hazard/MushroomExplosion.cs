@@ -21,7 +21,11 @@ public class MushroomExplosion : MonoBehaviour
                     rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
                 }
             }
-
+           if (other.gameObject.tag == "Enemy"){
+                EnemyHealth health = other.GetComponent<EnemyHealth>();
+                health.dealDamage(200);
+                
+           }
             Destroy(gameObject);
         }
     }

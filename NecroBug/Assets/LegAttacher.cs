@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class LegAttacher : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class LegAttacher : MonoBehaviour
                 int identity = l.identifier;
 
                 l.GetComponentInChildren<AnimLegControl>().tipController = transform.GetChild(identity).gameObject;
+                l.GetComponentInChildren<ChainIKConstraint>().data.target = transform.GetChild(identity);
             }
         }
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.UIElements;
 
 public class AnimLegControl : MonoBehaviour
@@ -35,6 +36,7 @@ public class AnimLegControl : MonoBehaviour
         {
             defaultTipLocalPosition = transform.localPosition;
         }
+        root.GetComponentInChildren<RigBuilder>().Build();
     }
     void Update()
     {

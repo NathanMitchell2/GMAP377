@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GridDisplayCell : MonoBehaviour
@@ -18,18 +19,18 @@ public class GridDisplayCell : MonoBehaviour
         
     }
 
-    public void ProcessStack(List<Tile> stack)
+    public void ProcessStack(Stack<Tile> stack)
     {
         if(stack.Count == 0) return;
 
-        Tile tile = stack[stack.Count-1];
+        Tile tile = stack.Peek();
         Material material = GetComponent<Renderer>().material;
         if (tile != null) {
             if (tile.GetTileType() == Tile.TileType.Empty)
             {
                 material.color = emptyColor;
             }
-            else if (stack[stack.Count-1].CheckTile())
+            else if (stack.Peek().CheckTile())
             {
                 material.color = trueColor;
             }

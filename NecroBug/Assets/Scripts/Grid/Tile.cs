@@ -5,15 +5,14 @@ using UnityEngine;
 public abstract class Tile
 {
     private TileType type;
-    protected Tile dependent;
+    private Tile dependent;
     private Block parent; // Isn't used
     public enum TileType
     {
         Empty,
         Outside,
         Solid,
-        SolidCheck,
-        Transparent
+        SolidCheck
     }
     public Tile(Tile dependent, Block parent, TileType type)
     {

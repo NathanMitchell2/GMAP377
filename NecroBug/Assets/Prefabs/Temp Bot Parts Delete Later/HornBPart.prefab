@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73808e33718ae1429223628ae19ce7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bugPart: {fileID: 6788982746073355530, guid: ef1277e8476db1b4984517d2ac35417c, type: 3}
   pos: {x: 0, y: 0, z: 0}
   axis: {x: 0, y: 0, z: 0}
 --- !u!1 &4269229967902727774
@@ -93,9 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf2b5f17e100f141abc5ac3cde5a4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0, z: 1}
   size: {x: 4, y: 2, z: 4}
-  tile: 4
+  tile: 2
 --- !u!1 &5652984902788941171
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8683515666320816973
 Transform:
   m_ObjectHideFlags: 0
@@ -140,6 +138,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf2b5f17e100f141abc5ac3cde5a4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0, z: 0}
-  size: {x: 4, y: 2, z: 1}
+  size: {x: -1, y: 2, z: 4}
   tile: 3

@@ -12,10 +12,11 @@ public class IdleState : IState
 
     public void Update(EnemyAI enemy)
     {
+        
         idleTimer += Time.deltaTime;
         if (idleTimer >= enemy.idleDuration)
         {
-            enemy.ChangeState(new PatrolState());
+            enemy.ChangeState(new TransitionState(0.5f,new PatrolState()));
         }
     }
 
@@ -26,17 +27,20 @@ public class IdleState : IState
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
     {
-        if (distance < enemy.retreatRange)
+        if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
         {
-            enemy.ChangeState(new RetreatState());
+            enemy.ChangeState(new TransitionState(0.5f,new RetreatState()));
         }
-        else if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge)
+        else if (playerInAttackRange &&
+                enemy.playerSpeed < enemy.maxPlayerSpeedCharge &&
+                enemy.stamina >= enemy.staminaDrainPerCharge &&
+                enemy.attackCooldown <= 0f)
         {
-            enemy.ChangeState(new ChargeAttackState());
+            enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
         }
         else if (playerInSightRange)
         {
-            enemy.ChangeState(new ChaseState());
+            enemy.ChangeState(new TransitionState(0.5f,new ChaseState()));
         }
     }
 }

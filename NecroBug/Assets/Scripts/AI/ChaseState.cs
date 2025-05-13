@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChaseState : IState
 {
-    public void Enter(EnemyAI enemy) { }
+    public void Enter(EnemyAI enemy) { enemy.isInCombat = true; }
 
     public void Update(EnemyAI enemy)
     {
@@ -13,11 +13,16 @@ public class ChaseState : IState
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
     {
-        if (distance < enemy.retreatRange)
-            enemy.ChangeState(new RetreatState());
-        else if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge)
-            enemy.ChangeState(new ChargeAttackState());
+        if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
+            enemy.ChangeState(new TransitionState(0.5f,new RetreatState()));
+        else if (playerInAttackRange &&
+                enemy.playerSpeed < enemy.maxPlayerSpeedCharge &&
+                enemy.stamina >= enemy.staminaDrainPerCharge &&
+                enemy.attackCooldown <= 0f)
+        {
+            enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
+        }
         else if (!playerInSightRange && !playerInAttackRange && distance > enemy.retreatRange)
-            enemy.ChangeState(new PatrolState());
+            enemy.ChangeState(new TransitionState(0.5f,new PatrolState()));
     }
 }

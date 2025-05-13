@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8681902992525147215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Documents/FMOD Studio/Necrobug/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638826378282953712
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-7068602463642064242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,7 +19,7 @@ MonoBehaviour:
     Data3: 629914014
     Data4: 902339535
   Banks:
-  - {fileID: 740538155897571798}
+  - {fileID: 8086427457064144901}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -64,7 +46,7 @@ MonoBehaviour:
     Data3: 191609516
     Data4: -1785987300
   Banks:
-  - {fileID: 740538155897571798}
+  - {fileID: 8086427457064144901}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -91,7 +73,7 @@ MonoBehaviour:
     Data3: -307475056
     Data4: 1232367388
   Banks:
-  - {fileID: 740538155897571798}
+  - {fileID: 8086427457064144901}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -118,7 +100,7 @@ MonoBehaviour:
     Data3: -223191122
     Data4: 17518143
   Banks:
-  - {fileID: 740538155897571798}
+  - {fileID: 8086427457064144901}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -126,6 +108,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-656200477198549033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638827325464050470
+  FileSizes:
+  - Name: 
+    Value: 1114
+  Exists: 1
 --- !u!114 &-439130025574310688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ MonoBehaviour:
     Data3: 551805071
     Data4: -140333455
   Banks:
-  - {fileID: 740538155897571798}
+  - {fileID: 8086427457064144901}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -166,9 +168,9 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 1860318385154772047}
-  - {fileID: -8681902992525147215}
-  - {fileID: 740538155897571798}
+  - {fileID: -656200477198549033}
+  - {fileID: 4851086305354443434}
+  - {fileID: 8086427457064144901}
   EditorEvents:
   - {fileID: -4934955814855805211}
   - {fileID: -2939803322130326965}
@@ -178,11 +180,11 @@ MonoBehaviour:
   - {fileID: -5916396045521326825}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -8681902992525147215}
+  - {fileID: 4851086305354443434}
   StringsBanks:
-  - {fileID: 1860318385154772047}
+  - {fileID: -656200477198549033}
   cacheVersion: 131847
-  cacheTime: 638826393855480517
+  cacheTime: 638827325464920882
   SerializableEventsDict:
   - key: event:/Terrain/Mushroom explosion
     index: 0
@@ -196,7 +198,7 @@ MonoBehaviour:
     index: 4
   - key: event:/Robot/Robot Movement
     index: 5
---- !u!114 &740538155897571798
+--- !u!114 &4851086305354443434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,33 +208,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/sfx.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: ../../../Documents/FMOD Studio/Necrobug/Build/Desktop/sfx.bank
-  Name: sfx
-  StudioPath: bank:/sfx
-  lastModified: 638826393855480517
+  Path: Assets/Audio/Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638827325464030401
   FileSizes: []
-  Exists: 1
---- !u!114 &1860318385154772047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Documents/FMOD Studio/Necrobug/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638826378282974044
-  FileSizes:
-  - Name: 
-    Value: 1114
   Exists: 1
 --- !u!114 &5003338293222876325
 MonoBehaviour:
@@ -253,7 +235,7 @@ MonoBehaviour:
     Data3: -1667162701
     Data4: -923559210
   Banks:
-  - {fileID: 740538155897571798}
+  - {fileID: 8086427457064144901}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -261,3 +243,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 136000
+--- !u!114 &8086427457064144901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/sfx.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/sfx.bank
+  Name: sfx
+  StudioPath: bank:/sfx
+  lastModified: 638827325464920882
+  FileSizes: []
+  Exists: 1

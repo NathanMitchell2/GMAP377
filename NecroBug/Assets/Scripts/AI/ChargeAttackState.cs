@@ -7,12 +7,9 @@ public class ChargeAttackState : IState
 
     public void Enter(EnemyAI enemy)
     {
-        if (!isChargingStarted)
-        {
             enemy.agent.SetDestination(enemy.transform.position); // stop movement
             enemy.isCharging = true;
             enemy.ChangeStateCoroutine(ChargeAndSmash(enemy));
-        }
     }
 
     public void Update(EnemyAI enemy) { }
@@ -68,18 +65,19 @@ public class ChargeAttackState : IState
 
         float chargeForce = enemy.jumpForce * enemy.rb.mass;
         enemy.rb.AddForce(direction * chargeForce, ForceMode.Impulse);
-
+        enemy.stamina -= enemy.staminaDrainPerCharge;
         // Wait for the charge motion to complete
         yield return new WaitForSeconds(1.5f);
 
         // Reset state
-        enemy.rb.velocity = Vector3.zero;
+        enemy.rb.linearVelocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;
         enemy.alreadyAttacked = true;
         enemy.Invoke(nameof(enemy.ResetAttack), enemy.timeBetweenAttacks);
-        enemy.ChangeState(new PatrolState());
+        enemy.attackCooldown = 1.5f;
+        enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
     }
 
  

@@ -28,6 +28,12 @@ public class EnemyAI : MonoBehaviour
 
     public bool playerInSightRange, playerInAttackRange;
 
+    public float stamina = 100f;
+    public float staminaDrainPerCharge = 30f;
+    public float staminaRecoverRate = 10f; 
+    public bool isExhausted => stamina <= 0f;
+    public float attackCooldown = 0f;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -45,6 +51,7 @@ public class EnemyAI : MonoBehaviour
         UpdatePlayerDetection();
         currentState.Update(this);
         lastPlayerPosition = player.position;
+
     }
 
     public void ChangeState(IState newState)

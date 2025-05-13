@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5216799785784512839}
   - component: {fileID: 7748161758652229055}
   - component: {fileID: 64881600674998026}
-  - component: {fileID: 821119154299742667}
   - component: {fileID: 186762200383192340}
   - component: {fileID: 8148302431069141627}
   - component: {fileID: 604390345361080852}
   - component: {fileID: 216531384345388473}
   - component: {fileID: 6631373023061904936}
+  - component: {fileID: 1786034286995834412}
   m_Layer: 0
   m_Name: JetBeetle
   m_TagString: Enemy
@@ -92,28 +92,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &821119154299742667
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876015489555194247}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8777139954052135742, guid: c851aad438ff5424ab295226ced6762d, type: 3}
 --- !u!54 &186762200383192340
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,6 +155,8 @@ MonoBehaviour:
   isCharging: 0
   lastPlayerPosition: {x: 0, y: 0, z: 0}
   playerSpeed: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -226,3 +206,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 6788982746073355530, guid: bba721c7fd053be4b9d9ee12a71a5d3e, type: 3}
+--- !u!65 &1786034286995834412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876015489555194247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008, y: 0.006, z: 0.016}
+  m_Center: {x: 0, y: 0, z: -0.001}

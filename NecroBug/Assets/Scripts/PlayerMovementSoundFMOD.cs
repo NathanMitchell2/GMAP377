@@ -30,7 +30,7 @@ public class PlayerMovementSoundFMOD : MonoBehaviour
 
     void Update()
     {
-        float speed = bodyRb.velocity.magnitude;
+        float speed = bodyRb.linearVelocity.magnitude;
         bool isMoving = speed > movementThreshold;
 
         movementSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));

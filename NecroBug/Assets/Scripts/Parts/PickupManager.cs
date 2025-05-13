@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
+
     private List<Collider> pickups = new List<Collider>();
 
     private InputManager manager;
@@ -15,6 +16,7 @@ public class PickupManager : MonoBehaviour
     {
         if(other.GetComponent<ModularBugPart>())
         {
+            //Destroy(other);
             pickups.Add(other);
         }
     }
@@ -30,10 +32,11 @@ public class PickupManager : MonoBehaviour
     {
         foreach(Collider pickup in pickups)
         {
-            pickup.transform.parent = transform.parent;
-            manager.SetStrat(pickup.GetComponent<InputStrategy>());
-            pickup.GetComponent<ModularBugPart>().OffsetPosition();
-            pickups.Remove(pickup);
+            Destroy(pickup.gameObject);
+            //pickup.transform.parent = transform.parent;
+            //manager.SetStrat(pickup.GetComponent<InputStrategy>());
+            //pickup.GetComponent<ModularBugPart>().OffsetPosition();
+            //pickups.Remove(pickup);
         }
     }
 }

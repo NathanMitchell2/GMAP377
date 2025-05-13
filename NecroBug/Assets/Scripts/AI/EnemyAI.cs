@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
     public bool walkPointSet;
     public bool alreadyAttacked;
     public bool isCharging;
+    public bool isInCombat = false;
     public Vector3 lastPlayerPosition;
     public float playerSpeed;
 
@@ -48,6 +49,11 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        RegenerateStamina();
+
+        if (attackCooldown > 0f)
+            attackCooldown -= Time.deltaTime;
+
         UpdatePlayerDetection();
         currentState.Update(this);
         lastPlayerPosition = player.position;
@@ -78,7 +84,16 @@ public class EnemyAI : MonoBehaviour
     {
         return StartCoroutine(coroutine);
     }
+    private void RegenerateStamina()
+    {
+        if (isInCombat) return;
 
+        if (stamina < 100f)
+        {
+            stamina += staminaRecoverRate * Time.deltaTime;
+            stamina = Mathf.Clamp(stamina, 0f, 100f);
+        }
+    }
     public void ResetAttack()
     {
         alreadyAttacked = false;

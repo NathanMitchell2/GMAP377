@@ -12,6 +12,7 @@ public class IdleState : IState
 
     public void Update(EnemyAI enemy)
     {
+        
         idleTimer += Time.deltaTime;
         if (idleTimer >= enemy.idleDuration)
         {
@@ -30,9 +31,12 @@ public class IdleState : IState
         {
             enemy.ChangeState(new TransitionState(0.5f,new RetreatState()));
         }
-        else if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge)
+        else if (playerInAttackRange &&
+                enemy.playerSpeed < enemy.maxPlayerSpeedCharge &&
+                enemy.stamina >= enemy.staminaDrainPerCharge &&
+                enemy.attackCooldown <= 0f)
         {
-            enemy.ChangeState(new TransitionState(0.5f,new ChargeAttackState()));
+            enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
         }
         else if (playerInSightRange)
         {

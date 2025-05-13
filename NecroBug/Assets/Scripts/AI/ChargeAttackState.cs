@@ -9,6 +9,7 @@ public class ChargeAttackState : IState
     {
             enemy.agent.SetDestination(enemy.transform.position); // stop movement
             enemy.isCharging = true;
+            enemy.isInCombat = true;
             enemy.ChangeStateCoroutine(ChargeAndSmash(enemy));
     }
 
@@ -17,6 +18,7 @@ public class ChargeAttackState : IState
     public void Exit(EnemyAI enemy)
     {
         enemy.isCharging = false;
+        enemy.isInCombat = true;
     }
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
@@ -27,19 +29,26 @@ public class ChargeAttackState : IState
     private IEnumerator ChargeAndSmash(EnemyAI enemy)
     {
         isChargingStarted = true;
+
+        if (enemy.stamina < enemy.staminaDrainPerCharge)
+        {
+            enemy.ChangeState(new TransitionState(0.5f, new RetreatState()));
+            yield break;
+        }
+
         Vector3 targetPosition = enemy.player.position;
         enemy.transform.LookAt(targetPosition);
 
-        // Disable agent and enable rigidbody physics
+        // Disable agent and enable physics for lift and charge
         enemy.agent.enabled = false;
         enemy.rb.isKinematic = true;
 
-        // Smooth lift-off from ground (transform based)
+        // Smooth lift (hover effect)
         float liftDuration = 0.4f;
         float startY = enemy.transform.position.y;
         float targetY = startY + 1f;
-
         float timer = 0f;
+
         while (timer < liftDuration)
         {
             float newY = Mathf.Lerp(startY, targetY, timer / liftDuration);
@@ -50,33 +59,33 @@ public class ChargeAttackState : IState
             yield return null;
         }
 
-        // Wait just a tiny moment to build suspense
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f); // suspense pause
 
-        // Start charge using physics
+        // Deduct stamina
+        enemy.stamina -= enemy.staminaDrainPerCharge;
+        enemy.stamina = Mathf.Clamp(enemy.stamina, 0f, 100f);
+
+        // Enable physics and charge
         enemy.rb.isKinematic = false;
-
-        Vector3 toPlayer = (targetPosition - enemy.transform.position);
-        Vector3 direction = toPlayer.normalized;
-
-        // Force should lean downward
-        direction.y = -0.1f;
-        direction.Normalize();
+        Vector3 toPlayer = (targetPosition - enemy.transform.position).normalized;
+        toPlayer.y = -0.1f; // downwards influence
+        toPlayer.Normalize();
 
         float chargeForce = enemy.jumpForce * enemy.rb.mass;
-        enemy.rb.AddForce(direction * chargeForce, ForceMode.Impulse);
-        enemy.stamina -= enemy.staminaDrainPerCharge;
-        // Wait for the charge motion to complete
-        yield return new WaitForSeconds(1.5f);
+        enemy.rb.AddForce(toPlayer * chargeForce, ForceMode.Impulse);
 
-        // Reset state
-        enemy.rb.linearVelocity = Vector3.zero;
+        yield return new WaitForSeconds(1.5f); // wait for landing/impact
+
+        // Reset enemy
+        enemy.rb.velocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;
+
         enemy.alreadyAttacked = true;
         enemy.Invoke(nameof(enemy.ResetAttack), enemy.timeBetweenAttacks);
         enemy.attackCooldown = 1.5f;
+
         enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
     }
 

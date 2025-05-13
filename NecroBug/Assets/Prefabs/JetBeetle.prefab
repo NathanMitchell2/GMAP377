@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 4876015489555194247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.29, y: 0.7, z: 47.26}
+  m_LocalPosition: {x: -16.11671, y: 1.484, z: 47.24194}
   m_LocalScale: {x: 300, y: 300, z: 300}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -100,7 +100,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4876015489555194247}
   serializedVersion: 4
-  m_Mass: 1600
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -117,7 +117,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &8148302431069141627
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 604390345361080852}
-  rb: {fileID: 0}
+  rb: {fileID: 186762200383192340}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -141,13 +141,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   sightRange: 25
-  attackRange: 15
-  retreatRange: 7.5
+  attackRange: 10.5
+  retreatRange: 10
   walkPointRange: 25
   timeBetweenAttacks: 1
   idleDuration: 3
   chargeUpTime: 1.5
-  jumpForce: 35
+  jumpForce: 40
   maxPlayerSpeedCharge: 3
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
@@ -157,6 +157,10 @@ MonoBehaviour:
   playerSpeed: 0
   playerInSightRange: 0
   playerInAttackRange: 0
+  stamina: 100
+  staminaDrainPerCharge: 30
+  staminaRecoverRate: 10
+  attackCooldown: 0
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0

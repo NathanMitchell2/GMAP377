@@ -269,11 +269,9 @@ GameObject:
   - component: {fileID: 7750489798096026027}
   - component: {fileID: 3954378017648843528}
   - component: {fileID: 9199494259473087630}
-  - component: {fileID: 7697997116613268454}
-  - component: {fileID: 8068369330681647462}
-  - component: {fileID: -4066958593311866872}
+  - component: {fileID: 7620470384480401035}
   m_Layer: 0
-  m_Name: Wings
+  m_Name: Jet
   m_TagString: Wings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 3
---- !u!114 &7697997116613268454
+--- !u!114 &7620470384480401035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,42 +339,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6788982746073355530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1c845272d39624e9a7a3537973fe3f, type: 3}
+  m_Script: {fileID: 11500000, guid: eff17e90cb671094ea82b0eaeaadab49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 2.18, z: -1}
-  rotOffset: {x: 270, y: 180, z: 0}
-  jumpForce: 10
---- !u!114 &8068369330681647462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a73808e33718ae1429223628ae19ce7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0, z: 0}
-  blocks:
-  - {fileID: -4066958593311866872}
---- !u!114 &-4066958593311866872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df46a6cf352c35143b816da6c64f11ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0, z: 0}
-  size: {x: 4, y: 3, z: 4}
-  axis: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.2, z: -0.95}
+  rotOffset: {x: 0, y: 180, z: 0}
 --- !u!1 &6815843708371360649
 GameObject:
   m_ObjectHideFlags: 0

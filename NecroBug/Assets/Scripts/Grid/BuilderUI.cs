@@ -172,7 +172,6 @@ public class BuilderUI : MonoBehaviour
 
     private void BuildList()
     {
-        Debug.Log(selectUILoc.GetComponentInParent<ScrollRect>());
         for (int i = 0; i < selectUILoc.childCount; i++)
         {
             Destroy(selectUILoc.GetChild(i).gameObject);

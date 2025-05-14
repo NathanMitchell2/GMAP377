@@ -36,12 +36,24 @@ public class BotPart : MonoBehaviour
         //Vector3 pos = rotation.MultiplyVector(this.pos) * GridPositionToLocalPosition+transform.position;
         //Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis)*bugPart.transform.rotation;
 
-        Vector3 pos = this.pos * GridPositionToLocalPosition + transform.position;
-        Quaternion rot = orientations[orientation].GetComponentInChildren<RotStorage>().GetRot() * transform.rotation;
+        Transform storage = GetPartStorage();
+        Vector3 pos = this.pos * GridPositionToLocalPosition + transform.position + storage.localPosition;
+        Quaternion rot = storage.localRotation * transform.rotation;
         
         return Instantiate(bugPart, pos, rot, transform);
         
         return bugPart;
+    }
+
+    private Transform GetPartStorage()
+    {
+        Transform orientation = orientations[this.orientation].transform;
+        for(int i = 0; i < orientation.childCount; i++)
+        {
+            if (orientation.GetChild(i).name == "PartStorage")
+                return orientation.GetChild(i);
+        }
+        return null;
     }
     public void Place(BotGrid grid)
     {

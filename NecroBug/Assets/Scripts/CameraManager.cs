@@ -12,13 +12,6 @@ public class CameraManager : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;
         player = ((PlayerInput)FindFirstObjectByType(typeof(PlayerInput))).gameObject;
-        Debug.Log(GetComponentInChildren<CinemachineCamera>());
-        Debug.Log(GetComponentInChildren<CinemachineCamera>().Target);
-        Debug.Log(GetComponentInChildren<CinemachineCamera>().Target.TrackingTarget);
-        Debug.Log(player);
-        Debug.Log(player.GetComponentInChildren<FollowCar>());
-        Debug.Log(player.GetComponentInChildren<FollowCar>().gameObject);
-        Debug.Log(player.GetComponentInChildren<FollowCar>().gameObject.transform);
         GetComponentInChildren<CinemachineCamera>().Target.TrackingTarget = player.GetComponentInChildren<FollowCar>().gameObject.transform;
     }
     public void setDriverSpeed(float speed)

@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -26,6 +27,7 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private TMP_InputField selectIndex;
     [SerializeField] private TMP_InputField rotationEnum;
     [SerializeField] private List<GameObject> parts = new List<GameObject>();
+    [SerializeField] private GameObject tipController;
     [SerializeField] private Transform partTransform;
     [SerializeField] private Transform selectUILoc;
     [SerializeField] private GameObject selectUIPrefab;
@@ -152,6 +154,7 @@ public class BuilderUI : MonoBehaviour
     public void AddPart()
     {
         GameObject part = GetPart(partDropdown.captionText.text);
+        
         BotPart bPart = part.GetComponent<BotPart>();
         //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         bPart.SetPos(new Vector3(0,0,0));

@@ -7,7 +7,7 @@ public class BotBulider : MonoBehaviour
     private const int x = 12;
     private const int y = 12;
     private const int z = 12;
-    [SerializeField] GameObject bot;
+    //[SerializeField] GameObject bot;
     [SerializeField] GameObject cell;
     [SerializeField] Tile empty;
     [SerializeField] Transform gridTransform;
@@ -18,7 +18,7 @@ public class BotBulider : MonoBehaviour
     [SerializeField] private Transform buildTransform;
     private List<GameObject> builtParts = new List<GameObject>();
 
-    private void Awake()
+    public void SetUp()
     {
         grid = new BotGrid(x, y, z, empty);
         //GameObject bot = Instantiate(this.bot, transform);
@@ -39,6 +39,10 @@ public class BotBulider : MonoBehaviour
                 }
             }
         }
+    }
+    private void Awake()
+    {
+        SetUp();
     }
 
     public void UpdateDisplayCells()
@@ -66,6 +70,7 @@ public class BotBulider : MonoBehaviour
     public void AddPart(BotPart part)
     {
         part.Place(grid);
+        //Instantiate(part.gameObject, gridTransform);
         parts.Add(part);
     }
     public bool MovePart(BotPart part, Vector3 pos)
@@ -76,7 +81,7 @@ public class BotBulider : MonoBehaviour
     {
         return part.Move(new Vector3(x,y,z), grid);
     }
-
+    
     public bool RotatePart(BotPart part, Vector3 axis)
     {
         return part.Rotate(axis, grid);
@@ -88,14 +93,18 @@ public class BotBulider : MonoBehaviour
     public bool RemovePart(BotPart part)
     {
         if(part.Remove(grid))
+        {
             return parts.Remove(part);
+        }
         return false;
 
     }
     public bool RemovePart(int index)
     {
         if (parts[index].Remove(grid)&&index!=0) //HARD CODED, can't remove first item in list (for car)
+        {
             return parts.Remove(parts[index]);
+        }
         return false;
     }
 
@@ -182,5 +191,9 @@ public class BotBulider : MonoBehaviour
         }
 
         //car.transform.SetParent(buildTransform,false);
+    }
+    public bool ProgressOrientationSelected()
+    {
+        return selectedPart.ProgressOrientation(grid);
     }
 }

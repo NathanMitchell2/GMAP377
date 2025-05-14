@@ -5,7 +5,7 @@ public class GridDisplayCell : MonoBehaviour
 {
     [SerializeField] Color falseColor = new Color(1, 0, 0, .5f);
     [SerializeField] Color trueColor = new Color(0, 1, 0, .5f);
-    [SerializeField] Color emptyColor = new Color(.5f, .5f, .5f, .5f);
+    [SerializeField] Color emptyColor = new Color(.5f, .5f, .5f, .1f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

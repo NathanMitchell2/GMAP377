@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.UIElements;
 
 public class AnimLegControl : MonoBehaviour
@@ -41,6 +42,7 @@ public class AnimLegControl : MonoBehaviour
         }
         distanceBeforeSnap = defaultSnapDistance;
         moveTime = defaultMoveTime;
+        root.GetComponentInChildren<RigBuilder>().Build();
     }
     void Update()
     {

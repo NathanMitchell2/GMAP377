@@ -28,6 +28,10 @@ public class SelectableBotPartUI : MonoBehaviour
     {
         ui.SelectPart(index);
     }
+    public void Bind()
+    {
+        ui.BindPart(index);
+    }
 
     public void DebugClick()
     {

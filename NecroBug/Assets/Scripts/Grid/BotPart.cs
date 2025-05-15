@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Animations;
 using System.Collections.Generic;
 using System;
@@ -13,6 +14,7 @@ public class BotPart : MonoBehaviour
     [SerializeField] private Vector3 center; //depreciated
     private int orientation = 0;
     [SerializeField] private List<GameObject> orientations = new List<GameObject>();
+    private InputAction action;
     //protected List<Block> blocks = new List<Block>();
 
     void Awake()
@@ -39,8 +41,13 @@ public class BotPart : MonoBehaviour
         Transform storage = GetPartStorage();
         Vector3 pos = this.pos * GridPositionToLocalPosition + transform.position + storage.localPosition;
         Quaternion rot = storage.localRotation * transform.rotation;
-        
-        return Instantiate(bugPart, pos, rot, transform);
+
+        GameObject part = Instantiate(bugPart, pos, rot, transform);
+
+        action.performed += content => part.GetComponent<ModularBugPart>().Activate();
+
+        action.RemoveAllBindingOverrides();
+        return part;
         
         return bugPart;
     }

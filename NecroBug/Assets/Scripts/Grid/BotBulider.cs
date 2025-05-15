@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BotBulider : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class BotBulider : MonoBehaviour
     private GridDisplayCell[,,] gridDisplayCells;
     [SerializeField] private Transform buildTransform;
     private List<GameObject> builtParts = new List<GameObject>();
+    private List<InputAction> actions = new List<InputAction>();
 
     public void SetUp()
     {
@@ -71,6 +74,7 @@ public class BotBulider : MonoBehaviour
     {
         part.Place(grid);
         //Instantiate(part.gameObject, gridTransform);
+        actions.Add(new InputAction());
         parts.Add(part);
     }
     public bool MovePart(BotPart part, Vector3 pos)
@@ -94,7 +98,13 @@ public class BotBulider : MonoBehaviour
     {
         if(part.Remove(grid))
         {
-            return parts.Remove(part);
+            int index = parts.IndexOf(part);
+            if (index != -1)
+            {
+                actions.RemoveAt(index);
+                parts.RemoveAt(index);
+                return true;
+            }
         }
         return false;
 
@@ -103,7 +113,12 @@ public class BotBulider : MonoBehaviour
     {
         if (parts[index].Remove(grid)&&index!=0) //HARD CODED, can't remove first item in list (for car)
         {
-            return parts.Remove(parts[index]);
+            if (index != -1)
+            {
+                actions.RemoveAt(index);
+                parts.RemoveAt(index);
+                return true;
+            }
         }
         return false;
     }
@@ -136,10 +151,7 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemoveSelected()
     {
-        if (selectedPart.Remove(grid))
-            return parts.Remove(selectedPart);
-        return false;
-
+        return RemovePart(selectedPart);
     }
     public BotPart GetSelected()
     {
@@ -148,8 +160,11 @@ public class BotBulider : MonoBehaviour
 
     private void DestroyBot()
     {
-        foreach (GameObject part in builtParts)
+        for (int i = 0; i < builtParts.Count; i++)
         {
+            var part = builtParts[i];
+
+            actions[i].performed -= content => part.GetComponent<ModularBugPart>().Activate();
             Destroy(part.gameObject);
         }
     }
@@ -172,8 +187,12 @@ public class BotBulider : MonoBehaviour
             builtParts.Add(builtPart);
         }
 
-        foreach (var part in builtParts)
+        for(int i = 0; i < builtParts.Count; i++)
         {
+            var part = builtParts[i];
+
+            actions[i].performed += content => part.GetComponent<ModularBugPart>().Activate();
+
             //Debug.Log(buildTransform.GetComponent<InputManager>().name);
             //Debug.Log(part.GetComponentInChildren<InputStrategy>().name);
             buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
@@ -195,5 +214,11 @@ public class BotBulider : MonoBehaviour
     public bool ProgressOrientationSelected()
     {
         return selectedPart.ProgressOrientation(grid);
+    }
+
+
+    public void BindAction(int index)
+    {
+        actions[index].PerformInteractiveRebinding().WithControlsExcluding("Mouse").Start();
     }
 }

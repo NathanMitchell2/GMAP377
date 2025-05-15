@@ -197,6 +197,11 @@ public class BuilderUI : MonoBehaviour
         builder.SetSelected(index);
         UpdateAll();
     }
+    public void BindPart(int index)
+    {
+        builder.BindAction(index);
+        UpdateAll();
+    }
 
     public void UpdateAll()
     {

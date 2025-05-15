@@ -268,8 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7750489798096026027}
   - component: {fileID: 3954378017648843528}
-  - component: {fileID: 9199494259473087630}
-  - component: {fileID: 7620470384480401035}
+  - component: {fileID: 2494816712472840680}
   m_Layer: 0
   m_Name: Jet
   m_TagString: Wings
@@ -317,20 +316,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &9199494259473087630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e696dea2ef5cc44287c6d0e83e05538, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: 3
---- !u!114 &7620470384480401035
+--- !u!114 &2494816712472840680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,8 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff17e90cb671094ea82b0eaeaadab49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.2, z: -0.95}
-  rotOffset: {x: 0, y: 180, z: 0}
+  offset: {x: 0, y: 0.3, z: 0}
+  rotOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &6815843708371360649
 GameObject:
   m_ObjectHideFlags: 0

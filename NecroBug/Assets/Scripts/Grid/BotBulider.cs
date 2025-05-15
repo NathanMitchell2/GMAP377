@@ -191,7 +191,6 @@ public class BotBulider : MonoBehaviour
             builtParts.Add(builtPart);
         }
 
-        actionManager.BindParts(builtParts);
 
         for(int i = 0; i < builtParts.Count; i++)
         {
@@ -199,7 +198,16 @@ public class BotBulider : MonoBehaviour
 
             //Debug.Log(buildTransform.GetComponent<InputManager>().name);
             //Debug.Log(part.GetComponentInChildren<InputStrategy>().name);
-            buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
+
+            //buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
+            
+            InputStrategy strat = part.GetComponent<InputStrategy>();
+
+            if(strat != null)
+            {
+                buildTransform.GetComponent<InputManager>().SetStrat(strat);
+            }
+
             if (car != null)
             {
                 if (part != car)
@@ -212,6 +220,7 @@ public class BotBulider : MonoBehaviour
                 Debug.Log("No NecroBug Part");
             }
         }
+        actionManager.BindParts(builtParts);
 
         //car.transform.SetParent(buildTransform,false);
     }

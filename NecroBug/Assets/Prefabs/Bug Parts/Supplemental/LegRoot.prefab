@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 4598506009055133154}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.035, y: 0, z: 0}
+  m_LocalPosition: {x: 2.035, y: -0.804, z: 0}
   m_LocalScale: {x: 0.16915, y: 0.16915, z: 0.16915}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,7 +168,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4598506009055133154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -240,10 +240,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upwardRaycast: 1
-  downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  downwardRaycast: 2
+  defaultSnapDistance: 0.7
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0.25
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -284,6 +284,7 @@ MonoBehaviour:
   root: {fileID: 1582034768745850219}
   tip: {fileID: 9053332068172861741}
   tipController: {fileID: 0}
+  car: {fileID: 2475575991783323239, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
 --- !u!1 &5580579102928323928
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9053332068172861741}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

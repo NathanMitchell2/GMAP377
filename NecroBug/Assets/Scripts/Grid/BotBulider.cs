@@ -19,7 +19,7 @@ public class BotBulider : MonoBehaviour
     private GridDisplayCell[,,] gridDisplayCells;
     [SerializeField] private Transform buildTransform;
     private List<GameObject> builtParts = new List<GameObject>();
-    private List<InputAction> actions = new List<InputAction>();
+    [SerializeField] private ActionManager actionManager;
 
     public void SetUp()
     {
@@ -74,7 +74,7 @@ public class BotBulider : MonoBehaviour
     {
         part.Place(grid);
         //Instantiate(part.gameObject, gridTransform);
-        actions.Add(new InputAction());
+        actionManager.AddAction();
         parts.Add(part);
     }
     public bool MovePart(BotPart part, Vector3 pos)
@@ -101,8 +101,10 @@ public class BotBulider : MonoBehaviour
             int index = parts.IndexOf(part);
             if (index != -1)
             {
-                actions.RemoveAt(index);
+                BotPart part2 = parts[index];
+                actionManager.RemoveAction(index);
                 parts.RemoveAt(index);
+                Destroy(part2.gameObject);
                 return true;
             }
         }
@@ -115,8 +117,10 @@ public class BotBulider : MonoBehaviour
         {
             if (index != -1)
             {
-                actions.RemoveAt(index);
+                BotPart part2 = parts[index];
+                actionManager.RemoveAction(index);
                 parts.RemoveAt(index);
+                Destroy(part2.gameObject);
                 return true;
             }
         }
@@ -164,7 +168,7 @@ public class BotBulider : MonoBehaviour
         {
             var part = builtParts[i];
 
-            actions[i].performed -= content => part.GetComponent<ModularBugPart>().Activate();
+            //Unbind action?
             Destroy(part.gameObject);
         }
     }
@@ -187,11 +191,11 @@ public class BotBulider : MonoBehaviour
             builtParts.Add(builtPart);
         }
 
+        actionManager.BindParts(builtParts);
+
         for(int i = 0; i < builtParts.Count; i++)
         {
             var part = builtParts[i];
-
-            actions[i].performed += content => part.GetComponent<ModularBugPart>().Activate();
 
             //Debug.Log(buildTransform.GetComponent<InputManager>().name);
             //Debug.Log(part.GetComponentInChildren<InputStrategy>().name);
@@ -219,6 +223,11 @@ public class BotBulider : MonoBehaviour
 
     public void BindAction(int index)
     {
-        actions[index].PerformInteractiveRebinding().WithControlsExcluding("Mouse").Start();
+        actionManager.RebindAction(index);
+    }
+
+    public string GetKeybindText(int index)
+    {
+        return actionManager.GetKeybindText(index);
     }
 }

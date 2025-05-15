@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public class MenuChanger : MonoBehaviour
 {
     [SerializeField] private List<GameObject> menus = new List<GameObject>();
-    
+    [SerializeField] private List<int> cameras = new List<int>();
+
     private bool flipFlop = true;
     private CameraManager camManager;
     private void Awake()
@@ -21,7 +22,6 @@ public class MenuChanger : MonoBehaviour
         if (flipFlop)
         {
             SetMenu(0);
-            camManager.SetCamera(1);
             Cursor.lockState = CursorLockMode.Confined;
         }
         else
@@ -36,6 +36,7 @@ public class MenuChanger : MonoBehaviour
         Off();
 
         menus[index].SetActive(true);
+        camManager.SetCamera(cameras[index]);
     }
     public void Off()
     {

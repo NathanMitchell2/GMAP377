@@ -120,7 +120,6 @@ GameObject:
   - component: {fileID: 6197005958255090924}
   - component: {fileID: -6733930053265895235}
   - component: {fileID: -1563832384016742811}
-  - component: {fileID: 878124422412135507}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -305,26 +304,6 @@ MonoBehaviour:
   motorTorque: 1500
   brakeTorque: 3000
   maxSteerAngle: 15
---- !u!114 &878124422412135507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2475575991783323239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSoundEvent:
-    Guid:
-      Data1: -678345244
-      Data2: 1171208262
-      Data3: 191609516
-      Data4: -1785987300
-    Path: event:/Robot/Robot Movement
-  movementThreshold: 0.3
 --- !u!1 &4815284830239154656
 GameObject:
   m_ObjectHideFlags: 0

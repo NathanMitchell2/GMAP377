@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 6086341953219530521}
   - component: {fileID: 5793857945380830245}
   - component: {fileID: 5033608073278158266}
+  - component: {fileID: -2787584756057327356}
   - component: {fileID: 8437602558676203200}
+  - component: {fileID: -4925279152256954920}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -97,6 +99,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 1
+--- !u!114 &-2787584756057327356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSoundEvent:
+    Guid:
+      Data1: -678345244
+      Data2: 1171208262
+      Data3: 191609516
+      Data4: -1785987300
+    Path: event:/Robot/Robot Movement
+  idleSoundEvent:
+    Guid:
+      Data1: -906303825
+      Data2: 1251212079
+      Data3: 551805071
+      Data4: -140333455
+    Path: event:/Robot/Necrobug Robot Idle_mixdown
+  movementThreshold: 1
 --- !u!54 &8437602558676203200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,6 +153,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4925279152256954920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b5eff94c44df042a112df16017a92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFront: {fileID: 0}
+  leftRear: {fileID: 0}
+  rightFront: {fileID: 0}
+  rightRear: {fileID: 0}
+  motorTorque: 1500
+  brakeTorque: 3000
+  maxSteerAngle: 15
 --- !u!1 &4521078891256376265
 GameObject:
   m_ObjectHideFlags: 0

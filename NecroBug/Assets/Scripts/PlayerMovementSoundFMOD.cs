@@ -7,10 +7,15 @@ public class PlayerMovementSoundFMOD : MonoBehaviour
 {
     [SerializeField]
     private EventReference movementSoundEvent;
-
+    [SerializeField] 
+    private EventReference idleSoundEvent;
+    private float idleTime = 5f;
+    private float idleTimer = 0f;
     public float movementThreshold = 1f; // Adjust as needed to avoid idle noise
 
     private EventInstance movementSoundInstance;
+    private EventInstance idleSoundInstance;
+
     private Rigidbody bodyRb;
     private bool isSoundPlaying = false;
 
@@ -26,6 +31,8 @@ public class PlayerMovementSoundFMOD : MonoBehaviour
 
         movementSoundInstance = RuntimeManager.CreateInstance(movementSoundEvent);
         movementSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        idleSoundInstance = RuntimeManager.CreateInstance(idleSoundEvent);
+        idleSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
     }
 
     void Update()
@@ -34,18 +41,32 @@ public class PlayerMovementSoundFMOD : MonoBehaviour
         bool isMoving = speed > movementThreshold;
 
         movementSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        idleSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
 
         if (isMoving && !isSoundPlaying)
         {
             movementSoundInstance.start();
             isSoundPlaying = true;
+            idleTimer = 0f;
         }
         else if (!isMoving && isSoundPlaying)
         {
             movementSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isSoundPlaying = false;
         }
+        else if(!isMoving && !isSoundPlaying)
+        { 
+            idleTimer += Time.deltaTime;
+            if (idleTimer >= idleTime)
+            {
+                idleSoundInstance.start();
+                idleTimer = 0f;
+            }
+        }
     }
+
+
+
 
     void OnDestroy()
     {

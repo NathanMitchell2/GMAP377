@@ -1908,6 +1908,34 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: 0.15212338
       objectReference: {fileID: 0}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 994027829}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091336617107221705, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5215173797715663484, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -1916,6 +1944,34 @@ PrefabInstance:
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 482691561}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 994027829}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285451783950009952, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7969814026725122872, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: buildTransform
       value: 
@@ -3277,7 +3333,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 592405916}
+    - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 592405909}
   m_SourcePrefab: {fileID: 100100000, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
 --- !u!4 &482691561 stripped
 Transform:
@@ -4248,6 +4310,57 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: bd92c5abecd90ec4db16f88c2f99a444, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &592405904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  m_PrefabInstance: {fileID: 482691560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &592405909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592405904}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b5eff94c44df042a112df16017a92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFront: {fileID: 0}
+  leftRear: {fileID: 0}
+  rightFront: {fileID: 0}
+  rightRear: {fileID: 0}
+  motorTorque: 1500
+  brakeTorque: 3000
+  maxSteerAngle: 15
+--- !u!114 &592405916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592405904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSoundEvent:
+    Guid:
+      Data1: -678345244
+      Data2: 1171208262
+      Data3: 191609516
+      Data4: -1785987300
+    Path: event:/Robot/Robot Movement
+  idleSoundEvent:
+    Guid:
+      Data1: -906303825
+      Data2: 1251212079
+      Data3: 551805071
+      Data4: -140333455
+    Path: event:/Robot/Necrobug Robot Idle_mixdown
+  movementThreshold: 1
 --- !u!1001 &601240144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6846,6 +6959,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984862167}
   m_CullTransparentMesh: 1
+--- !u!1 &994027828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994027830}
+  - component: {fileID: 994027829}
+  m_Layer: 0
+  m_Name: FMODSoundPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &994027829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994027828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 936669775
+      Data2: 1087328808
+      Data3: 1802870157
+      Data4: -2050210178
+    Path: event:/Basic click
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &994027830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994027828}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 402, y: 226.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &996514472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0fdbeaceea538e344b002f3f02b8c8e8, type: 3}
@@ -8015,6 +8191,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1515496569}
         m_TargetAssemblyTypeName: MenuChanger, Assembly-CSharp
         m_MethodName: FlipFlopMenus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 994027829}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16436,3 +16624,4 @@ SceneRoots:
   - {fileID: 1884408473}
   - {fileID: 150484159}
   - {fileID: 1501884432}
+  - {fileID: 994027830}

@@ -1128,6 +1128,7 @@ MonoBehaviour:
   cell: {fileID: 7928002304169728791, guid: a0046fd1bf28a984797909a8c1c4d5a7, type: 3}
   gridTransform: {fileID: 0}
   buildTransform: {fileID: 0}
+  actionManager: {fileID: 0}
 --- !u!114 &8130331959745066589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1155,8 @@ MonoBehaviour:
   - {fileID: 2025769284591637103, guid: 137390f8488f1c140bee126072be2b39, type: 3}
   - {fileID: 2025769284591637103, guid: 88613fd13e0fe4644b8b2cd8c013338c, type: 3}
   - {fileID: 2025769284591637103, guid: 52887c2faa6570e4f9cbb3b8e81b67c3, type: 3}
+  - {fileID: 2025769284591637103, guid: 943497d1e29115c48a3a8a71fd8e1ea5, type: 3}
+  tipController: {fileID: 0}
   partTransform: {fileID: 0}
   selectUILoc: {fileID: 8776665456594672264}
   selectUIPrefab: {fileID: 3233218267484049203, guid: 056b482b7f338d645ad3398883aacf32, type: 3}
@@ -6233,6 +6236,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: Legs
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: Leg
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:

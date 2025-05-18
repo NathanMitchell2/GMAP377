@@ -72,6 +72,8 @@ public class BuilderUI : MonoBehaviour
                 return Instantiate(parts[4], partTransform);
             case "Legs":
                 return Instantiate(parts[5], partTransform);
+            case "Leg":
+                return Instantiate(parts[6], partTransform);
             default:
                 return null;
         }

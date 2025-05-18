@@ -13,6 +13,7 @@ public class AnimLegControl : MonoBehaviour
     public float defaultMoveTime;
     public AnimationCurve heightCurve;
     public float postResetDelay = 0.2f;
+    [SerializeField] private float snapDistanceVariance = 0f;
 
     private float resetCooldown = 0f;
     private float tipDistance = 1;
@@ -40,7 +41,7 @@ public class AnimLegControl : MonoBehaviour
         {
             defaultTipLocalPosition = transform.localPosition;
         }
-        distanceBeforeSnap = defaultSnapDistance;
+        distanceBeforeSnap = defaultSnapDistance + defaultSnapDistance*Random.Range(-snapDistanceVariance,snapDistanceVariance);
         moveTime = defaultMoveTime;
         root.GetComponentInChildren<RigBuilder>().Build();
     }
@@ -134,7 +135,7 @@ public class AnimLegControl : MonoBehaviour
         {
             // Because of this statement, you cannot control the moveTime and distanceBeforeSnap in the unity editor public variables
             moveTime = defaultMoveTime;
-            distanceBeforeSnap = defaultSnapDistance;
+            distanceBeforeSnap = defaultSnapDistance + defaultSnapDistance * Random.Range(-snapDistanceVariance, snapDistanceVariance);
         }
     }
 

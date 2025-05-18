@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Animations;
 using System.Collections.Generic;
 using System;
@@ -13,6 +14,7 @@ public class BotPart : MonoBehaviour
     [SerializeField] private Vector3 center; //depreciated
     private int orientation = 0;
     [SerializeField] private List<GameObject> orientations = new List<GameObject>();
+    public bool customBinds = true;
     //protected List<Block> blocks = new List<Block>();
 
     void Awake()
@@ -39,8 +41,10 @@ public class BotPart : MonoBehaviour
         Transform storage = GetPartStorage();
         Vector3 pos = this.pos * GridPositionToLocalPosition + transform.position + storage.localPosition;
         Quaternion rot = storage.localRotation * transform.rotation;
-        
-        return Instantiate(bugPart, pos, rot, transform);
+
+        GameObject part = Instantiate(bugPart, pos, rot, transform);
+
+        return part;
         
         return bugPart;
     }
@@ -105,7 +109,6 @@ public class BotPart : MonoBehaviour
 
     public bool Rotate(Vector3 axis, BotGrid grid)
     {
-        Debug.Log("wrong rotate");
         foreach (var block in GetBlocks())
         {
             if (!block.inBounds(pos, axis, center, grid))
@@ -152,16 +155,12 @@ public class BotPart : MonoBehaviour
     }
     public bool ProgressOrientation(BotGrid grid)
     {
-        Debug.Log("A");
-        Debug.Log(orientations.Count);
         int temp = BoundOrientation(orientation + 1);
 
-        Debug.Log(temp);
         orientations[temp].SetActive(true);
 
         List<Block> blocks = new List<Block>();
         orientations[temp].GetComponentsInChildren(blocks);
-        Debug.Log(blocks.Count);
 
         foreach (var block in blocks)
         {
@@ -176,7 +175,6 @@ public class BotPart : MonoBehaviour
         orientations[orientation].SetActive(true);
         Place(grid);
 
-        Debug.Log("B");
         return true;
 
     }

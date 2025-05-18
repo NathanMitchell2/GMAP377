@@ -190,12 +190,24 @@ public class BuilderUI : MonoBehaviour
             selectableUI.SetIndex(i);
             selectableUI.SetPart(builder.GetIndex(i).GetInventoryPart());
             selectableUI.SetUI(this);
+            selectableUI.UsesCustomBinds(builder.GetIndex(i).customBinds);
+            selectableUI.SetKey(GetKeybindText(i));
         }
     }
     public void SelectPart(int index)
     {
         builder.SetSelected(index);
         UpdateAll();
+    }
+    public void BindPart(int index)
+    {
+        builder.BindAction(index);
+        UpdateAll();
+    }
+
+    public string GetKeybindText(int index)
+    {
+        return builder.GetKeybindText(index);
     }
 
     public void UpdateAll()
@@ -210,6 +222,7 @@ public class BuilderUI : MonoBehaviour
         //builder.RotateSelected(AxisToVector(axis));
         builder.ProgressOrientationSelected();
         UpdateAll();
+    
     }
 
     private int BoundAxis(int axis)

@@ -8,7 +8,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private List<GameObject> cameras = new List<GameObject>();
     private GameObject player;
 
-    private void Start()
+    private void Awake()
     {
         //Cursor.lockState = CursorLockMode.Locked;
         player = ((PlayerInput)FindFirstObjectByType(typeof(PlayerInput))).gameObject;

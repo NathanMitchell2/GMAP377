@@ -37,10 +37,10 @@ public class Block : MonoBehaviour
         }
     }
 
-    public bool inBounds(Vector3 pos, Vector3 axis, BotGrid grid)
+    public bool inBounds(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
     {
         Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis, center);
 
         for (int i = 0; i < Math.Abs(size.x); i++)
         {
@@ -61,13 +61,13 @@ public class Block : MonoBehaviour
         return true;
     }
 
-    public bool Place(Vector3 pos, Vector3 axis, BotGrid grid)
+    public bool Place(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
     {
-        if (!inBounds(pos, axis, grid))
+        if (!inBounds(pos, axis, center, grid))
             return false;
 
         Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis, center);
 
         for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
@@ -87,6 +87,8 @@ public class Block : MonoBehaviour
 
 
                     grid.GetCell(x, y, z).Add(tile);
+                    if (tiles == null)
+                        tiles = new List<Tile>();
                     tiles.Add(tile);
                 }
             }
@@ -104,18 +106,16 @@ public class Block : MonoBehaviour
     }
 
 
-    public bool Remove(Vector3 pos, Vector3 axis, BotGrid grid)
+    public bool Remove(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
     {
-
-
-        if (!CanRemove(pos, axis, grid))
+        if (!CanRemove(pos, axis, center, grid))
             return false;
 
-        if (!inBounds(pos, axis, grid))
+        if (!inBounds(pos, axis, center, grid))
             return false;
 
         Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis, center);
 
         for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
@@ -139,18 +139,16 @@ public class Block : MonoBehaviour
     }
 
 
-    public bool CanRemove(Vector3 pos, Vector3 axis, BotGrid grid)
+    public bool CanRemove(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
     {
-
-
-        if (!inBounds(pos, axis, grid))
+        if (!inBounds(pos, axis, center, grid))
             return false;
 
-        if (!inBounds(pos, axis, grid))
+        if (!inBounds(pos, axis, center, grid))
             return false;
 
         Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis);
+        Vector3 rPos = GetPosByAxis(axis, center);
 
         for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
@@ -187,10 +185,14 @@ public class Block : MonoBehaviour
         return rotation.MultiplyVector(size);
     }
 
-    private Vector3 GetPosByAxis(Vector3 axis)
+    private Vector3 GetPosByAxis(Vector3 axis, Vector3 center)
     {
+        return pos;
         Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
-        return rotation.MultiplyVector(pos);
+        Vector3 temp = pos - center;
+        temp = rotation.MultiplyVector(temp);
+        temp += center;
+        return center;
     }
 
 }

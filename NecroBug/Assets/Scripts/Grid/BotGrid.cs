@@ -44,9 +44,9 @@ public class BotGrid
 
     public bool Check()
     {
-        foreach(var tile in grid)
+        foreach(var cell in grid)
         {
-            if (!tile[tile.Count - 1].CheckTile())
+            if (!Tile.CheckCell(cell))
             {
                 //Debug.Log("Check Fail");
                 return false;

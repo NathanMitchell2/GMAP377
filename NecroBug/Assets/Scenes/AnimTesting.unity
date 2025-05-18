@@ -625,9 +625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  defaultSnapDistance: 0
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -668,6 +668,7 @@ MonoBehaviour:
   root: {fileID: 899559350}
   tip: {fileID: 1013099297}
   tipController: {fileID: 1477260189}
+  car: {fileID: 0}
 --- !u!135 &127908936
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1593,9 +1594,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  defaultSnapDistance: 0
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -1636,6 +1637,7 @@ MonoBehaviour:
   root: {fileID: 117205623}
   tip: {fileID: 2044433204}
   tipController: {fileID: 911150185}
+  car: {fileID: 0}
 --- !u!135 &384782516
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2106,9 +2108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.1
+  defaultSnapDistance: 0
   distanceFromRoot: 0.8
-  moveTime: 0.2
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -2149,6 +2151,7 @@ MonoBehaviour:
   root: {fileID: 7531583343746806810}
   tip: {fileID: 637522877090634664}
   tipController: {fileID: 0}
+  car: {fileID: 0}
 --- !u!1 &478007568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,9 +2201,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  defaultSnapDistance: 0
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -2241,6 +2244,7 @@ MonoBehaviour:
   root: {fileID: 2098904699}
   tip: {fileID: 2107522947}
   tipController: {fileID: 137071050}
+  car: {fileID: 0}
 --- !u!135 &478007571
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2369,9 +2373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  defaultSnapDistance: 0
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -2412,6 +2416,7 @@ MonoBehaviour:
   root: {fileID: 242667013}
   tip: {fileID: 753766980}
   tipController: {fileID: 126687954}
+  car: {fileID: 0}
 --- !u!135 &597367730
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3996,9 +4001,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  defaultSnapDistance: 0
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -4039,6 +4044,7 @@ MonoBehaviour:
   root: {fileID: 1185424613}
   tip: {fileID: 1384283795}
   tipController: {fileID: 1845099352}
+  car: {fileID: 0}
 --- !u!135 &1313407552
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4683,9 +4689,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upwardRaycast: 1
   downwardRaycast: 10
-  distanceBeforeSnap: 0.5
+  defaultSnapDistance: 0
   distanceFromRoot: 1
-  moveTime: 0.1
+  defaultMoveTime: 0
   heightCurve:
     serializedVersion: 2
     m_Curve:
@@ -4726,6 +4732,7 @@ MonoBehaviour:
   root: {fileID: 1133139104}
   tip: {fileID: 435259646}
   tipController: {fileID: 1424207316}
+  car: {fileID: 0}
 --- !u!1 &1462988941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,6 +6037,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &2313350624457061435
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7745451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938960729492394779, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161493647788111651, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
+      propertyPath: m_Name
+      value: SporesParent
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b81457d92cda8a2438b48467c4170edb, type: 3}
 --- !u!4 &2425496894387398428
 Transform:
   m_ObjectHideFlags: 0
@@ -6341,3 +6405,4 @@ SceneRoots:
   - {fileID: 50499048}
   - {fileID: 60206867}
   - {fileID: 3901466135182628635}
+  - {fileID: 2313350624457061435}

@@ -1,4 +1,7 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,10 +10,11 @@ public abstract class Tile
     private TileType type;
     protected Tile dependent;
     private Block parent; // Isn't used
+
     public enum TileType
     {
         Empty,
-        Outside,
+        neededSoDoesNotBreak,
         Solid,
         SolidCheck,
         Transparent
@@ -20,6 +24,51 @@ public abstract class Tile
         this.dependent = dependent;
         this.parent = parent;
         this.type = type;
+    }
+
+    public static bool CheckCell(List<Tile> cellOG)
+    {
+        List<Tile> cell = new List<Tile> ();
+        cell.AddRange(cellOG);
+
+        SortCell(cell);
+
+        Tile prev = null;
+        for(int i = cell.Count - 1; i >= 0; i--)
+        {
+
+            if(!cell[i].CheckTile(prev))
+                return false;
+            prev = cell[i];
+        }
+        return true;
+    }
+    private static void SortCell(List<Tile> cell)
+    {
+        int partition = 0;
+        for (int i = 0; i < cell.Count; i++)
+        {
+            Tile min = cell[partition];
+            int minPos = partition;
+            for(int j = partition+1; j < cell.Count; j++)
+            {
+                if(cell[j].GetTileValue() < min.GetTileValue())
+                {
+                    min = cell[j];
+                    minPos = j;
+                }
+            }
+            cell.RemoveAt(minPos);
+            cell.Insert(partition, min);
+            partition++;
+        }
+        Debug.Log(cell.ToCommaSeparatedString());
+        return;
+    }
+
+    public int GetTileValue()
+    {
+        return (int)GetTileType();
     }
 
     public Block GetParent()
@@ -35,7 +84,8 @@ public abstract class Tile
     }
     public bool CheckTile(Tile other)
     {
-        return internalCheck(other) && CheckTile();
+        if (other == null) return true;
+        return internalCheck(other);// && CheckTile();
     }
 
     public TileType GetTileType()

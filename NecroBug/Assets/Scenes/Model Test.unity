@@ -3335,6 +3335,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 592405916}
+    - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 592405909}
   m_SourcePrefab: {fileID: 100100000, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
@@ -4331,6 +4334,33 @@ MonoBehaviour:
   motorTorque: 1500
   brakeTorque: 3000
   maxSteerAngle: 15
+--- !u!114 &592405916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592405904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSoundEvent:
+    Guid:
+      Data1: -678345244
+      Data2: 1171208262
+      Data3: 191609516
+      Data4: -1785987300
+    Path: event:/Robot/Robot Movement
+  idleSoundEvent:
+    Guid:
+      Data1: -906303825
+      Data2: 1251212079
+      Data3: 551805071
+      Data4: -140333455
+    Path: event:/Robot/Necrobug Robot Idle_mixdown
+  movementThreshold: 1
 --- !u!1001 &601240144
 PrefabInstance:
   m_ObjectHideFlags: 0

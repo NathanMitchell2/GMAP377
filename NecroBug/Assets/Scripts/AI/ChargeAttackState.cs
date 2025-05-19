@@ -77,7 +77,7 @@ public class ChargeAttackState : IState
         yield return new WaitForSeconds(1.5f); // wait for landing/impact
 
         // Reset enemy
-        enemy.rb.velocity = Vector3.zero;
+        enemy.rb.linearVelocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;

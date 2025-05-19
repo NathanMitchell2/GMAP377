@@ -240,4 +240,9 @@ public class BotBulider : MonoBehaviour
     {
         return actionManager.GetKeybindText(index);
     }
+
+    public int IndexOf(BotPart part)
+    {
+        return parts.IndexOf(part);
+    }
 }

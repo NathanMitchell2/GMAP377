@@ -161,6 +161,7 @@ public class BuilderUI : MonoBehaviour
         //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         bPart.SetPos(new Vector3(0,0,0));
         builder.AddPart(bPart);
+        SelectPart(builder.IndexOf(bPart));
         UpdateAll();
     }
 
@@ -182,8 +183,9 @@ public class BuilderUI : MonoBehaviour
             Destroy(selectUILoc.GetChild(i).gameObject);
         }
         float height = selectUIPrefab.GetComponent<RectTransform>().rect.height;
+        int selected = builder.IndexOf(builder.GetSelected());
         //Vector3 rootPos = selectUILoc.GetComponent<RectTransform>().position;
-        for(int i = 0; i < builder.GetCount(); i++)
+        for (int i = 0; i < builder.GetCount(); i++)
         {
             Vector3 pos = new Vector3(0, -height*i, 0);
             GameObject selectUITemp = Instantiate(selectUIPrefab, selectUILoc);
@@ -194,7 +196,17 @@ public class BuilderUI : MonoBehaviour
             selectableUI.SetUI(this);
             selectableUI.UsesCustomBinds(builder.GetIndex(i).customBinds);
             selectableUI.SetKey(GetKeybindText(i));
-        }
+
+            if (selected == i)
+            {
+                selectableUI.GetComponentInChildren<PartSelectUI>().Select();
+            }
+            else
+            {
+                selectableUI.GetComponentInChildren<PartSelectUI>().DeSelect();
+            }
+            }
+
     }
     public void SelectPart(int index)
     {

@@ -29,7 +29,7 @@ public class GridDisplayCell : MonoBehaviour
             {
                 material.color = emptyColor;
             }
-            else if (stack[stack.Count-1].CheckTile())
+            else if (Tile.CheckCell(stack))
             {
                 material.color = trueColor;
             }

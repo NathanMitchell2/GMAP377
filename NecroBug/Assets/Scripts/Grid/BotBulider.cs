@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -96,7 +97,7 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemovePart(BotPart part)
     {
-        if(part.Remove(grid))
+        if(parts.IndexOf(part)!=0 && part.Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
             int index = parts.IndexOf(part);
             if (index != -1)
@@ -113,7 +114,7 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemovePart(int index)
     {
-        if (parts[index].Remove(grid)&&index!=0) //HARD CODED, can't remove first item in list (for car)
+        if (index != 0&&parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
             if (index != -1)
             {
@@ -238,5 +239,10 @@ public class BotBulider : MonoBehaviour
     public string GetKeybindText(int index)
     {
         return actionManager.GetKeybindText(index);
+    }
+
+    public int IndexOf(BotPart part)
+    {
+        return parts.IndexOf(part);
     }
 }

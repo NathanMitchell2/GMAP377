@@ -31,7 +31,7 @@ public class PatrolState : IState
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
     {
         if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge && enemy.stamina >= enemy.staminaDrainPerCharge && enemy.attackCooldown <= 0f)
-            enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
+            enemy.ChangeState(new TransitionState(0.5f, enemy.GetAttackState()));
         else if (playerInSightRange)
             enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
         else if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
@@ -40,18 +40,26 @@ public class PatrolState : IState
 
     private void SearchWalkPoint(EnemyAI enemy)
     {
-        float randomZ = UnityEngine.Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
-        float randomX = UnityEngine.Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+        for (int i = 0; i < 10; i++) 
+        {
+            float randomZ = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+            float randomX = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
 
-        Vector3 potentialPoint = new Vector3(
-            enemy.transform.position.x + randomX,
-            enemy.transform.position.y,
-            enemy.transform.position.z + randomZ
-        );
+            Vector3 candidate = new Vector3(
+                enemy.patrolCenter.x + randomX,
+                enemy.transform.position.y,
+                enemy.patrolCenter.z + randomZ
+            );
 
-        if (Physics.Raycast(potentialPoint, -Vector3.up, 2f, enemy.whatIsGround))
-            enemy.walkPoint = potentialPoint;
+            // Avoid mushrooms
+            if (Physics.CheckSphere(candidate, 1f, enemy.mushroomLayer)) continue;
 
-        enemy.walkPointSet = true;
+            if (Physics.Raycast(candidate, -Vector3.up, 2f, enemy.whatIsGround))
+            {
+                enemy.walkPoint = candidate;
+                enemy.walkPointSet = true;
+                break;
+            }
+        }
     }
 }

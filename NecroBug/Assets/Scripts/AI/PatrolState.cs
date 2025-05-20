@@ -40,26 +40,19 @@ public class PatrolState : IState
 
     private void SearchWalkPoint(EnemyAI enemy)
     {
-        for (int i = 0; i < 10; i++) 
+        float randomZ = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+        float randomX = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+
+        Vector3 candidate = new Vector3(
+            enemy.patrolCenter.x + randomX,
+            enemy.transform.position.y,
+            enemy.patrolCenter.z + randomZ
+        );
+
+        if (Physics.Raycast(candidate, -Vector3.up, 2f, enemy.whatIsGround))
         {
-            float randomZ = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
-            float randomX = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
-
-            Vector3 candidate = new Vector3(
-                enemy.patrolCenter.x + randomX,
-                enemy.transform.position.y,
-                enemy.patrolCenter.z + randomZ
-            );
-
-            // Avoid mushrooms
-            if (Physics.CheckSphere(candidate, 1f, enemy.mushroomLayer)) continue;
-
-            if (Physics.Raycast(candidate, -Vector3.up, 2f, enemy.whatIsGround))
-            {
-                enemy.walkPoint = candidate;
-                enemy.walkPointSet = true;
-                break;
-            }
+            enemy.walkPoint = candidate;
+            enemy.walkPointSet = true;
         }
     }
 }

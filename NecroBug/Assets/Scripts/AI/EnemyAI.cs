@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float fieldOfView;
     public float viewDistance;
     public int rayCount;
-    public LayerMask visionObstacles,mushroomLayer;
+    public LayerMask visionObstacles;
     public float noiseDetectionSpeed;
     public float sightRange, attackRange, retreatRange;
     public float walkPointRange;
@@ -59,6 +59,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        patrolCenter = gameObject.GetComponent<Transform>().position;
         ChangeState(new IdleState());
     }
 

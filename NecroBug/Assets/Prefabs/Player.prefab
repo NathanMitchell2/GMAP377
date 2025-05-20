@@ -133,8 +133,10 @@ GameObject:
   - component: {fileID: 6086341953219530521}
   - component: {fileID: 5793857945380830245}
   - component: {fileID: 5033608073278158266}
+  - component: {fileID: 1999615512902784859}
   - component: {fileID: 8437602558676203200}
   - component: {fileID: 3894527981154781045}
+  - component: {fileID: 9060762480755581048}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -219,6 +221,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 1
+--- !u!114 &1999615512902784859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSoundEvent:
+    Guid:
+      Data1: 1750376277
+      Data2: 1289608649
+      Data3: 1582206137
+      Data4: -2029324097
+    Path: event:/Robot/Necrobug-Robot-Movement
+  movementThreshold: 1
 --- !u!54 &8437602558676203200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -259,6 +281,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: []
+--- !u!114 &9060762480755581048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b5eff94c44df042a112df16017a92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFront: {fileID: 0}
+  leftRear: {fileID: 0}
+  rightFront: {fileID: 0}
+  rightRear: {fileID: 0}
+  motorTorque: 1500
+  brakeTorque: 3000
+  maxSteerAngle: 15
 --- !u!1 &4521078891256376265
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: hitFlash
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2475575991783323239, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_Name
       value: car
@@ -376,7 +421,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1652602374013445380, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+    - {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7174151278275579687, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
@@ -390,6 +437,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6183647432599674150}
   m_SourcePrefab: {fileID: 100100000, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+--- !u!114 &2699803622281406816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4061584100269275149, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+  m_PrefabInstance: {fileID: 2101496777315832173}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4571442865685866250 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2475575991783323239, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
@@ -408,7 +466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  hitFlash: {fileID: 6183647432599674150}
+  hitFlash: {fileID: 2699803622281406816}
+  healthBar: {fileID: 0}
+  energyBar: {fileID: 0}
+  energyReductionBar: {fileID: 0}
 --- !u!114 &6183647432599674150
 MonoBehaviour:
   m_ObjectHideFlags: 0

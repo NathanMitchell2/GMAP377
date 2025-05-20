@@ -3,35 +3,38 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] protected int health = 100;
+    public int health = 100;
     [SerializeField] private HitFlash hitFlash;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyReductionBar;
 
-    public void takeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
+        Debug.Log($"[Before Damage] Health: {health}, Damage: {dmg}");
         health -= dmg;
+        Debug.Log($"[After Damage] Health: {health}");
         hitFlash.TriggerFlash();
-        checkDeath();
-        updateHealth();
+        CheckDeath();
+        UpdateHealth();
     }
-    private void checkDeath()
+    private void CheckDeath()
     {
         if (health <= 0)
         {
-            BroadcastMessage("OnDeath");
-            killPlayer();
+            // BroadcastMessage("OnDeath");
+            KillPlayer();
         }
     }
 
-    private void killPlayer()
+    private void KillPlayer()
     {
 
     }
 
-    public void updateHealth()
+    public void UpdateHealth()
     {
-        healthBar.fillAmount = health / 100;
+        // Debug.Log(health);
+        healthBar.fillAmount = (float)health / 100;
     }
 }

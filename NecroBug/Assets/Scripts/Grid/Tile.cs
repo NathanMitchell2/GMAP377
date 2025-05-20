@@ -62,7 +62,7 @@ public abstract class Tile
             cell.Insert(partition, min);
             partition++;
         }
-        Debug.Log(cell.ToCommaSeparatedString());
+        // Debug.Log(cell.ToCommaSeparatedString());
         return;
     }
 

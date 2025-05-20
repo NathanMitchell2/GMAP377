@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 7908505440710472612}
   - component: {fileID: 8858329393499569411}
   - component: {fileID: 1844405598309641353}
+  - component: {fileID: 8467677399557758506}
+  - component: {fileID: 1631552486043401826}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -188,6 +190,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
+--- !u!135 &8467677399557758506
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.2469357
+  m_Center: {x: 0, y: 1.6114324, z: 0}
+--- !u!114 &1631552486043401826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67de41bf7f8181347adce1e9db050275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hitFlash: {fileID: 6824346051168408297}
+  healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
+  energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
+  energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
 --- !u!1 &4815284830239154656
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +707,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3304453314099544526, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5750143806705764110, guid: f911f724d34f6e943be809ad26c16627, type: 3}
       propertyPath: m_Name
       value: Robot
@@ -674,10 +718,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3481568950899623786, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6824346051168408297}
   m_SourcePrefab: {fileID: 100100000, guid: f911f724d34f6e943be809ad26c16627, type: 3}
 --- !u!4 &5182603359943539860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1019714253644485142, guid: f911f724d34f6e943be809ad26c16627, type: 3}
   m_PrefabInstance: {fileID: 5317219514957426306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8762749756010736104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3481568950899623786, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+  m_PrefabInstance: {fileID: 5317219514957426306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6824346051168408297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762749756010736104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 0.5

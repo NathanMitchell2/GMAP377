@@ -49,6 +49,13 @@ public class EnemyAI : MonoBehaviour
     public GameObject acidProjectilePrefab;
     public float acidSpitForce = 20f;
 
+    public PlayerStats playerStats;
+    public int chargeDamage = 20;
+    public int acidDamage = 10;
+    public float damageCooldown = 0.5f;
+    private float lastHitTime;
+
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -159,5 +166,34 @@ private void UpdatePlayerDetection()
     public void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    // Added by Patrick, damage system
+
+    // Jet Beetle Damage
+    void OnCollisionEnter(Collision other)
+    {
+        if (Time.time - lastHitTime < damageCooldown) return;
+
+        if (other.gameObject.CompareTag("Player") && isCharging)
+        {
+            playerStats = other.gameObject.GetComponent<PlayerStats>();
+
+            if (playerStats != null)
+            {
+                DealDamage(chargeDamage);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerStats not found on object!");
+            }
+        }
+    }
+
+    public void DealDamage(int damageAmount)
+    {
+        // Debug.Log(damageAmount);
+        playerStats.TakeDamage(damageAmount);
+        lastHitTime = Time.time;
     }
 }

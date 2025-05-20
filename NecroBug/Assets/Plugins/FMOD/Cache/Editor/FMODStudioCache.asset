@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7485602132807907476
+--- !u!114 &-8868244749009813211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,16 +10,68 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Assets/Audio/Banks/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638832134003999410
-  FileSizes:
-  - Name: 
-    Value: 1198
+  Path: Assets/Audio/Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638832820875386206
+  FileSizes: []
   Exists: 1
+--- !u!114 &-8321871289709625395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bug/Beetle
+  m_EditorClassIdentifier: 
+  Path: event:/Bug/Beetle
+  Guid:
+    Data1: -2015447625
+    Data2: 1253647208
+    Data3: -973748849
+    Data4: -9273331
+  Banks:
+  - {fileID: 549201797856060944}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7264347548672395085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Other/necrobug version B
+  m_EditorClassIdentifier: 
+  Path: event:/Other/necrobug version B
+  Guid:
+    Data1: -1881252699
+    Data2: 1249085342
+    Data3: 1724508303
+    Data4: -916869671
+  Banks:
+  - {fileID: 549201797856060944}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 116610
 --- !u!114 &-7068602463642064242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,12 +86,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Robot/Necrobug Robot Attachment
   Guid:
-    Data1: -1742759309
-    Data2: 1313331073
-    Data3: 629914014
-    Data4: 902339535
+    Data1: -222605077
+    Data2: 1153091689
+    Data3: -1533516401
+    Data4: 1460513895
   Banks:
-  - {fileID: 5220049525155207057}
+  - {fileID: 549201797856060944}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -47,7 +99,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1116
---- !u!114 &-5916396045521326825
+--- !u!114 &-4813684394729358215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,105 +109,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Robot/Robot Movement
+  m_Name: event:/Other/mushroom explosion
   m_EditorClassIdentifier: 
-  Path: event:/Robot/Robot Movement
+  Path: event:/Other/mushroom explosion
   Guid:
-    Data1: -678345244
-    Data2: 1171208262
-    Data3: 191609516
-    Data4: -1785987300
+    Data1: -1603619062
+    Data2: 1148341308
+    Data3: -1132783180
+    Data4: -1990037338
   Banks:
-  - {fileID: 5220049525155207057}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-4934955814855805211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Terrain/Mushroom explosion
-  m_EditorClassIdentifier: 
-  Path: event:/Terrain/Mushroom explosion
-  Guid:
-    Data1: -84123822
-    Data2: 1321332401
-    Data3: -307475056
-    Data4: 1232367388
-  Banks:
-  - {fileID: 5220049525155207057}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-3213143493063166248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Basic click
-  m_EditorClassIdentifier: 
-  Path: event:/Basic click
-  Guid:
-    Data1: 936669775
-    Data2: 1087328808
-    Data3: 1802870157
-    Data4: -2050210178
-  Banks:
-  - {fileID: 5220049525155207057}
+  - {fileID: -2727424466272508118}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 162
---- !u!114 &-2939803322130326965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Bug/Beetle Movement
-  m_EditorClassIdentifier: 
-  Path: event:/Bug/Beetle Movement
-  Guid:
-    Data1: -1772110967
-    Data2: 1134344290
-    Data3: -223191122
-    Data4: 17518143
-  Banks:
-  - {fileID: 5220049525155207057}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
   Length: 0
---- !u!114 &-932429253507671643
+--- !u!114 &-2727424466272508118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,24 +135,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BGM2
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/test.bank
   m_EditorClassIdentifier: 
-  Path: event:/BGM2
-  Guid:
-    Data1: 664002747
-    Data2: 1116496287
-    Data3: 1941216157
-    Data4: 272017045
-  Banks:
-  - {fileID: 5220049525155207057}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 116610
+  Path: Assets/Audio/Banks/Desktop/test.bank
+  Name: test
+  StudioPath: bank:/test
+  lastModified: 638832820875769136
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-439130025574310688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,12 +158,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Robot/Necrobug Robot Idle_mixdown
   Guid:
-    Data1: -906303825
-    Data2: 1251212079
-    Data3: 551805071
-    Data4: -140333455
+    Data1: -1219614604
+    Data2: 1263338081
+    Data3: -1238016853
+    Data4: 240991461
   Banks:
-  - {fileID: 5220049525155207057}
+  - {fileID: 549201797856060944}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -222,88 +184,44 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -7485602132807907476}
-  - {fileID: 1823677360429898016}
-  - {fileID: 5220049525155207057}
+  - {fileID: 796347039429246829}
+  - {fileID: -8868244749009813211}
+  - {fileID: 549201797856060944}
+  - {fileID: -2727424466272508118}
   EditorEvents:
-  - {fileID: -4934955814855805211}
-  - {fileID: -2939803322130326965}
-  - {fileID: 5003338293222876325}
   - {fileID: -7068602463642064242}
   - {fileID: -439130025574310688}
-  - {fileID: -5916396045521326825}
-  - {fileID: -3213143493063166248}
-  - {fileID: -932429253507671643}
+  - {fileID: -4813684394729358215}
+  - {fileID: 7144365653648157800}
+  - {fileID: 4835245213130420980}
+  - {fileID: -7264347548672395085}
+  - {fileID: 6902316191690634971}
+  - {fileID: -8321871289709625395}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1823677360429898016}
+  - {fileID: -8868244749009813211}
   StringsBanks:
-  - {fileID: -7485602132807907476}
+  - {fileID: 796347039429246829}
   cacheVersion: 131847
-  cacheTime: 638832134004612694
+  cacheTime: 638832820875769136
   SerializableEventsDict:
-  - key: event:/Terrain/Mushroom explosion
-    index: 0
-  - key: event:/Bug/Beetle Movement
-    index: 1
-  - key: event:/BGM
-    index: 2
   - key: event:/Robot/Necrobug Robot Attachment
-    index: 3
+    index: 0
   - key: event:/Robot/Necrobug Robot Idle_mixdown
+    index: 1
+  - key: event:/Other/mushroom explosion
+    index: 2
+  - key: event:/Robot/Necrobug Robot Death_mixdown
+    index: 3
+  - key: event:/Robot/Necrobug-Robot-Movement
     index: 4
-  - key: event:/Robot/Robot Movement
+  - key: event:/Other/necrobug version B
     index: 5
-  - key: event:/Basic click
+  - key: event:/Other/click
     index: 6
-  - key: event:/BGM2
+  - key: event:/Bug/Beetle
     index: 7
---- !u!114 &1823677360429898016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Audio/Banks/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638832134003658331
-  FileSizes: []
-  Exists: 1
---- !u!114 &5003338293222876325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BGM
-  m_EditorClassIdentifier: 
-  Path: event:/BGM
-  Guid:
-    Data1: -1662047719
-    Data2: 1198423207
-    Data3: -1667162701
-    Data4: -923559210
-  Banks:
-  - {fileID: 5220049525155207057}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 136000
---- !u!114 &5220049525155207057
+--- !u!114 &549201797856060944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,6 +236,107 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638832134004612694
+  lastModified: 638832820875723792
   FileSizes: []
   Exists: 1
+--- !u!114 &796347039429246829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638832820875420688
+  FileSizes:
+  - Name: 
+    Value: 1236
+  Exists: 1
+--- !u!114 &4835245213130420980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot/Necrobug-Robot-Movement
+  m_EditorClassIdentifier: 
+  Path: event:/Robot/Necrobug-Robot-Movement
+  Guid:
+    Data1: 1750376277
+    Data2: 1289608649
+    Data3: 1582206137
+    Data4: -2029324097
+  Banks:
+  - {fileID: 549201797856060944}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 25224
+--- !u!114 &6902316191690634971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Other/click
+  m_EditorClassIdentifier: 
+  Path: event:/Other/click
+  Guid:
+    Data1: -725257819
+    Data2: 1214690133
+    Data3: 1334811293
+    Data4: -1039458042
+  Banks:
+  - {fileID: 549201797856060944}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 162
+--- !u!114 &7144365653648157800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot/Necrobug Robot Death_mixdown
+  m_EditorClassIdentifier: 
+  Path: event:/Robot/Necrobug Robot Death_mixdown
+  Guid:
+    Data1: 958304830
+    Data2: 1318751567
+    Data3: -308163418
+    Data4: -929408939
+  Banks:
+  - {fileID: 549201797856060944}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2795

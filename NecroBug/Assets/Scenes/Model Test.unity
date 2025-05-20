@@ -6262,11 +6262,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSoundEvent:
     Guid:
-      Data1: -678345244
-      Data2: 1171208262
-      Data3: 191609516
-      Data4: -1785987300
-    Path: event:/Robot/Robot Movement
+      Data1: 1750376277
+      Data2: 1289608649
+      Data3: 1582206137
+      Data4: -2029324097
+    Path: event:/Robot/Necrobug-Robot-Movement
   movementThreshold: 1
 --- !u!1001 &596814981
 PrefabInstance:
@@ -15118,6 +15118,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1058927457}
     m_Modifications:
+    - target: {fileID: 119962357114304985, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: EventPlayTrigger
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119962357114304985, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: OverrideAttenuation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1870574116981360497, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
       propertyPath: m_Name
       value: Dummy Hazard (50)
@@ -17130,11 +17138,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 664002747
-      Data2: 1116496287
-      Data3: 1941216157
-      Data4: 272017045
-    Path: event:/BGM2
+      Data1: -1881252699
+      Data2: 1249085342
+      Data3: 1724508303
+      Data4: -916869671
+    Path: event:/Other/necrobug version B
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 0
@@ -17161,11 +17169,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 936669775
-      Data2: 1087328808
-      Data3: 1802870157
-      Data4: -2050210178
-    Path: event:/Basic click
+      Data1: -725257819
+      Data2: 1214690133
+      Data3: 1334811293
+      Data4: -1039458042
+    Path: event:/Other/click
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0

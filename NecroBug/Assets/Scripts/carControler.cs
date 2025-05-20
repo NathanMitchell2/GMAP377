@@ -23,8 +23,16 @@ public class carControler : MonoBehaviour
 
     public void TerrainSpeedDown(float drive, float steer)
     {
-        driverSpeed = baseDriverSpeed * drive;
-        steerSpeed = baseSteerSpeed * steer;
+        if (GetComponentInChildren<LegsPartIdentifier>() == null)
+        {
+            driverSpeed = baseDriverSpeed * drive;
+            steerSpeed = baseSteerSpeed * steer;
+        }
+    }
+    public void TerrainSpeedReset()
+    {
+        driverSpeed = baseDriverSpeed;
+        steerSpeed = baseSteerSpeed;
     }
     public void setDriverSpeed(float speed)
     {

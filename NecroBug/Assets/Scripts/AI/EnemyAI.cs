@@ -9,6 +9,11 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public float fieldOfView;
+    public float viewDistance;
+    public int rayCount;
+    public LayerMask visionObstacles;
+    public float noiseDetectionSpeed;
     public float sightRange, attackRange, retreatRange;
     public float walkPointRange;
     public float timeBetweenAttacks;
@@ -17,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     public float jumpForce;
     public float maxPlayerSpeedCharge;
 
+    public Vector3 patrolCenter;
     public Vector3 walkPoint;
     public bool walkPointSet;
     public bool alreadyAttacked;
@@ -35,15 +41,25 @@ public class EnemyAI : MonoBehaviour
     public bool isExhausted => stamina <= 0f;
     public float attackCooldown = 0f;
 
+    public enum EnemyType { JetBeetle, AcidBeetle } 
+    public EnemyType enemyType;
+
+
+    public Transform spitPoint;
+    public GameObject acidProjectilePrefab;
+    public float acidSpitForce = 20f;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         lastPlayerPosition = player.position;
+        patrolCenter = gameObject.GetComponent<Transform>().position;
     }
 
     private void Start()
     {
+        patrolCenter = gameObject.GetComponent<Transform>().position;
         ChangeState(new IdleState());
     }
 
@@ -60,6 +76,18 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    public IState GetAttackState()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.AcidBeetle:
+                return new AcidSpitState();
+            case EnemyType.JetBeetle:
+            default:
+                return new ChargeAttackState();
+        }
+    }
+
     public void ChangeState(IState newState)
     {
         if (currentState != null)
@@ -71,14 +99,48 @@ public class EnemyAI : MonoBehaviour
             currentState.Enter(this);
     }
 
-    private void UpdatePlayerDetection()
-    {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        float distance = Vector3.Distance(transform.position, player.position);
-        playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
+private void UpdatePlayerDetection()
+{
+    playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
+    lastPlayerPosition = player.position;
 
-        currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distance);
+    Vector3 directionToPlayer = (player.position - transform.position).normalized;
+    float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+    float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+    bool inFOV = angleToPlayer < fieldOfView / 2f && distanceToPlayer <= viewDistance;
+    bool inView = false;
+
+    if (inFOV)
+    {
+        Vector3 start = transform.position + Vector3.up * 1.5f;
+        Vector3 end = player.position + Vector3.up * 1.5f;
+        Vector3 rayDir = (end - start).normalized;
+
+
+        if (!Physics.Raycast(start, rayDir, distanceToPlayer, visionObstacles))
+        {
+            inView = true;
+        }
+    }
+
+    playerInSightRange = inView;
+    playerInAttackRange = distanceToPlayer <= attackRange;
+
+    currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
+}
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, viewDistance);
+
+        Vector3 leftLimit = Quaternion.Euler(0, -fieldOfView / 2, 0) * transform.forward;
+        Vector3 rightLimit = Quaternion.Euler(0, fieldOfView / 2, 0) * transform.forward;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, leftLimit * viewDistance);
+        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, rightLimit * viewDistance);
     }
     public Coroutine ChangeStateCoroutine(IEnumerator coroutine)
     {

@@ -124,7 +124,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1870574116981360497, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
   m_PrefabInstance: {fileID: 828150295}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &124915055
+--- !u!114 &124915056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,16 +136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: Player
+  CollisionTag: 
   EventReference:
     Guid:
-      Data1: -84123822
-      Data2: 1321332401
-      Data3: -307475056
-      Data4: 1232367388
-    Path: event:/Terrain/Mushroom explosion
+      Data1: -1603619062
+      Data2: 1148341308
+      Data3: -1132783180
+      Data4: -1990037338
+    Path: event:/Other/mushroom explosion
   Event: 
-  EventPlayTrigger: 3
+  EventPlayTrigger: 2
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -276,6 +276,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy Hazard
       objectReference: {fileID: 0}
+    - target: {fileID: 3849658019391432688, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: explosionSoundEvent.Path
+      value: event:/Other/necrobug version B
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849658019391432688, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: explosionSoundEvent.Guid.Data1
+      value: -1881252699
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849658019391432688, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: explosionSoundEvent.Guid.Data2
+      value: 1249085342
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849658019391432688, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: explosionSoundEvent.Guid.Data3
+      value: 1724508303
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849658019391432688, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+      propertyPath: explosionSoundEvent.Guid.Data4
+      value: -916869671
+      objectReference: {fileID: 0}
     - target: {fileID: 6533228690169697347, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.49
@@ -316,13 +336,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1870574116981360497, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 124915055}
+      addedObject: {fileID: 124915056}
   m_SourcePrefab: {fileID: 100100000, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
 --- !u!1 &978286649
 GameObject:
@@ -667,11 +688,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSoundEvent:
     Guid:
-      Data1: -678345244
-      Data2: 1171208262
-      Data3: 191609516
-      Data4: -1785987300
-    Path: event:/Robot Movement
+      Data1: 1750376277
+      Data2: 1289608649
+      Data3: 1582206137
+      Data4: -2029324097
+    Path: event:/Robot/Necrobug-Robot-Movement
   movementThreshold: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

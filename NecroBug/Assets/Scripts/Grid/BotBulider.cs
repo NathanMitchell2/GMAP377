@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -183,8 +182,8 @@ public class BotBulider : MonoBehaviour
 
         foreach (var part in parts)
         {
-            GameObject builtPart = part.BuildPart(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
-            builtPart.transform.SetParent(buildTransform.transform);
+            GameObject builtPart = part.BuildPart();//buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
+            //builtPart.transform.SetParent(buildTransform.transform);
 
             if (builtPart.GetComponent<carControler>() != null)
                 car = builtPart;
@@ -223,7 +222,10 @@ public class BotBulider : MonoBehaviour
         }
         actionManager.BindParts(builtParts);
 
-        //car.transform.SetParent(buildTransform,false);
+
+        car.transform.SetLocalPositionAndRotation(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position, Quaternion.identity);
+        car.transform.SetParent(buildTransform);
+        car.transform.localScale = Vector3.one;
     }
     public bool ProgressOrientationSelected()
     {

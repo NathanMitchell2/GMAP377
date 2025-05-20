@@ -45,7 +45,23 @@ public class BotPart : MonoBehaviour
         GameObject part = Instantiate(bugPart, pos, rot, transform);
 
         return part;
-        
+
+        return bugPart;
+    }
+    public GameObject BuildPart()
+    {
+        //Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
+        //Vector3 pos = rotation.MultiplyVector(this.pos) * GridPositionToLocalPosition+transform.position;
+        //Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis)*bugPart.transform.rotation;
+
+        Transform storage = GetPartStorage();
+        Vector3 pos = this.pos * GridPositionToLocalPosition + storage.localPosition;
+        Quaternion rot = storage.localRotation;
+
+        GameObject part = Instantiate(bugPart, pos, rot);
+
+        return part;
+
         return bugPart;
     }
 

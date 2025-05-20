@@ -322,7 +322,16 @@ Varyings SplatmapVert(Attributes v)
         o.bitangent = half4(normalInput.bitangentWS, viewDirWS.z);
     #else
         o.normal = TransformObjectToWorldNormal(v.normalOS);
-        OUTPUT_SH4(Attributes.positionWS, o.normal.xyz, GetWorldSpaceNormalizeViewDir(Attributes.positionWS), o.vertexSH);
+        #if UNITY_VERSION >= 60000009
+            float4 probeOcclusionUnused;
+            OUTPUT_SH4(Attributes.positionWS, o.normal.xyz, GetWorldSpaceNormalizeViewDir(Attributes.positionWS), o.vertexSH, probeOcclusionUnused);
+        #elif UNITY_VERSION >= 202312
+            OUTPUT_SH4(Attributes.positionWS, o.normal.xyz, GetWorldSpaceNormalizeViewDir(Attributes.positionWS), o.vertexSH);
+        #elif UNITY_VERSION >= 202310
+            OUTPUT_SH(Attributes.positionWS, o.normal.xyz, GetWorldSpaceNormalizeViewDir(Attributes.positionWS), o.vertexSH);
+        #else
+            OUTPUT_SH(o.normal.xyz, o.vertexSH);
+        #endif
     #endif
 
     half fogFactor = 0;

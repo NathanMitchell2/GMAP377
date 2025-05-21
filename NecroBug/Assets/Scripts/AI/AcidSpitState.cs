@@ -47,7 +47,7 @@ public class AcidSpitState : IState
         // Cooldown
         enemy.alreadyAttacked = true;
         enemy.Invoke(nameof(enemy.ResetAttack), enemy.timeBetweenAttacks);
-        enemy.attackCooldown = 1.5f;
+        enemy.attackCooldown = 1f;
 
         yield return new WaitForSeconds(1f); // let the projectile travel
 

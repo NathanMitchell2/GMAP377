@@ -11,7 +11,6 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        Debug.Log($"[Before Damage] Health: {health}, Damage: {dmg}");
         health -= dmg;
         Debug.Log($"[After Damage] Health: {health}");
         hitFlash.TriggerFlash();

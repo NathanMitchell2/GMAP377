@@ -74,11 +74,11 @@ public class AnimLegControl : MonoBehaviour
 
         if(resetTimer >= 1)
         {
-            ResetTipController();
+            // ResetTipController();
             resetTimer = 0;
         }
         // Visualize the ray in Scene view
-        Debug.DrawRay(transform.position + transform.up * upwardRaycast, -transform.up * downwardRaycast, Color.red);
+        // Debug.DrawRay(transform.position + transform.up * upwardRaycast, -transform.up * downwardRaycast, Color.red);
 
 
         if (resetCooldown > 0f)

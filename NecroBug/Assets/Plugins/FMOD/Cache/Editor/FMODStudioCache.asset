@@ -1,6 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8364323694798628128
+--- !u!114 &-8868244749009813211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638833350639334669
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-8321871289709625395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,8 +71,26 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3081
---- !u!114 &-4376835628784612110
+  Length: 0
+--- !u!114 &-2727424466272508118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/test.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/test.bank
+  Name: test
+  StudioPath: bank:/test
+  lastModified: 638833350639595034
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-439130025574310688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,8 +116,123 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1070
---- !u!114 &-3293009224177369957
+  Length: 1595
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 796347039429246829}
+  - {fileID: -8868244749009813211}
+  - {fileID: 549201797856060944}
+  - {fileID: -2727424466272508118}
+  EditorEvents:
+  - {fileID: -7068602463642064242}
+  - {fileID: -439130025574310688}
+  - {fileID: -4813684394729358215}
+  - {fileID: 7144365653648157800}
+  - {fileID: 4835245213130420980}
+  - {fileID: -7264347548672395085}
+  - {fileID: 6902316191690634971}
+  - {fileID: -8321871289709625395}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -8868244749009813211}
+  StringsBanks:
+  - {fileID: 796347039429246829}
+  cacheVersion: 131847
+  cacheTime: 638833350639595034
+  SerializableEventsDict:
+  - key: event:/Robot/Necrobug Robot Attachment
+    index: 0
+  - key: event:/Robot/Necrobug Robot Idle_mixdown
+    index: 1
+  - key: event:/Other/mushroom explosion
+    index: 2
+  - key: event:/Robot/Necrobug Robot Death_mixdown
+    index: 3
+  - key: event:/Robot/Necrobug-Robot-Movement
+    index: 4
+  - key: event:/Other/necrobug version B
+    index: 5
+  - key: event:/Other/click
+    index: 6
+  - key: event:/Bug/Beetle
+    index: 7
+--- !u!114 &549201797856060944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/sfx.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/sfx.bank
+  Name: sfx
+  StudioPath: bank:/sfx
+  lastModified: 638833350639571606
+  FileSizes: []
+  Exists: 1
+--- !u!114 &796347039429246829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638833350639348048
+  FileSizes:
+  - Name: 
+    Value: 1236
+  Exists: 1
+--- !u!114 &4835245213130420980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot/Necrobug-Robot-Movement
+  m_EditorClassIdentifier: 
+  Path: event:/Robot/Necrobug-Robot-Movement
+  Guid:
+    Data1: 1750376277
+    Data2: 1289608649
+    Data3: 1582206137
+    Data4: -2029324097
+  Banks:
+  - {fileID: 549201797856060944}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 25224
+--- !u!114 &6902316191690634971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

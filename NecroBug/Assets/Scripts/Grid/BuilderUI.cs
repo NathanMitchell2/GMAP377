@@ -43,7 +43,7 @@ public class BuilderUI : MonoBehaviour
     {
         GameObject part = GetPart("NecroBug");
         BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(4, 4, 4));
+        bPart.SetPos(new Vector3(4,4,4));
         builder.AddPart(bPart);
         builder.SetSelected(0);
         UpdateAll();

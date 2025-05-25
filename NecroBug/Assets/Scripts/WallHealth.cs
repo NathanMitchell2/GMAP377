@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WallHealth : MonoBehaviour
 {
-    [SerializeField] protected int health = 25;
+    [SerializeField] protected int health = 50;
     [SerializeField] private HitFlash hitFlash;
 
     public void dealDamage(int dmg)

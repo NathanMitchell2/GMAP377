@@ -1160,6 +1160,7 @@ MonoBehaviour:
   partTransform: {fileID: 0}
   selectUILoc: {fileID: 8776665456594672264}
   selectUIPrefab: {fileID: 3233218267484049203, guid: 056b482b7f338d645ad3398883aacf32, type: 3}
+  builtBotUI: {fileID: 4334060661285312112}
 --- !u!1 &1399125127510068640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,7 +3132,7 @@ GameObject:
   - component: {fileID: 5390718334523530023}
   - component: {fileID: 4615366137133357847}
   - component: {fileID: 6855959021727389255}
-  - component: {fileID: 5516888303818173899}
+  - component: {fileID: 4334060661285312112}
   m_Layer: 5
   m_Name: Build Button
   m_TagString: Untagged
@@ -3157,7 +3158,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5390718334523530023
 CanvasRenderer:
@@ -3252,8 +3253,8 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5516888303818173899
+        m_CallState: 0
+--- !u!114 &4334060661285312112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3262,9 +3263,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3015541180385735223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c54b27b13743a64cb2a1e4469a95029, type: 3}
+  m_Script: {fileID: 11500000, guid: 59936d4430f3de64b967fc586de655d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  successText: Build Success
+  processingText: In Progress
+  failText: Build Failed
+  successImg: {fileID: 21300000, guid: 1fc4cd48b8250574bab238e6e82eadf2, type: 3}
+  processingImg: {fileID: 21300000, guid: 2fa72b2284c00f641bd9880dbe489a76, type: 3}
+  failImg: {fileID: 21300000, guid: f06edadd8788aca4dbd0d01e4e91b37a, type: 3}
 --- !u!1 &3078066653864582836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5778,7 +5785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Build Bot
+  m_text: Build Success
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 447370be205decc499c78c2561c4be1b, type: 2}
   m_sharedMaterial: {fileID: 6122534638808541047, guid: 447370be205decc499c78c2561c4be1b, type: 2}

@@ -26,7 +26,7 @@ public class MushroomExplosion : MonoBehaviour
                 health.dealDamage(200);
                 
            }
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

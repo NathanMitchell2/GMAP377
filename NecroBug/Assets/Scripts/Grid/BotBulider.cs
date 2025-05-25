@@ -74,7 +74,7 @@ public class BotBulider : MonoBehaviour
     {
         part.Place(grid);
         //Instantiate(part.gameObject, gridTransform);
-        actionManager.AddAction();
+        actionManager.AddAction(part.defaultBind);
         parts.Add(part);
     }
     public bool MovePart(BotPart part, Vector3 pos)

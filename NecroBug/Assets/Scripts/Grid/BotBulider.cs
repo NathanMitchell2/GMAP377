@@ -18,6 +18,9 @@ public class BotBulider : MonoBehaviour
     private BotPart selectedPart;
     private GridDisplayCell[,,] gridDisplayCells;
     [SerializeField] private Transform buildTransform;
+    [SerializeField] private GameObject playerCar;
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private UIUpdate uiObject;
     private List<GameObject> builtParts = new List<GameObject>();
     [SerializeField] private ActionManager actionManager;
 
@@ -181,7 +184,7 @@ public class BotBulider : MonoBehaviour
         if (!grid.Check())
             return;
         DestroyBot();
-        GameObject car = null;
+        PlayerStats car = null;
         builtParts = new List<GameObject>();
 
         foreach (var part in parts)
@@ -189,8 +192,16 @@ public class BotBulider : MonoBehaviour
             GameObject builtPart = part.BuildPart();//buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
             //builtPart.transform.SetParent(buildTransform.transform);
 
-            if (builtPart.GetComponent<carControler>() != null)
-                car = builtPart;
+            if (builtPart.GetComponent<PlayerStats>() != null)
+            {
+                PlayerStats statsReference = builtPart.GetComponent<PlayerStats>();
+                PlayerStats playerReference = playerObject.GetComponentInChildren<PlayerStats>();
+                car = statsReference;
+                // Debug.Log(playerReference.health);
+                // Debug.Log(car.health);
+                car.health = playerReference.health;
+                uiObject.StatInitialize();
+            }
 
             builtParts.Add(builtPart);
         }

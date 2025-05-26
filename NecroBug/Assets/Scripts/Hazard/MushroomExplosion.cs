@@ -26,7 +26,15 @@ public class MushroomExplosion : MonoBehaviour
                 {
                     //rb.isKinematic = false;
                     //rb.AddForce((transform.position - hit.transform.position) * explosionForce);
-                    rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+                    if(hit.gameObject.tag == "Player")
+                    {
+                        if (hit.GetComponent<carControler>() != null)
+                            rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+                    }
+                    else
+                    {
+                        rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+                    }
                 }
             }
 

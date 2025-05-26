@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyReductionBar;
 
+    public void Initialize(Image healthBar, Image energyBar, Image energyReductionBar)
+    {
+        this.healthBar = healthBar;
+        this.energyBar = energyBar;
+        this.energyReductionBar = energyReductionBar;
+
+        UpdateHealth();
+    }
     public void TakeDamage(int dmg)
     {
         health -= dmg;
@@ -28,12 +37,12 @@ public class PlayerStats : MonoBehaviour
 
     private void KillPlayer()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UpdateHealth()
     {
-        // Debug.Log(health);
+        Debug.Log("Updated Health: " + health);
         healthBar.fillAmount = (float)health / 100;
     }
 }

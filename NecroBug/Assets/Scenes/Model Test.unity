@@ -2733,6 +2733,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2162016129103716682, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: uiObject
+      value: 
+      objectReference: {fileID: 1945840274}
+    - target: {fileID: 2162016129103716682, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: playerCar
+      value: 
+      objectReference: {fileID: 947317054}
+    - target: {fileID: 2162016129103716682, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 928589936}
+    - target: {fileID: 2162016129103716682, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: actionManager
       value: 
       objectReference: {fileID: 482691563}
@@ -4391,7 +4403,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3894527981154781045, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
   m_PrefabInstance: {fileID: 482691560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 928589936}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc591377df981a84283a249e9900b352, type: 3}
@@ -8644,6 +8656,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
+--- !u!1 &928589936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  m_PrefabInstance: {fileID: 482691560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &930833461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8737,6 +8754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JetBeetle
       objectReference: {fileID: 0}
+    - target: {fileID: 4876015489555194247, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5216799785784512839, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 173.96552
@@ -8790,6 +8811,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6533228690169697347, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
   m_PrefabInstance: {fileID: 1302553953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &947317054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4571442865685866250, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  m_PrefabInstance: {fileID: 482691560}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &947568941
 PrefabInstance:
@@ -20132,6 +20158,7 @@ GameObject:
   - component: {fileID: 1945840271}
   - component: {fileID: 1945840273}
   - component: {fileID: 1945840272}
+  - component: {fileID: 1945840274}
   m_Layer: 5
   m_Name: Bars
   m_TagString: Untagged
@@ -20198,6 +20225,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945840270}
   m_CullTransparentMesh: 1
+--- !u!114 &1945840274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945840270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6f7a0d5e5a6144ea79f8552061e859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 928589936}
+  healthBar: {fileID: 1520878117}
+  energyBar: {fileID: 1786477369}
+  energyReductionBar: {fileID: 457747569}
 --- !u!1001 &1950035858
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,13 +1,15 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BotBulider : MonoBehaviour
 {
     private const int x = 12;
     private const int y = 12;
     private const int z = 12;
-    [SerializeField] GameObject bot;
+    //[SerializeField] GameObject bot;
     [SerializeField] GameObject cell;
     [SerializeField] Tile empty;
     [SerializeField] Transform gridTransform;
@@ -16,9 +18,13 @@ public class BotBulider : MonoBehaviour
     private BotPart selectedPart;
     private GridDisplayCell[,,] gridDisplayCells;
     [SerializeField] private Transform buildTransform;
+    [SerializeField] private GameObject playerCar;
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private UIUpdate uiObject;
     private List<GameObject> builtParts = new List<GameObject>();
+    [SerializeField] private ActionManager actionManager;
 
-    private void Awake()
+    public void SetUp()
     {
         grid = new BotGrid(x, y, z, empty);
         //GameObject bot = Instantiate(this.bot, transform);
@@ -40,7 +46,15 @@ public class BotBulider : MonoBehaviour
             }
         }
     }
+    private void Awake()
+    {
+        SetUp();
+    }
 
+    public bool Check()
+    {
+        return grid.Check();
+    }
     public void UpdateDisplayCells()
     {
         for (int i = 0; i < x; i++)
@@ -66,6 +80,8 @@ public class BotBulider : MonoBehaviour
     public void AddPart(BotPart part)
     {
         part.Place(grid);
+        //Instantiate(part.gameObject, gridTransform);
+        actionManager.AddAction(part.defaultBind);
         parts.Add(part);
     }
     public bool MovePart(BotPart part, Vector3 pos)
@@ -76,7 +92,7 @@ public class BotBulider : MonoBehaviour
     {
         return part.Move(new Vector3(x,y,z), grid);
     }
-
+    
     public bool RotatePart(BotPart part, Vector3 axis)
     {
         return part.Rotate(axis, grid);
@@ -87,15 +103,34 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemovePart(BotPart part)
     {
-        if(part.Remove(grid))
-            return parts.Remove(part);
+        if(parts.IndexOf(part)!=0 && part.Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        {
+            int index = parts.IndexOf(part);
+            if (index != -1)
+            {
+                BotPart part2 = parts[index];
+                actionManager.RemoveAction(index);
+                parts.RemoveAt(index);
+                Destroy(part2.gameObject);
+                return true;
+            }
+        }
         return false;
 
     }
     public bool RemovePart(int index)
     {
-        if (parts[index].Remove(grid)&&index!=0) //HARD CODED, can't remove first item in list (for car)
-            return parts.Remove(parts[index]);
+        if (index != 0&&parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        {
+            if (index != -1)
+            {
+                BotPart part2 = parts[index];
+                actionManager.RemoveAction(index);
+                parts.RemoveAt(index);
+                Destroy(part2.gameObject);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -127,10 +162,7 @@ public class BotBulider : MonoBehaviour
     }
     public bool RemoveSelected()
     {
-        if (selectedPart.Remove(grid))
-            return parts.Remove(selectedPart);
-        return false;
-
+        return RemovePart(selectedPart);
     }
     public BotPart GetSelected()
     {
@@ -139,8 +171,11 @@ public class BotBulider : MonoBehaviour
 
     private void DestroyBot()
     {
-        foreach (GameObject part in builtParts)
+        for (int i = 0; i < builtParts.Count; i++)
         {
+            var part = builtParts[i];
+
+            //Unbind action?
             Destroy(part.gameObject);
         }
     }
@@ -149,25 +184,45 @@ public class BotBulider : MonoBehaviour
         if (!grid.Check())
             return;
         DestroyBot();
-        GameObject car = null;
+        PlayerStats car = null;
         builtParts = new List<GameObject>();
 
         foreach (var part in parts)
         {
-            GameObject builtPart = part.BuildPart(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
-            builtPart.transform.SetParent(buildTransform.transform);
+            GameObject builtPart = part.BuildPart();//buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
+            //builtPart.transform.SetParent(buildTransform.transform);
 
-            if (builtPart.GetComponent<carControler>() != null)
-                car = builtPart;
+            if (builtPart.GetComponent<PlayerStats>() != null)
+            {
+                PlayerStats statsReference = builtPart.GetComponent<PlayerStats>();
+                PlayerStats playerReference = playerObject.GetComponentInChildren<PlayerStats>();
+                car = statsReference;
+                // Debug.Log(playerReference.health);
+                // Debug.Log(car.health);
+                car.health = playerReference.health;
+                uiObject.StatInitialize();
+            }
 
             builtParts.Add(builtPart);
         }
 
-        foreach (var part in builtParts)
+
+        for(int i = 0; i < builtParts.Count; i++)
         {
+            var part = builtParts[i];
+
             //Debug.Log(buildTransform.GetComponent<InputManager>().name);
             //Debug.Log(part.GetComponentInChildren<InputStrategy>().name);
-            buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
+
+            //buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
+            
+            InputStrategy strat = part.GetComponent<InputStrategy>();
+
+            if(strat != null)
+            {
+                buildTransform.GetComponent<InputManager>().SetStrat(strat);
+            }
+
             if (car != null)
             {
                 if (part != car)
@@ -180,7 +235,31 @@ public class BotBulider : MonoBehaviour
                 Debug.Log("No NecroBug Part");
             }
         }
+        actionManager.BindParts(builtParts);
 
-        //car.transform.SetParent(buildTransform,false);
+
+        car.transform.SetLocalPositionAndRotation(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position, Quaternion.identity);
+        car.transform.SetParent(buildTransform);
+        car.transform.localScale = Vector3.one;
+    }
+    public bool ProgressOrientationSelected()
+    {
+        return selectedPart.ProgressOrientation(grid);
+    }
+
+
+    public void BindAction(int index)
+    {
+        actionManager.RebindAction(index);
+    }
+
+    public string GetKeybindText(int index)
+    {
+        return actionManager.GetKeybindText(index);
+    }
+
+    public int IndexOf(BotPart part)
+    {
+        return parts.IndexOf(part);
     }
 }

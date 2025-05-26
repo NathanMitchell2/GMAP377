@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.UIElements;
 
 public class AnimLegControl : MonoBehaviour
@@ -7,11 +8,12 @@ public class AnimLegControl : MonoBehaviour
 
     public float upwardRaycast;
     public float downwardRaycast;
-    public float distanceBeforeSnap;
+    public float defaultSnapDistance;
     public float distanceFromRoot;
-    public float moveTime;
+    public float defaultMoveTime;
     public AnimationCurve heightCurve;
     public float postResetDelay = 0.2f;
+    [SerializeField] private float snapDistanceVariance = 0f;
 
     private float resetCooldown = 0f;
     private float tipDistance = 1;
@@ -19,6 +21,9 @@ public class AnimLegControl : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 defaultTipLocalPosition;
     private float timer = 0;
+    private float resetTimer = 0f;
+    private float distanceBeforeSnap;
+    private float moveTime;
 
     [field: Header("Raycast Settings")]
     public LayerMask groundMask;
@@ -28,6 +33,7 @@ public class AnimLegControl : MonoBehaviour
     public GameObject root;
     public GameObject tip;
     public GameObject tipController;
+    public GameObject car;
 
     private void Awake()
     {
@@ -35,6 +41,9 @@ public class AnimLegControl : MonoBehaviour
         {
             defaultTipLocalPosition = transform.localPosition;
         }
+        distanceBeforeSnap = defaultSnapDistance + defaultSnapDistance*Random.Range(-snapDistanceVariance,snapDistanceVariance);
+        moveTime = defaultMoveTime;
+        root.GetComponentInChildren<RigBuilder>().Build();
     }
     void Update()
     {
@@ -63,8 +72,13 @@ public class AnimLegControl : MonoBehaviour
 
         timer += 1 * Time.deltaTime;
 
+        if(resetTimer >= 1)
+        {
+            // ResetTipController();
+            resetTimer = 0;
+        }
         // Visualize the ray in Scene view
-        Debug.DrawRay(transform.position + transform.up * upwardRaycast, -transform.up * downwardRaycast, Color.red);
+        // Debug.DrawRay(transform.position + transform.up * upwardRaycast, -transform.up * downwardRaycast, Color.red);
 
 
         if (resetCooldown > 0f)
@@ -98,6 +112,12 @@ public class AnimLegControl : MonoBehaviour
         {
             MoveLegController();
         }
+
+        if (Vector3.Distance(transform.localPosition, defaultTipLocalPosition) > 1)
+        {
+            // Debug.Log(transform.localPosition + " + " + defaultTipLocalPosition);
+            resetTimer += 1 * Time.deltaTime;
+        }
     }
 
     void MoveLegController()
@@ -114,8 +134,8 @@ public class AnimLegControl : MonoBehaviour
         else
         {
             // Because of this statement, you cannot control the moveTime and distanceBeforeSnap in the unity editor public variables
-            moveTime = 0.15f;
-            distanceBeforeSnap = 0.7f;
+            moveTime = defaultMoveTime;
+            distanceBeforeSnap = defaultSnapDistance + defaultSnapDistance * Random.Range(-snapDistanceVariance, snapDistanceVariance);
         }
     }
 

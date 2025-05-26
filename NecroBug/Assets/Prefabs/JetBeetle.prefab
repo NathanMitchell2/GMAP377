@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 216531384345388473}
   - component: {fileID: 6631373023061904936}
   - component: {fileID: 1786034286995834412}
+  - component: {fileID: 5302667835694646114}
   m_Layer: 0
   m_Name: JetBeetle
   m_TagString: Enemy
@@ -133,13 +134,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 604390345361080852}
   rb: {fileID: 186762200383192340}
-  player: {fileID: 0}
+  player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  fieldOfView: 120
+  viewDistance: 25
+  rayCount: 30
+  visionObstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  noiseDetectionSpeed: 0
   sightRange: 25
   attackRange: 10.5
   retreatRange: 10
@@ -149,10 +157,12 @@ MonoBehaviour:
   chargeUpTime: 1.5
   jumpForce: 40
   maxPlayerSpeedCharge: 3
+  patrolCenter: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   alreadyAttacked: 0
   isCharging: 0
+  isInCombat: 0
   lastPlayerPosition: {x: 0, y: 0, z: 0}
   playerSpeed: 0
   playerInSightRange: 0
@@ -161,6 +171,14 @@ MonoBehaviour:
   staminaDrainPerCharge: 30
   staminaRecoverRate: 10
   attackCooldown: 0
+  enemyType: 0
+  spitPoint: {fileID: 0}
+  acidProjectilePrefab: {fileID: 0}
+  acidSpitForce: 20
+  playerStats: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+  chargeDamage: 20
+  acidDamage: 10
+  damageCooldown: 0.5
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -196,6 +214,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  hitFlash: {fileID: 5302667835694646114}
+  damageSound:
+    Guid:
+      Data1: -542312666
+      Data2: 1206578386
+      Data3: -1461718862
+      Data4: 1801014461
+    Path: event:/Bug/bug hurt
 --- !u!114 &6631373023061904936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032a15b7cb4065b4783ca5c3c6f47abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 6788982746073355530, guid: bba721c7fd053be4b9d9ee12a71a5d3e, type: 3}
+  prefabs: []
 --- !u!65 &1786034286995834412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,3 +256,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.008, y: 0.006, z: 0.016}
   m_Center: {x: 0, y: 0, z: -0.001}
+--- !u!114 &5302667835694646114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876015489555194247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 0.3

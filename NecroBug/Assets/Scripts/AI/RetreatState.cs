@@ -30,7 +30,7 @@ public class RetreatState : IState
         if (distanceToPlayer >= enemy.retreatRange + 2f && enemy.stamina >= enemy.staminaDrainPerCharge)
         {
             if (enemy.playerInAttackRange && enemy.attackCooldown <= 0f)
-                enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
+                enemy.ChangeState(new TransitionState(0.5f, enemy.GetAttackState()));
             else
                 enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
         }

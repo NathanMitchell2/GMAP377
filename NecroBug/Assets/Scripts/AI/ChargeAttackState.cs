@@ -1,16 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class ChargeAttackState : IState
 {
     private bool isChargingStarted = false;
 
+    [SerializeField]
+    private string chargeSound = "event:/Bug/bug hurt with scream";
+
+
+
     public void Enter(EnemyAI enemy)
     {
-            enemy.agent.SetDestination(enemy.transform.position); // stop movement
-            enemy.isCharging = true;
-            enemy.isInCombat = true;
-            enemy.ChangeStateCoroutine(ChargeAndSmash(enemy));
+        enemy.agent.SetDestination(enemy.transform.position); // stop movement
+        enemy.isCharging = true;
+        enemy.isInCombat = true;
+        enemy.ChangeStateCoroutine(ChargeAndSmash(enemy));
+        RuntimeManager.PlayOneShot(chargeSound, Camera.main.transform.position);
+        Debug.Log("Charge sound played");
     }
 
     public void Update(EnemyAI enemy) { }
@@ -77,7 +85,7 @@ public class ChargeAttackState : IState
         yield return new WaitForSeconds(1.5f); // wait for landing/impact
 
         // Reset enemy
-        enemy.rb.velocity = Vector3.zero;
+        enemy.rb.linearVelocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;

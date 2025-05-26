@@ -20,7 +20,7 @@ public class ChaseState : IState
                 enemy.stamina >= enemy.staminaDrainPerCharge &&
                 enemy.attackCooldown <= 0f)
         {
-            enemy.ChangeState(new TransitionState(0.5f, new ChargeAttackState()));
+            enemy.ChangeState(new TransitionState(0.5f, enemy.GetAttackState()));
         }
         else if (!playerInSightRange && !playerInAttackRange && distance > enemy.retreatRange)
             enemy.ChangeState(new TransitionState(0.5f,new PatrolState()));

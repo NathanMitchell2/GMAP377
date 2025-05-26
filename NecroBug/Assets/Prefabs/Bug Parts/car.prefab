@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 7908505440710472612}
   - component: {fileID: 8858329393499569411}
   - component: {fileID: 1844405598309641353}
+  - component: {fileID: 7744768386348731344}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -163,6 +164,7 @@ MonoBehaviour:
   baseDriverSpeed: 0
   baseSteerSpeed: 0
   wingsPickedUp: 0
+  totalMass: 0
 --- !u!114 &8858329393499569411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +192,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
+--- !u!135 &7744768386348731344
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 1.6281425, z: 0}
 --- !u!1 &4815284830239154656
 GameObject:
   m_ObjectHideFlags: 0

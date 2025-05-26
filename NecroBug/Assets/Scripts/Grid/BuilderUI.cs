@@ -231,7 +231,7 @@ public class BuilderUI : MonoBehaviour
 
         if(checkAndBuild != null && !checkAndBuild.Current)
         {
-            Debug.LogError("Reset");
+            //Debug.LogError("Reset");
             checkAndBuild.Dispose();
         }
         checkAndBuild = BuildBot();

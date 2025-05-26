@@ -14,7 +14,7 @@ public class PickupManager : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<ModularBugPart>())
+        if(other.GetComponent<PickupIdentifier>())
         {
             //Destroy(other);
             pickups.Add(other);
@@ -22,7 +22,7 @@ public class PickupManager : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if(other.GetComponent<ModularBugPart>())
+        if(other.GetComponent<PickupIdentifier>())
         {
             pickups.Remove(other);
         }
@@ -32,12 +32,14 @@ public class PickupManager : MonoBehaviour
     {
         foreach(Collider pickup in pickups)
         {
-            pickups.Remove(pickup);
+            //pickups.Remove(pickup);
             Destroy(pickup.gameObject);
             //pickup.transform.parent = transform.parent;
             //manager.SetStrat(pickup.GetComponent<InputStrategy>());
             //pickup.GetComponent<ModularBugPart>().OffsetPosition();
             //pickups.Remove(pickup);
         }
+
+        pickups.Clear();
     }
 }

@@ -9,10 +9,10 @@ public class ActionManager : MonoBehaviour
     private List<ModularBugPart> bugParts = new List<ModularBugPart>();
     private List<InputActionRebindingExtensions.RebindingOperation> rebinds = new List<InputActionRebindingExtensions.RebindingOperation>();
 
-    public void AddAction()
+    public void AddAction(string defaultBind)
     {
         InputAction action = new InputAction();
-        action.AddBinding("<Keyboard>/1");//tag AddCompositeBinding("ButtonWithTwoModifiers").With("Button", "<Keyboard>/1");
+        action.AddBinding(defaultBind);// "<Keyboard>/1");//tag AddCompositeBinding("ButtonWithTwoModifiers").With("Button", "<Keyboard>/1");
 
         action.Enable();
         actions.Add(action);
@@ -33,6 +33,7 @@ public class ActionManager : MonoBehaviour
             {
                 context.action.Enable();
             });
+        //Debug.LogError(actions[index].bindings[0].ToString());
     }
 
     public void BindParts(List<GameObject> parts)

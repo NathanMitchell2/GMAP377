@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 1844405598309641353}
   - component: {fileID: 8467677399557758506}
   - component: {fileID: 1631552486043401826}
+  - component: {fileID: 7744768386348731344}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -162,7 +163,10 @@ MonoBehaviour:
   wheel4: {fileID: 5307402978834483563}
   driverSpeed: 3000
   steerSpeed: 40
+  baseDriverSpeed: 0
+  baseSteerSpeed: 0
   wingsPickedUp: 0
+  totalMass: 0
 --- !u!114 &8858329393499569411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +232,27 @@ MonoBehaviour:
   healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
   energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
   energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
+--- !u!135 &7744768386348731344
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 1.6281425, z: 0}
 --- !u!1 &4815284830239154656
 GameObject:
   m_ObjectHideFlags: 0

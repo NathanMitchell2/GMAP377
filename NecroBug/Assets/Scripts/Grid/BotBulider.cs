@@ -51,6 +51,10 @@ public class BotBulider : MonoBehaviour
         SetUp();
     }
 
+    public bool Check()
+    {
+        return grid.Check();
+    }
     public void UpdateDisplayCells()
     {
         for (int i = 0; i < x; i++)
@@ -77,7 +81,7 @@ public class BotBulider : MonoBehaviour
     {
         part.Place(grid);
         //Instantiate(part.gameObject, gridTransform);
-        actionManager.AddAction();
+        actionManager.AddAction(part.defaultBind);
         parts.Add(part);
     }
     public bool MovePart(BotPart part, Vector3 pos)

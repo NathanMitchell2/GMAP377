@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class BuilderUI : MonoBehaviour
 {
@@ -30,9 +27,11 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private Transform partTransform;
     [SerializeField] private Transform selectUILoc;
     [SerializeField] private GameObject selectUIPrefab;
+    [SerializeField] private BotBuiltIUIFlipFlop builtBotUI;
     private int axis = 0;
     BotBulider builder;
 
+    private IEnumerator<bool> checkAndBuild;
 
     private void Awake()
     {
@@ -43,7 +42,7 @@ public class BuilderUI : MonoBehaviour
     {
         GameObject part = GetPart("NecroBug");
         BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(4, 4, 4));
+        bPart.SetPos(new Vector3(4,4,4));
         builder.AddPart(bPart);
         builder.SetSelected(0);
         UpdateAll();
@@ -227,6 +226,35 @@ public class BuilderUI : MonoBehaviour
     {
         BuildList();
         builder.UpdateDisplayCells();
+        //builtBotUI.GetComponent<BotBuiltIUIFlipFlop>().SetBuildSuccess(builder.Check());
+        //CreateBot();
+
+        if(checkAndBuild != null && !checkAndBuild.Current)
+        {
+            Debug.LogError("Reset");
+            checkAndBuild.Dispose();
+        }
+        checkAndBuild = BuildBot();
+        StartCoroutine(checkAndBuild);
+    }
+
+    private IEnumerator<bool> BuildBot()
+    {
+        builtBotUI.SetBuildSuccess("processing");
+        bool check;
+        yield return false;
+        yield return check = builder.Check();
+        if(!check)
+        {
+            builtBotUI.SetBuildSuccess("failed");
+            yield return true;
+        }
+        else
+        {
+            CreateBot();
+            builtBotUI.SetBuildSuccess("success");
+            yield return true;
+        }
     }
 
     public void Rotate()

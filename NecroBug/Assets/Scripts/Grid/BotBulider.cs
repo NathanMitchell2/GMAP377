@@ -48,6 +48,10 @@ public class BotBulider : MonoBehaviour
         SetUp();
     }
 
+    public bool Check()
+    {
+        return grid.Check();
+    }
     public void UpdateDisplayCells()
     {
         for (int i = 0; i < x; i++)

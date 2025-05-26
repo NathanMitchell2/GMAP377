@@ -28,8 +28,16 @@ public class SelectableBotPartUI : MonoBehaviour
     public void SetPart(InventoryThing inventoryThing)
     {
         text.text = inventoryThing.GetName();
-        img.sprite = inventoryThing.GetIcon();
-    }
+        if (inventoryThing.GetIcon() != null)
+        {
+            img.sprite = inventoryThing.GetIcon();
+        }
+        else
+        {
+            img.color = Color.clear;
+        }
+
+        }
     public void SetUI(BuilderUI builderUI)
     {
         this.ui = builderUI;

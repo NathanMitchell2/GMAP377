@@ -1,13 +1,39 @@
+
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class carControler : MonoBehaviour
 {
+    private const float ogMass = 1500;
     public Rigidbody rigid;
     public WheelCollider wheel1, wheel2, wheel3, wheel4;
     public float driverSpeed, steerSpeed;
+    public float baseDriverSpeed, baseSteerSpeed;
     float horizontalInput, verticalInput;
     public bool wingsPickedUp = false;
+
+    public float totalMass;
+
+    void Awake()
+    {
+        baseDriverSpeed = driverSpeed;
+        baseSteerSpeed = steerSpeed;
+    }
+
+    public void TerrainSpeedDown(float drive, float steer)
+    {
+        if (GetComponentInChildren<LegsPartIdentifier>() == null)
+        {
+            driverSpeed = baseDriverSpeed * drive;
+            steerSpeed = baseSteerSpeed * steer;
+        }
+    }
+    public void TerrainSpeedReset()
+    {
+        driverSpeed = baseDriverSpeed;
+        steerSpeed = baseSteerSpeed;
+    }
     public void setDriverSpeed(float speed)
     {
         driverSpeed = speed;
@@ -29,7 +55,17 @@ public class carControler : MonoBehaviour
     }
 
     void FixedUpdate() {
-        float motor = verticalInput * driverSpeed;
+        float totalMass = 0;
+        List<Rigidbody> bodies = new List<Rigidbody>(GetComponentsInChildren<Rigidbody>());
+
+        for (int i = 0; i < bodies.Count; i++)
+        {
+            totalMass += bodies[i].mass;
+        }
+
+
+
+        float motor = verticalInput * driverSpeed * ogMass/totalMass;
         wheel1.motorTorque = motor;
         wheel2.motorTorque = motor;
         wheel3.motorTorque = motor;

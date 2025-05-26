@@ -14,7 +14,7 @@ public class PickupManager : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<ModularBugPart>())
+        if(other.GetComponent<PickupIdentifier>())
         {
             //Destroy(other);
             pickups.Add(other);
@@ -22,7 +22,7 @@ public class PickupManager : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if(other.GetComponent<ModularBugPart>())
+        if(other.GetComponent<PickupIdentifier>())
         {
             pickups.Remove(other);
         }

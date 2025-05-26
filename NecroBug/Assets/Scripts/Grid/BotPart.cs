@@ -15,6 +15,7 @@ public class BotPart : MonoBehaviour
     private int orientation = 0;
     [SerializeField] private List<GameObject> orientations = new List<GameObject>();
     public bool customBinds = true;
+    public string defaultBind = "";
     //protected List<Block> blocks = new List<Block>();
 
     void Awake()

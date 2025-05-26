@@ -28,6 +28,7 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private Transform selectUILoc;
     [SerializeField] private GameObject selectUIPrefab;
     [SerializeField] private BotBuiltIUIFlipFlop builtBotUI;
+    [SerializeField] private GameObject gridRotatePivot;
     private int axis = 0;
     BotBulider builder;
 
@@ -264,6 +265,10 @@ public class BuilderUI : MonoBehaviour
         builder.ProgressOrientationSelected();
         UpdateAll();
     
+    }
+    public void RotateGrid(float rotation)
+    {
+        gridRotatePivot.transform.Rotate(new Vector3(0, rotation, 0));
     }
 
     private int BoundAxis(int axis)

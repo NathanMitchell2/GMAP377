@@ -219,33 +219,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8339849625644329223}
     m_Modifications:
-    - target: {fileID: 326289843675469647, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326289843675469647, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326289843675469647, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 326289843675469647, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1317961405623352928, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: m_Name
       value: BotBuilder
-      objectReference: {fileID: 0}
-    - target: {fileID: 2221150989522516541, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2221150989522516541, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2427971535301375786, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: m_Size
@@ -254,22 +230,6 @@ PrefabInstance:
     - target: {fileID: 2427971535301375786, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: m_Value
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2467414874505349652, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2467414874505349652, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2849141910974091193, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2849141910974091193, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2849141910974091193, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: m_AnchorMin.y
@@ -355,17 +315,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4779043996921304837, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6745579631728708225}
+    - target: {fileID: 4779043996921304837, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateGrid
+      objectReference: {fileID: 0}
     - target: {fileID: 4887485975714897892, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: gridTransform
       value: 
       objectReference: {fileID: 6311205398060400144}
-    - target: {fileID: 7057727407077790777, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7057727407077790777, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+    - target: {fileID: 7666416631004673114, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6745579631728708225}
+    - target: {fileID: 7666416631004673114, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RotateGrid
       objectReference: {fileID: 0}
     - target: {fileID: 8130331959745066589, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
       propertyPath: partTransform
@@ -375,10 +343,6 @@ PrefabInstance:
       propertyPath: gridRotatePivot
       value: 
       objectReference: {fileID: 4227777858869228595}
-    - target: {fileID: 8776665456594672264, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000005722046
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -389,6 +353,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2862546264012027043, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
   m_PrefabInstance: {fileID: 3263316667833318620}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6745579631728708225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8130331959745066589, guid: a8ff113a2d964504597767d8d74158b2, type: 3}
+  m_PrefabInstance: {fileID: 3263316667833318620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3224ebbf401ecc84db0c61d39edeec67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6241369216198165106
 PrefabInstance:
   m_ObjectHideFlags: 0

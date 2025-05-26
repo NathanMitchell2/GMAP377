@@ -34,5 +34,10 @@ public class Hitbox : MonoBehaviour
             rb.AddForce(gameObject.transform.forward*knockback,ForceMode.VelocityChange);
             other.transform.GetComponent<EnemyHealth>().dealDamage(dmg);
         }
+        if (other.tag == "Wall")
+        {
+            Rigidbody rb = other.transform.GetComponent<Rigidbody>();
+            other.transform.GetComponent<WallHealth>().dealDamage(dmg);
+        }
     }
 }

@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
         if(damageSound.IsNull == false)
         {
             RuntimeManager.PlayOneShot(damageSound, Camera.main.transform.position);
-            Debug.Log("Damage sound played");
+            //Debug.Log("Damage sound played");
         }
         checkDeath();
     }

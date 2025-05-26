@@ -223,6 +223,24 @@ public class BuilderUI : MonoBehaviour
         return builder.GetKeybindText(index);
     }
 
+    private IEnumerator<bool> BuildBot()
+    {
+        builtBotUI.SetBuildSuccess("processing");
+        bool check;
+        yield return false;
+        yield return check = builder.Check();
+        if (!check)
+        {
+            builtBotUI.SetBuildSuccess("failed");
+            yield return true;
+        }
+        else
+        {
+            CreateBot();
+            builtBotUI.SetBuildSuccess("success");
+            yield return true;
+        }
+    }
     public void UpdateAll()
     {
         BuildList();
@@ -239,24 +257,6 @@ public class BuilderUI : MonoBehaviour
         StartCoroutine(checkAndBuild);
     }
 
-    private IEnumerator<bool> BuildBot()
-    {
-        builtBotUI.SetBuildSuccess("processing");
-        bool check;
-        yield return false;
-        yield return check = builder.Check();
-        if(!check)
-        {
-            builtBotUI.SetBuildSuccess("failed");
-            yield return true;
-        }
-        else
-        {
-            CreateBot();
-            builtBotUI.SetBuildSuccess("success");
-            yield return true;
-        }
-    }
 
     public void Rotate()
     {

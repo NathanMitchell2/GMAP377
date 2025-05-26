@@ -7,7 +7,7 @@ public class JointAttacher : MonoBehaviour
     void Start()
     {
         joint.connectedBody = transform.parent.GetComponent<Rigidbody>();
-        Debug.Log(joint.connectedBody);
+        //Debug.Log(joint.connectedBody);
     }
 
     // Update is called once per frame

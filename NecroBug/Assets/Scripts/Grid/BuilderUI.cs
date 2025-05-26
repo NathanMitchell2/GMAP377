@@ -223,29 +223,13 @@ public class BuilderUI : MonoBehaviour
         return builder.GetKeybindText(index);
     }
 
-    public void UpdateAll()
-    {
-        BuildList();
-        builder.UpdateDisplayCells();
-        //builtBotUI.GetComponent<BotBuiltIUIFlipFlop>().SetBuildSuccess(builder.Check());
-        //CreateBot();
-
-        if(checkAndBuild != null && !checkAndBuild.Current)
-        {
-            Debug.LogError("Reset");
-            checkAndBuild.Dispose();
-        }
-        checkAndBuild = BuildBot();
-        StartCoroutine(checkAndBuild);
-    }
-
     private IEnumerator<bool> BuildBot()
     {
         builtBotUI.SetBuildSuccess("processing");
         bool check;
         yield return false;
         yield return check = builder.Check();
-        if(!check)
+        if (!check)
         {
             builtBotUI.SetBuildSuccess("failed");
             yield return true;
@@ -257,6 +241,22 @@ public class BuilderUI : MonoBehaviour
             yield return true;
         }
     }
+    public void UpdateAll()
+    {
+        BuildList();
+        builder.UpdateDisplayCells();
+        //builtBotUI.GetComponent<BotBuiltIUIFlipFlop>().SetBuildSuccess(builder.Check());
+        //CreateBot();
+
+        if(checkAndBuild != null && !checkAndBuild.Current)
+        {
+            //Debug.LogError("Reset");
+            checkAndBuild.Dispose();
+        }
+        checkAndBuild = BuildBot();
+        StartCoroutine(checkAndBuild);
+    }
+
 
     public void Rotate()
     {

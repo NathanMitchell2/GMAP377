@@ -2,10 +2,12 @@ using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using System;
 
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> cameras = new List<GameObject>();
+    [SerializeField] private GameObject mainOverlay;
     private GameObject player;
 
     private void Awake()
@@ -14,6 +16,7 @@ public class CameraManager : MonoBehaviour
         player = ((PlayerInput)FindFirstObjectByType(typeof(PlayerInput))).gameObject;
         GetComponentInChildren<CinemachineCamera>().Target.TrackingTarget = player.GetComponentInChildren<FollowCar>().gameObject.transform;
     }
+
     public void setDriverSpeed(float speed)
     {
         carControler car = player.GetComponentInChildren<carControler>();
@@ -38,7 +41,13 @@ public class CameraManager : MonoBehaviour
 
     public void SetMenu(int index)
     {
+        mainOverlay.SetActive(false);
         GetComponentInChildren<MenuChanger>().SetMenu(index);
+    }
+    public void MenuOff()
+    {
+        mainOverlay.SetActive(true);
+        GetComponentInChildren<MenuChanger>().Off();
     }
     public void SetCamera(int index)
     {

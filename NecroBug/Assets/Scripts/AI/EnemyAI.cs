@@ -37,11 +37,11 @@ public class EnemyAI : MonoBehaviour
 
     public float stamina = 100f;
     public float staminaDrainPerCharge = 30f;
-    public float staminaRecoverRate = 10f; 
+    public float staminaRecoverRate = 10f;
     public bool isExhausted => stamina <= 0f;
     public float attackCooldown = 0f;
 
-    public enum EnemyType { JetBeetle, AcidBeetle } 
+    public enum EnemyType { JetBeetle, AcidBeetle }
     public EnemyType enemyType;
 
 
@@ -106,36 +106,36 @@ public class EnemyAI : MonoBehaviour
             currentState.Enter(this);
     }
 
-private void UpdatePlayerDetection()
-{
-    playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
-    lastPlayerPosition = player.position;
-
-    Vector3 directionToPlayer = (player.position - transform.position).normalized;
-    float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-    float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-    bool inFOV = angleToPlayer < fieldOfView / 2f && distanceToPlayer <= viewDistance;
-    bool inView = false;
-
-    if (inFOV)
+    private void UpdatePlayerDetection()
     {
-        Vector3 start = transform.position + Vector3.up * 1.5f;
-        Vector3 end = player.position + Vector3.up * 1.5f;
-        Vector3 rayDir = (end - start).normalized;
+        playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
+        lastPlayerPosition = player.position;
 
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (!Physics.Raycast(start, rayDir, distanceToPlayer, visionObstacles))
+        bool inFOV = angleToPlayer < fieldOfView / 2f && distanceToPlayer <= viewDistance;
+        bool inView = false;
+
+        if (inFOV)
         {
-            inView = true;
+            Vector3 start = transform.position + Vector3.up * 1.5f;
+            Vector3 end = player.position + Vector3.up * 1.5f;
+            Vector3 rayDir = (end - start).normalized;
+
+
+            if (!Physics.SphereCast(start, 0.5f, rayDir, out RaycastHit hit, distanceToPlayer, visionObstacles))
+            {
+                inView = true;
+            }
         }
+
+        playerInSightRange = inView;
+        playerInAttackRange = distanceToPlayer <= attackRange;
+
+        currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
     }
-
-    playerInSightRange = inView;
-    playerInAttackRange = distanceToPlayer <= attackRange;
-
-    currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
-}
 
     private void OnDrawGizmosSelected()
     {
@@ -195,5 +195,20 @@ private void UpdatePlayerDetection()
         // Debug.Log(damageAmount);
         playerStats.TakeDamage(damageAmount);
         lastHitTime = Time.time;
+    }
+
+    public void ResetAI()
+    {
+        alreadyAttacked = false;
+        isCharging = false;
+        isInCombat = false;
+        walkPointSet = false;
+        stamina = 100f;
+        attackCooldown = 0f;
+        agent.enabled = true;
+        rb.isKinematic = true;
+
+        // Reset state machine
+        ChangeState(new PatrolState());
     }
 }

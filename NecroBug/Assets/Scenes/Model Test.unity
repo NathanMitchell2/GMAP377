@@ -649,6 +649,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -657,8 +665,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -3025,6 +3041,22 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -5885,6 +5917,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -5893,8 +5933,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -6777,8 +6825,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: walkPointRange
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
@@ -7229,6 +7289,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 595512100}
+    - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 595512108}
     - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 595512101}
@@ -7965,6 +8028,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -7973,8 +8044,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -9197,6 +9276,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -9205,8 +9292,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -9271,6 +9366,21 @@ MonoBehaviour:
       Data4: -2029324097
     Path: event:/Robot/Necrobug-Robot-Movement
   movementThreshold: 0.3
+--- !u!114 &595512108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595512099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8274fc480d685e543a6fbbe71bb0ed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 482691561}
+  activationDistance: 50
+  allEnemies: []
 --- !u!1001 &596814981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9752,6 +9862,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -9760,8 +9878,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -10203,6 +10329,22 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -10852,8 +10994,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: walkPointRange
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
@@ -12127,6 +12281,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 482691561}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12513,6 +12683,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 482691561}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -13004,6 +13190,22 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -14182,8 +14384,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: walkPointRange
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
@@ -14268,6 +14482,22 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -14492,8 +14722,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: walkPointRange
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
@@ -16090,6 +16332,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -16098,8 +16348,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -16175,6 +16433,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 482691561}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -16438,6 +16712,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -16446,8 +16728,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -20123,6 +20413,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
       objectReference: {fileID: 0}
@@ -22247,6 +22553,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -22255,8 +22569,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked
@@ -24211,6 +24533,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
       objectReference: {fileID: 0}
@@ -25964,6 +26302,22 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: walkPointRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
       value: 0
@@ -29773,8 +30127,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8923290140235174749, guid: ac21112b272ca724ba19fa75ed5b89a3, type: 3}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: walkPointRange
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8148302431069141627, guid: c46aecf6f3f99774cb014be8b45f75e3, type: 3}
       propertyPath: alreadyAttacked
@@ -33634,6 +34000,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 482691561}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: fieldOfView
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPoint.y
       value: 0
       objectReference: {fileID: 0}
@@ -33642,8 +34016,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: retreatRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: walkPointSet
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
+      propertyPath: walkPointRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
       propertyPath: alreadyAttacked

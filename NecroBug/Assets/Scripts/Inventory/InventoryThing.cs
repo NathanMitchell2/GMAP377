@@ -4,24 +4,47 @@ public class InventoryThing : MonoBehaviour
 {
     [SerializeField] private string itemName;
     [SerializeField] private Sprite icon;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float health = 100;
+    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private bool stackable = false;
+    [SerializeField] private int maxStack = 99;
+
+    private InventoryItem item;
+    private void Awake()
     {
-        
+        item = new InventoryItem(itemName,icon,health,stackable,maxStack);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public InventoryItem GetItem() {
+        if(item == null)
+            item = new InventoryItem(itemName, icon, health, stackable, maxStack);
+        return item;
     }
-
+    public void SetItem(InventoryItem item) { this.item = item; }
     public string GetName()
     {
-        return itemName;
+        return item.GetName();
     }
     public Sprite GetIcon()
     {
-        return icon;
+        return item.GetIcon();
     }
+
+    public bool AddCount()
+    {
+        return item.AddCount();
+    }
+
+    public bool RemoveCount()
+    {
+        return item.RemoveCount();
+    }
+
+    public float GetHealth()
+    {
+        return item.GetHealth();
+    }
+    public void SetHealth(float health) { item.SetHealth(health); }
+    public float GetMaxHealth() { return item.GetMaxHealth(); }
 }
+

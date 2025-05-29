@@ -4133,6 +4133,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6533228690169697347, guid: d808836e3fbe83649afb7b3cba8cb653, type: 3}
   m_PrefabInstance: {fileID: 506335175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &311576620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5871232509747378769, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+  m_PrefabInstance: {fileID: 319835306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6f7a0d5e5a6144ea79f8552061e859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &316091783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,6 +4380,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1724318996}
+    - target: {fileID: 1326254142261607359, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 174.70903
@@ -4404,7 +4419,7 @@ PrefabInstance:
     - target: {fileID: 2162016129103716682, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: uiObject
       value: 
-      objectReference: {fileID: 1945840274}
+      objectReference: {fileID: 311576620}
     - target: {fileID: 2162016129103716682, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: playerCar
       value: 
@@ -4425,6 +4440,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1724318996}
+    - target: {fileID: 2270624036262824684, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2840740983622357725, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4457,6 +4476,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3244400944540600563, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 595512108}
     - target: {fileID: 3269432729005575604, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4613,6 +4636,10 @@ PrefabInstance:
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 482691561}
+    - target: {fileID: 6109602244034528877, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6137230060937304672, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4675,6 +4702,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7794546220920916588, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895357865899033293, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7969814026725122872, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
@@ -7162,6 +7193,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3391651622182333495, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: TestBotPart
+      value: 
+      objectReference: {fileID: 3997798886352531281, guid: 820de3f89e13b46469b68295562103b9, type: 3}
+    - target: {fileID: 3391651622182333495, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: NecroBugBotPart
+      value: 
+      objectReference: {fileID: 6509350073755414380, guid: 8026d39836e2c2b46b02db6fe8c57841, type: 3}
     - target: {fileID: 5161078460379670683, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: hitFlash
       value: 
@@ -9271,6 +9310,17 @@ MonoBehaviour:
       Data4: -2029324097
     Path: event:/Robot/Necrobug-Robot-Movement
   movementThreshold: 0.3
+--- !u!114 &595512108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3391651622182333495, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  m_PrefabInstance: {fileID: 482691560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595512099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d4e0a549f705e45b4cc6316c90f3a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &596814981
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,9 @@
 using UnityEngine;
-
+using FMODUnity;
 public class MushroomExplosion : MonoBehaviour
 {
+    [SerializeField]
+    private string explosionSound = "event:/Other/mushroom explosion";
     public GameObject explosion;
     public float explosionForce = 5000f;
     public float explosionRadius = 5f;
@@ -10,6 +12,8 @@ public class MushroomExplosion : MonoBehaviour
         if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            RuntimeManager.PlayOneShot(explosionSound, Camera.main.transform.position);
+            Debug.Log("bomb sound played");
 
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider hit in colliders)

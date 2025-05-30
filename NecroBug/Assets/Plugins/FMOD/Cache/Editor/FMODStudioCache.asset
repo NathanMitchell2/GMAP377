@@ -123,10 +123,10 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638841110035012432
+  lastModified: 638835973377654111
   FileSizes:
   - Name: 
-    Value: 1620
+    Value: 1528
   Exists: 1
 --- !u!114 &-1328089242219821991
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/test.bank
   Name: test
   StudioPath: bank:/test
-  lastModified: 638841942884532707
+  lastModified: 638832495983589637
   FileSizes: []
   Exists: 1
 --- !u!114 &-149526208263714347
@@ -188,7 +188,7 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638841110035002410
+  lastModified: 638835973377639775
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -223,15 +223,13 @@ MonoBehaviour:
   - {fileID: 2703327880028507595}
   - {fileID: 9216099148964532725}
   - {fileID: 1190471895346567239}
-  - {fileID: 1168627784339805126}
-  - {fileID: 6574668469283703493}
   EditorParameters: []
   MasterBanks:
   - {fileID: -149526208263714347}
   StringsBanks:
   - {fileID: -2553331672819314923}
   cacheVersion: 131847
-  cacheTime: 638841944644609364
+  cacheTime: 638835985072856823
   SerializableEventsDict:
   - key: event:/Bug/bug hurt with scream
     index: 0
@@ -261,10 +259,6 @@ MonoBehaviour:
     index: 12
   - key: event:/Other/rotate
     index: 13
-  - key: event:/Other/builder 2
-    index: 14
-  - key: event:/Bug/bug spit
-    index: 15
 --- !u!114 &553307344091750017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,33 +313,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1595
---- !u!114 &1168627784339805126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Other/builder 2
-  m_EditorClassIdentifier: 
-  Path: event:/Other/builder 2
-  Guid:
-    Data1: -1387047585
-    Data2: 1076681933
-    Data3: 1191899049
-    Data4: -94843012
-  Banks:
-  - {fileID: 5332564320754879022}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 95
 --- !u!114 &1190471895346567239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,36 +463,9 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638841944644609364
+  lastModified: 638835985072856823
   FileSizes: []
   Exists: 1
---- !u!114 &6574668469283703493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Bug/bug spit
-  m_EditorClassIdentifier: 
-  Path: event:/Bug/bug spit
-  Guid:
-    Data1: -1244123979
-    Data2: 1130506129
-    Data3: -112290430
-    Data4: -733299327
-  Banks:
-  - {fileID: 5332564320754879022}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 592
 --- !u!114 &8752896175789556098
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,12 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using FMODUnity;
 
 public class AcidSpitState : IState
 {
-    [SerializeField]
-    private string spitSound = "event:/Bug/bug spit";
-
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance){}
 
     public void Enter(EnemyAI enemy)
@@ -14,8 +10,6 @@ public class AcidSpitState : IState
         enemy.agent.SetDestination(enemy.transform.position); // stop movement
         enemy.isInCombat = true;
         enemy.ChangeStateCoroutine(SpitAtPlayer(enemy));
-        RuntimeManager.PlayOneShot(spitSound, Camera.main.transform.position);
-        Debug.Log("spit sound played");
     }
 
     public void Exit(EnemyAI enemy)

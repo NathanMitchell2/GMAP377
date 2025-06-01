@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1072836687284509903
+--- !u!114 &-389485515112776796
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mushroom
-  m_Shader: {fileID: -6465566751694194690, guid: 40e48a1c8501c8e49bb4ca62c9366c0e, type: 3}
+  m_Name: VineBlockThin
+  m_Shader: {fileID: -6465566751694194690, guid: 8102481eb0b8e8d47a7ae864aec12e33, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,11 +38,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: df576f24b138a8843aaa6355c4031e6b, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: cf2bc865224a9b34b8ff05f023e63948, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: df576f24b138a8843aaa6355c4031e6b, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -77,12 +77,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_5e7399fabdac4e9190ecd7e69a9b1346_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: cf2bc865224a9b34b8ff05f023e63948, type: 3}
+    - _SampleTexture2D_085f15b57e314e389c3690233ac1aee2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 218159ce455838f4ab507f3018815d32, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_a5d7cf09734d4010963504884304722e_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: df576f24b138a8843aaa6355c4031e6b, type: 3}
+    - _SampleTexture2D_1fc149b470f84163bd05c47a961b483e_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 76a731a7f378bc64d80589db9a96a3c6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a6407df08df9406bb3d8933831918005_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 5f8d21950ef2a1342a55dd43940b8f28, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:

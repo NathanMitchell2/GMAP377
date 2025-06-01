@@ -12,7 +12,7 @@ public class InventoryThing : MonoBehaviour
     private InventoryItem item;
     private void Awake()
     {
-        item = new InventoryItem(itemName,icon,health,stackable,maxStack);
+        //item = new InventoryItem(itemName,icon,health,stackable,maxStack);
     }
 
     public InventoryItem GetItem() {

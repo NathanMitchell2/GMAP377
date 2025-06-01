@@ -8,7 +8,7 @@ public class InventoryItem
     private float maxHealth;
     private bool stackable = false;
     private int maxStack = 99;
-    private int count = 0;
+    private int count = 1;
 
     public InventoryItem(string itemName, Sprite icon, float health, bool stackable, int maxStack)
     {
@@ -18,7 +18,12 @@ public class InventoryItem
         this.maxHealth = health;
         this.stackable = stackable;
         this.maxStack = maxStack;
-
+    }
+    public InventoryItem Copy()
+    {
+        InventoryItem copy = new InventoryItem(itemName, icon, maxHealth, stackable, maxStack);
+        copy.SetHealth(health);
+        return copy;
     }
     public string GetName()
     {
@@ -27,6 +32,10 @@ public class InventoryItem
     public Sprite GetIcon()
     {
         return icon;
+    }
+    public int GetCount()
+    {
+        return count;
     }
 
     public bool AddCount()
@@ -45,6 +54,7 @@ public class InventoryItem
         {
             return false;
         }
+        count--;
         return true;
     }
 
@@ -61,6 +71,8 @@ public class InventoryItem
     {
         if (health > maxHealth || health < 0)
             return;
+        Debug.Log("Setting Health");
+        Debug.Log(health);
         this.health = health;
     }
 }

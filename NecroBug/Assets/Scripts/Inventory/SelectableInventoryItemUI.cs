@@ -17,7 +17,6 @@ public class SelectableInventoryUI : MonoBehaviour
 
     public void SetPart(InventoryItem inventoryThing)
     {
-        Debug.Log(inventoryThing);
         text.text = inventoryThing.GetName();
         if (inventoryThing.GetIcon() != null)
         {

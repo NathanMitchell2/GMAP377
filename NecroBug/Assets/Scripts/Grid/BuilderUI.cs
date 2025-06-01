@@ -39,21 +39,27 @@ public class BuilderUI : MonoBehaviour
 
     private IEnumerator<bool> checkAndBuild;
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //}
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
     {
         builder = GetComponent<BotBulider>();
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         GameObject part = GetPart("Necrobug");
         BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(4,4,4));
+        bPart.SetPos(new Vector3(4, 4, 4));
+
+
+        Debug.Log(inventory.GetItem(0));
+        bPart.GetComponent<InventoryThing>().SetItem(inventory.GetItem(0));
+
+        Debug.Log(bPart.GetInventoryPart());
+        Debug.Log(bPart.GetInventoryPart().GetItem());
+
         builder.AddPart(bPart);
         builder.SetSelected(0);
         UpdateAll();
-
-        ScrollRect scroll;
     }
 
     // Update is called once per frame
@@ -186,7 +192,7 @@ public class BuilderUI : MonoBehaviour
 
     public void RemovePart()
     {
-        inventory.AddItem(selectedItem);
+        inventory.AddItem(builder.GetSelected().GetComponent<InventoryThing>().GetItem());
         builder.RemoveSelected();
         UpdateAll();
     }
@@ -245,6 +251,9 @@ public class BuilderUI : MonoBehaviour
             selectUITemp.GetComponent<RectTransform>().SetLocalPositionAndRotation(pos, Quaternion.identity);
             SelectableInventoryUI selectableUI = selectUITemp.GetComponent<SelectableInventoryUI>();
             selectableUI.SetIndex(i);
+            Debug.Log("Stuff");
+            Debug.Log(inventory.GetItem(i));
+            Debug.Log(inventory.GetItem(i).GetHealth());
             selectableUI.SetPart(inventory.GetItem(i));
             selectableUI.SetUI(this);
 

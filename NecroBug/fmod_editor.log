@@ -10,7 +10,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000020FDF6CE098 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001FB6EFC7AF8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -23,6 +23,73 @@
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1966560
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 17632
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F45441F308
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF87069D3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF87069D3A0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF87069D4C0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF87069D580
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FBD60BBF38
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='bug hurt with scream', format=5, channels=2, frequency=48000, lengthbytes=11456, lengthpcm=51370, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.121059.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 20960
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 2624
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F45441F308
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF87069D3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF87069D3A0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF87069D4C0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF87069D580
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FCB969BAA8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='mushroom explosion', format=5, channels=2, frequency=48000, lengthbytes=20832, lengthpcm=78427, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1966560
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 17632
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F45441F308
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF87069D3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF87069D3A0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF87069D4C0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF87069D580
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FCB969D788
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='bug hurt', format=5, channels=2, frequency=48000, lengthbytes=9440, lengthpcm=27334, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.111318.
+[LOG] SoundI::release                          : necrobug version B (000001FCE70E4AC8)
+[LOG] SoundI::release                          :     necrobug version B (000001FBD57CBD38)
+[LOG] SoundI::release                          :     necrobug version B (000001FCE70E9438)
+[LOG] SoundI::release                          :  (000001F940C6D658)
+[LOG] SoundI::release                          :     bug hurt (000001FBD559C918)
+[LOG] SoundI::release                          :  (000001FB7093F1A8)
+[LOG] SoundI::release                          :     bug hurt with scream (000001FBFDB3D1F8)
+[LOG] SoundI::release                          :  (000001F940C6D918)
+[LOG] SoundI::release                          :     mushroom explosion (000001FBD559D398)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::closeInternal                   : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -30,3 +97,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::closeInternal                   : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SelectableInventoryUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private Image img;
     [SerializeField] private Image healthBar;
     private int index;
@@ -18,6 +19,11 @@ public class SelectableInventoryUI : MonoBehaviour
     public void SetPart(InventoryItem inventoryThing)
     {
         text.text = inventoryThing.GetName();
+        if (inventoryThing.GetStackable())
+            countText.text = inventoryThing.GetCount().ToString();
+        else
+            countText.text = "";
+
         if (inventoryThing.GetIcon() != null)
         {
             img.sprite = inventoryThing.GetIcon();
@@ -28,6 +34,7 @@ public class SelectableInventoryUI : MonoBehaviour
         }
 
         healthBar.fillAmount = (float)inventoryThing.GetHealth() / inventoryThing.GetMaxHealth();
+
     }
     public void SetUI(BuilderUI builderUI)
     {

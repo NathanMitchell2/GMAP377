@@ -42,7 +42,7 @@ public class InventoryItem
         if (!stackable)
             return false;
 
-        if (count >= maxStack || count < 1)
+        if (count > maxStack || count < 1)
             return false;
 
         this.count = count;
@@ -86,4 +86,6 @@ public class InventoryItem
         Debug.Log(health);
         this.health = health;
     }
+
+    public bool GetStackable() { return this.stackable; }
 }

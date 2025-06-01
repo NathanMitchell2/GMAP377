@@ -50,5 +50,7 @@ public class InventoryThing : MonoBehaviour
     }
     public void SetHealth(float health) { item.SetHealth(health); }
     public float GetMaxHealth() { return item.GetMaxHealth(); }
+
+    public bool GetStackable() { return item.GetStackable(); }
 }
 

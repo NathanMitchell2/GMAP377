@@ -4,6 +4,7 @@ using FMODUnity;
 
 public class ChargeAttackState : IState
 {
+    
     private bool isChargingStarted = false;
 
     [SerializeField]

@@ -8,6 +8,7 @@ public class InventoryThing : MonoBehaviour
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private bool stackable = false;
     [SerializeField] private int maxStack = 99;
+    [SerializeField] private int count = 1;
 
     private InventoryItem item;
     private void Awake()
@@ -17,7 +18,10 @@ public class InventoryThing : MonoBehaviour
 
     public InventoryItem GetItem() {
         if(item == null)
+        {
             item = new InventoryItem(itemName, icon, health, stackable, maxStack);
+            item.SetCount(count);
+        }
         return item;
     }
     public void SetItem(InventoryItem item) { this.item = item; }

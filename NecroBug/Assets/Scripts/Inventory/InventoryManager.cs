@@ -5,13 +5,16 @@ public class InventoryManager : MonoBehaviour
 {
     private List<InventoryItem> items;
     [SerializeField] private GameObject NecroBugBotPart;
-    [SerializeField] private GameObject TestBotPart;
+    [SerializeField] private List<InventoryThing> defaultItems;
 
     private void Awake()
     {
         items = new List<InventoryItem>();
         items.Add(NecroBugBotPart.GetComponentInChildren<InventoryThing>().GetItem());
-        items.Add(TestBotPart.GetComponentInChildren<InventoryThing>().GetItem());
+        foreach (InventoryThing inventoryThing in defaultItems)
+        {
+            items.Add(inventoryThing.GetItem());
+        }
     }
 
     public void AddItem(InventoryItem item) {

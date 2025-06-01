@@ -32,6 +32,7 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private GameObject inventoryUIObj;
     [SerializeField] private Transform inventoryUILoc;
     [SerializeField] private GameObject inventoryUIPrefab;
+    [SerializeField] private GameObject inventoryNoneUIPrefab;
     [SerializeField] private InventoryManager inventory;
     private InventoryItem selectedItem;
     private int axis = 0;
@@ -50,15 +51,14 @@ public class BuilderUI : MonoBehaviour
         BotPart bPart = part.GetComponent<BotPart>();
         bPart.SetPos(new Vector3(4, 4, 4));
 
-
-        Debug.Log(inventory.GetItem(0));
         bPart.GetComponent<InventoryThing>().SetItem(inventory.GetItem(0));
-
-        Debug.Log(bPart.GetInventoryPart());
-        Debug.Log(bPart.GetInventoryPart().GetItem());
 
         builder.AddPart(bPart);
         builder.SetSelected(0);
+        UpdateAll();
+    }
+    private void OnEnable()
+    {
         UpdateAll();
     }
 
@@ -231,7 +231,7 @@ public class BuilderUI : MonoBehaviour
             {
                 selectableUI.GetComponentInChildren<PartSelectUI>().DeSelect();
             }
-            }
+        }
 
     }
 
@@ -244,16 +244,20 @@ public class BuilderUI : MonoBehaviour
         float height = inventoryUIPrefab.GetComponent<RectTransform>().rect.height;
         //int selected = builder.IndexOf(builder.GetSelected());
         //Vector3 rootPos = selectUILoc.GetComponent<RectTransform>().position;
+
+        GameObject noneUI = Instantiate(inventoryNoneUIPrefab, inventoryUILoc);
+        noneUI.GetComponent<SelectableInventoryUI>().SetUI(this);
+
         for (int i = 0; i < inventory.Count(); i++)
         {
+            if (i == 0)
+                continue;
+
             Vector3 pos = new Vector3(0, -height * i, 0);
             GameObject selectUITemp = Instantiate(inventoryUIPrefab, inventoryUILoc);
             selectUITemp.GetComponent<RectTransform>().SetLocalPositionAndRotation(pos, Quaternion.identity);
             SelectableInventoryUI selectableUI = selectUITemp.GetComponent<SelectableInventoryUI>();
             selectableUI.SetIndex(i);
-            Debug.Log("Stuff");
-            Debug.Log(inventory.GetItem(i));
-            Debug.Log(inventory.GetItem(i).GetHealth());
             selectableUI.SetPart(inventory.GetItem(i));
             selectableUI.SetUI(this);
 
@@ -330,7 +334,6 @@ public class BuilderUI : MonoBehaviour
         //builder.RotateSelected(AxisToVector(axis));
         builder.ProgressOrientationSelected();
         UpdateAll();
-    
     }
     public void RotateGrid(float rotation)
     {

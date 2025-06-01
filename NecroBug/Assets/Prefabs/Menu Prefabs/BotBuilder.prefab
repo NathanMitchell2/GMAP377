@@ -186,7 +186,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 450.4}
+  m_SizeDelta: {x: 200, y: 450.4}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &2699623180717713082
 CanvasRenderer:
@@ -1550,6 +1550,7 @@ MonoBehaviour:
   inventoryUIObj: {fileID: 284848095525632495}
   inventoryUILoc: {fileID: 9105924053618276921}
   inventoryUIPrefab: {fileID: 3233218267484049203, guid: e7888ac8196bce643bfd255e6012f5aa, type: 3}
+  inventoryNoneUIPrefab: {fileID: 3233218267484049203, guid: b2f9d1a1d5e2b7c468dde97c55026ce2, type: 3}
   inventory: {fileID: 0}
 --- !u!1 &1399125127510068640
 GameObject:
@@ -3934,6 +3935,8 @@ MonoBehaviour:
   successImg: {fileID: 21300000, guid: 1fc4cd48b8250574bab238e6e82eadf2, type: 3}
   processingImg: {fileID: 21300000, guid: 2fa72b2284c00f641bd9880dbe489a76, type: 3}
   failImg: {fileID: 21300000, guid: f06edadd8788aca4dbd0d01e4e91b37a, type: 3}
+  img: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &3078066653864582836
 GameObject:
   m_ObjectHideFlags: 0

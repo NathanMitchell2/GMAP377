@@ -188,12 +188,10 @@ public class BotBulider : MonoBehaviour
     {
         if (!grid.Check())
             return;
-        Debug.Log("In");
         DestroyBot();
         PlayerStats car = null;
         builtParts = new List<GameObject>();
 
-        Debug.Log("1");
         for(int i = 0; i < parts.Count; i++)
         {
             BotPart part = parts[i];
@@ -206,24 +204,17 @@ public class BotBulider : MonoBehaviour
             }
             if (builtPart.GetComponent<PlayerStats>() != null)
             {
-
-                Debug.Log("1a");
                 PlayerStats statsReference = builtPart.GetComponent<PlayerStats>();
                 PlayerStats playerReference = playerObject.GetComponentInChildren<PlayerStats>();
                 //car = statsReference;
                 // Debug.Log(playerReference.health);
                 // Debug.Log(car.health);
                 statsReference.SetItem(part.GetComponent<InventoryThing>().GetItem());
-                Debug.Log(part.GetComponent<InventoryThing>().GetItem());
                 statsReference.health = (int) part.GetComponent<InventoryThing>().GetHealth(); // playerReference.health;
-                Debug.Log("In1A");
-                Debug.Log("1b");
             }
 
             builtParts.Add(builtPart);
         }
-        Debug.Log("1z");
-        Debug.Log("2");
 
 
         for (int i = 0; i < builtParts.Count; i++)
@@ -260,7 +251,6 @@ public class BotBulider : MonoBehaviour
         car.transform.SetLocalPositionAndRotation(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position, Quaternion.identity);
         car.transform.SetParent(buildTransform);
         car.transform.localScale = Vector3.one;
-        Debug.Log("Out");
 
         uiObject.StatInitialize();
     }

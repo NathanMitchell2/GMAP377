@@ -37,7 +37,18 @@ public class InventoryItem
     {
         return count;
     }
+    public bool SetCount(int count)
+    {
+        if (!stackable)
+            return false;
 
+        if (count >= maxStack || count < 1)
+            return false;
+
+        this.count = count;
+        return true;
+
+    }
     public bool AddCount()
     {
         if (stackable == true && count < maxStack)

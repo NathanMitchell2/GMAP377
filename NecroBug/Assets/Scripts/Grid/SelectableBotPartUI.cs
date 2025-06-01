@@ -8,6 +8,7 @@ public class SelectableBotPartUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TextMeshProUGUI keyText;
     [SerializeField] private Image img;
+    [SerializeField] private Image healthBar;
     private int index;
     private BuilderUI ui;
 
@@ -37,7 +38,8 @@ public class SelectableBotPartUI : MonoBehaviour
             img.color = Color.clear;
         }
 
-        }
+        healthBar.fillAmount = (float)inventoryThing.GetHealth() / inventoryThing.GetMaxHealth();
+    }
     public void SetUI(BuilderUI builderUI)
     {
         this.ui = builderUI;

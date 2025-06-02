@@ -97,6 +97,10 @@ public class BuilderUI : MonoBehaviour
     public void RotateSelected()
     {
         int dir = int.Parse(rotationEnum.text);
+        //Vector3.Dot(gridRotatePivot.transform.eulerAngles, Vector3.forward);
+
+
+
 
         switch ((Directions)dir)
         {
@@ -132,6 +136,47 @@ public class BuilderUI : MonoBehaviour
     {
         //BotPart selected = builder.GetSelected();
 
+
+        Vector3 forward = Vector3.forward;
+        Vector3 right = Vector3.right;
+        Vector3 back = Vector3.back;
+        Vector3 left = Vector3.left;
+        float max = Vector3.Dot(gridRotatePivot.transform.forward, Vector3.forward);
+
+        float tempMax = Vector3.Dot(gridRotatePivot.transform.forward, Vector3.right);
+        if (tempMax > max)
+        {
+            max = tempMax;
+            forward = Vector3.left;
+            right = Vector3.forward;
+            back = Vector3.right;
+            left = Vector3.back;
+        }
+
+        tempMax = Vector3.Dot(gridRotatePivot.transform.forward, Vector3.back);
+        if (tempMax > max)
+        {
+            max = tempMax;
+            forward = Vector3.back;
+            right = Vector3.left;
+            back = Vector3.forward;
+            left = Vector3.right;
+        }
+
+        tempMax = Vector3.Dot(gridRotatePivot.transform.forward, Vector3.left);
+        if (tempMax > max)
+        {
+            max = tempMax;
+            forward = Vector3.right;
+            right = Vector3.back;
+            back = Vector3.left;
+            left = Vector3.forward;
+        }
+
+        Debug.Log(forward);
+        Debug.Log(Vector3.forward);
+        Debug.Log(Vector3.right);
+
         switch ((Directions)dir)
         {
             case Directions.Up:
@@ -144,19 +189,19 @@ public class BuilderUI : MonoBehaviour
                 break;
             case Directions.Left:
                 selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + Vector3.left);
+                builder.MoveSelected(selected.GetPos() + left);
                 break;
             case Directions.Right:
                 selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + Vector3.right);
+                builder.MoveSelected(selected.GetPos() + right);
                 break;
             case Directions.Forward:
                 selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + Vector3.forward);
+                builder.MoveSelected(selected.GetPos() + forward);
                 break;
             case Directions.Backward:
                 selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + Vector3.back);
+                builder.MoveSelected(selected.GetPos() + back);
                 break;
 
         }

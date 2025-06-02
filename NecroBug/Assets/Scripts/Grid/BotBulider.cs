@@ -188,6 +188,11 @@ public class BotBulider : MonoBehaviour
     {
         if (!grid.Check())
             return;
+        Vector3 ogPos;
+        if (builtParts.Count == 0)
+            ogPos = playerObject.transform.GetChild(0).localPosition;
+        else
+            ogPos = builtParts[0].transform.localPosition;
         DestroyBot();
         PlayerStats car = null;
         builtParts = new List<GameObject>();
@@ -248,8 +253,8 @@ public class BotBulider : MonoBehaviour
         actionManager.BindParts(builtParts);
 
 
-        car.transform.SetLocalPositionAndRotation(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position, Quaternion.identity);
         car.transform.SetParent(buildTransform);
+        car.transform.SetLocalPositionAndRotation(ogPos/*buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position*/, Quaternion.identity);
         car.transform.localScale = Vector3.one;
 
         uiObject.StatInitialize();

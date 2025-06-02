@@ -177,7 +177,7 @@ public class EnemyAI : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
-            playerStats = other.gameObject.GetComponent<PlayerStats>();
+            playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
 
             if (playerStats != null)
             {

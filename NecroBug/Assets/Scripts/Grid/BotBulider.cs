@@ -45,6 +45,7 @@ public class BotBulider : MonoBehaviour
                 }
             }
         }
+        Destroy(playerObject.transform.GetChild(0).gameObject);
     }
     private void Awake()
     {
@@ -173,9 +174,13 @@ public class BotBulider : MonoBehaviour
     {
         for (int i = 0; i < builtParts.Count; i++)
         {
+            Debug.Log("Destroy " + i);
             var part = builtParts[i];
 
             //Unbind action?
+            ModularBugPart bgPart = part.GetComponent<ModularBugPart>();
+            if (bgPart != null)
+                bgPart.CleanUp();
             Destroy(part.gameObject);
         }
     }
@@ -187,27 +192,32 @@ public class BotBulider : MonoBehaviour
         PlayerStats car = null;
         builtParts = new List<GameObject>();
 
-        foreach (var part in parts)
+        for(int i = 0; i < parts.Count; i++)
         {
+            BotPart part = parts[i];
             GameObject builtPart = part.BuildPart();//buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
             //builtPart.transform.SetParent(buildTransform.transform);
 
+            if (i==0)
+            {
+                car = builtPart.GetComponent<PlayerStats>();
+            }
             if (builtPart.GetComponent<PlayerStats>() != null)
             {
                 PlayerStats statsReference = builtPart.GetComponent<PlayerStats>();
                 PlayerStats playerReference = playerObject.GetComponentInChildren<PlayerStats>();
-                car = statsReference;
+                //car = statsReference;
                 // Debug.Log(playerReference.health);
                 // Debug.Log(car.health);
-                car.health = playerReference.health;
-                uiObject.StatInitialize();
+                statsReference.SetItem(part.GetComponent<InventoryThing>().GetItem());
+                statsReference.health = (int) part.GetComponent<InventoryThing>().GetHealth(); // playerReference.health;
             }
 
             builtParts.Add(builtPart);
         }
 
 
-        for(int i = 0; i < builtParts.Count; i++)
+        for (int i = 0; i < builtParts.Count; i++)
         {
             var part = builtParts[i];
 
@@ -241,6 +251,8 @@ public class BotBulider : MonoBehaviour
         car.transform.SetLocalPositionAndRotation(buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position, Quaternion.identity);
         car.transform.SetParent(buildTransform);
         car.transform.localScale = Vector3.one;
+
+        uiObject.StatInitialize();
     }
     public bool ProgressOrientationSelected()
     {

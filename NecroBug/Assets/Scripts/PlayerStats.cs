@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyReductionBar;
+    private InventoryItem inventoryItem;
 
     public void Initialize(Image healthBar, Image energyBar, Image energyReductionBar)
     {
@@ -22,7 +23,11 @@ public class PlayerStats : MonoBehaviour
     {
         health -= dmg;
         Debug.Log($"[After Damage] Health: {health}");
-        hitFlash.TriggerFlash();
+
+        if (hitFlash != null)
+        {
+            hitFlash.TriggerFlash();
+        }
         CheckDeath();
         UpdateHealth();
     }
@@ -43,6 +48,9 @@ public class PlayerStats : MonoBehaviour
     public void UpdateHealth()
     {
         Debug.Log("Updated Health: " + health);
-        healthBar.fillAmount = (float)health / 100;
+        inventoryItem.SetHealth(health);
     }
+
+    public void SetItem(InventoryItem item)
+        { this.inventoryItem = item; }
 }

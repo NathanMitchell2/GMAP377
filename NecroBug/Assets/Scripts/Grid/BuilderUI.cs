@@ -29,26 +29,37 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private GameObject selectUIPrefab;
     [SerializeField] private BotBuiltIUIFlipFlop builtBotUI;
     [SerializeField] private GameObject gridRotatePivot;
+    [SerializeField] private GameObject inventoryUIObj;
+    [SerializeField] private Transform inventoryUILoc;
+    [SerializeField] private GameObject inventoryUIPrefab;
+    [SerializeField] private GameObject inventoryNoneUIPrefab;
+    [SerializeField] private InventoryManager inventory;
+    private InventoryItem selectedItem;
     private int axis = 0;
     BotBulider builder;
 
     private IEnumerator<bool> checkAndBuild;
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //}
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
     {
         builder = GetComponent<BotBulider>();
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        GameObject part = GetPart("NecroBug");
+        GameObject part = GetPart("Necrobug");
         BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(4,4,4));
+        bPart.SetPos(new Vector3(4, 4, 4));
+
+        bPart.GetComponent<InventoryThing>().SetItem(inventory.GetItem(0));
+
         builder.AddPart(bPart);
         builder.SetSelected(0);
         UpdateAll();
-
-        ScrollRect scroll;
+    }
+    private void OnEnable()
+    {
+        UpdateAll();
     }
 
     // Update is called once per frame
@@ -59,7 +70,7 @@ public class BuilderUI : MonoBehaviour
     {
         switch (option)
         {
-            case "NecroBug":
+            case "Necrobug":
                 return Instantiate(parts[0], partTransform);
             case "Horn":
                 return Instantiate(parts[1], partTransform);
@@ -199,18 +210,34 @@ public class BuilderUI : MonoBehaviour
 
     public void AddPart()
     {
-        GameObject part = GetPart(partDropdown.captionText.text);
+        if (selectedItem.GetName() == "Necrobug")
+            return;
+        inventory.RemoveItem(selectedItem);
+        GameObject part = GetPart(selectedItem.GetName());//partDropdown.captionText.text);
         
         BotPart bPart = part.GetComponent<BotPart>();
         //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         bPart.SetPos(new Vector3(0,0,0));
+        bPart.GetComponent<InventoryThing>().SetItem(selectedItem);
+
         builder.AddPart(bPart);
         SelectPart(builder.IndexOf(bPart));
+
         UpdateAll();
+    }
+    public void CloseItem()
+    {
+        inventoryUIObj.SetActive(false);
+    }
+    public void OpenItem()
+    {
+        inventoryUIObj.SetActive(true);
+        BuildInventoryList();
     }
 
     public void RemovePart()
     {
+        inventory.AddItem(builder.GetSelected().GetComponent<InventoryThing>().GetItem());
         builder.RemoveSelected();
         UpdateAll();
     }
@@ -249,8 +276,51 @@ public class BuilderUI : MonoBehaviour
             {
                 selectableUI.GetComponentInChildren<PartSelectUI>().DeSelect();
             }
-            }
+        }
 
+    }
+
+    private void BuildInventoryList()
+    {
+        for (int i = 0; i < inventoryUILoc.childCount; i++)
+        {
+            Destroy(inventoryUILoc.GetChild(i).gameObject);
+        }
+        float height = inventoryUIPrefab.GetComponent<RectTransform>().rect.height;
+        //int selected = builder.IndexOf(builder.GetSelected());
+        //Vector3 rootPos = selectUILoc.GetComponent<RectTransform>().position;
+
+        GameObject noneUI = Instantiate(inventoryNoneUIPrefab, inventoryUILoc);
+        noneUI.GetComponent<SelectableInventoryUI>().SetUI(this);
+
+        for (int i = 0; i < inventory.Count(); i++)
+        {
+            if (i == 0)
+                continue;
+
+            Vector3 pos = new Vector3(0, -height * i, 0);
+            GameObject selectUITemp = Instantiate(inventoryUIPrefab, inventoryUILoc);
+            selectUITemp.GetComponent<RectTransform>().SetLocalPositionAndRotation(pos, Quaternion.identity);
+            SelectableInventoryUI selectableUI = selectUITemp.GetComponent<SelectableInventoryUI>();
+            selectableUI.SetIndex(i);
+            selectableUI.SetPart(inventory.GetItem(i));
+            selectableUI.SetUI(this);
+
+            /*
+            if (selected == i)
+            {
+                selectableUI.GetComponentInChildren<PartSelectUI>().Select();
+            }
+            else
+            {
+                selectableUI.GetComponentInChildren<PartSelectUI>().DeSelect();
+            }
+            */
+        }
+    }
+    public void SelectItem(int index)
+    {
+        selectedItem = inventory.GetItem(index);
     }
     public void SelectPart(int index)
     {
@@ -309,7 +379,6 @@ public class BuilderUI : MonoBehaviour
         //builder.RotateSelected(AxisToVector(axis));
         builder.ProgressOrientationSelected();
         UpdateAll();
-    
     }
     public void RotateGrid(float rotation)
     {

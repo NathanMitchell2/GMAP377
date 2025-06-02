@@ -10,13 +10,13 @@ public class BotBuiltIUIFlipFlop : MonoBehaviour
     [SerializeField] Sprite successImg;
     [SerializeField] Sprite processingImg;
     [SerializeField] Sprite failImg;
-    private Image img;
-    private TextMeshProUGUI text;
+    [SerializeField] private Image img;
+    [SerializeField] private TextMeshProUGUI text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        img = GetComponent<Image>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
+        //img = GetComponent<Image>();
+        //text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void SetBuildSuccess(string success)

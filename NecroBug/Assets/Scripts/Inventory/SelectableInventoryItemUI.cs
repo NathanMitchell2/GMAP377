@@ -2,33 +2,28 @@
 using TMPro;
 using UnityEngine.UI;
 
-public class SelectableBotPartUI : MonoBehaviour
+public class SelectableInventoryUI : MonoBehaviour
 {
-    [SerializeField] private GameObject key;
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private TextMeshProUGUI keyText;
+    [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private Image img;
     [SerializeField] private Image healthBar;
     private int index;
     private BuilderUI ui;
 
-    private void Update()
-    {
-        SetKey(ui.GetKeybindText(index));
-    }
-
-    public void SetKey(string text)
-    {
-        keyText.text = text;
-    }
     public void SetIndex(int i)
     {
         index = i;
     }
 
-    public void SetPart(InventoryThing inventoryThing)
+    public void SetPart(InventoryItem inventoryThing)
     {
         text.text = inventoryThing.GetName();
+        if (inventoryThing.GetStackable())
+            countText.text = inventoryThing.GetCount().ToString();
+        else
+            countText.text = "";
+
         if (inventoryThing.GetIcon() != null)
         {
             img.sprite = inventoryThing.GetIcon();
@@ -39,6 +34,7 @@ public class SelectableBotPartUI : MonoBehaviour
         }
 
         healthBar.fillAmount = (float)inventoryThing.GetHealth() / inventoryThing.GetMaxHealth();
+
     }
     public void SetUI(BuilderUI builderUI)
     {
@@ -47,21 +43,16 @@ public class SelectableBotPartUI : MonoBehaviour
 
     public void Select()
     {
-        ui.SelectPart(index);
-    }
-    public void Bind()
-    {
-        ui.BindPart(index);
+        ui.SelectItem(index);
     }
 
-    public void UsesCustomBinds(bool useCustomBinds)
+    public void Add()
     {
-        key.SetActive(useCustomBinds);
+        ui.AddPart();
     }
 
-    public void DebugClick()
+    public void Close()
     {
-    }    
-
-
+        ui.CloseItem();
+    }
 }

@@ -39,6 +39,11 @@ public class AnimLegControl : MonoBehaviour
     {
         if (tipController != null)
         {
+            // Debug.Log("tip_controller not null");
+            defaultTipLocalPosition = transform.localPosition;
+        }
+        else
+        {
             defaultTipLocalPosition = transform.localPosition;
         }
         distanceBeforeSnap = defaultSnapDistance + defaultSnapDistance*Random.Range(-snapDistanceVariance,snapDistanceVariance);
@@ -113,7 +118,7 @@ public class AnimLegControl : MonoBehaviour
             MoveLegController();
         }
 
-        if (Vector3.Distance(transform.localPosition, defaultTipLocalPosition) > 1)
+        if (Vector3.Distance(transform.localPosition, defaultTipLocalPosition) > distanceBeforeSnap)
         {
             // Debug.Log(transform.localPosition + " + " + defaultTipLocalPosition);
             resetTimer += 1 * Time.deltaTime;

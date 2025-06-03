@@ -48,8 +48,13 @@ public class AcidSpitState : IState
         // Instantiate and shoot acid
         GameObject acid = GameObject.Instantiate(enemy.acidProjectilePrefab, enemy.spitPoint.position, Quaternion.identity);
         Rigidbody rb = acid.GetComponent<Rigidbody>();
+        Vector3 parabola = CalculateArcVelocity(enemy.spitPoint.transform.position, targetPos, 1f, 0.05f, Physics.gravity.y);
         Vector3 dir = (targetPos - enemy.spitPoint.position).normalized;
-        rb.AddForce(dir * enemy.acidSpitForce, ForceMode.Impulse);
+        // rb.AddForce(dir * enemy.acidSpitForce, ForceMode.Impulse);
+        // Debug.Log(parabola);
+        rb.linearDamping = 0f;
+        rb.angularDamping = 0f;
+        rb.linearVelocity = parabola;
 
         // Cooldown
         enemy.alreadyAttacked = true;
@@ -59,5 +64,20 @@ public class AcidSpitState : IState
         yield return new WaitForSeconds(1f); // let the projectile travel
 
         enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
+    }
+
+    public static Vector3 CalculateArcVelocity(Vector3 start, Vector3 target, float baseTime, float timePerUnit, float gravity)
+    {
+        Vector3 displacement = target - start;
+        Vector3 displacementXZ = new Vector3(displacement.x, 0, displacement.z);
+        float horizontalDistance = displacementXZ.magnitude;
+
+        float timeToTarget = baseTime + horizontalDistance * timePerUnit;
+
+        Vector3 velocityXZ = displacementXZ / timeToTarget;
+
+        float verticalVelocity = (displacement.y + 0.5f * Mathf.Abs(gravity) * timeToTarget * timeToTarget) / timeToTarget;
+
+        return velocityXZ + Vector3.up * verticalVelocity;
     }
 }

@@ -190,6 +190,18 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void DealAcidDamage(int damageAmount, PlayerStats otherPlayer)
+    {
+        if (Time.time - lastHitTime < damageCooldown) return;
+
+        playerStats = otherPlayer;
+        if (playerStats != null)
+        {
+            DealDamage(damageAmount);
+        }
+        else { Debug.LogWarning("PlayerStats not found on object!"); }
+    }
+
     public void DealDamage(int damageAmount)
     {
         // Debug.Log(damageAmount);

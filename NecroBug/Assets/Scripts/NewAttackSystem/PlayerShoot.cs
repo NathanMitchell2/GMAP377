@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = firePoint.forward * shootForce;
+            rb.linearVelocity = firePoint.forward * shootForce;
         }
     }
 }

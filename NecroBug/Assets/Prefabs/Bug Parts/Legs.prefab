@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: -472241184722341401}
   - component: {fileID: -1690558700044561545}
   - component: {fileID: 1933964428110554686}
+  - component: {fileID: 8958019035381454838}
+  - component: {fileID: 1409690868527388286}
   m_Layer: 0
   m_Name: Legs
   m_TagString: Wings
@@ -145,6 +147,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d46b2d2157523643867a7d91b46aacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8958019035381454838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067303973213785497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  priority: 1
+  distributeFactor: 0.4
+  doOverdamage: 0
+--- !u!114 &1409690868527388286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067303973213785497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 0}
+  flashDuration: 1e+38
+  playSpeed: 1
 --- !u!1001 &941866023870592343
 PrefabInstance:
   m_ObjectHideFlags: 0

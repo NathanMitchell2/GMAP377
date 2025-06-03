@@ -217,6 +217,11 @@ public class BotBulider : MonoBehaviour
                 statsReference.SetItem(part.GetComponent<InventoryThing>().GetItem());
                 statsReference.health = (int) part.GetComponent<InventoryThing>().GetHealth(); // playerReference.health;
             }
+            PlayerHealth partHealth = builtPart.GetComponent<PlayerHealth>();
+            if(partHealth != null)
+            {
+                partHealth.Initialize(part.GetComponent<InventoryThing>().GetItem());
+            }
 
             builtParts.Add(builtPart);
         }

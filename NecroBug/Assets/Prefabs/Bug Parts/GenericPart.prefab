@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4808317134537426696}
   - component: {fileID: 5128501640712084613}
   - component: {fileID: -3232198623955076681}
+  - component: {fileID: 6763243465122543580}
+  - component: {fileID: 6743821439825638371}
   m_Layer: 0
   m_Name: GenericPart
   m_TagString: Wings
@@ -91,6 +93,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joint: {fileID: 5128501640712084613}
+--- !u!114 &6763243465122543580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  priority: 1
+  distributeFactor: 0.1
+  doOverdamage: 0
+--- !u!114 &6743821439825638371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 0}
+  flashDuration: 1e+38
+  playSpeed: 1
 --- !u!1001 &5602464770599150665
 PrefabInstance:
   m_ObjectHideFlags: 0

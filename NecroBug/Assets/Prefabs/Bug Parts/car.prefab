@@ -87,6 +87,8 @@ GameObject:
   - component: {fileID: 8467677399557758506}
   - component: {fileID: 1631552486043401826}
   - component: {fileID: 7744768386348731344}
+  - component: {fileID: -5283139133688028291}
+  - component: {fileID: 4778709494607917849}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -253,6 +255,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.25
   m_Center: {x: 0, y: 1.6281425, z: 0}
+--- !u!114 &-5283139133688028291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  priority: 0
+  distributeFactor: 1
+  doOverdamage: 0
+--- !u!114 &4778709494607917849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 0}
+  flashDuration: 1e+38
+  playSpeed: 1
 --- !u!1 &4815284830239154656
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,3 +806,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.5
+  playSpeed: 1

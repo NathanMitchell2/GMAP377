@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -5808847918911752708}
   - component: {fileID: -6417996360395769660}
   - component: {fileID: -6877971919189419059}
+  - component: {fileID: -41495023230227417}
+  - component: {fileID: 7613185335547546705}
   m_Layer: 0
   m_Name: Jet
   m_TagString: Wings
@@ -128,6 +130,37 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &-41495023230227417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  priority: 1
+  distributeFactor: 0.7
+  doOverdamage: 1
+--- !u!114 &7613185335547546705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 0}
+  flashDuration: 1e+38
+  playSpeed: 1
 --- !u!1001 &2894438859267003309
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class HitFlash : MonoBehaviour
 {
     public Material hitFlashMaterial;
     public float flashDuration = 0.5f;
+    public float playSpeed = 1.0f;
 
     private MeshRenderer flashRenderer;
     private GameObject flashMeshObject;
@@ -66,7 +67,7 @@ public class HitFlash : MonoBehaviour
         while (elapsed < flashDuration)
         {
             elapsed += Time.deltaTime;
-            float t = 1f - (elapsed / flashDuration);
+            float t = 1f - ((playSpeed * (elapsed / flashDuration)) % 1);
             runtimeMaterial.SetFloat("_FlashAmount", t);
             yield return null;
         }

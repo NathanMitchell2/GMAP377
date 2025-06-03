@@ -15,7 +15,6 @@ public class AcidProjectile : MonoBehaviour
         if (other.gameObject.tag == "Enemy") return;
         else if (other.gameObject.tag == "Player")
         {
-            // Debug.Log("Damage");
             PlayerStats playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
             acidBeetle.DealAcidDamage(damage, playerStats);
         }

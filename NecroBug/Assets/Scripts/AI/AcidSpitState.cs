@@ -52,9 +52,9 @@ public class AcidSpitState : IState
         Vector3 dir = (targetPos - enemy.spitPoint.position).normalized;
         // rb.AddForce(dir * enemy.acidSpitForce, ForceMode.Impulse);
         // Debug.Log(parabola);
-        rb.drag = 0f;
-        rb.angularDrag = 0f;
-        rb.velocity = parabola;
+        rb.linearDamping = 0f;
+        rb.angularDamping = 0f;
+        rb.linearVelocity = parabola;
 
         // Cooldown
         enemy.alreadyAttacked = true;

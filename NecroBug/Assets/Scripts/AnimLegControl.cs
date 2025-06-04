@@ -79,7 +79,7 @@ public class AnimLegControl : MonoBehaviour
 
         if(resetTimer >= 1)
         {
-            // ResetTipController();
+            ResetTipController();
             resetTimer = 0;
         }
         // Visualize the ray in Scene view

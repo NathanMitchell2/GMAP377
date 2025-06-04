@@ -268,7 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   priority: 0
   distributeFactor: 1
   doOverdamage: 0
@@ -284,7 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitFlashMaterial: {fileID: 0}
+  originalFilter: {fileID: 8376672032868151563}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 1e+38
   playSpeed: 1
 --- !u!114 &2867919153514231947
@@ -800,6 +800,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1019714253644485142, guid: f911f724d34f6e943be809ad26c16627, type: 3}
   m_PrefabInstance: {fileID: 5317219514957426306}
   m_PrefabAsset: {fileID: 0}
+--- !u!33 &8376672032868151563 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 4464584758814433161, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+  m_PrefabInstance: {fileID: 5317219514957426306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8762749756010736104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3481568950899623786, guid: f911f724d34f6e943be809ad26c16627, type: 3}
@@ -817,6 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalFilter: {fileID: 0}
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.5
   playSpeed: 1

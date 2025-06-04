@@ -27,10 +27,14 @@ public class InventoryManager : MonoBehaviour
         }
         items.Add(item);
     }
-    public void RemoveItem(InventoryItem item) 
+    public InventoryItem RemoveItem(InventoryItem item) 
     {
+        InventoryItem temp = item.Copy();
+        temp.SetCount(1);
+
         if (!item.RemoveCount())
             items.Remove(item);
+        return temp;
     }
 
     private List<InventoryItem> GetItems(InventoryItem source)

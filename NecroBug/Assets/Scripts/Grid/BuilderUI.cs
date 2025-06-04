@@ -209,13 +209,13 @@ public class BuilderUI : MonoBehaviour
     {
         if (selectedItem.GetName() == "Necrobug")
             return;
-        inventory.RemoveItem(selectedItem);
-        GameObject part = GetPart(selectedItem.GetName());//partDropdown.captionText.text);
+        InventoryItem temp = inventory.RemoveItem(selectedItem);
+        GameObject part = GetPart(temp.GetName());//partDropdown.captionText.text);
         
         BotPart bPart = part.GetComponent<BotPart>();
         //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         bPart.SetPos(new Vector3(0,0,0));
-        bPart.GetComponent<InventoryThing>().SetItem(selectedItem);
+        bPart.GetComponent<InventoryThing>().SetItem(temp);
 
         builder.AddPart(bPart);
         SelectPart(builder.IndexOf(bPart));

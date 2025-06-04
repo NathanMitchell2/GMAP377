@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8882492452500397492}
   m_Layer: 0
   m_Name: Jet
-  m_TagString: Wings
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1.27
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2494816712472840680
 MonoBehaviour:
@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
   priority: 1
   distributeFactor: 0.7
   doOverdamage: 1
@@ -159,7 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitFlashMaterial: {fileID: 0}
+  originalFilter: {fileID: 8169357341937754130}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 1e+38
   playSpeed: 1
 --- !u!114 &8882492452500397492
@@ -185,6 +185,42 @@ PrefabInstance:
     - target: {fileID: 326152742435985717, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
       propertyPath: m_Name
       value: JetModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 326152742435985717, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756525487630865506, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632728091852814737, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254703248979593943, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113421179282778272, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176105259017627502, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313248226152286385, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713410931419647429, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006206318584027489, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8359039475008676357, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -234,5 +270,10 @@ PrefabInstance:
 --- !u!4 &6641220466384990632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8359039475008676357, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
+  m_PrefabInstance: {fileID: 2894438859267003309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8169357341937754130 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 6445917664297595839, guid: e681584fc8d2a8e48bdd9a848ec0782c, type: 3}
   m_PrefabInstance: {fileID: 2894438859267003309}
   m_PrefabAsset: {fileID: 0}

@@ -35,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (hitFlash != null)
             hitFlash.TriggerFlash();
+        else
+            Debug.LogError("No flash");
     }
     public void Initialize(InventoryItem item)
     {
@@ -51,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetHealth(float health) {  this.health = health; }
     public int GetPriority() { return priority; }
     public float GetDistribute() { return distributeFactor; }
+    public PlayerHealth GetParent() { return parent; }
 
     public void Remove(PlayerHealth distribute) { distributes.Remove(distribute); }
 
@@ -80,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
             maxDistrubute += p.GetDistribute();
         }
 
-        float selfDistribute = Mathf.Max(1 - maxDistrubute, 0);
+        float selfDistribute = Mathf.Max(1f - maxDistrubute, 0f);
         maxDistrubute += selfDistribute;
 
         while (damage > 0)
@@ -108,7 +111,11 @@ public class PlayerHealth : MonoBehaviour
             //    health -= tDamage * (1 - (selfDistribute / maxDistrubute));
 
             if (health < 0)
-                return damage - health;
+            {
+                float temp = health;
+                health = 0;
+                return damage - temp;
+            }
         }
         return 0;
     }
@@ -168,7 +175,7 @@ public class PlayerHealth : MonoBehaviour
 
     private float GetFlashSpeed()
     {
-        return maxHealth / health - 1;
+        return (maxHealth / health) - 1;
     }
 
     void OnDestroy()

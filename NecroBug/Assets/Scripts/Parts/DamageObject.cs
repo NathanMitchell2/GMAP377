@@ -32,7 +32,8 @@ public class DamageObject : MonoBehaviour
         Single,
         Spread_Flat,
         Spread_Stack,
-        Spread_Priority
+        Spread_Priority,
+        Heal
     }
 
 
@@ -93,6 +94,36 @@ public class DamageObject : MonoBehaviour
                     }
                     if (!(overdamage > 0))
                         break;
+                }
+                break;
+            case SpreadType.Heal:
+                List<PlayerHealth> toRemove = new List<PlayerHealth>();
+
+                for (int i = 0; i < recievers.Count; i++)
+                {
+                    PlayerHealth p = recievers[i].GetParent();
+                    if(p != null && !recievers.Contains(p))
+                    {
+                        recievers.Add(p);
+                    }
+                }
+
+                foreach (PlayerHealth p in recievers)
+                {
+                    if(p.GetParent() != null && recievers.Contains(p.GetParent()))
+                    {
+                        toRemove.Add(p);
+                    }
+                }
+
+                foreach (PlayerHealth p in toRemove)
+                {
+                    recievers.Remove(p);
+                }
+
+                foreach(PlayerHealth p in recievers)
+                {
+                    p.Heal(damage);
                 }
                 break;
 

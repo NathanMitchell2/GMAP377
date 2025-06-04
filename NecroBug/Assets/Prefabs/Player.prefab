@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6890044993830464822}
   m_Layer: 6
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,9 +139,12 @@ GameObject:
   - component: {fileID: 9060762480755581048}
   - component: {fileID: 3391651622182333495}
   - component: {fileID: 1379199008859673674}
+  - component: {fileID: 6417803155655396655}
+  - component: {fileID: 3108431080291693443}
+  - component: {fileID: 8120883909362030127}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,6 +334,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf9288ce62206c4da4fb4002d0d1acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6417803155655396655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b5eff94c44df042a112df16017a92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFront: {fileID: 0}
+  leftRear: {fileID: 0}
+  rightFront: {fileID: 0}
+  rightRear: {fileID: 0}
+  motorTorque: 1500
+  brakeTorque: 3000
+  maxSteerAngle: 15
+--- !u!114 &3108431080291693443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8274fc480d685e543a6fbbe71bb0ed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4922097593998392515}
+  activationDistance: 50
+  allEnemies: []
+--- !u!114 &8120883909362030127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959910666126545718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSoundEvent:
+    Guid:
+      Data1: 1750376277
+      Data2: 1289608649
+      Data3: 1582206137
+      Data4: -2029324097
+    Path: event:/Robot/Necrobug-Robot-Movement
+  movementThreshold: 0.3
 --- !u!1 &2327365740643717233
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +401,7 @@ GameObject:
   - component: {fileID: 1887420692522944647}
   m_Layer: 0
   m_Name: DefaultInventory
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,8 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Horn
   icon: {fileID: 21300000, guid: aca7cff0d058e3c409480cb3be5a0f82, type: 3}
-  health: 100
-  maxHealth: 100
+  maxHealth: 60
   stackable: 0
   maxStack: 99
   count: 1
@@ -397,8 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Generic
   icon: {fileID: 0}
-  health: 100
-  maxHealth: 100
+  maxHealth: 10
   stackable: 1
   maxStack: 99
   count: 99
@@ -414,7 +469,7 @@ GameObject:
   - component: {fileID: 4480571405091184603}
   m_Layer: 0
   m_Name: Center
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,6 +534,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4815284830239154656, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6197005958255090924, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -523,6 +582,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7326112880770173596, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112500555322124625, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1652602374013445380, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
     - {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
@@ -557,10 +624,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  hitFlash: {fileID: 0}
-  healthBar: {fileID: 0}
-  energyBar: {fileID: 0}
-  energyReductionBar: {fileID: 0}
+  hitFlash: {fileID: 4872603137677083524}
+  healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
+  energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
+  energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
 --- !u!114 &6183647432599674150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,8 +640,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalFilter: {fileID: 0}
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.5
+  playSpeed: 1
+--- !u!114 &4872603137677083524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6824346051168408297, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+  m_PrefabInstance: {fileID: 2101496777315832173}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7477417430369217646 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8858329393499569411, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}

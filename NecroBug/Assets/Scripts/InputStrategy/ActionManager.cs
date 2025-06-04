@@ -48,7 +48,6 @@ public class ActionManager : MonoBehaviour
             };
         }
     }
-
     public ModularBugPart GetPartByAction(InputAction action)
     {
         int index = actions.IndexOf(action);

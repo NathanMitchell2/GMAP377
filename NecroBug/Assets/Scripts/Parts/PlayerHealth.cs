@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class PlayerHealth : MonoBehaviour
 {
 
-    [SerializeField] private float health;
+    private float health;
     private float maxHealth;
 
     [SerializeField] private int priority;
@@ -20,8 +20,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        maxHealth = health;
-
         hitFlash = GetComponent<HitFlash>();
     }
     private void Start()
@@ -89,24 +87,25 @@ public class PlayerHealth : MonoBehaviour
         {
             bool backdamageFlag = true;
 
+            float tDamage = damage;
+
             foreach (PlayerHealth p in distributes)
             {
-                Debug.LogError("Distribute");
-                float dDamage = damage * (p.GetDistribute() / maxDistrubute);
+                float dDamage = tDamage * (p.GetDistribute() / maxDistrubute);
 
                 float backdamage = p.DistributeDamage(dDamage);
 
                 if (backdamage == 0)
                     backdamageFlag = false;
 
-                damage -= dDamage + backdamage;
+                damage = damage - dDamage + backdamage;
             }
             
-            health -= damage * (selfDistribute / maxDistrubute);
-            damage -= damage * (selfDistribute / maxDistrubute);
+            health -= tDamage * (selfDistribute / maxDistrubute);
+            damage -= tDamage * (selfDistribute / maxDistrubute);
 
-            if (backdamageFlag)
-                health -= damage;
+            //if (backdamageFlag)
+            //    health -= tDamage * (1 - (selfDistribute / maxDistrubute));
 
             if (health < 0)
                 return damage - health;
@@ -154,7 +153,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void HealthCheck()
     {
-        if (health < 0)
+        if (health < 1)
         {
             Debug.Log("Part is deceased");
             SendMessage("Death");

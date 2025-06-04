@@ -17,6 +17,10 @@ public class MenuChanger : MonoBehaviour
 
         camManager = GetComponentInParent<CameraManager>();
     }
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
     public void FlipFlopMenus()
     {
         flipFlop = !flipFlop;

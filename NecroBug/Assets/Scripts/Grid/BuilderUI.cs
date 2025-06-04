@@ -173,9 +173,6 @@ public class BuilderUI : MonoBehaviour
             left = Vector3.forward;
         }
 
-        Debug.Log(forward);
-        Debug.Log(Vector3.forward);
-        Debug.Log(Vector3.right);
 
         switch ((Directions)dir)
         {

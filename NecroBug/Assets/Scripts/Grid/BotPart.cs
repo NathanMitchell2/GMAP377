@@ -76,6 +76,16 @@ public class BotPart : MonoBehaviour
         }
         return null;
     }
+
+    public bool Check(BotGrid grid)
+    {
+        foreach (var block in GetBlocks())
+        {
+            if (!block.Check(pos, axis, center, grid))
+                return false;
+        }
+        return true;
+    }
     public void Place(BotGrid grid)
     {
         foreach (var block in GetBlocks())

@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         items = new List<InventoryItem>();
-        items.Add(NecroBugBotPart.GetComponentInChildren<InventoryThing>().GetItem());
+        items.Add(NecroBugBotPart.GetComponentInChildren<InventoryThing>().GetItem().Copy());
         foreach (InventoryThing inventoryThing in defaultItems)
         {
             items.Add(inventoryThing.GetItem());

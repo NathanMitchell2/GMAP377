@@ -177,7 +177,7 @@ public class EnemyAI : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
-            playerStats = other.gameObject.GetComponent<PlayerStats>();
+            playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
 
             if (playerStats != null)
             {
@@ -188,6 +188,18 @@ public class EnemyAI : MonoBehaviour
                 Debug.LogWarning("PlayerStats not found on object!");
             }
         }
+    }
+
+    public void DealAcidDamage(int damageAmount, PlayerStats otherPlayer)
+    {
+        if (Time.time - lastHitTime < damageCooldown) return;
+
+        playerStats = otherPlayer;
+        if (playerStats != null)
+        {
+            DealDamage(damageAmount);
+        }
+        else { Debug.LogWarning("PlayerStats not found on object!"); }
     }
 
     public void DealDamage(int damageAmount)

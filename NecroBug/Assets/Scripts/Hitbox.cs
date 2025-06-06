@@ -8,30 +8,31 @@ public class Hitbox : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
-        if(time < 0)
-        {
-            Destroy(gameObject);
-        }
+          time -= Time.deltaTime;
+          if(time < 0)
+          {
+              Destroy(gameObject);
+          }
+        
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ball")
         {
             Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-            rb.AddForce(gameObject.transform.forward*knockback,ForceMode.Impulse);
+            rb.AddForce(gameObject.transform.forward * knockback, ForceMode.Impulse);
         }
         if (other.tag == "Enemy")
         {
             Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-            rb.AddForce(gameObject.transform.forward*knockback,ForceMode.VelocityChange);
+            rb.AddForce(gameObject.transform.forward * knockback, ForceMode.VelocityChange);
             other.transform.GetComponent<EnemyHealth>().dealDamage(dmg);
         }
         if (other.tag == "Wall")

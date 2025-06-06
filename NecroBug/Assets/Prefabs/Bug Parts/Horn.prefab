@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8893505540367550416}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2013090562574154943}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,12 +186,12 @@ GameObject:
   - component: {fileID: 2202367363753059916}
   - component: {fileID: -7875094499103097227}
   - component: {fileID: -3617985093642396114}
-  - component: {fileID: -3760540361455621540}
-  - component: {fileID: 7911074973038257035}
-  - component: {fileID: 4665438475720088703}
+  - component: {fileID: -7992299366031152958}
+  - component: {fileID: 9187988650772554472}
+  - component: {fileID: -5593645736801312565}
   m_Layer: 0
   m_Name: Horn
-  m_TagString: Player
+  m_TagString: Wings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,8 +234,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 1, z: -1}
+  m_Radius: 2
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5538618956465946129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +308,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joint: {fileID: -7875094499103097227}
---- !u!114 &-3760540361455621540
+--- !u!114 &-7992299366031152958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9187988650772554472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 8383362860902667446}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 1e+38
+  playSpeed: 1
+--- !u!114 &-5593645736801312565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,36 +349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 2
-  distributeFactor: 0.5
-  doOverdamage: 1
---- !u!114 &7911074973038257035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalFilter: {fileID: 1309500192996031189}
-  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
-  flashDuration: 1e+38
-  playSpeed: 1
---- !u!114 &4665438475720088703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  distributeFactor: 0.4
+  doOverdamage: 0
 --- !u!1 &6815843708371360649
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 6867312851871911773}
   m_Layer: 0
   m_Name: Cylinder (1)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,9 +445,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7750489798096026027}
     m_Modifications:
-    - target: {fileID: 4558063683627066450, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 3379313986988539424, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 5218824144356524093, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,22 +493,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HornModel
       objectReference: {fileID: 0}
-    - target: {fileID: 7425105355655513100, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
---- !u!33 &1309500192996031189 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 262745881056145741, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
-  m_PrefabInstance: {fileID: 1263596697240013720}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6477810589203909541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5218824144356524093, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+  m_PrefabInstance: {fileID: 1263596697240013720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8383362860902667446 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 7340448043635269422, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
   m_PrefabInstance: {fileID: 1263596697240013720}
   m_PrefabAsset: {fileID: 0}

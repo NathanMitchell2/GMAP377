@@ -12,7 +12,7 @@ public class AnimLegControl : MonoBehaviour
     public float distanceFromRoot;
     public float defaultMoveTime;
     public AnimationCurve heightCurve;
-    public float postResetDelay = 0.2f;
+    public float postResetDelay = 0.05f;
     [SerializeField] private float snapDistanceVariance = 0f;
 
     private float resetCooldown = 0f;
@@ -79,7 +79,7 @@ public class AnimLegControl : MonoBehaviour
 
         if(resetTimer >= 1)
         {
-            // ResetTipController();
+            ResetTipController();
             resetTimer = 0;
         }
         // Visualize the ray in Scene view
@@ -138,7 +138,6 @@ public class AnimLegControl : MonoBehaviour
         }
         else
         {
-            // Because of this statement, you cannot control the moveTime and distanceBeforeSnap in the unity editor public variables
             moveTime = defaultMoveTime;
             distanceBeforeSnap = defaultSnapDistance + defaultSnapDistance * Random.Range(-snapDistanceVariance, snapDistanceVariance);
         }

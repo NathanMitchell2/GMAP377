@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5179123416797235853
 Transform:
   m_ObjectHideFlags: 0
@@ -139,9 +139,9 @@ GameObject:
   - component: {fileID: 9060762480755581048}
   - component: {fileID: 3391651622182333495}
   - component: {fileID: 1379199008859673674}
-  - component: {fileID: 6417803155655396655}
-  - component: {fileID: 3108431080291693443}
-  - component: {fileID: 8120883909362030127}
+  - component: {fileID: 7637212437957780338}
+  - component: {fileID: 4121520447656167781}
+  - component: {fileID: 2764204493222672989}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf9288ce62206c4da4fb4002d0d1acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6417803155655396655
+--- !u!114 &7637212437957780338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -353,7 +353,7 @@ MonoBehaviour:
   motorTorque: 1500
   brakeTorque: 3000
   maxSteerAngle: 15
---- !u!114 &3108431080291693443
+--- !u!114 &4121520447656167781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,7 +368,7 @@ MonoBehaviour:
   player: {fileID: 4922097593998392515}
   activationDistance: 50
   allEnemies: []
---- !u!114 &8120883909362030127
+--- !u!114 &2764204493222672989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -435,7 +435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Horn
   icon: {fileID: 21300000, guid: aca7cff0d058e3c409480cb3be5a0f82, type: 3}
-  maxHealth: 60
+  health: 100
+  maxHealth: 100
   stackable: 0
   maxStack: 99
   count: 1
@@ -453,7 +454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Generic
   icon: {fileID: 0}
-  maxHealth: 10
+  health: 100
+  maxHealth: 100
   stackable: 1
   maxStack: 99
   count: 99
@@ -514,9 +516,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1188827885676512400, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Range
+      value: 80.97
+      objectReference: {fileID: 0}
     - target: {fileID: 1195641067962025735, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561718270988813491, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: hitFlash
@@ -530,17 +540,53 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2632049953505691027, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Range
+      value: 30.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632049953505691027, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Color.b
+      value: 0.50445
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632049953505691027, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Color.g
+      value: 0.89823085
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632049953505691027, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632049953505691027, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Intensity
+      value: 9.84
+      objectReference: {fileID: 0}
     - target: {fileID: 3162622929594733171, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4815284830239154656, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 3476620253880233501, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476620253880233501, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Mass
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476620253880233501, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_AngularDrag
+      value: 3.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476620253880233501, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6197005958255090924, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554057467296882378, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7174151278275579687, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -585,6 +631,22 @@ PrefabInstance:
     - target: {fileID: 7326112880770173596, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581607505142738518, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908505440710472612, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: steerSpeed
+      value: 81.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908505440710472612, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: driverSpeed
+      value: 4063
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463692069505365530, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 9112500555322124625, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
       propertyPath: m_TagString
@@ -640,10 +702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalFilter: {fileID: 0}
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.5
-  playSpeed: 1
 --- !u!114 &4872603137677083524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6824346051168408297, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}

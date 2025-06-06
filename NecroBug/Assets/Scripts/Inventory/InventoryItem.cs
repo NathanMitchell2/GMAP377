@@ -82,8 +82,8 @@ public class InventoryItem
     {
         if (health > maxHealth || health < 0)
             return;
-        Debug.Log("Setting Health");
-        Debug.Log(health);
+        //Debug.Log("Setting Health");
+        //Debug.Log(health);
         this.health = health;
     }
 

@@ -71,6 +71,127 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!1 &557361329697361968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5976715309998653834}
+  - component: {fileID: 8532082591134626308}
+  - component: {fileID: 4073495941428963314}
+  m_Layer: 6
+  m_Name: Spot Light
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5976715309998653834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557361329697361968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.38, z: 0.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7174151278275579687}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!108 &8532082591134626308
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557361329697361968}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 0
+  m_Color: {r: 0.990566, g: 0.9426646, b: 0.6494749, a: 1}
+  m_Intensity: 200
+  m_Range: 50.12
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 3
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!114 &4073495941428963314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557361329697361968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &951841146267148256
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,9 +235,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0.990566, g: 0.9772788, b: 0.9017889, a: 1}
-  m_Intensity: 1
-  m_Range: 39.2
+  m_Color: {r: 0.9811321, g: 0.89823085, b: 0.50445, a: 1}
+  m_Intensity: 9.84
+  m_Range: 30.1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -204,7 +325,7 @@ GameObject:
   - component: {fileID: 3696206816785541442}
   m_Layer: 0
   m_Name: LeftWheelCollider (1)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,11 +469,12 @@ GameObject:
   - component: {fileID: 8858329393499569411}
   - component: {fileID: 1844405598309641353}
   - component: {fileID: 8467677399557758506}
-  - component: {fileID: 1631552486043401826}
   - component: {fileID: 7744768386348731344}
   - component: {fileID: 7255835048970387550}
   - component: {fileID: 6480503821313422347}
   - component: {fileID: -459399141401880922}
+  - component: {fileID: 3269585200964582630}
+  - component: {fileID: 197740465385301329}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -386,6 +508,7 @@ Transform:
   - {fileID: 8555254601880142506}
   - {fileID: 5182603359943539860}
   - {fileID: 2455132527017423844}
+  - {fileID: 5976715309998653834}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3476620253880233501
@@ -398,7 +521,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1500
   m_Drag: 0
-  m_AngularDrag: 4
+  m_AngularDrag: 3.87
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -432,8 +555,8 @@ MonoBehaviour:
   wheel2: {fileID: 3772288795563102511}
   wheel3: {fileID: 3696206816785541442}
   wheel4: {fileID: 5307402978834483563}
-  driverSpeed: 4000
-  steerSpeed: 80
+  driverSpeed: 4063
+  steerSpeed: 81.7
   baseDriverSpeed: 0
   baseSteerSpeed: 0
   wingsPickedUp: 0
@@ -486,23 +609,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.2469357
   m_Center: {x: 0, y: 1.6114324, z: 0}
---- !u!114 &1631552486043401826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2475575991783323239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67de41bf7f8181347adce1e9db050275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  hitFlash: {fileID: 6824346051168408297}
-  healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
-  energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
-  energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
 --- !u!135 &7744768386348731344
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -536,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 1
+  priority: 0
   distributeFactor: 0.1
   doOverdamage: 0
 --- !u!114 &6480503821313422347
@@ -567,6 +673,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3269585200964582630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67de41bf7f8181347adce1e9db050275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hitFlash: {fileID: 6824346051168408297}
+  healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
+  energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
+  energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
+--- !u!114 &197740465385301329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 0}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 0.5
+  playSpeed: 1
 --- !u!1 &3353813181373932821
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +856,7 @@ GameObject:
   - component: {fileID: 4566175259830863195}
   m_Layer: 0
   m_Name: LeftWheelCollider
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,7 +928,7 @@ GameObject:
   - component: {fileID: 4961544539719757210}
   m_Layer: 6
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,7 +960,7 @@ Light:
   m_Type: 0
   m_Color: {r: 0.990566, g: 0.9426646, b: 0.6494749, a: 1}
   m_Intensity: 200
-  m_Range: 50.12
+  m_Range: 80.97
   m_SpotAngle: 130.66931
   m_InnerSpotAngle: 41.762
   m_CookieSize: 10
@@ -980,7 +1119,7 @@ GameObject:
   - component: {fileID: 3772288795563102511}
   m_Layer: 0
   m_Name: RightWheelCollider
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1051,7 +1190,7 @@ GameObject:
   - component: {fileID: 5307402978834483563}
   m_Layer: 0
   m_Name: RightWheelCollider (1)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1121,7 +1260,7 @@ GameObject:
   - component: {fileID: 4634594532384319158}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

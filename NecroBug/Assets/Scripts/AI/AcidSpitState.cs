@@ -48,7 +48,12 @@ public class AcidSpitState : IState
         // Instantiate and shoot acid
         GameObject acid = GameObject.Instantiate(enemy.acidProjectilePrefab, enemy.spitPoint.position, Quaternion.identity);
         Rigidbody rb = acid.GetComponent<Rigidbody>();
+
+        // Calculate trajectory
         Vector3 parabola = CalculateArcVelocity(enemy.spitPoint.transform.position, targetPos, 1f, 0.05f, Physics.gravity.y);
+
+        // Render path with line
+        RenderTrajectory(enemy.lineRenderer, enemy.spitPoint.position, parabola, Physics.gravity.y);
         Vector3 dir = (targetPos - enemy.spitPoint.position).normalized;
         // rb.AddForce(dir * enemy.acidSpitForce, ForceMode.Impulse);
         // Debug.Log(parabola);
@@ -79,5 +84,17 @@ public class AcidSpitState : IState
         float verticalVelocity = (displacement.y + 0.5f * Mathf.Abs(gravity) * timeToTarget * timeToTarget) / timeToTarget;
 
         return velocityXZ + Vector3.up * verticalVelocity;
+    }
+
+    void RenderTrajectory(LineRenderer lineRenderer, Vector3 start, Vector3 velocity, float gravity, int steps = 30, float timeStep = 0.1f)
+    {
+        lineRenderer.positionCount = steps + 1;
+
+        for (int i = 0; i <= steps; i++)
+        {
+            float t = i * timeStep;
+            Vector3 point = start + velocity * t + 0.5f * Vector3.up * gravity * t * t;
+            lineRenderer.SetPosition(i, point);
+        }
     }
 }

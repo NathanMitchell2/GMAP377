@@ -10,7 +10,7 @@ public class MushroomExplosion : MonoBehaviour
     [SerializeField]
     private string bombSound = "event:/Other/mushroom explosion";
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {

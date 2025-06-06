@@ -50,10 +50,11 @@ public class EnemyAI : MonoBehaviour
     public float acidSpitForce = 20f;
 
     public PlayerStats playerStats;
+    public LineRenderer lineRenderer;
     public int chargeDamage = 20;
-    public int acidDamage = 10;
+    // public int acidDamage = 10;
     public float damageCooldown = 0.5f;
-    private float lastHitTime;
+    private float lastHitTime = 0.5f;
 
 
     private void Awake()
@@ -62,6 +63,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         lastPlayerPosition = player.position;
         patrolCenter = gameObject.GetComponent<Transform>().position;
+        // Debug.Log(Time.time);
     }
 
     private void Start()

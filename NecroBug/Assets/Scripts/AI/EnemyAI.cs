@@ -50,6 +50,7 @@ public class EnemyAI : MonoBehaviour
     public float acidSpitForce = 20f;
 
     public PlayerStats playerStats;
+    public LineRenderer lineRenderer;
     public int chargeDamage = 20;
     // public int acidDamage = 10;
     public float damageCooldown = 0.5f;

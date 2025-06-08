@@ -13,7 +13,7 @@ public class Mushroom : MonoBehaviour
     public float baseTopY = 2.45f;
     public float correctionPerUnit = 0.12f;
 
-    void Update()
+    void Start()
     {
         if (stalk != null)
         {

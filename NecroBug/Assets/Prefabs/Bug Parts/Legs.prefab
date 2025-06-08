@@ -15,9 +15,12 @@ GameObject:
   - component: {fileID: -472241184722341401}
   - component: {fileID: -1690558700044561545}
   - component: {fileID: 1933964428110554686}
+  - component: {fileID: 8958019035381454838}
+  - component: {fileID: 1409690868527388286}
+  - component: {fileID: -8978120193029299006}
   m_Layer: 0
   m_Name: Legs
-  m_TagString: Wings
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,8 +65,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 1.35
+  m_Center: {x: 0, y: -0.95, z: 0}
 --- !u!114 &4653210535955296642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +148,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d46b2d2157523643867a7d91b46aacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8958019035381454838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067303973213785497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 1
+  distributeFactor: 0.4
+  doOverdamage: 0
+--- !u!114 &1409690868527388286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067303973213785497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 3847282679814800564}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 1e+38
+  playSpeed: 1
+--- !u!114 &-8978120193029299006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067303973213785497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &941866023870592343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
       propertyPath: m_Name
       value: LegRoot (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -259,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LegRoot (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -320,6 +374,10 @@ PrefabInstance:
     - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
       propertyPath: m_Name
       value: LegRoot (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -383,11 +441,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: LegRoot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227151254395519472, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770307025137652726, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4598506009055133154, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580579102928323928, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375748799881316196, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197571567048335327, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053332068172861741, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+--- !u!33 &3847282679814800564 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 7250583164370014843, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+  m_PrefabInstance: {fileID: 5907444871071536847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6440696771226800940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 619955617617315299, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
@@ -444,6 +539,10 @@ PrefabInstance:
     - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
       propertyPath: m_Name
       value: LegRoot (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -506,6 +605,10 @@ PrefabInstance:
     - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
       propertyPath: m_Name
       value: LegRoot (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582034768745850219, guid: 69ea84b849180084f9e60f4c99ee06d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

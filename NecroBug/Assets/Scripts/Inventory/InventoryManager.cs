@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         items = new List<InventoryItem>();
-        items.Add(NecroBugBotPart.GetComponentInChildren<InventoryThing>().GetItem());
+        items.Add(NecroBugBotPart.GetComponentInChildren<InventoryThing>().GetItem().Copy());
         foreach (InventoryThing inventoryThing in defaultItems)
         {
             items.Add(inventoryThing.GetItem());
@@ -27,10 +27,14 @@ public class InventoryManager : MonoBehaviour
         }
         items.Add(item);
     }
-    public void RemoveItem(InventoryItem item) 
+    public InventoryItem RemoveItem(InventoryItem item) 
     {
+        InventoryItem temp = item.Copy();
+        temp.SetCount(1);
+
         if (!item.RemoveCount())
             items.Remove(item);
+        return temp;
     }
 
     private List<InventoryItem> GetItems(InventoryItem source)

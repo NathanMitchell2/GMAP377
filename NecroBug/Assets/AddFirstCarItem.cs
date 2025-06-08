@@ -6,6 +6,7 @@ public class AddFirstCarItem : MonoBehaviour
     void Start()
     {
         transform.GetChild(0).GetComponent<PlayerStats>().SetItem(GetComponent<InventoryManager>().GetItem(0));
+        transform.GetChild(0).GetComponent<PlayerHealth>().Initialize(GetComponent<InventoryManager>().GetItem(0));
     }
 
     // Update is called once per frame

@@ -179,6 +179,33 @@ public class Block : MonoBehaviour
         return true;
     }
 
+    public bool Check(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
+    {
+            Vector3 size = GetSizeByAxis(axis);
+            Vector3 rPos = GetPosByAxis(axis, center);
+
+            for (int i = 0; i < Math.Abs(size.x); i++)
+            {
+                for (int j = 0; j < Math.Abs(size.y); j++)
+                {
+                    for (int k = 0; k < Math.Abs(size.z); k++)
+                    {
+                        int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
+                        int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
+                        int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
+
+                        if (!grid.inBounds(new Vector3(x, y, z)))
+                            return false;
+
+                        if(!Tile.CheckCell(grid.GetCell(x, y, z)))
+                            return false;
+                    }
+                }
+            }
+
+            return true;
+    }
+
     public Vector3 GetSizeByAxis(Vector3 axis)
     {
         Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));

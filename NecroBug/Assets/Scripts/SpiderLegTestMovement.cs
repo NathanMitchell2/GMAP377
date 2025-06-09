@@ -3,10 +3,10 @@ using UnityEngine;
 public class SpiderLegTestMovement : MonoBehaviour
 {
     [Header("Floating")]
-    public float floatingHeight = 2f;          // Desired float height
-    public float floatForce = 10f;             // How strong the force pulls to desired height
-    public float floatDamping = 5f;            // How much to resist bouncing
-    public LayerMask groundMask;              // Ground layer
+    public float floatingHeight = 2f;
+    public float floatForce = 10f;
+    public float floatDamping = 5f;
+    public LayerMask groundMask;
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -18,17 +18,16 @@ public class SpiderLegTestMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     void Update()
     {
-        // Get input (WASD)
+        // Input (WASD or joystick)
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        // Move relative to camera direction
+        // Camera-relative movement
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
         camForward.y = 0;
@@ -48,6 +47,7 @@ public class SpiderLegTestMovement : MonoBehaviour
     {
         HandleFloating();
         HandleMovement();
+        AlignToGround();
     }
 
     void HandleFloating()
@@ -68,5 +68,16 @@ public class SpiderLegTestMovement : MonoBehaviour
     {
         Vector3 moveForce = moveInput * moveSpeed;
         rb.AddForce(moveForce, ForceMode.Acceleration);
+    }
+
+    void AlignToGround()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hit, floatingHeight * 2f, groundMask))
+        {
+            Vector3 groundNormal = hit.normal;
+            Quaternion targetRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
     }
 }

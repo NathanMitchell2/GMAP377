@@ -22,11 +22,11 @@ public class NewCarMovementSystem : MonoBehaviour
         bodyRb = gameObject.GetComponent<Rigidbody>();
         bodyRb.centerOfMass = new Vector3(0, -1f, 0);
     }
-    void Update()
+    /* void Update()
     {
         moveInput = Input.GetAxis("Vertical");   // W/S keys
         turnInput = Input.GetAxis("Horizontal"); // A/D keys
-    }
+    }*/
 
     void FixedUpdate()
     {
@@ -57,6 +57,12 @@ public class NewCarMovementSystem : MonoBehaviour
         // Turning (optional slight steering at front wheels)
         leftFront.steerAngle = turnInput * maxSteerAngle;
         rightFront.steerAngle = turnInput * maxSteerAngle;
+    }
+    public void SetInputs(float hInput, float vInput)
+    {
+        Debug.Log("set inputs");
+        turnInput = hInput;
+        moveInput = vInput;
     }
 }
 

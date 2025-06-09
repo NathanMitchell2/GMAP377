@@ -134,7 +134,37 @@ public class BotBulider : MonoBehaviour
         }
         return false;
     }
-
+    public bool DestroyPart(int index)
+    {
+        if (index != 0 && parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        {
+            if (index != -1)
+            {
+                BotPart part2 = parts[index];
+                actionManager.RemoveAction(index);
+                parts.RemoveAt(index);
+                builtParts[index].GetComponent<ModularBugPart>().CleanUp();
+                Destroy(builtParts[index].gameObject);
+                builtParts.RemoveAt(index);
+                Destroy(part2.gameObject);
+                return true;
+            }
+        }
+        return false;
+    }
+    public bool DestroyPart(BotPart part)
+    {
+        return DestroyPart(parts.IndexOf(part));
+    }
+    public bool DestroyPart(ModularBugPart part)
+    {
+        for (int i = 0; i < builtParts.Count; i++)
+        {
+            if (builtParts[i].GetComponent<ModularBugPart>() == part)
+                return DestroyPart(i);
+        }
+        return false;
+    }
 
     public void SetSelected(int index)
     {
@@ -183,6 +213,19 @@ public class BotBulider : MonoBehaviour
                 bgPart.CleanUp();
             Destroy(part.gameObject);
         }
+        /*
+        for (int i = 0; i < builtParts.Count; i++)
+        {
+            Debug.Log("Destroy " + i);
+            var part = builtParts[i];
+
+            //Unbind action?
+            ModularBugPart bgPart = part.GetComponent<ModularBugPart>();
+            if (bgPart != null)
+                bgPart.CleanUp();
+            Destroy(part.gameObject);
+        }
+        */
     }
     public void CreateBot()
     {
@@ -216,6 +259,16 @@ public class BotBulider : MonoBehaviour
                 // Debug.Log(car.health);
                 statsReference.SetItem(part.GetComponent<InventoryThing>().GetItem());
                 statsReference.health = (int) part.GetComponent<InventoryThing>().GetHealth(); // playerReference.health;
+            }
+            PlayerHealth partHealth = builtPart.GetComponent<PlayerHealth>();
+            if (partHealth != null)
+            {
+                partHealth.Initialize(part.GetComponent<InventoryThing>().GetItem());
+            }
+            PartDeathHandler handler = builtPart.GetComponent<PartDeathHandler>();
+            if (handler != null)
+            {
+                handler.Initialize(part,this);
             }
 
             builtParts.Add(builtPart);
@@ -278,5 +331,16 @@ public class BotBulider : MonoBehaviour
     public int IndexOf(BotPart part)
     {
         return parts.IndexOf(part);
+    }
+
+    public List<BotPart> GetBadParts()
+    {
+        List<BotPart> temp = new List<BotPart>();
+        foreach (BotPart p in parts)
+        {
+            if (!p.Check(grid))
+                temp.Add(p);
+        }
+        return temp;
     }
 }

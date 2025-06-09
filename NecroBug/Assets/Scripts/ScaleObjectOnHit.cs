@@ -50,7 +50,7 @@ public class ScaleObjectOnHit : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wings")){
+        if (other.GetComponent<HornPart>() != null){
             StartCoroutine("ScaleDownCoroutine");
         }
     }

@@ -4,23 +4,38 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health = 100;
+    public float health = 100;
     [SerializeField] private HitFlash hitFlash;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyReductionBar;
     private InventoryItem inventoryItem;
+    private PlayerHealth playerHealth;
+
+    private void Awake()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
 
     public void Initialize(Image healthBar, Image energyBar, Image energyReductionBar)
     {
         this.healthBar = healthBar;
         this.energyBar = energyBar;
         this.energyReductionBar = energyReductionBar;
+        playerHealth.SetHealth(inventoryItem.GetHealth());
 
         UpdateHealth();
     }
+    private void Update()
+    {
+        health = playerHealth.GetHealth();
+        UpdateHealth();
+    }
+    
     public void TakeDamage(int dmg)
     {
+        DamageObject.Damage(dmg, playerHealth);
+        /*
         health -= dmg;
         Debug.Log($"[After Damage] Health: {health}");
 
@@ -30,7 +45,9 @@ public class PlayerStats : MonoBehaviour
         }
         CheckDeath();
         UpdateHealth();
+        */
     }
+    
     private void CheckDeath()
     {
         if (health <= 0)
@@ -47,7 +64,7 @@ public class PlayerStats : MonoBehaviour
 
     public void UpdateHealth()
     {
-        Debug.Log("Updated Health: " + health);
+        //Debug.Log("Updated Health: " + health);
         inventoryItem.SetHealth(health);
     }
 

@@ -3,8 +3,10 @@ using System.Collections;
 
 public class HitFlash : MonoBehaviour
 {
+    [SerializeField] private MeshFilter originalFilter;
     public Material hitFlashMaterial;
     public float flashDuration = 0.5f;
+    public float playSpeed = 1.0f;
 
     private MeshRenderer flashRenderer;
     private GameObject flashMeshObject;
@@ -21,7 +23,8 @@ public class HitFlash : MonoBehaviour
         flashMeshObject.transform.localScale = Vector3.one;
 
         // Copy mesh from original object
-        MeshFilter originalFilter = GetComponent<MeshFilter>();
+        if(originalFilter == null)
+            originalFilter = GetComponentInChildren<MeshFilter>();
         if (originalFilter == null)
         {
             Debug.LogError("No MeshFilter found on current object");
@@ -66,12 +69,16 @@ public class HitFlash : MonoBehaviour
         while (elapsed < flashDuration)
         {
             elapsed += Time.deltaTime;
-            float t = 1f - (elapsed / flashDuration);
+            float t = 1f - ((GetPlaySpeed() * elapsed) % 1);
             runtimeMaterial.SetFloat("_FlashAmount", t);
             yield return null;
         }
 
         runtimeMaterial.SetFloat("_FlashAmount", 0f);
         flashRenderer.enabled = false;
+    }
+
+    private float GetPlaySpeed() {
+        return playSpeed;
     }
 }

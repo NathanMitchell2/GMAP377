@@ -88,6 +88,7 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   orientations: []
   customBinds: 0
+  defaultBind: 
 --- !u!114 &1909617889227195837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Leg
   icon: {fileID: 0}
+  health: 10
+  maxHealth: 10
+  stackable: 0
+  maxStack: 99
+  count: 1
 --- !u!1 &3729331744620018632
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ public class InventoryThing : MonoBehaviour
 {
     [SerializeField] private string itemName;
     [SerializeField] private Sprite icon;
-    [SerializeField] private float health = 100;
+    private float health = 100;
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private bool stackable = false;
     [SerializeField] private int maxStack = 99;
@@ -13,13 +13,14 @@ public class InventoryThing : MonoBehaviour
     private InventoryItem item;
     private void Awake()
     {
+        item = null;
         //item = new InventoryItem(itemName,icon,health,stackable,maxStack);
     }
 
     public InventoryItem GetItem() {
         if(item == null)
         {
-            item = new InventoryItem(itemName, icon, health, stackable, maxStack);
+            item = new InventoryItem(itemName, icon, maxHealth, stackable, maxStack);
             item.SetCount(count);
         }
         return item;

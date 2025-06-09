@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84ba646fafcab5c49ac0bd13f4e321b5, type: 2}
+  - {fileID: 2100000, guid: 9858a26a7113872488460d87b9026da2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: -1983152791199250141}
   - component: {fileID: 5467515156179793494}
   - component: {fileID: 8879377797983903000}
+  - component: {fileID: -1233644453320443798}
   m_Layer: 7
   m_Name: Dummy Hazard
   m_TagString: Untagged
@@ -139,7 +140,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -159,7 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   explosionForce: 200000
-  explosionRadius: 10
+  explosionRadius: 7
+  bombSound: event:/Other/mushroom explosion
 --- !u!114 &-1983152791199250141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +216,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -234,6 +236,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-1233644453320443798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870574116981360497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 45
+  type: 2
 --- !u!1 &7678254128725794469
 GameObject:
   m_ObjectHideFlags: 0

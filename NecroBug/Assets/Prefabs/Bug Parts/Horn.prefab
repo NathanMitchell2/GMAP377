@@ -186,6 +186,9 @@ GameObject:
   - component: {fileID: 2202367363753059916}
   - component: {fileID: -7875094499103097227}
   - component: {fileID: -3617985093642396114}
+  - component: {fileID: -7992299366031152958}
+  - component: {fileID: 9187988650772554472}
+  - component: {fileID: -5593645736801312565}
   m_Layer: 0
   m_Name: Horn
   m_TagString: Wings
@@ -305,6 +308,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joint: {fileID: -7875094499103097227}
+--- !u!114 &-7992299366031152958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9187988650772554472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 8383362860902667446}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 1e+38
+  playSpeed: 1
+--- !u!114 &-5593645736801312565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 2
+  distributeFactor: 0.5
+  doOverdamage: 0
 --- !u!1 &6815843708371360649
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7750489798096026027}
     m_Modifications:
+    - target: {fileID: 3379313986988539424, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.011
+      objectReference: {fileID: 0}
     - target: {fileID: 5218824144356524093, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -451,5 +501,10 @@ PrefabInstance:
 --- !u!4 &6477810589203909541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5218824144356524093, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+  m_PrefabInstance: {fileID: 1263596697240013720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8383362860902667446 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 7340448043635269422, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
   m_PrefabInstance: {fileID: 1263596697240013720}
   m_PrefabAsset: {fileID: 0}

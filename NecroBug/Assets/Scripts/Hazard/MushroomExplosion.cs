@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using System.Collections.Generic;
 
 public class MushroomExplosion : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class MushroomExplosion : MonoBehaviour
     [SerializeField]
     private string bombSound = "event:/Other/mushroom explosion";
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
@@ -23,7 +24,9 @@ public class MushroomExplosion : MonoBehaviour
         Instantiate(explosion, transform.position, Quaternion.identity);
         RuntimeManager.PlayOneShot(bombSound, Camera.main.transform.position);
         Debug.Log("bomb sound played");
+        List<GameObject> targets = new List<GameObject>();
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
         foreach (Collider hit in colliders)
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
@@ -37,6 +40,7 @@ public class MushroomExplosion : MonoBehaviour
                     {
                         if (hit.GetComponent<carControler>() != null)
                             rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+                        targets.Add(hit.gameObject);
                     }
                     else
                     {
@@ -62,5 +66,7 @@ public class MushroomExplosion : MonoBehaviour
                 Destroy(hit.gameObject);
             }
         }
+
+        GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(targets));
     }
 }

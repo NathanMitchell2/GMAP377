@@ -1001,6 +1001,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -19
       objectReference: {fileID: 0}
+    - target: {fileID: 3244400944540600563, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: parts.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244400944540600563, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: 'parts.Array.data[7]'
+      value: 
+      objectReference: {fileID: 3997798886352531281, guid: 82272f0ab2364be418bf1e19560d305e, type: 3}
     - target: {fileID: 3269432729005575604, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1238,6 +1246,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+--- !u!1 &715497707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2327365740643717233, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  m_PrefabInstance: {fileID: 1420462437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &715497709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715497707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c9f3f3f076366499def3ddecef680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Acid Horn
+  icon: {fileID: 21300000, guid: 66732845d7fb2fa4e809e7ab134aac4d, type: 3}
+  maxHealth: 100
+  stackable: 0
+  maxStack: 99
+  count: 1
 --- !u!4 &799777942 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2142620594050175092, guid: a0623dfd5e92dbd47bfc8ebd502ef2a0, type: 3}
@@ -1648,7 +1679,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9125894543685590602, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1752477953}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2327365740643717233, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 715497709}
   m_SourcePrefab: {fileID: 100100000, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
 --- !u!4 &1420462438 stripped
 Transform:

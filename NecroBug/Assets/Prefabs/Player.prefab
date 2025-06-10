@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 1379199008859673674}
   - component: {fileID: 7637212437957780338}
   - component: {fileID: 4121520447656167781}
-  - component: {fileID: 2764204493222672989}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -118,14 +117,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSoundEvent:
+  movementSound:
     Guid:
       Data1: 1750376277
       Data2: 1289608649
       Data3: 1582206137
       Data4: -2029324097
     Path: event:/Robot/Necrobug-Robot-Movement
-  movementThreshold: 1
+  triggerSound:
+    Guid:
+      Data1: 2011279931
+      Data2: 1089979945
+      Data3: -1401969737
+      Data4: -1402906288
+    Path: event:/Robot/web walk
 --- !u!54 &8437602558676203200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -247,26 +252,6 @@ MonoBehaviour:
   player: {fileID: 4922097593998392515}
   activationDistance: 50
   allEnemies: []
---- !u!114 &2764204493222672989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959910666126545718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSoundEvent:
-    Guid:
-      Data1: 1750376277
-      Data2: 1289608649
-      Data3: 1582206137
-      Data4: -2029324097
-    Path: event:/Robot/Necrobug-Robot-Movement
-  movementThreshold: 0.3
 --- !u!1 &2327365740643717233
 GameObject:
   m_ObjectHideFlags: 0

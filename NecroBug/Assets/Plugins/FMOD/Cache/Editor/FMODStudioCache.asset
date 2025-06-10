@@ -1,5 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8870030632733441422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: 
+  Guid:
+    Data1: -344585032
+    Data2: 1166143369
+    Data3: -1371386464
+    Data4: 1604658840
+  Banks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 957
+--- !u!114 &-7937037230660085422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot/web walk
+  m_EditorClassIdentifier: 
+  Path: event:/Robot/web walk
+  Guid:
+    Data1: 2011279931
+    Data2: 1089979945
+    Data3: -1401969737
+    Data4: -1402906288
+  Banks:
+  - {fileID: 7458351764667491063}
+  - {fileID: 6875614745594087185}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
 --- !u!114 &-7654400299347206203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +85,36 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7455796246249439951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: 
+  Guid:
+    Data1: -344585032
+    Data2: 1166143369
+    Data3: -1371386464
+    Data4: 1604658840
+  Banks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 957
 --- !u!114 &-7319079676076266879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +141,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2000
 --- !u!114 &-7290020066423761534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +169,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3081
+--- !u!114 &-4968698031328743570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Other/wall break
+  m_EditorClassIdentifier: 
+  Path: event:/Other/wall break
+  Guid:
+    Data1: -344585032
+    Data2: 1166143369
+    Data3: -1371386464
+    Data4: 1604658840
+  Banks:
+  - {fileID: 7458351764667491063}
+  - {fileID: 6875614745594087185}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 957
 --- !u!114 &-3133212707652271727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +239,10 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638838851439238983
+  lastModified: 638851572272331463
   FileSizes:
   - Name: 
-    Value: 1528
+    Value: 1752
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -160,13 +276,20 @@ MonoBehaviour:
   - {fileID: 4519691624282720618}
   - {fileID: 7028154029258016294}
   - {fileID: -7319079676076266879}
+  - {fileID: -7455796246249439951}
+  - {fileID: -8870030632733441422}
+  - {fileID: 6223065658752570934}
+  - {fileID: -7937037230660085422}
+  - {fileID: -4968698031328743570}
+  - {fileID: 6850660613763927599}
+  - {fileID: 6084072063213370166}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7458351764667491063}
   StringsBanks:
   - {fileID: -1414103064311309978}
   cacheVersion: 131847
-  cacheTime: 638838851439452403
+  cacheTime: 638851577441216183
   SerializableEventsDict:
   - key: event:/Bug/bug hurt with scream
     index: 0
@@ -196,6 +319,18 @@ MonoBehaviour:
     index: 12
   - key: event:/Other/mushroom explosion
     index: 13
+  - key: 
+    index: 14
+  - key: event:/Other/horn break
+    index: 16
+  - key: event:/Robot/web walk
+    index: 17
+  - key: event:/Other/wall break
+    index: 18
+  - key: event:/Other/builder 2
+    index: 19
+  - key: event:/Bug/bug spit
+    index: 20
 --- !u!114 &1355709225147549715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +411,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2795
+  Length: 350
 --- !u!114 &3594046799222067121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +427,7 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/test.bank
   Name: test
   StudioPath: bank:/test
-  lastModified: 638838851439452403
+  lastModified: 638851577441216183
   FileSizes: []
   Exists: 1
 --- !u!114 &3891213297078316183
@@ -403,6 +538,61 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 120000
+--- !u!114 &6084072063213370166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bug/bug spit
+  m_EditorClassIdentifier: 
+  Path: event:/Bug/bug spit
+  Guid:
+    Data1: -1244123979
+    Data2: 1130506129
+    Data3: -112290430
+    Data4: -733299327
+  Banks:
+  - {fileID: 6875614745594087185}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 592
+--- !u!114 &6223065658752570934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Other/horn break
+  m_EditorClassIdentifier: 
+  Path: event:/Other/horn break
+  Guid:
+    Data1: 975613194
+    Data2: 1210614204
+    Data3: 1267105461
+    Data4: 39183228
+  Banks:
+  - {fileID: 7458351764667491063}
+  - {fileID: 6875614745594087185}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1137
 --- !u!114 &6466393199745150294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +620,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 25224
+--- !u!114 &6850660613763927599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Other/builder 2
+  m_EditorClassIdentifier: 
+  Path: event:/Other/builder 2
+  Guid:
+    Data1: -1387047585
+    Data2: 1076681933
+    Data3: 1191899049
+    Data4: -94843012
+  Banks:
+  - {fileID: 6875614745594087185}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 95
 --- !u!114 &6875614745594087185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +662,7 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638838851439402410
+  lastModified: 638851577357724631
   FileSizes: []
   Exists: 1
 --- !u!114 &7028154029258016294
@@ -490,7 +707,7 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638838851439186434
+  lastModified: 638851572272321499
   FileSizes: []
   Exists: 1
 --- !u!114 &8487038175384913188

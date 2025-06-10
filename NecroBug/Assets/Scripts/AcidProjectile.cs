@@ -9,12 +9,19 @@ public class AcidProjectile : MonoBehaviour
     public GameObject splashEffect;
     public EnemyAI acidBeetle;
     public bool baseProjectile = true;
+    public bool isPlayer = false;
+    public int acidDamage = 35;
 
     private void Start() => Destroy(gameObject, lifeTime);
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Enemy") return;
+        Debug.Log("Collision");
+        if (other.gameObject.tag == "Enemy" && isPlayer)
+        {
+            EnemyHealth enemy = other.transform.GetComponent<EnemyHealth>();
+            enemy.dealDamage(acidDamage);
+        }
         else if (other.gameObject.tag == "Player")
         {
             // Debug.Log(other.gameObject);
@@ -22,12 +29,11 @@ public class AcidProjectile : MonoBehaviour
             acidBeetle.DealAcidDamage(damage, playerStats);
         }
         // DOES NOT DESTROY THE PARTICLE, JUST STOPS IT. Persists forever in the scene, removing parent necessary for animation
-        if (baseProjectile)
-        {
-            particle.Stop();
-            Instantiate(splashEffect, gameObject.transform.position, Quaternion.identity);
-            particle.transform.parent = null;
-        }
+        
+        particle.Stop();
+        Instantiate(splashEffect, gameObject.transform.position, Quaternion.identity);
+        particle.transform.parent = null;
+        
         
         // Destroys the acid prefab, not the particle
         // Debug.Log("collision");

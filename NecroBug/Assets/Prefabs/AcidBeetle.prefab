@@ -348,7 +348,7 @@ MonoBehaviour:
   attackCooldown: 0.5
   enemyType: 1
   spitPoint: {fileID: 2904826544043532939}
-  acidProjectilePrefab: {fileID: 4671630421458197730, guid: c54a705514862c247a4fd3d2c62aa4ba, type: 3}
+  acidProjectilePrefab: {fileID: 4671630421458197730, guid: 6a1a1f3b5ec7fdb48ba92c83b5bb4b84, type: 3}
   acidSpitForce: 10
   playerStats: {fileID: 0}
   lineRenderer: {fileID: 8020869570514876939}
@@ -443,8 +443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalFilter: {fileID: 0}
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.3
+  playSpeed: 1
 --- !u!120 &8020869570514876939
 LineRenderer:
   serializedVersion: 2
@@ -469,7 +471,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d2288aadd2eb55648a14c7332717e405, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -491,8 +493,37 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 63.740623, y: 15.997989, z: 53.052387}
+  - {x: 62.507446, y: 18.177408, z: 52.016426}
+  - {x: 61.27427, y: 20.258726, z: 50.980465}
+  - {x: 60.041096, y: 22.241945, z: 49.944504}
+  - {x: 58.80792, y: 24.127066, z: 48.908543}
+  - {x: 57.57474, y: 25.914083, z: 47.87258}
+  - {x: 56.341564, y: 27.603003, z: 46.83662}
+  - {x: 55.10839, y: 29.19382, z: 45.80066}
+  - {x: 53.875214, y: 30.68654, z: 44.7647}
+  - {x: 52.642036, y: 32.08116, z: 43.728737}
+  - {x: 51.40886, y: 33.377678, z: 42.69278}
+  - {x: 50.175682, y: 34.576096, z: 41.65682}
+  - {x: 48.942505, y: 35.676414, z: 40.620857}
+  - {x: 47.709328, y: 36.678635, z: 39.584896}
+  - {x: 46.476154, y: 37.582752, z: 38.548935}
+  - {x: 45.242977, y: 38.38877, z: 37.512974}
+  - {x: 44.0098, y: 39.09669, z: 36.477013}
+  - {x: 42.776623, y: 39.70651, z: 35.44105}
+  - {x: 41.54345, y: 40.21823, z: 34.40509}
+  - {x: 40.310272, y: 40.631847, z: 33.369133}
+  - {x: 39.077095, y: 40.947365, z: 32.333168}
+  - {x: 37.843918, y: 41.164787, z: 31.297207}
+  - {x: 36.61074, y: 41.284103, z: 30.261248}
+  - {x: 35.377567, y: 41.30532, z: 29.225288}
+  - {x: 34.144386, y: 41.228443, z: 28.189325}
+  - {x: 32.911213, y: 41.05346, z: 27.153366}
+  - {x: 31.678036, y: 40.780373, z: 26.117403}
+  - {x: 30.444859, y: 40.409195, z: 25.081444}
+  - {x: 29.211685, y: 39.93992, z: 24.045483}
+  - {x: 27.978504, y: 39.372536, z: 23.009521}
+  - {x: 26.74533, y: 38.70705, z: 21.97356}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalFilter: {fileID: 0}
+  originalFilter: {fileID: 5859086631671413314}
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.3
   playSpeed: 1
@@ -455,7 +455,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706857235040420012}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -532,13 +532,22 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.33176422
-        inSlope: 0
-        outSlope: 0
+        value: 0.00009918213
+        inSlope: 0.8420138
+        outSlope: 0.8420138
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.10730594
+      - serializedVersion: 3
+        time: 1
+        value: 0.33668837
+        inSlope: 0.04236862
+        outSlope: 0.04236862
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.118721485
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4459,6 +4468,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582183c11ea15ab4ea9550f46253cf6c, type: 3}
+--- !u!33 &5859086631671413314 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 4548671431341121816, guid: 582183c11ea15ab4ea9550f46253cf6c, type: 3}
+  m_PrefabInstance: {fileID: 7957729349842344794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7630559930028719281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 582183c11ea15ab4ea9550f46253cf6c, type: 3}

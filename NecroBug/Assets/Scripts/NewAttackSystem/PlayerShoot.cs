@@ -32,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
         if (rb != null)
         {
             // Calculate trajectory
-            Vector3 parabola = CalculateArcVelocity(firePoint.position, targetPos, 1f, 0.05f, Physics.gravity.y);
+            Vector3 parabola = CalculateArcVelocity(firePoint.position, targetPos, 0.5f, 0.1f, Physics.gravity.y);
 
             // Render path with line
             RenderTrajectory(lineRenderer, firePoint.position, parabola, Physics.gravity.y);

@@ -56,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
     public PlayerHealth GetParent() { return parent; }
 
     public void Remove(PlayerHealth distribute) { distributes.Remove(distribute); }
+    public bool Has(PlayerHealth distribute) { return distributes.Contains(distribute); }
 
 
     public float TakeDamage(float damage)
@@ -65,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
         if (overdamage != 0 && doOverdamage && parent != null)
         {
             //Can fit Destroy trigger here?
+            parent.Remove(this);
             parent.TakeDamage(overdamage);
             return 0;
         }
@@ -139,20 +141,27 @@ public class PlayerHealth : MonoBehaviour
             while (overheal > 0)
             {
                 bool backHealFlag = true;
+
+                float tHeal = overheal;
+
                 foreach (PlayerHealth p in distributes)
                 {
-                    float dHeal = overheal * (p.GetDistribute() / maxDistrubute);
+                    float dHeal = tHeal * (p.GetDistribute() / maxDistrubute);
 
                     float backheal = p.Heal(dHeal);
 
-                    if(backheal == 0)
+                    if (backheal == 0)
+                    {
                         backHealFlag = false;
+                    }
 
-                    overheal -= dHeal + backheal;
+                    overheal = overheal - dHeal + backheal;
                 }
 
                 if (backHealFlag)
+                {
                     return overheal;
+                }
             }
         }
         return 0;
@@ -180,7 +189,7 @@ public class PlayerHealth : MonoBehaviour
 
     void OnDestroy()
     {
-        if (parent != null)
+        if (parent != null && parent.Has(this))
         {
             parent.Remove(this);
         }

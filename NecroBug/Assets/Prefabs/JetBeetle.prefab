@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6631373023061904936}
   - component: {fileID: 1786034286995834412}
   - component: {fileID: 5302667835694646114}
+  - component: {fileID: 1547623850738728071}
   m_Layer: 0
   m_Name: JetBeetle
   m_TagString: Enemy
@@ -177,8 +178,8 @@ MonoBehaviour:
   acidProjectilePrefab: {fileID: 0}
   acidSpitForce: 20
   playerStats: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+  lineRenderer: {fileID: 0}
   chargeDamage: 60
-  acidDamage: 10
   damageCooldown: 0.5
 --- !u!195 &604390345361080852
 NavMeshAgent:
@@ -275,6 +276,20 @@ MonoBehaviour:
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.3
   playSpeed: 1
+--- !u!114 &1547623850738728071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876015489555194247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 60
+  type: 0
 --- !u!1001 &3914111548149233913
 PrefabInstance:
   m_ObjectHideFlags: 0

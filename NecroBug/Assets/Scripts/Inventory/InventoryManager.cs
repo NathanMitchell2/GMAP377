@@ -7,22 +7,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject NecroBugBotPart;
     [SerializeField] private List<InventoryThing> defaultItems;
 
-    public List<InventoryItem> Copy(){
-        return this.Clone(items);
-    }
-
-    public void Replace(List<InventoryItem> inventoryItems){
-        items = this.Clone(inventoryItems);
-    }
-
-    public List<InventoryItem> Clone(List<InventoryItem> items){
-        List<InventoryItem> temp = new List<InventoryItem>();
-
-        foreach (InventoryItem item in items){
-            temp.Add(item);
-        }
-        return temp;
-    }
 
     private void Awake()
     {
@@ -32,6 +16,31 @@ public class InventoryManager : MonoBehaviour
         {
             items.Add(inventoryThing.GetItem());
         }
+    }
+    public List<InventoryItem> Copy()
+    {
+        return this.IdealClone(items);
+    }
+
+    public void Replace(List<InventoryItem> inventoryItems)
+    {
+        items = this.IdealClone(inventoryItems);
+    }
+
+    public List<InventoryItem> IdealClone(List<InventoryItem> items)
+    {
+        List<InventoryItem> temp = new List<InventoryItem>();
+
+        foreach (InventoryItem item in items)
+        {
+            int count = item.GetCount();
+            InventoryItem tempI = item.Copy();
+            tempI.SetCount(count);
+            tempI.SetHealth(tempI.GetMaxHealth());
+
+            temp.Add(tempI);
+        }
+        return temp;
     }
 
     public void AddItem(InventoryItem item) {

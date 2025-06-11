@@ -8,8 +8,10 @@ public class CheckpointSystem : MonoBehaviour
     public Transform[] checkpointList;
     public GameObject playerParent;
     public GameObject carObject;
+    public BotBulider botBuilder;
 
     public static List<InventoryItem> newInventoryItems;
+    public static List<InventoryItem> parts;
 
     private static int currentCheck = 0;
 
@@ -22,23 +24,37 @@ public class CheckpointSystem : MonoBehaviour
         }
     }
 
-    void Start(){
+    void Start()
+    {
         PlayerToCheckpoint();
+        foreach (InventoryItem part in parts)
+        {
+            if (part.GetName() == "Necrobug")
+                continue;
+            playerParent.GetComponent<InventoryManager>().AddItem(part);
+        }
     }
 
     public void SetCheck(int check){
         if (check >= 0 && check < checkpointList.Length){
             currentCheck = check;
+            newInventoryItems = playerParent.GetComponent<InventoryManager>().Copy();
+            parts = botBuilder.IdealClone();
         }
 
-        newInventoryItems = playerParent.transform.GetComponent<InventoryManager>().Copy();
     }
 
     public void PlayerToCheckpoint (){
-        playerParent.transform.position = checkpointList[currentCheck].position;
-        playerParent.transform.rotation = checkpointList[currentCheck].rotation;
+        playerParent.GetComponentInChildren<carControler>().transform.position = checkpointList[currentCheck].position;
+        playerParent.GetComponentInChildren<carControler>().transform.rotation = checkpointList[currentCheck].rotation;
 
-        playerParent.transform.GetComponent<InventoryManager>().Replace(newInventoryItems);
+        
+        playerParent.GetComponent<InventoryManager>().Replace(newInventoryItems);
+        /*
+        PreBuildBot pre = GetComponent<PreBuildBot>();
+        pre.CustomBuild(parts);
+        pre.Build();
+        */
     }
 }
 

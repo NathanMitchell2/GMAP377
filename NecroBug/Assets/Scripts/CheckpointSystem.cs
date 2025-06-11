@@ -8,12 +8,13 @@ public class CheckpointSystem : MonoBehaviour
     public GameObject playerParent;
     public GameObject carObject;
 
-    private int currentCheck;
+    private static int currentCheck = 0;
 
     private void Awake(){
+
+        Debug.Log("awake check is " + currentCheck);
         if (Instance == null){
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else{
             Destroy(gameObject);

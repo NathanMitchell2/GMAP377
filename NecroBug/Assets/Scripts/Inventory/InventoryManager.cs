@@ -3,9 +3,26 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private List<InventoryItem> items;
+    public List<InventoryItem> items;
     [SerializeField] private GameObject NecroBugBotPart;
     [SerializeField] private List<InventoryThing> defaultItems;
+
+    public List<InventoryItem> Copy(){
+        return this.Clone(items);
+    }
+
+    public void Replace(List<InventoryItem> inventoryItems){
+        items = this.Clone(inventoryItems);
+    }
+
+    public List<InventoryItem> Clone(List<InventoryItem> items){
+        List<InventoryItem> temp = new List<InventoryItem>();
+
+        foreach (InventoryItem item in items){
+            temp.Add(item);
+        }
+        return temp;
+    }
 
     private void Awake()
     {

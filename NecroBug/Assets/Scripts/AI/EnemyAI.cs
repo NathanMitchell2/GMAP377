@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -179,16 +180,23 @@ public class EnemyAI : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
+            List<GameObject> list = new List<GameObject>();
+            list.Add(other.gameObject);
+
+            GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(list));
+            /*
             playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
 
-            if (playerStats != null)
+            if (pHealth != null)
             {
+
                 DealDamage(chargeDamage);
             }
             else
             {
                 Debug.LogWarning("PlayerStats not found on object!");
             }
+            */
         }
     }
 

@@ -746,6 +746,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+  m_IsActive: 0
 --- !u!4 &94795230
 Transform:
   m_ObjectHideFlags: 0
@@ -7431,6 +7432,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1887420692522944647, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7438,6 +7443,46 @@ PrefabInstance:
     - target: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: triggerSound.Path
+      value: event:/Robot/Webs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: movementSound.Path
+      value: event:/Robot/Necrobug-Robot-Movement
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: triggerSound.Guid.Data1
+      value: 2011279931
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: triggerSound.Guid.Data2
+      value: 1089979945
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: triggerSound.Guid.Data3
+      value: -1401969737
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: triggerSound.Guid.Data4
+      value: -1402906288
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: movementSound.Guid.Data1
+      value: 1750376277
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: movementSound.Guid.Data2
+      value: 1289608649
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: movementSound.Guid.Data3
+      value: 1582206137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: movementSound.Guid.Data4
+      value: -2029324097
       objectReference: {fileID: 0}
     - target: {fileID: 2327365740643717233, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_TagString
@@ -7571,7 +7616,9 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2764204493222672989, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+    - {fileID: 1999615512902784859, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7583,10 +7630,10 @@ PrefabInstance:
       addedObject: {fileID: 595512108}
     - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 595512101}
-    - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 595512111}
+    - targetCorrespondingSourceObject: {fileID: 4571442865685866250, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 947317067}
     - targetCorrespondingSourceObject: {fileID: 2327365740643717233, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1623010522}
@@ -9792,26 +9839,6 @@ MonoBehaviour:
   motorTorque: 1500
   brakeTorque: 3000
   maxSteerAngle: 15
---- !u!114 &595512101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595512099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSoundEvent:
-    Guid:
-      Data1: 1750376277
-      Data2: 1289608649
-      Data3: 1582206137
-      Data4: -2029324097
-    Path: event:/Robot/Necrobug-Robot-Movement
-  movementThreshold: 0.3
 --- !u!114 &595512108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14599,6 +14626,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4571442865685866250, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
   m_PrefabInstance: {fileID: 482691560}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &947317067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947317054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3609ecd203fb47810a4763ee82ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSound:
+    Guid:
+      Data1: 1750376277
+      Data2: 1289608649
+      Data3: 1582206137
+      Data4: -2029324097
+    Path: event:/Robot/Necrobug-Robot-Movement
+  triggerSound:
+    Guid:
+      Data1: 2011279931
+      Data2: 1089979945
+      Data3: -1401969737
+      Data4: -1402906288
+    Path: event:/Robot/Webs
 --- !u!114 &947317064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7477417430369217646, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}

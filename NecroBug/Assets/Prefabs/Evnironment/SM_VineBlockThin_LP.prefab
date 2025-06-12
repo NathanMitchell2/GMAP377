@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 238955429542989495}
   - component: {fileID: 6524284807315671417}
   - component: {fileID: 1573725064147738784}
+  - component: {fileID: 8736271114498827244}
   m_Layer: 0
   m_Name: SM_VineBlockThin_LP
   m_TagString: Untagged
@@ -99,3 +100,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e057141572a8b874e9499980243c88a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  duration: 1
+--- !u!65 &8736271114498827244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041450210136589626}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.039883077, y: 0.008532604, z: 0.035491474}
+  m_Center: {x: 0.0026578149, y: 0.0005413548, z: 0.017192427}

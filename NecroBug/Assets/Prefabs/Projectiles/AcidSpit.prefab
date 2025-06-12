@@ -4847,6 +4847,7 @@ GameObject:
   - component: {fileID: 6894548909876158468}
   - component: {fileID: 11610825039478463}
   - component: {fileID: -1111703786155742747}
+  - component: {fileID: -9020493368243507673}
   m_Layer: 0
   m_Name: AcidSpit
   m_TagString: Untagged
@@ -4991,6 +4992,22 @@ MonoBehaviour:
   splashEffect: {fileID: 27919948168845256, guid: 724ea456687c85d4688359a4ef3bbddb, type: 3}
   acidBeetle: {fileID: 2893309972867873438, guid: 8344e03eb0420d3479d3409a6a5d302b, type: 3}
   baseProjectile: 1
+  isPlayer: 0
+  acidDamage: 35
+--- !u!114 &-9020493368243507673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671630421458197730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  type: 1
 --- !u!1 &7064780235573915085
 GameObject:
   m_ObjectHideFlags: 0

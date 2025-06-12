@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 337256221634243063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 668382933294979888}
   - component: {fileID: 2051290852256397661}
   - component: {fileID: 5633606120053679749}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TargetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,9 +153,9 @@ GameObject:
   - component: {fileID: 511308347746217770}
   - component: {fileID: 5493218026632588874}
   - component: {fileID: 5290588659718747558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AcidHorn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,6 +454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AcidHornModel
       objectReference: {fileID: 0}
+    - target: {fileID: 3492621063738340776, guid: bc03c102a984fcc49be7fe7907e20336, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7650193557467551161, guid: bc03c102a984fcc49be7fe7907e20336, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -493,6 +497,10 @@ PrefabInstance:
     - target: {fileID: 7650193557467551161, guid: bc03c102a984fcc49be7fe7907e20336, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051521124370287215, guid: bc03c102a984fcc49be7fe7907e20336, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

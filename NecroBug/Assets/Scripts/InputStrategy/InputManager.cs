@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputStrategy jumpStrat;
     [SerializeField] private InputStrategy clickStrat;
     [SerializeField] private InputStrategy menuStrat;
+    [SerializeField] private InputStrategy legStrat;
 
     public void SetStrat(InputStrategy strat)
     {
@@ -36,6 +37,10 @@ public class InputManager : MonoBehaviour
             case 5:
                 if (menuStrat != null) removeStrat(menuStrat);
                 menuStrat = strat;
+                break;
+            case 6:
+                if (legStrat != null) removeStrat(legStrat);
+                legStrat = strat;
                 break;
 
             default:
@@ -70,6 +75,9 @@ public class InputManager : MonoBehaviour
                 case 5:
                     menuStrat = null;
                     break;
+                case 6:
+                    legStrat = null;
+                    break;
                 default:
                     break;
             }
@@ -90,6 +98,8 @@ public class InputManager : MonoBehaviour
             return clickStrat != null;
             case 5:
             return menuStrat != null;
+            case 6:
+            return legStrat != null;
             default:
             return false;
         }
@@ -118,5 +128,10 @@ public class InputManager : MonoBehaviour
     void OnMenu(InputValue value)
     {
         if(menuStrat) menuStrat.RunStrategy(value);
+    }
+
+    void OnLeg(InputValue value)
+    {
+        if(legStrat) legStrat.RunStrategy(value);
     }
 }

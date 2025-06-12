@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 99303750084545987}
   - component: {fileID: 4430311138603443878}
   - component: {fileID: 8893505540367550416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6976741600217168403}
   - component: {fileID: 6024948088440072695}
   - component: {fileID: 2013090562574154943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,9 +190,10 @@ GameObject:
   - component: {fileID: -5593645736801312565}
   - component: {fileID: 6734462441620612412}
   - component: {fileID: 4456782187494596064}
-  m_Layer: 0
+  - component: {fileID: 6705734439199387215}
+  m_Layer: 6
   m_Name: Horn
-  m_TagString: Wings
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155fec8e519f4f34b93c37ce23ee79c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0.05
 --- !u!65 &4456782187494596064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -356,7 +358,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -364,6 +366,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.1, y: 1, z: 1.5}
   m_Center: {x: 1.58, y: 0, z: 0}
+--- !u!114 &6705734439199387215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  type: 0
 --- !u!1 &6815843708371360649
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +391,7 @@ GameObject:
   - component: {fileID: 5691617048274942824}
   - component: {fileID: 3236977073245837688}
   - component: {fileID: 6867312851871911773}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,9 +474,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7750489798096026027}
     m_Modifications:
+    - target: {fileID: 813892534020071511, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3379313986988539424, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558063683627066450, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5218824144356524093, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
       propertyPath: m_LocalPosition.x
@@ -505,6 +529,10 @@ PrefabInstance:
     - target: {fileID: 7425105355655513100, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
       propertyPath: m_Name
       value: HornModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425105355655513100, guid: d3eb8881c409b244a9dd20d2efe2c550, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

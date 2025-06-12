@@ -20,6 +20,20 @@ public class DamageObject : MonoBehaviour
 
         return healths;
     }
+    public static List<PlayerHealth> GetPlayerHealths(GameObject player)
+    {
+        List<PlayerHealth> healths = new List<PlayerHealth>();
+
+        if (player != null)
+        {
+            PlayerHealth temp = player.GetComponent<PlayerHealth>();
+
+            if (temp != null)
+                healths.Add(temp);
+        }
+
+        return healths;
+    }
     public static void Damage(int damage, PlayerHealth health)
     {
         health.TakeDamage(damage);

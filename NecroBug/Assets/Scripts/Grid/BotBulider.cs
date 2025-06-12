@@ -136,19 +136,16 @@ public class BotBulider : MonoBehaviour
     }
     public bool DestroyPart(int index)
     {
-        if (index != 0 && parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        if (index != 0 && index != -1 && parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
-            if (index != -1)
-            {
-                BotPart part2 = parts[index];
-                actionManager.RemoveAction(index);
-                parts.RemoveAt(index);
-                builtParts[index].GetComponent<ModularBugPart>().CleanUp();
-                Destroy(builtParts[index].gameObject);
-                builtParts.RemoveAt(index);
-                Destroy(part2.gameObject);
-                return true;
-            }
+            BotPart part2 = parts[index];
+            actionManager.RemoveAction(index);
+            parts.RemoveAt(index);
+            builtParts[index].GetComponent<ModularBugPart>().CleanUp();
+            Destroy(builtParts[index].gameObject);
+            builtParts.RemoveAt(index);
+            Destroy(part2.gameObject);
+            return true;
         }
         return false;
     }
@@ -285,6 +282,8 @@ public class BotBulider : MonoBehaviour
             //buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
             
             InputStrategy strat = part.GetComponent<InputStrategy>();
+
+            part.GetComponent<Rigidbody>().centerOfMass = car.GetComponent<Rigidbody>().centerOfMass;
 
             if(strat != null)
             {

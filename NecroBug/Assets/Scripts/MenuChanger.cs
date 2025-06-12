@@ -65,7 +65,7 @@ public class MenuChanger : MonoBehaviour
     }
 
     // Controls for enabling and disable UI elements and mouse controls
-    public void DisableUI(GameObject UIObject) { UIObject.SetActive(false); }
+    public void DisableUI(GameObject UIObject) { UIObject.SetActive(false);}
     public void EnableUI(GameObject UIObject) { UIObject.SetActive(true); }
     public void EnableMouseControl() 
     {

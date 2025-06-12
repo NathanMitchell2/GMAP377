@@ -197,6 +197,32 @@ public class BotBulider : MonoBehaviour
         return selectedPart;
     }
 
+    public List<BotPart> CloneParts()
+    {
+        List<BotPart> temp = new List<BotPart>();
+        foreach (BotPart part in parts)
+        {
+            temp.Add(part);
+        }
+        return temp;
+    }
+
+    public List<InventoryItem> IdealClone()
+    {
+        List<InventoryItem> temp = new List<InventoryItem>();
+
+        foreach (BotPart part in parts)
+        {
+            InventoryItem item = part.GetInventoryPart().GetItem();
+            int count = item.GetCount();
+            InventoryItem tempI = item.Copy();
+            tempI.SetCount(count);
+            tempI.SetHealth(tempI.GetMaxHealth());
+
+            temp.Add(tempI);
+        }
+        return temp;
+    }
     private void DestroyBot()
     {
         for (int i = 0; i < builtParts.Count; i++)

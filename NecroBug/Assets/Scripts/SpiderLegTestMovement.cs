@@ -53,7 +53,7 @@ public class SpiderLegTestMovement : MonoBehaviour
         {
             float currentHeight = hit.distance;
             float difference = floatingHeight - currentHeight;
-            float verticalSpeed = rb.velocity.y;
+            float verticalSpeed = rb.linearVelocity.y;
             float force = (difference * floatForce) - (verticalSpeed * floatDamping);
 
             rb.AddForce(Vector3.up * force, ForceMode.Acceleration);
@@ -65,13 +65,13 @@ public class SpiderLegTestMovement : MonoBehaviour
         if (moveInput.sqrMagnitude > 0.01f)
         {
             Vector3 desiredVelocity = moveInput * moveSpeed;
-            desiredVelocity.y = rb.velocity.y; // preserve vertical motion from floating
-            rb.velocity = desiredVelocity;
+            desiredVelocity.y = rb.linearVelocity.y; // preserve vertical motion from floating
+            rb.linearVelocity = desiredVelocity;
         }
         else
         {
             // Stop movement instantly if no input
-            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
         }
     }
 

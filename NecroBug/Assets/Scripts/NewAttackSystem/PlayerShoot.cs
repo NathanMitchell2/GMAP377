@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class PlayerShoot : ModularBugPart
 {
     public GameObject projectilePrefab;
     public float shootForce = 20f;
@@ -15,12 +15,6 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && timer > shootCooldown)
-        {
-            Shoot();
-            timer = 0;
-        }
-
         timer += 1 * Time.deltaTime;
     }
 
@@ -67,6 +61,15 @@ public class PlayerShoot : MonoBehaviour
             float t = i * timeStep;
             Vector3 point = start + velocity * t + 0.5f * Vector3.up * gravity * t * t;
             lineRenderer.SetPosition(i, point);
+        }
+    }
+
+    public override void Activate()
+    {
+        if (timer > shootCooldown)
+        {
+            Shoot();
+            timer = 0;
         }
     }
 }

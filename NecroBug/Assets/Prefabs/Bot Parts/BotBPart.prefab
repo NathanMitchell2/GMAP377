@@ -178,6 +178,7 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   orientations: []
   customBinds: 0
+  defaultBind: 
 --- !u!114 &-589217772538961424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Necrobug
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a2beb5a7ddebd0d4882723cc0ec7755b, type: 3}
+  maxHealth: 100
+  stackable: 0
+  maxStack: 99
+  count: 1
 --- !u!1001 &2026749428481582009
 PrefabInstance:
   m_ObjectHideFlags: 0

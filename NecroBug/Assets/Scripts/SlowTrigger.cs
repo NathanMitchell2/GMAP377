@@ -7,7 +7,7 @@ public class SlowTrigger : MonoBehaviour
     public float steerReduce = .5f;
     private void OnTriggerStay(Collider other)
     {
-        carControler car = other.gameObject.GetComponentInParent<carControler>();
+        carControler car = other.gameObject.GetComponent<carControler>();
         if (car != null)
         {
             car.TerrainSpeedDown(speedReduce, steerReduce);
@@ -16,7 +16,7 @@ public class SlowTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        carControler car = other.gameObject.GetComponentInParent<carControler>();
+        carControler car = other.gameObject.GetComponent<carControler>();
         if (car != null)
         {
             car.TerrainSpeedReset();

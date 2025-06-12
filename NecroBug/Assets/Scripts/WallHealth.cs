@@ -8,7 +8,7 @@ public class WallHealth : MonoBehaviour
     public void dealDamage(int dmg)
     {
         health -= dmg;
-        if(hitFlash != null) 
+        if(hitFlash != null)
             hitFlash.TriggerFlash();
         checkDeath();
     }

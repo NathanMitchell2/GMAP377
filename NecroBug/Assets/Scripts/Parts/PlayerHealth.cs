@@ -28,7 +28,18 @@ public class PlayerHealth : MonoBehaviour
         distributes.Remove(this);
 
         List<PlayerHealth> temp = new List<PlayerHealth>(GetComponentsInParent<PlayerHealth>());
-        temp.Remove(this);
+        List<PlayerHealth> temptemp = new List<PlayerHealth>();
+
+        foreach (PlayerHealth item in temp)
+        {
+            if (item.gameObject == this.gameObject)
+                temptemp.Add(item);
+        }
+        foreach(PlayerHealth item in temptemp)
+        {
+            temp.Remove(item);
+        }
+
 
         if (temp.Count > 0)
             parent = temp[0];
@@ -66,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         if (overdamage != 0 && doOverdamage && parent != null)
         {
             //Can fit Destroy trigger here?
-            parent.Remove(this);
+            //parent.Remove(this);
             parent.TakeDamage(overdamage);
             return 0;
         }
@@ -94,8 +105,16 @@ public class PlayerHealth : MonoBehaviour
 
             float tDamage = damage;
 
-            foreach (PlayerHealth p in distributes)
-            {
+            int intialCount = distributes.Count;
+
+            for(int i = 0; i < distributes.Count; i++) {
+                if(distributes.Count != intialCount)
+                {
+                    i -= intialCount - distributes.Count;
+                    intialCount = distributes.Count;
+                }
+                PlayerHealth p = distributes[i];
+
                 float dDamage = tDamage * (p.GetDistribute() / maxDistrubute);
 
                 float backdamage = p.DistributeDamage(dDamage);
@@ -115,9 +134,14 @@ public class PlayerHealth : MonoBehaviour
             if (health < 0)
             {
                 float temp = health;
-                health = 0;
+                DoDeath();
+                return 0;
                 return damage - temp;
             }
+        }
+        if (health < 0)
+        {
+            DoDeath();
         }
         return 0;
     }
@@ -171,9 +195,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health < 1)
         {
-            Debug.Log("Part is deceased");
-            SendMessage("Death");
-            health = 0;
+            DoDeath();
         }
 
         if(health != 0 && hitFlash != null)
@@ -186,9 +208,11 @@ public class PlayerHealth : MonoBehaviour
     {
         return (maxHealth / health) - 1;
     }
-
-    void OnDestroy()
+    void DoDeath()
     {
+        Debug.Log("Part is deceased");
+        SendMessage("Death");
+        health = 0;
         if (parent != null && parent.Has(this))
         {
             parent.Remove(this);

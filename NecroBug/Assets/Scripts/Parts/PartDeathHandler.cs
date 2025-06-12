@@ -29,8 +29,10 @@ public class PartDeathHandler : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         List<BotPart> initParts = builder.GetBadParts();
+
         //builder.RemovePart(part);
         builder.DestroyPart(part);
+        
         List<BotPart> parts = builder.GetBadParts();
         foreach (BotPart p in initParts)
         {

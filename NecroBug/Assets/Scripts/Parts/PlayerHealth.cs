@@ -57,8 +57,11 @@ public class PlayerHealth : MonoBehaviour
     }
     private void Update()
     {
-        inventoryItem.SetHealth(health);
-        HealthCheck();
+        if (inventoryItem != null)
+        {
+            inventoryItem.SetHealth(health);
+            HealthCheck();
+        }
     }
     public float GetHealth() { return health; }
     public void SetHealth(float health) {  this.health = health; }

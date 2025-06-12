@@ -12,6 +12,12 @@ public class carControler : MonoBehaviour
     public float baseDriverSpeed, baseSteerSpeed;
     float horizontalInput, verticalInput;
     public bool wingsPickedUp = false;
+    public SpiderLegTestMovement legScript;
+    public carControler carScript;
+
+    public List<GameObject> wheelList;
+
+    private bool legsDetected = false;
 
     public float totalMass;
 
@@ -47,6 +53,18 @@ public class carControler : MonoBehaviour
     void Update() {
         //horizontalInput = Input.GetAxis("Horizontal");
         //verticalInput = Input.GetAxis("Vertical");
+        if (GetComponentInChildren<LegsPartIdentifier>() != null && legsDetected == false)
+        {
+            Debug.Log("Leg Found");
+            legScript.enabled = true;
+            for (int i = 0; i < wheelList.Count; i++)
+            {
+                Debug.Log(wheelList[i] + " disabled");
+                wheelList[i].SetActive(false);
+            }
+            carScript.enabled = false;
+            legsDetected = true;
+        }
     }
     public void SetInputs(float hInput, float vInput)
     {

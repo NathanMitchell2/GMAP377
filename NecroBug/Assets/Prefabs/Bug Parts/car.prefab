@@ -364,13 +364,13 @@ WheelCollider:
   m_Mass: 50
   m_WheelDampingRate: 100
   m_ForwardFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.35
     m_ExtremumValue: 1
     m_AsymptoteSlip: 21
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 10
     m_AsymptoteValue: 0.25
@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: -459399141401880922}
   - component: {fileID: 3269585200964582630}
   - component: {fileID: 197740465385301329}
+  - component: {fileID: 6095668079882783201}
   m_Layer: 6
   m_Name: car
   m_TagString: Player
@@ -560,6 +561,15 @@ MonoBehaviour:
   baseDriverSpeed: 0
   baseSteerSpeed: 0
   wingsPickedUp: 0
+  legScript: {fileID: 6095668079882783201}
+  carScript: {fileID: 7908505440710472612}
+  wheelList:
+  - {fileID: 7581607505142738518}
+  - {fileID: 1561718270988813491}
+  - {fileID: 6554057467296882378}
+  - {fileID: 8463692069505365530}
+  - {fileID: 7995992108237759181}
+  - {fileID: 7703150940579460235}
   totalMass: 0
 --- !u!114 &8858329393499569411
 MonoBehaviour:
@@ -706,6 +716,26 @@ MonoBehaviour:
   hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
   flashDuration: 0.5
   playSpeed: 1
+--- !u!114 &6095668079882783201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595718b43896f5a41a84a87cb4baff7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingHeight: 1.2
+  floatForce: 100
+  floatDamping: 5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  moveSpeed: 7.5
+  turnSpeed: 180
 --- !u!1 &3353813181373932821
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,13 +925,13 @@ WheelCollider:
   m_Mass: 50
   m_WheelDampingRate: 100
   m_ForwardFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.35
     m_ExtremumValue: 1
     m_AsymptoteSlip: 21
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 10
     m_AsymptoteValue: 0.25
@@ -1158,13 +1188,13 @@ WheelCollider:
   m_Mass: 50
   m_WheelDampingRate: 100
   m_ForwardFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.35
     m_ExtremumValue: 1
     m_AsymptoteSlip: 21
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 10
     m_AsymptoteValue: 0.25
@@ -1229,13 +1259,13 @@ WheelCollider:
   m_Mass: 50
   m_WheelDampingRate: 100
   m_ForwardFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.35
     m_ExtremumValue: 1
     m_AsymptoteSlip: 21
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.1
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 10
     m_AsymptoteValue: 0.25
@@ -1371,6 +1401,16 @@ PrefabInstance:
 --- !u!4 &5182603359943539860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1019714253644485142, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+  m_PrefabInstance: {fileID: 5317219514957426306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7703150940579460235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2534849349930424841, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+  m_PrefabInstance: {fileID: 5317219514957426306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7995992108237759181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2827687235830762575, guid: f911f724d34f6e943be809ad26c16627, type: 3}
   m_PrefabInstance: {fileID: 5317219514957426306}
   m_PrefabAsset: {fileID: 0}
 --- !u!33 &8376672032868151563 stripped

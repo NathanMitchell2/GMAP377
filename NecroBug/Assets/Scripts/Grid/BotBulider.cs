@@ -286,6 +286,8 @@ public class BotBulider : MonoBehaviour
             
             InputStrategy strat = part.GetComponent<InputStrategy>();
 
+            part.GetComponent<Rigidbody>().centerOfMass = car.GetComponent<Rigidbody>().centerOfMass;
+
             if(strat != null)
             {
                 buildTransform.GetComponent<InputManager>().SetStrat(strat);

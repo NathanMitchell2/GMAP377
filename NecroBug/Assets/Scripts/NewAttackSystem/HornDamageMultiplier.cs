@@ -40,7 +40,7 @@ public class HornDamageMultiplier : MonoBehaviour
             {
                 GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(gameObject));
             }
-            if (collision.transform.GetComponent<EnemyHealth>())
+            if (collision.transform.GetComponent<EnemyHealth>()) 
                 collision.transform.GetComponent<EnemyHealth>().dealDamage(damage);
             if (collision.transform.GetComponent<WallHealth>())
                 collision.transform.GetComponent<WallHealth>().dealDamage(damage);

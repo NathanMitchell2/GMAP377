@@ -25,6 +25,7 @@ public class carControler : MonoBehaviour
     {
         baseDriverSpeed = driverSpeed;
         baseSteerSpeed = steerSpeed;
+        rigid.centerOfMass = new Vector3(0, -0.5f, 0);
     }
 
     public void TerrainSpeedDown(float drive, float steer)

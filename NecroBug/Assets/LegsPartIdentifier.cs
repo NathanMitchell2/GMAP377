@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class LegsPartIdentifier : MonoBehaviour
+public class LegsPartIdentifier : ModularBugPart
 {
+    public override void Activate()
+    {
+        
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -66,7 +66,7 @@ public class BuilderUI : MonoBehaviour
     void Update()
     {
     }
-    private GameObject GetPart(string option)
+    public GameObject GetPart(string option)
     {
         switch (option)
         {
@@ -412,5 +412,10 @@ public class BuilderUI : MonoBehaviour
                 return Vector3.right;
 
         }
+    }
+
+    public Transform GetGridTransform()
+    {
+        return partTransform;
     }
 }

@@ -48,9 +48,9 @@ public class ScaleObjectOnHit : MonoBehaviour
         Destroy(this);
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        if (other.GetComponent<HornPart>() != null){
+        if (other.gameObject.GetComponent<AcidProjectile>() != null){
             StartCoroutine("ScaleDownCoroutine");
         }
     }

@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1937722609895790683}
   - component: {fileID: 6339913829678228460}
+  - component: {fileID: 2222529386656767263}
+  - component: {fileID: 4996967203563910741}
+  - component: {fileID: 2357650722445946502}
+  - component: {fileID: 4090802219504722927}
   m_Layer: 0
   m_Name: Scalable mushroom
   m_TagString: Untagged
@@ -52,6 +56,94 @@ MonoBehaviour:
   baseScaleY: 0.01
   baseTopY: 2.45
   correctionPerUnit: 0.12
+--- !u!114 &2222529386656767263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128200202080530967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cab322ab78dd1649bd6103cf71a1a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  explosionForce: 150000
+  explosionRadius: 10
+  bombSound: event:/Other/mushroom explosion
+--- !u!114 &4996967203563910741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128200202080530967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -84123822
+      Data2: 1321332401
+      Data3: -307475056
+      Data4: 1232367388
+    Path: event:/Terrain/Mushroom explosion
+  Event: 
+  EventPlayTrigger: 2
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2357650722445946502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128200202080530967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 45
+  type: 2
+--- !u!54 &4090802219504722927
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128200202080530967}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6039000040638868517
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,8 +187,6 @@ GameObject:
   - component: {fileID: 1897501221146238359}
   - component: {fileID: 1167307285665831067}
   - component: {fileID: 1840025942007514459}
-  - component: {fileID: 5945779530382306291}
-  - component: {fileID: 6080778119917022867}
   - component: {fileID: 6966548550448683628}
   m_Layer: 0
   m_Name: Mushroom Top
@@ -173,53 +263,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5945779530382306291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6606108201785122266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cab322ab78dd1649bd6103cf71a1a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
-  explosionForce: 150000
-  explosionRadius: 10
-  bombSound: event:/Other/mushroom explosion
---- !u!114 &6080778119917022867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6606108201785122266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -84123822
-      Data2: 1321332401
-      Data3: -307475056
-      Data4: 1232367388
-    Path: event:/Terrain/Mushroom explosion
-  Event: 
-  EventPlayTrigger: 2
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!135 &6966548550448683628
 SphereCollider:
   m_ObjectHideFlags: 0

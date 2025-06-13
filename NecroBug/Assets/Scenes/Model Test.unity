@@ -4725,7 +4725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4106004572126861326, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4126070056873127837, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -4794,6 +4794,10 @@ PrefabInstance:
     - target: {fileID: 5215173797715663484, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273582033176708774, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5363836792609901912, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9913,7 +9917,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585117304}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -12370,7 +12374,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761088477}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -36191,6 +36195,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5736003699324519058, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
+      propertyPath: m_Name
+      value: TipControllers
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 161.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 27.843822
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 499.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3488379353801149993, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
@@ -36226,26 +36250,6 @@ PrefabInstance:
     - target: {fileID: 7824815416437697314, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
       propertyPath: m_Name
       value: Energy_Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736003699324519058, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
-      propertyPath: m_Name
-      value: TipControllers
-      objectReference: {fileID: 0}
-    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 161.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 27.843822
-      objectReference: {fileID: 0}
-    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 499.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5822304044216508844, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

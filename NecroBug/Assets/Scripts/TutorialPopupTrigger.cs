@@ -15,6 +15,7 @@ public class TutorialPopupTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && popupUI != null && firstPass)
         {
+            firstPass = false;
             popupUI.SetActive(true);
             Time.timeScale = 0f;
         }

@@ -29,7 +29,7 @@ public class ScaleObjectOnHit : MonoBehaviour
     private IEnumerator ScaleDownCoroutine()
     {
         Vector3 initialScale = target.localScale;
-        Vector3 targetScale = new Vector3(0f, 0f, initialScale.z);
+        Vector3 targetScale = new Vector3(0f, initialScale.z, 0f);
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -48,9 +48,9 @@ public class ScaleObjectOnHit : MonoBehaviour
         Destroy(this);
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        if (other.GetComponent<HornPart>() != null){
+        if (other.gameObject.GetComponent<AcidProjectile>() != null){
             StartCoroutine("ScaleDownCoroutine");
         }
     }

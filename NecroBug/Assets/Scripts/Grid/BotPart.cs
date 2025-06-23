@@ -90,6 +90,9 @@ public class BotPart : MonoBehaviour
     {
         foreach (var block in GetBlocks())
         {
+            Debug.LogError("block");
+            Debug.LogError(block);
+            Debug.LogError(grid);
             block.inBounds(pos, axis, center, grid);
         }
         foreach(var block in GetBlocks())
@@ -167,6 +170,10 @@ public class BotPart : MonoBehaviour
     public Vector3 GetAxis()
     {
         return axis;
+    }
+    public int GetOrientation()
+    {
+        return orientation;
     }
     public void SetPos(Vector3 pos)
     {

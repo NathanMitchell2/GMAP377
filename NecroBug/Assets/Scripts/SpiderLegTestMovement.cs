@@ -15,6 +15,7 @@ public class SpiderLegTestMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 moveInput;
 
+    Vector3 lastMoveDirection = Vector3.forward;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,12 +36,7 @@ public class SpiderLegTestMovement : MonoBehaviour
 
         moveInput = (camForward.normalized * v + camRight.normalized * h).normalized;
 
-        // Optional: rotate to face move direction
-        if (moveInput.magnitude > 0.1f)
-        {
-            Quaternion targetRot = Quaternion.LookRotation(moveInput);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
-        }
+       
     }
 
     void FixedUpdate()
@@ -57,7 +53,7 @@ public class SpiderLegTestMovement : MonoBehaviour
         {
             float currentHeight = hit.distance;
             float difference = floatingHeight - currentHeight;
-            float verticalSpeed = rb.velocity.y;
+            float verticalSpeed = rb.linearVelocity.y;
             float force = (difference * floatForce) - (verticalSpeed * floatDamping);
 
             rb.AddForce(Vector3.up * force, ForceMode.Acceleration);
@@ -66,8 +62,17 @@ public class SpiderLegTestMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        Vector3 moveForce = moveInput * moveSpeed;
-        rb.AddForce(moveForce, ForceMode.Acceleration);
+        if (moveInput.sqrMagnitude > 0.01f)
+        {
+            Vector3 desiredVelocity = moveInput * moveSpeed;
+            desiredVelocity.y = rb.linearVelocity.y; // preserve vertical motion from floating
+            rb.linearVelocity = desiredVelocity;
+        }
+        else
+        {
+            // Stop movement instantly if no input
+            rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
+        }
     }
 
     void AlignToGround()
@@ -76,8 +81,24 @@ public class SpiderLegTestMovement : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, floatingHeight * 2f, groundMask))
         {
             Vector3 groundNormal = hit.normal;
-            Quaternion targetRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+
+            Vector3 forward;
+
+            if (moveInput.sqrMagnitude > 0.01f)
+            {
+                lastMoveDirection = moveInput;
+                forward = Vector3.ProjectOnPlane(moveInput, groundNormal).normalized;
+            }
+            else
+            {
+                forward = Vector3.ProjectOnPlane(lastMoveDirection, groundNormal).normalized;
+            }
+
+            if (forward.sqrMagnitude > 0.001f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(forward, groundNormal);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            }
         }
     }
 }

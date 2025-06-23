@@ -7,6 +7,7 @@ public class MushroomExplosion : MonoBehaviour
     public GameObject explosion;
     public float explosionForce = 5000f;
     public float explosionRadius = 5f;
+    private bool exploding = false;
 
     [SerializeField]
     private string bombSound = "event:/Other/mushroom explosion";
@@ -16,11 +17,15 @@ public class MushroomExplosion : MonoBehaviour
         if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
             //Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(transform.gameObject);
+            Explode();
         }
     }
-    private void OnDestroy()
+    public void Explode()
     {
+        if (exploding)
+            return;
+        exploding = true;
+
         Instantiate(explosion, transform.position, Quaternion.identity);
         RuntimeManager.PlayOneShot(bombSound, Camera.main.transform.position);
         Debug.Log("bomb sound played");
@@ -36,7 +41,7 @@ public class MushroomExplosion : MonoBehaviour
                 {
                     //rb.isKinematic = false;
                     //rb.AddForce((transform.position - hit.transform.position) * explosionForce);
-                    if(hit.gameObject.tag == "Player")
+                    if (hit.gameObject.tag == "Player")
                     {
                         if (hit.GetComponent<carControler>() != null)
                             rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
@@ -55,7 +60,7 @@ public class MushroomExplosion : MonoBehaviour
                 health.dealDamage(200);
             }
 
-            if(hit.gameObject.tag == "Wall")
+            if (hit.gameObject.tag == "Wall")
             {
                 WallHealth health = hit.GetComponent<WallHealth>();
                 health.dealDamage(200);
@@ -63,10 +68,12 @@ public class MushroomExplosion : MonoBehaviour
 
             if (hit.GetComponent<MushroomExplosion>() != null)
             {
-                Destroy(hit.gameObject);
+                hit.GetComponent<MushroomExplosion>().Explode();
             }
         }
 
         GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(targets));
+        Destroy(gameObject);
     }
+    
 }

@@ -136,19 +136,16 @@ public class BotBulider : MonoBehaviour
     }
     public bool DestroyPart(int index)
     {
-        if (index != 0 && parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        if (index != 0 && index != -1 && parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
-            if (index != -1)
-            {
-                BotPart part2 = parts[index];
-                actionManager.RemoveAction(index);
-                parts.RemoveAt(index);
-                builtParts[index].GetComponent<ModularBugPart>().CleanUp();
-                Destroy(builtParts[index].gameObject);
-                builtParts.RemoveAt(index);
-                Destroy(part2.gameObject);
-                return true;
-            }
+            BotPart part2 = parts[index];
+            actionManager.RemoveAction(index);
+            parts.RemoveAt(index);
+            builtParts[index].GetComponent<ModularBugPart>().CleanUp();
+            Destroy(builtParts[index].gameObject);
+            builtParts.RemoveAt(index);
+            Destroy(part2.gameObject);
+            return true;
         }
         return false;
     }
@@ -200,6 +197,32 @@ public class BotBulider : MonoBehaviour
         return selectedPart;
     }
 
+    public List<BotPart> CloneParts()
+    {
+        List<BotPart> temp = new List<BotPart>();
+        foreach (BotPart part in parts)
+        {
+            temp.Add(part);
+        }
+        return temp;
+    }
+
+    public List<InventoryItem> IdealClone()
+    {
+        List<InventoryItem> temp = new List<InventoryItem>();
+
+        foreach (BotPart part in parts)
+        {
+            InventoryItem item = part.GetInventoryPart().GetItem();
+            int count = item.GetCount();
+            InventoryItem tempI = item.Copy();
+            tempI.SetCount(count);
+            tempI.SetHealth(tempI.GetMaxHealth());
+
+            temp.Add(tempI);
+        }
+        return temp;
+    }
     private void DestroyBot()
     {
         for (int i = 0; i < builtParts.Count; i++)
@@ -285,6 +308,8 @@ public class BotBulider : MonoBehaviour
             //buildTransform.GetComponent<InputManager>().SetStrat(part.GetComponentInChildren<InputStrategy>());
             
             InputStrategy strat = part.GetComponent<InputStrategy>();
+
+            part.GetComponent<Rigidbody>().centerOfMass = car.GetComponent<Rigidbody>().centerOfMass;
 
             if(strat != null)
             {

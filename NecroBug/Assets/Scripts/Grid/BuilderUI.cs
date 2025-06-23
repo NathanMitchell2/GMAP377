@@ -66,7 +66,7 @@ public class BuilderUI : MonoBehaviour
     void Update()
     {
     }
-    private GameObject GetPart(string option)
+    public GameObject GetPart(string option)
     {
         switch (option)
         {
@@ -84,6 +84,10 @@ public class BuilderUI : MonoBehaviour
                 return Instantiate(parts[5], partTransform);
             case "Leg":
                 return Instantiate(parts[6], partTransform);
+            case "Acid Horn":
+                return Instantiate(parts[7], partTransform);
+            case "Mandibles":
+                return Instantiate(parts[8], partTransform);
             default:
                 return null;
         }
@@ -412,5 +416,10 @@ public class BuilderUI : MonoBehaviour
                 return Vector3.right;
 
         }
+    }
+
+    public Transform GetGridTransform()
+    {
+        return partTransform;
     }
 }

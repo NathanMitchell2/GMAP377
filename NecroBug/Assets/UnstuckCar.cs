@@ -18,7 +18,7 @@ public class UnstuckCar : MonoBehaviour
     void OnUnstuck(InputValue value)
     {
 
-        GameObject car = transform.GetChild(0).gameObject;
+        GameObject car = GetComponentInChildren<carControler>().gameObject;
         car.transform.SetLocalPositionAndRotation(car.transform.localPosition + Vector3.up, Quaternion.identity);
     }
 }

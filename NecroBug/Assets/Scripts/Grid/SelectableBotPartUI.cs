@@ -26,7 +26,7 @@ public class SelectableBotPartUI : MonoBehaviour
         index = i;
     }
 
-    public void SetPart(InventoryThing inventoryThing)
+    public void SetPart(InventoryItem inventoryThing)
     {
         text.text = inventoryThing.GetName();
         if (inventoryThing.GetIcon() != null)

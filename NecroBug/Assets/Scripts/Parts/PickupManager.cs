@@ -35,8 +35,13 @@ public class PickupManager : MonoBehaviour
         foreach(Collider pickup in pickups)
         {
             //pickups.Remove(pickup);
-            if(pickup.GetComponent<InventoryThing>() != null)
-                inventory.AddItem(pickup.GetComponent<InventoryThing>().GetItem());
+            GameObject item = pickup.GetComponent<PickupIdentifier>().item;
+            if(item != null)
+            {
+                System.Type type = item.GetComponent<InventoryItem>().GetType();
+                InventoryItem temp = (InventoryItem)inventory.GetInvObj().AddComponent(type);
+                temp.RestoreMemento(item.GetComponent<InventoryItem>().CreateMemento());
+            }
             Destroy(pickup.gameObject);
             //pickup.transform.parent = transform.parent;
             //manager.SetStrat(pickup.GetComponent<InputStrategy>());

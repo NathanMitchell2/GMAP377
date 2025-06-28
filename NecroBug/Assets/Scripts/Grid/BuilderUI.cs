@@ -38,23 +38,18 @@ public class BuilderUI : MonoBehaviour
     private int axis = 0;
     BotBulider builder;
 
+    private int selectedIndex;
+
     private IEnumerator<bool> checkAndBuild;
 
     private void Awake()
     {
-        builder = GetComponent<BotBulider>();
+        GameObject player = PlayerIdentifier.GetPlayer().gameObject;
+        builder = player.GetComponent<BotBulider>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject part = GetPart("Necrobug");
-        BotPart bPart = part.GetComponent<BotPart>();
-        bPart.SetPos(new Vector3(4, 4, 4));
-
-        bPart.GetComponent<InventoryThing>().SetItem(inventory.GetItem(0));
-
-        builder.AddPart(bPart);
-        builder.SetSelected(0);
         UpdateAll();
     }
     private void OnEnable()
@@ -62,80 +57,6 @@ public class BuilderUI : MonoBehaviour
         UpdateAll();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-    public GameObject GetPart(string option)
-    {
-        switch (option)
-        {
-            case "Necrobug":
-                return Instantiate(parts[0], partTransform);
-            case "Horn":
-                return Instantiate(parts[1], partTransform);
-            case "Jet":
-                return Instantiate(parts[2], partTransform);
-            case "Wing":
-                return Instantiate(parts[3], partTransform);
-            case "Generic":
-                return Instantiate(parts[4], partTransform);
-            case "Legs":
-                return Instantiate(parts[5], partTransform);
-            case "Leg":
-                return Instantiate(parts[6], partTransform);
-            case "Acid Horn":
-                return Instantiate(parts[7], partTransform);
-            case "Mandibles":
-                return Instantiate(parts[8], partTransform);
-            default:
-                return null;
-        }
-    }
-
-    public void SelectPart()
-    {
-        builder.SetSelected(int.Parse(selectIndex.text));
-        UpdateAll();
-    }
-    public void RotateSelected()
-    {
-        int dir = int.Parse(rotationEnum.text);
-        //Vector3.Dot(gridRotatePivot.transform.eulerAngles, Vector3.forward);
-
-
-
-
-        switch ((Directions)dir)
-        {
-            case Directions.Up:
-                BotPart selected = builder.GetSelected();
-                builder.RotateSelected(Vector3.up);
-                break;
-            case Directions.Down:
-                selected = builder.GetSelected();
-                builder.RotateSelected(Vector3.down);
-                break;
-            case Directions.Left:
-                selected = builder.GetSelected();
-                builder.RotateSelected(Vector3.left);
-                break;
-            case Directions.Right:
-                selected = builder.GetSelected();
-                builder.RotateSelected(Vector3.right);
-                break;
-            case Directions.Forward:
-                selected = builder.GetSelected();
-                builder.RotateSelected(Vector3.forward);
-                break;
-            case Directions.Backward:
-                selected = builder.GetSelected();
-                builder.RotateSelected(Vector3.back);
-                break;
-
-        }
-        UpdateAll();
-    }
     public void MoveSelected(int dir)
     {
         //BotPart selected = builder.GetSelected();
@@ -177,52 +98,50 @@ public class BuilderUI : MonoBehaviour
             left = Vector3.forward;
         }
 
-
+        Vector3 ogPos = builder.GetGridParts()[selectedIndex].GetBotPart().GetPos();
         switch ((Directions)dir)
         {
             case Directions.Up:
-                BotPart selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + Vector3.up);
+                builder.MovePart(selectedIndex, ogPos + Vector3.up);
                 break;
             case Directions.Down:
-                selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + Vector3.down);
+                builder.MovePart(selectedIndex, ogPos + Vector3.down);
                 break;
             case Directions.Left:
-                selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + left);
+                builder.MovePart(selectedIndex, ogPos + left);
                 break;
             case Directions.Right:
-                selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + right);
+                builder.MovePart(selectedIndex, ogPos + right);
                 break;
             case Directions.Forward:
-                selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + forward);
+                builder.MovePart(selectedIndex, ogPos + forward);
                 break;
             case Directions.Backward:
-                selected = builder.GetSelected();
-                builder.MoveSelected(selected.GetPos() + back);
+                builder.MovePart(selectedIndex, ogPos + back);
                 break;
 
         }
         UpdateAll();
     }
 
+    private List<InventoryItem> GetInventoryItems()
+    {
+        return inventory.items;
+    }
+
     public void AddPart()
     {
         if (selectedItem.GetName() == "Necrobug")
             return;
-        InventoryItem temp = inventory.RemoveItem(selectedItem);
-        GameObject part = GetPart(temp.GetName());//partDropdown.captionText.text);
-        
-        BotPart bPart = part.GetComponent<BotPart>();
+        MediatorPart part = (MediatorPart)inventory.RemoveItem(selectedItem);
+
+        part.CreateBotPart();
+        BotPart bPart = part.GetBotPart();
         //bPart.SetPos(new Vector3(int.Parse(posX.text), int.Parse(posY.text), int.Parse(posZ.text)));
         bPart.SetPos(new Vector3(0,0,0));
-        bPart.GetComponent<InventoryThing>().SetItem(temp);
 
-        builder.AddPart(bPart);
-        SelectPart(builder.IndexOf(bPart));
+        builder.AddPart(part);
+        selectedIndex = builder.IndexOf(part);
 
         UpdateAll();
     }
@@ -238,8 +157,8 @@ public class BuilderUI : MonoBehaviour
 
     public void RemovePart()
     {
-        inventory.AddItem(builder.GetSelected().GetComponent<InventoryThing>().GetItem());
-        builder.RemoveSelected();
+        inventory.AddItem(builder.GetGridParts()[selectedIndex]);
+        builder.RemovePart(selectedIndex);
         UpdateAll();
     }
 
@@ -255,7 +174,6 @@ public class BuilderUI : MonoBehaviour
             Destroy(selectUILoc.GetChild(i).gameObject);
         }
         float height = selectUIPrefab.GetComponent<RectTransform>().rect.height;
-        int selected = builder.IndexOf(builder.GetSelected());
         //Vector3 rootPos = selectUILoc.GetComponent<RectTransform>().position;
         for (int i = 0; i < builder.GetCount(); i++)
         {
@@ -264,12 +182,19 @@ public class BuilderUI : MonoBehaviour
             selectUITemp.GetComponent<RectTransform>().SetLocalPositionAndRotation(pos, Quaternion.identity);
             SelectableBotPartUI selectableUI = selectUITemp.GetComponent<SelectableBotPartUI>();
             selectableUI.SetIndex(i);
-            selectableUI.SetPart(builder.GetIndex(i).GetInventoryPart());
+
+            //selectableUI.SetPart(builder.GetIndex(i).GetInventoryPart());
+            selectableUI.SetPart(builder.GetGridParts()[i]);
+
             selectableUI.SetUI(this);
-            selectableUI.UsesCustomBinds(builder.GetIndex(i).customBinds);
+
+            //selectableUI.UsesCustomBinds(builder.GetIndex(i).customBinds);
+            MediatorPart part = builder.GetGridParts()[i];
+            selectableUI.UsesCustomBinds(part.GetBotPart().customBinds);
+
             selectableUI.SetKey(GetKeybindText(i));
 
-            if (selected == i)
+            if (selectedIndex == i)
             {
                 selectableUI.GetComponentInChildren<PartSelectUI>().Select();
             }
@@ -325,7 +250,7 @@ public class BuilderUI : MonoBehaviour
     }
     public void SelectPart(int index)
     {
-        builder.SetSelected(index);
+        selectedIndex = index;
         UpdateAll();
     }
     public void BindPart(int index)
@@ -376,46 +301,12 @@ public class BuilderUI : MonoBehaviour
 
     public void Rotate()
     {
-        //axis = BoundAxis(axis + 1);
-        //builder.RotateSelected(AxisToVector(axis));
-        builder.ProgressOrientationSelected();
+        builder.ProgressOrientation(selectedIndex);
         UpdateAll();
     }
     public void RotateGrid(float rotation)
     {
         gridRotatePivot.transform.Rotate(new Vector3(0, rotation, 0));
-    }
-
-    private int BoundAxis(int axis)
-    {
-        if (axis < 0)
-            return 5;
-        else if (axis > 5)
-            return 0;
-        return axis;
-    }
-
-    private Vector3 AxisToVector(int axis)
-    {
-
-        switch ((Directions)axis)
-        {
-            case Directions.Up:
-                return Vector3.up;
-            case Directions.Down:
-                return Vector3.down;
-            case Directions.Left:
-                return Vector3.left;
-            case Directions.Right:
-                return Vector3.right;
-            case Directions.Forward:
-                return Vector3.forward;
-            case Directions.Backward:
-                return Vector3.back;
-            default:
-                return Vector3.right;
-
-        }
     }
 
     public Transform GetGridTransform()

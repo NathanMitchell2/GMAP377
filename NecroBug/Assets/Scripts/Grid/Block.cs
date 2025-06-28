@@ -37,10 +37,10 @@ public class Block : MonoBehaviour
         }
     }
 
-    public bool inBounds(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
+    public bool inBounds(Vector3 pos, BotGrid grid)
     {
-        Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis, center);
+        Vector3 size = GetSizeByAxis(Vector3.right);
+        Vector3 rPos = this.pos;
 
         for (int i = 0; i < Math.Abs(size.x); i++)
         {
@@ -61,13 +61,13 @@ public class Block : MonoBehaviour
         return true;
     }
 
-    public bool Place(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
+    public bool Place(Vector3 pos, BotGrid grid)
     {
-        if (!inBounds(pos, axis, center, grid))
+        if (!inBounds(pos, grid))
             return false;
 
-        Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis, center);
+        Vector3 size = GetSizeByAxis(Vector3.right);
+        Vector3 rPos = this.pos;
 
         for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
@@ -106,16 +106,16 @@ public class Block : MonoBehaviour
     }
 
 
-    public bool Remove(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
+    public bool Remove(Vector3 pos, BotGrid grid)
     {
-        if (!CanRemove(pos, axis, center, grid))
+        if (!CanRemove(pos, grid))
             return false;
 
-        if (!inBounds(pos, axis, center, grid))
+        if (!inBounds(pos, grid))
             return false;
 
-        Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis, center);
+        Vector3 size = GetSizeByAxis(Vector3.right);
+        Vector3 rPos = this.pos;
 
         for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
@@ -139,16 +139,16 @@ public class Block : MonoBehaviour
     }
 
 
-    public bool CanRemove(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
+    public bool CanRemove(Vector3 pos,  BotGrid grid)
     {
-        if (!inBounds(pos, axis, center, grid))
+        if (!inBounds(pos,  grid))
             return false;
 
-        if (!inBounds(pos, axis, center, grid))
+        if (!inBounds(pos,  grid))
             return false;
 
-        Vector3 size = GetSizeByAxis(axis);
-        Vector3 rPos = GetPosByAxis(axis, center);
+        Vector3 size = GetSizeByAxis(Vector3.right);
+        Vector3 rPos = this.pos;
 
         for (int i = 0; i < (int)Math.Floor(Math.Abs(size.x)); i++)
         {
@@ -179,47 +179,37 @@ public class Block : MonoBehaviour
         return true;
     }
 
-    public bool Check(Vector3 pos, Vector3 axis, Vector3 center, BotGrid grid)
+    public bool Check(Vector3 pos, BotGrid grid)
     {
-            Vector3 size = GetSizeByAxis(axis);
-            Vector3 rPos = GetPosByAxis(axis, center);
+        Vector3 size = GetSizeByAxis(Vector3.right);
+        Vector3 rPos = this.pos;
 
-            for (int i = 0; i < Math.Abs(size.x); i++)
+        for (int i = 0; i < Math.Abs(size.x); i++)
+        {
+            for (int j = 0; j < Math.Abs(size.y); j++)
             {
-                for (int j = 0; j < Math.Abs(size.y); j++)
+                for (int k = 0; k < Math.Abs(size.z); k++)
                 {
-                    for (int k = 0; k < Math.Abs(size.z); k++)
-                    {
-                        int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
-                        int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
-                        int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
+                    int x = (int)pos.x + (int)rPos.x + i * Math.Sign(size.x);
+                    int y = (int)pos.y + (int)rPos.y + j * Math.Sign(size.y);
+                    int z = (int)pos.z + (int)rPos.z + k * Math.Sign(size.z);
 
-                        if (!grid.inBounds(new Vector3(x, y, z)))
-                            return false;
+                    if (!grid.inBounds(new Vector3(x, y, z)))
+                        return false;
 
-                        if(!Tile.CheckCell(grid.GetCell(x, y, z)))
-                            return false;
-                    }
+                    if(!Tile.CheckCell(grid.GetCell(x, y, z)))
+                        return false;
                 }
             }
+        }
 
-            return true;
+        return true;
     }
 
     public Vector3 GetSizeByAxis(Vector3 axis)
     {
         Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
         return rotation.MultiplyVector(size);
-    }
-
-    private Vector3 GetPosByAxis(Vector3 axis, Vector3 center)
-    {
-        return pos;
-        Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
-        Vector3 temp = pos - center;
-        temp = rotation.MultiplyVector(temp);
-        temp += center;
-        return center;
     }
 
 }

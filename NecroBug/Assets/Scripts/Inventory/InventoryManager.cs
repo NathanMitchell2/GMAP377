@@ -1,46 +1,33 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     public List<InventoryItem> items;
-    [SerializeField] private GameObject NecroBugBotPart;
-    [SerializeField] private List<InventoryThing> defaultItems;
+    [SerializeField] private GameObject invObj;
 
 
     private void Awake()
     {
         items = new List<InventoryItem>();
-        items.Add(NecroBugBotPart.GetComponentInChildren<InventoryThing>().GetItem().Copy());
-        foreach (InventoryThing inventoryThing in defaultItems)
+        //items.Add(NecroBugBotPart.GetComponentInChildren<InventoryItem>().GetItem());
+        List<InventoryItem> defaultItems = new List<InventoryItem>(invObj.GetComponents<InventoryItem>());
+        foreach (InventoryItem inventoryThing in defaultItems)
         {
             items.Add(inventoryThing.GetItem());
         }
     }
     public List<InventoryItem> Copy()
     {
-        return this.IdealClone(items);
+        Debug.LogError("InventoryManager Copy Unimplemented");
+        return new List<InventoryItem>();//this.IdealClone(items);
     }
 
     public void Replace(List<InventoryItem> inventoryItems)
     {
-        items = this.IdealClone(inventoryItems);
-    }
-
-    public List<InventoryItem> IdealClone(List<InventoryItem> items)
-    {
-        List<InventoryItem> temp = new List<InventoryItem>();
-
-        foreach (InventoryItem item in items)
-        {
-            int count = item.GetCount();
-            InventoryItem tempI = item.Copy();
-            tempI.SetCount(count);
-            tempI.SetHealth(tempI.GetMaxHealth());
-
-            temp.Add(tempI);
-        }
-        return temp;
+        Debug.LogError("InventoryManager Replace Unimplemented");
+        //items = this.IdealClone(inventoryItems);
     }
 
     public void AddItem(InventoryItem item) {
@@ -55,12 +42,19 @@ public class InventoryManager : MonoBehaviour
     }
     public InventoryItem RemoveItem(InventoryItem item) 
     {
+        Debug.LogError("InventoryManager RemoveItem Unimplemented");
+        return item;
+
+        //Commented out for compile, is part of original code
+        /*
         InventoryItem temp = item.Copy();
+
         temp.SetCount(1);
 
         if (!item.RemoveCount())
             items.Remove(item);
         return temp;
+        */
     }
 
     private List<InventoryItem> GetItems(InventoryItem source)
@@ -77,4 +71,9 @@ public class InventoryManager : MonoBehaviour
         return items[index];
     }
     public int Count() { return items.Count; }
+
+    public GameObject GetInvObj()
+    {
+        return invObj;
+    }
 }

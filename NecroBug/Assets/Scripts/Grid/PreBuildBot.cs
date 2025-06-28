@@ -15,6 +15,7 @@ public class PreBuildBot : MonoBehaviour
     [SerializeField] private List<Vector3> poss;
     [SerializeField] private List<int> orientations;
 
+    /*
     public void Build()
     {
         while (builder.GetCount() > 1)
@@ -27,7 +28,7 @@ public class PreBuildBot : MonoBehaviour
             GameObject part = parts[i];
             GameObject clone = Instantiate(part, UI.GetGridTransform());
             BotPart bpart = clone.GetComponent<BotPart>();
-            bpart.GetComponent<InventoryThing>().SetItem(bpart.GetComponent<InventoryThing>().GetItem());
+            bpart.GetComponent<InventoryItem>().RestoreMemento(bpart.GetComponent<InventoryItem>().CreateMemento());
             bpart.SetPos(poss[i]);
             builder.AddPart(bpart);
             builder.SetSelected(bpart);
@@ -79,4 +80,5 @@ public class PreBuildBot : MonoBehaviour
                 return null;
         }
     }
+    */
 }

@@ -6,23 +6,12 @@ public class PartDeathHandler : MonoBehaviour
 {
     private BotBulider builder;
     private BotPart part;
-    public void Initialize(BotPart part, BotBulider builder)
-    {
-        this.part = part;
-        this.builder = builder;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        builder = PlayerIdentifier.GetPlayer().GetComponent<BotBulider>();
+        part = GetComponent<BotPart>();
     }
-
     public void Death()
     {
         if (GetComponent<carControler>() != null)
@@ -31,7 +20,7 @@ public class PartDeathHandler : MonoBehaviour
         List<BotPart> initParts = builder.GetBadParts();
 
         //builder.RemovePart(part);
-        builder.DestroyPart(part);
+        builder.DestroyPart(part.GetMediator());
         
         List<BotPart> parts = builder.GetBadParts();
         foreach (BotPart p in initParts)
@@ -43,7 +32,7 @@ public class PartDeathHandler : MonoBehaviour
         {
             while (parts.Count > 0)
             {
-                builder.DestroyPart(parts[0]);
+                builder.DestroyPart(parts[0].GetMediator());
             }
             
 

@@ -39,7 +39,8 @@ public class CheckpointSystem : MonoBehaviour
         if (check >= 0 && check < checkpointList.Length){
             currentCheck = check;
             newInventoryItems = playerParent.GetComponent<InventoryManager>().Copy();
-            parts = botBuilder.IdealClone();
+            Debug.Log("CheckpointSystem SetCheck Unimplemented");
+            //parts = botBuilder.IdealClone();
         }
 
     }

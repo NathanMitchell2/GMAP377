@@ -7,17 +7,19 @@ using System;
 public class BotPart : MonoBehaviour
 {
     public static float GridPositionToLocalPosition = 1f;
-    [SerializeField] private GameObject bugPart;
-    [SerializeField] private InventoryThing invItem;
     [SerializeField] private Vector3 pos;
-    [SerializeField] private Vector3 axis; //depreciated
-    [SerializeField] private Vector3 center; //depreciated
     private int orientation = 0;
     [SerializeField] private List<GameObject> orientations = new List<GameObject>();
     public bool customBinds = true;
     public string defaultBind = "";
+
+    private MediatorPart mediator;
     //protected List<Block> blocks = new List<Block>();
 
+    public void Initialize(MediatorPart mediator)
+    {
+        this.mediator = mediator;
+    }
     void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -33,40 +35,9 @@ public class BotPart : MonoBehaviour
     {
         transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
-    public GameObject BuildPart(Transform transform)
-    {
-        //Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
-        //Vector3 pos = rotation.MultiplyVector(this.pos) * GridPositionToLocalPosition+transform.position;
-        //Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis)*bugPart.transform.rotation;
-
-        Transform storage = GetPartStorage();
-        Vector3 pos = this.pos * GridPositionToLocalPosition + transform.position + storage.localPosition;
-        Quaternion rot = storage.localRotation * transform.rotation;
-
-        GameObject part = Instantiate(bugPart, pos, rot, transform);
-
-        return part;
-
-        return bugPart;
-    }
-    public GameObject BuildPart()
-    {
-        //Matrix4x4 rotation = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, axis));
-        //Vector3 pos = rotation.MultiplyVector(this.pos) * GridPositionToLocalPosition+transform.position;
-        //Quaternion rot = transform.rotation*Quaternion.FromToRotation(Vector3.right, axis)*bugPart.transform.rotation;
-
-        Transform storage = GetPartStorage();
-        Vector3 pos = this.pos * GridPositionToLocalPosition + storage.localPosition;
-        Quaternion rot = storage.localRotation;
-
-        GameObject part = Instantiate(bugPart, pos, rot);
-
-        return part;
-
-        return bugPart;
-    }
-
-    private Transform GetPartStorage()
+    public MediatorPart GetMediator()
+        { return mediator; }
+    public Transform GetPartStorage()
     {
         Transform orientation = orientations[this.orientation].transform;
         for(int i = 0; i < orientation.childCount; i++)
@@ -81,7 +52,7 @@ public class BotPart : MonoBehaviour
     {
         foreach (var block in GetBlocks())
         {
-            if (!block.Check(pos, axis, center, grid))
+            if (!block.Check(pos, grid))
                 return false;
         }
         return true;
@@ -90,14 +61,11 @@ public class BotPart : MonoBehaviour
     {
         foreach (var block in GetBlocks())
         {
-            Debug.LogError("block");
-            Debug.LogError(block);
-            Debug.LogError(grid);
-            block.inBounds(pos, axis, center, grid);
+            block.inBounds(pos, grid);
         }
         foreach(var block in GetBlocks())
         {
-            block.Place(pos, axis, center, grid);
+            block.Place(pos, grid);
         }
         transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
@@ -108,7 +76,7 @@ public class BotPart : MonoBehaviour
 
         foreach (var block in GetBlocks())
         {
-            block.Remove(pos, axis, center, grid);
+            block.Remove(pos, grid);
         }
 
         return true;
@@ -117,7 +85,7 @@ public class BotPart : MonoBehaviour
     public bool CanRemove(BotGrid grid)
     {
         foreach (var block in GetBlocks())
-            if (!block.CanRemove(pos, axis, center, grid)) return false;
+            if (!block.CanRemove(pos, grid)) return false;
         return true;
     }
 
@@ -125,7 +93,7 @@ public class BotPart : MonoBehaviour
     {
         foreach (var block in GetBlocks())
         {
-            if (!block.inBounds(pos, axis, center, grid))
+            if (!block.inBounds(pos, grid))
                 return false;
         }
 
@@ -136,24 +104,6 @@ public class BotPart : MonoBehaviour
 
         return true;
     }
-
-    public bool Rotate(Vector3 axis, BotGrid grid)
-    {
-        foreach (var block in GetBlocks())
-        {
-            if (!block.inBounds(pos, axis, center, grid))
-                return false;
-        }
-
-        if (!Remove(grid)) return false;
-
-
-        SetAxis(axis);
-        Place(grid);
-
-        return true;
-    }
-
 
     public int GetCount()
     {
@@ -167,10 +117,6 @@ public class BotPart : MonoBehaviour
     {
         return pos;
     }
-    public Vector3 GetAxis()
-    {
-        return axis;
-    }
     public int GetOrientation()
     {
         return orientation;
@@ -179,13 +125,6 @@ public class BotPart : MonoBehaviour
     {
         this.pos = pos;
         
-        //transform.position = pos;
-    }
-    public void SetAxis(Vector3 axis)
-    {
-        //this.axis = axis;
-        
-        //transform.rotation *= Quaternion.FromToRotation(Vector3.right, axis);
     }
     public bool ProgressOrientation(BotGrid grid)
     {
@@ -198,7 +137,7 @@ public class BotPart : MonoBehaviour
 
         foreach (var block in blocks)
         {
-            if (!block.inBounds(pos, axis, center, grid))
+            if (!block.inBounds(pos, grid))
                 return false;
         }
 
@@ -212,7 +151,6 @@ public class BotPart : MonoBehaviour
         return true;
 
     }
-
     private void ResetOrientations()
     {
         foreach (var obj in orientations)
@@ -227,10 +165,6 @@ public class BotPart : MonoBehaviour
         else if (ori > orientations.Count - 1)
             return 0;
         return ori;
-    }
-    public InventoryThing GetInventoryPart()
-    {
-        return invItem;
     }
 
     private List<Block> GetBlocks()

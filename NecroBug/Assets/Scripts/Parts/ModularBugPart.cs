@@ -6,29 +6,17 @@ public abstract class ModularBugPart : MonoBehaviour
     public Vector3 rotOffset = new Vector3();
     public abstract void Activate();
 
-    public void Awake()
+    private MediatorPart mediator;
+    public void Initialize(MediatorPart mediator)
     {
-        PlayerStats stats = GetComponent<PlayerStats>();
-        InventoryThing thing = GetComponent<InventoryThing>();
-        if(stats != null && thing != null)
-        {
-            stats.health = (int)thing.GetHealth();
-        }
+        this.mediator = mediator;
     }
 
+    public MediatorPart GetMediator()
+    { return mediator; }
     public void OffsetPosition()
     {
         transform.SetLocalPositionAndRotation(offset,Quaternion.Euler(rotOffset));
     }
 
-    public void CleanUp()
-    {
-        PlayerStats stats = GetComponent<PlayerStats>();
-        InventoryThing thing = GetComponent<InventoryThing>();
-        if (stats != null && thing != null)
-        {
-            thing.SetHealth(stats.health);
-            thing.SetHealth(50);
-        }
-    }
 }

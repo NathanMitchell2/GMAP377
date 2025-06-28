@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,20 +11,24 @@ public class BotBulider : MonoBehaviour
     private const int x = 12;
     private const int y = 12;
     private const int z = 12;
-    //[SerializeField] GameObject bot;
+
+    private BotGrid grid;
+    private List<MediatorPart> gridParts = new List<MediatorPart>();
+    private List<MediatorPart> builtParts = new List<MediatorPart>();
+
+    private GridDisplayCell[,,] gridDisplayCells;
+
     [SerializeField] GameObject cell;
     [SerializeField] Tile empty;
     [SerializeField] Transform gridTransform;
-    private BotGrid grid;
-    private List<BotPart> parts = new List<BotPart>();
-    private BotPart selectedPart;
-    private GridDisplayCell[,,] gridDisplayCells;
+
     [SerializeField] private Transform buildTransform;
     [SerializeField] private GameObject playerCar;
     [SerializeField] private GameObject playerObject;
     [SerializeField] private UIUpdate uiObject;
-    private List<GameObject> builtParts = new List<GameObject>();
     [SerializeField] private ActionManager actionManager;
+
+
 
     public void SetUp()
     {
@@ -50,6 +56,43 @@ public class BotBulider : MonoBehaviour
     private void Awake()
     {
         SetUp();
+
+    }
+    private void Start()
+    {
+        MediatorPart part = (MediatorPart)GetComponent<InventoryManager>().items[0];
+
+        part.CreateBotPart();
+        BotPart bPart = part.GetBotPart();
+
+        bPart.SetPos(new Vector3(4, 4, 4));
+        AddPart(part);
+
+        CreateBot();
+    }
+
+    public List<ItemMemento> CreateGridMementos()
+    {
+        List<ItemMemento> temp = new List<ItemMemento>();
+
+        foreach (MediatorPart part in gridParts)
+        {
+            temp.Add(part.CreateMemento());
+        }
+
+        return temp;
+    }
+
+    public List<ItemMemento> CreateBuiltMementos()
+    {
+        List<ItemMemento> temp = new List<ItemMemento>();
+
+        foreach(MediatorPart part in builtParts)
+        {
+            temp.Add(part.CreateMemento());
+        }
+
+        return temp;
     }
 
     public bool Check()
@@ -70,77 +113,75 @@ public class BotBulider : MonoBehaviour
         }
     }
 
+    //Parts lists
+    public List<MediatorPart> GetGridParts()
+    {
+        return gridParts;
+    }
+
+    public List<MediatorPart> GetBuiltParts()
+    {
+        return builtParts;
+    }
+
     public int GetCount()
     {
-        return parts.Count;
+        return gridParts.Count;
     }
-    public BotPart GetIndex(int index)
+    public void AddPart(MediatorPart mPart)
     {
-        return parts[index];
-    }
-    public void AddPart(BotPart part)
-    {
+        BotPart part = mPart.GetBotPart();
+
         part.Place(grid);
-        //Instantiate(part.gameObject, gridTransform);
-        actionManager.AddAction(part.defaultBind);
-        parts.Add(part);
+        gridParts.Add(mPart);
     }
-    public bool MovePart(BotPart part, Vector3 pos)
+    private bool MovePart(BotPart part, Vector3 pos)
     {
         return part.Move(pos, grid);
     }
-    public bool MovePart(BotPart part, int x, int y, int z)
+    public bool MovePart(int i, Vector3 pos)
     {
-        return part.Move(new Vector3(x,y,z), grid);
+        return MovePart(gridParts[i].GetBotPart(), pos);
     }
-    
-    public bool RotatePart(BotPart part, Vector3 axis)
+    private bool ProgressOrientation(BotPart part)
     {
-        return part.Rotate(axis, grid);
+        return part.ProgressOrientation(grid);
     }
-    public bool RotatePart(BotPart part, int x, int y, int z)
+    public bool ProgressOrientation(int i)
     {
-        return part.Rotate(new Vector3(x, y, z), grid);
+        return ProgressOrientation(gridParts[i].GetBotPart());
     }
-    public bool RemovePart(BotPart part)
+
+    private bool RemovePart(MediatorPart mPart)
     {
-        if(parts.IndexOf(part)!=0 && part.Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        BotPart part = mPart.GetBotPart();
+        int index = gridParts.IndexOf(mPart);
+
+        if (index != 0 && index != -1 && part.Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
-            int index = parts.IndexOf(part);
-            if (index != -1)
-            {
-                BotPart part2 = parts[index];
-                actionManager.RemoveAction(index);
-                parts.RemoveAt(index);
-                Destroy(part2.gameObject);
-                return true;
-            }
+            mPart.DestroyBotPart();
+            return true;
         }
         return false;
 
     }
     public bool RemovePart(int index)
     {
-        if (index != 0&&parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
-        {
-            if (index != -1)
-            {
-                BotPart part2 = parts[index];
-                actionManager.RemoveAction(index);
-                parts.RemoveAt(index);
-                Destroy(part2.gameObject);
-                return true;
-            }
-        }
-        return false;
+        return RemovePart(gridParts[index]);
     }
     public bool DestroyPart(int index)
     {
-        if (index != 0 && index != -1 && parts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+        if(index == 0)
+            return false;
+
+        gridParts[index].DestroyPart();
+        return true;
+        /*
+        if (index != 0 && index != -1 && gridParts[index].Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
-            BotPart part2 = parts[index];
+            BotPart part2 = gridParts[index];
             actionManager.RemoveAction(index);
-            parts.RemoveAt(index);
+            gridParts.RemoveAt(index);
             builtParts[index].GetComponent<ModularBugPart>().CleanUp();
             Destroy(builtParts[index].gameObject);
             builtParts.RemoveAt(index);
@@ -148,65 +189,23 @@ public class BotBulider : MonoBehaviour
             return true;
         }
         return false;
+        */
     }
-    public bool DestroyPart(BotPart part)
+    public bool DestroyPart(MediatorPart part)
     {
-        return DestroyPart(parts.IndexOf(part));
+        return DestroyPart(gridParts.IndexOf(part));
     }
-    public bool DestroyPart(ModularBugPart part)
+    public void RemoveBuiltPart(int index)
     {
-        for (int i = 0; i < builtParts.Count; i++)
-        {
-            if (builtParts[i].GetComponent<ModularBugPart>() == part)
-                return DestroyPart(i);
-        }
-        return false;
+        builtParts.RemoveAt(index);
     }
 
-    public void SetSelected(int index)
+    public int BuiltIndexOf(MediatorPart mediatorPart)
     {
-        selectedPart = parts[index];
-    }
-    public void SetSelected(BotPart part)
-    {
-        if(parts.Contains(part))
-            selectedPart = part;
-    }
-    public bool MoveSelected(Vector3 pos)
-    {
-        return selectedPart.Move(pos, grid);
-    }
-    public bool MoveSelected(int x, int y, int z)
-    {
-        return selectedPart.Move(new Vector3(x, y, z), grid);
-    }
-    public bool RotateSelected(Vector3 axis)
-    {
-        return selectedPart.Rotate(axis, grid);
-    }
-    public bool RotateSelected(int x, int y, int z)
-    {
-        return selectedPart.Rotate(new Vector3(x, y, z), grid);
-    }
-    public bool RemoveSelected()
-    {
-        return RemovePart(selectedPart);
-    }
-    public BotPart GetSelected()
-    {
-        return selectedPart;
+        return builtParts.IndexOf(mediatorPart);
     }
 
-    public List<BotPart> CloneParts()
-    {
-        List<BotPart> temp = new List<BotPart>();
-        foreach (BotPart part in parts)
-        {
-            temp.Add(part);
-        }
-        return temp;
-    }
-
+    /*
     public List<InventoryItem> IdealClone()
     {
         List<InventoryItem> temp = new List<InventoryItem>();
@@ -223,6 +222,9 @@ public class BotBulider : MonoBehaviour
         }
         return temp;
     }
+    */
+
+    //Should be removeable with refactor
     private void DestroyBot()
     {
         for (int i = 0; i < builtParts.Count; i++)
@@ -232,8 +234,8 @@ public class BotBulider : MonoBehaviour
 
             //Unbind action?
             ModularBugPart bgPart = part.GetComponent<ModularBugPart>();
-            if (bgPart != null)
-                bgPart.CleanUp();
+            if (bgPart != null) ;
+                //bgPart.CleanUp();
             Destroy(part.gameObject);
         }
         /*
@@ -254,6 +256,45 @@ public class BotBulider : MonoBehaviour
     {
         if (!grid.Check())
             return;
+
+        GameObject player = PlayerIdentifier.GetPlayer().gameObject;
+
+        Vector3 ogPos = Vector3.zero;
+
+        for (int i = 0; i < player.transform.childCount; i++)
+        {
+            if (player.transform.GetChild(i).name == "Center")
+                ogPos = player.transform.GetChild(i).transform.localPosition;
+
+        }
+
+        foreach (MediatorPart part in builtParts)
+        {
+            if(!gridParts.Contains(part))
+            {
+                part.DestroyBugPart();
+            }
+        }
+        builtParts = new List<MediatorPart>();
+
+        GameObject car = gameObject;
+
+        for (int i = 0; i < gridParts.Count;i++)
+        {
+            gridParts[i].CreateBugPart();
+            if (i == 0)
+            {
+                car = gridParts[i].GetBugPart().gameObject;
+            }
+            gridParts[i].GetBugPart().transform.SetParent(car.transform);
+            builtParts.Add(gridParts[i]);
+        }
+
+        car.transform.SetParent(buildTransform);
+        car.transform.SetLocalPositionAndRotation(ogPos, Quaternion.identity);
+        car.transform.localScale = Vector3.one;
+
+        /*
         Vector3 ogPos;
         if (builtParts.Count == 0)
             ogPos = playerObject.transform.GetChild(0).localPosition;
@@ -263,9 +304,9 @@ public class BotBulider : MonoBehaviour
         PlayerStats car = null;
         builtParts = new List<GameObject>();
 
-        for(int i = 0; i < parts.Count; i++)
+        for(int i = 0; i < gridParts.Count; i++)
         {
-            BotPart part = parts[i];
+            BotPart part = gridParts[i];
             GameObject builtPart = part.BuildPart();//buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform);
             //builtPart.transform.SetParent(buildTransform.transform);
 
@@ -280,13 +321,13 @@ public class BotBulider : MonoBehaviour
                 //car = statsReference;
                 // Debug.Log(playerReference.health);
                 // Debug.Log(car.health);
-                statsReference.SetItem(part.GetComponent<InventoryThing>().GetItem());
-                statsReference.health = (int) part.GetComponent<InventoryThing>().GetHealth(); // playerReference.health;
+                statsReference.SetItem(part.GetComponent<InventoryItem>().GetItem());
+                statsReference.health = (int) part.GetComponent<InventoryItem>().GetHealth(); // playerReference.health;
             }
             PlayerHealth partHealth = builtPart.GetComponent<PlayerHealth>();
             if (partHealth != null)
             {
-                partHealth.Initialize(part.GetComponent<InventoryThing>().GetItem());
+                partHealth.Initialize(part.GetComponent<InventoryItem>().GetItem());
             }
             PartDeathHandler handler = builtPart.GetComponent<PartDeathHandler>();
             if (handler != null)
@@ -332,40 +373,42 @@ public class BotBulider : MonoBehaviour
 
 
         car.transform.SetParent(buildTransform);
-        car.transform.SetLocalPositionAndRotation(ogPos/*buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position*/, Quaternion.identity);
+        car.transform.SetLocalPositionAndRotation(ogPos, Quaternion.identity);
+        //buildTransform.GetComponentInChildren<FollowCar>().gameObject.transform.position
         car.transform.localScale = Vector3.one;
 
         uiObject.StatInitialize();
-    }
-    public bool ProgressOrientationSelected()
-    {
-        return selectedPart.ProgressOrientation(grid);
+        */
     }
 
 
     public void BindAction(int index)
     {
-        actionManager.RebindAction(index);
+        gridParts[index].RebindAction();
     }
 
     public string GetKeybindText(int index)
     {
-        return actionManager.GetKeybindText(index);
+        return gridParts[index].GetKeybindText();
     }
 
-    public int IndexOf(BotPart part)
+    public int IndexOf(MediatorPart part)
     {
-        return parts.IndexOf(part);
+        return gridParts.IndexOf(part);
     }
 
     public List<BotPart> GetBadParts()
     {
+        //probs bugs here?
+        Debug.LogError("will cause issues when chain destroying while builtparts != gridparts, needs memento or botpart storage");
         List<BotPart> temp = new List<BotPart>();
-        foreach (BotPart p in parts)
+        foreach (MediatorPart part in gridParts)
         {
+            BotPart p = part.GetBotPart();
             if (!p.Check(grid))
                 temp.Add(p);
         }
         return temp;
     }
+
 }

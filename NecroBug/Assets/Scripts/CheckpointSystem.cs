@@ -31,14 +31,14 @@ public class CheckpointSystem : MonoBehaviour
         {
             if (part.GetName() == "Necrobug")
                 continue;
-            playerParent.GetComponent<InventoryManager>().AddItem(part);
+            //playerParent.GetComponent<InventoryManager>().AddItem(part);
         }
     }
 
     public void SetCheck(int check){
         if (check >= 0 && check < checkpointList.Length){
             currentCheck = check;
-            newInventoryItems = playerParent.GetComponent<InventoryManager>().Copy();
+            //newInventoryItems = playerParent.GetComponent<InventoryManager>().Copy();
             Debug.Log("CheckpointSystem SetCheck Unimplemented");
             //parts = botBuilder.IdealClone();
         }
@@ -50,7 +50,7 @@ public class CheckpointSystem : MonoBehaviour
         playerParent.GetComponentInChildren<carControler>().transform.rotation = checkpointList[currentCheck].rotation;
 
         
-        playerParent.GetComponent<InventoryManager>().Replace(newInventoryItems);
+        //playerParent.GetComponent<InventoryManager>().Replace(newInventoryItems);
         /*
         PreBuildBot pre = GetComponent<PreBuildBot>();
         pre.CustomBuild(parts);

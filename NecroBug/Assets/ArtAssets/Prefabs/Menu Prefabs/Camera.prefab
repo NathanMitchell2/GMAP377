@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 723280728672333306}
   - component: {fileID: 2046443147160185025}
   - component: {fileID: 4523570307338719122}
+  - component: {fileID: 5943641122571185400}
   m_Layer: 0
   m_Name: Menus
   m_TagString: Untagged
@@ -578,6 +579,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 5
+--- !u!114 &5943641122571185400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302580868349780029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f3326e53f855642b7276eed349ffbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridTransform: {fileID: 2814352054325017698}
 --- !u!1001 &5099336642686075652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,6 +1056,11 @@ Transform:
 --- !u!1 &2067358846189226014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7794546220920916588, guid: 2ee89d0a1735b3242a61c814d4df8d27, type: 3}
+  m_PrefabInstance: {fileID: 8114204048217080434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2814352054325017698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6311205398060400144, guid: 2ee89d0a1735b3242a61c814d4df8d27, type: 3}
   m_PrefabInstance: {fileID: 8114204048217080434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4106004572126861326 stripped

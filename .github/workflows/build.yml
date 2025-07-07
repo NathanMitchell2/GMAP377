@@ -1,9 +1,9 @@
 name: Build project
 
-on: [push]
-  #push:
-    #branches:
-      #- "release"
+on:
+  push:
+    branches:
+      - "release"
 
 jobs:
   buildForAllSupportedPlatforms:

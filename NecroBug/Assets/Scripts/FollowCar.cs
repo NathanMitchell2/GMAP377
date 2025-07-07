@@ -13,6 +13,6 @@ public class FollowCar : MonoBehaviour
     void Update()
     {
         carControler car = transform.parent.GetComponentInChildren<carControler>();
-        transform.SetPositionAndRotation(car.transform.position+offset, Quaternion.identity);
+        //transform.SetPositionAndRotation(car.transform.position+offset, Quaternion.identity);
     }
 }

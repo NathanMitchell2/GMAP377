@@ -22,6 +22,7 @@ public class BotPartMemento
 public class BotPart : MonoBehaviour
 {
     public static float GridPositionToLocalPosition = 1f;
+    public static Transform gridTransform;
     [SerializeField] private Vector3 pos;
     private int orientation = 0;
     private List<GameObject> orientations = new List<GameObject>();
@@ -45,7 +46,7 @@ public class BotPart : MonoBehaviour
     }
     private void Update()
     {
-        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
+        transform.SetLocalPositionAndRotation( pos, Quaternion.identity);
     }
 
     public BotPartMemento CreateMemento()

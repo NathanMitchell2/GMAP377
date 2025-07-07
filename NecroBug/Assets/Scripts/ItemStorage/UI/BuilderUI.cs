@@ -160,7 +160,7 @@ public class BuilderUI : MonoBehaviour
         MediatorPart part = (MediatorPart)selectedItem;//(MediatorPart)GetInventoryItems().(selectedItem);
 
 
-        MediatorPart nPart = builder.AddPart(part);
+        MediatorPart nPart = (MediatorPart)storageManager.Transfer(part, StorageManager.StorageKey.Inventory, StorageManager.StorageKey.BotBuilder);
         selectedIndex = builder.IndexOf(nPart.GetBotPart());
 
         UpdateAll();

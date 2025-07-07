@@ -2,6 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public class StorageManagerMemento
+{
+    [SerializeField] Dictionary<string, StorageMemento> storages = new Dictionary<string, StorageMemento>();
+
+    public StorageManagerMemento(Dictionary<string, ItemStorage> storages)
+    {
+        foreach (var storage in storages)
+        {
+            this.storages.Add(storage.Key, storage.Value.CreateMemento());
+        }
+    }
+    public Dictionary<string, StorageMemento> GetStorages() { return this.storages; }
+}
 public class StorageManager : MonoBehaviour
 {
     public enum StorageKey
@@ -18,6 +31,18 @@ public class StorageManager : MonoBehaviour
         foreach (ItemStorage storage in storageList)
         {
             storages.Add(storage.name, storage);
+        }
+    }
+    public StorageManagerMemento CreateMemento()
+    {
+        return new StorageManagerMemento(storages);
+    }
+    public void RestoreMemento(StorageManagerMemento memento)
+    {
+        Dictionary<string, StorageMemento> storages = memento.GetStorages();
+        foreach (var storage in storages)
+        {
+            this.storages[storage.Key].RestoreMemento(storage.Value);
         }
     }
     public ItemStorage GetStorage(StorageKey key)
@@ -50,12 +75,8 @@ public class StorageManager : MonoBehaviour
         if (mem == null)
             return null;
 
-        Debug.Log("Into Remove");
         if (RemoveItem(item, keyFrom))
-        {
-            Debug.Log("Into Add");
             return AddItem(mem, keyTo);
-        }
         return null;
     }
 

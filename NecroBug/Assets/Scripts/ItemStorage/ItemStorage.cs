@@ -1,9 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Add Memento Here and maybe in subclasses for build checkpoints and prebuilds
+public class StorageMemento
+{
+    private List<ItemMemento> items;
+    public StorageMemento(List<ItemMemento> items)
+    {
+        this.items = items;
+    }
+    public List<ItemMemento> GetItems() { return items; }
+}
 public abstract class ItemStorage : MonoBehaviour
 {
+    public StorageMemento CreateMemento()
+    {
+        List<ItemMemento> items = new List<ItemMemento>();
+        foreach (InventoryItem item in GetItemList())
+        {
+            items.Add(item.CreateMemento());
+        }
+        return new StorageMemento(items);
+    }
+    public void RestoreMemento(StorageMemento memento)
+    {
+        List<InventoryItem> items = GetItemList();
+        foreach (InventoryItem item in items)
+        {
+            item.DestroyItem();
+        }
+        List<ItemMemento> mItems = memento.GetItems();
+        foreach (var item in mItems)
+        {
+            InventoryItem tItem = (InventoryItem)gameObject.AddComponent(item.GetItemType());
+            tItem.RestoreMemento(item);
+        }
+    }
     public List<InventoryItem> GetItemList()
     {
         return new List<InventoryItem>(GetComponents<InventoryItem>());
@@ -47,7 +78,7 @@ public abstract class ItemStorage : MonoBehaviour
         return GetItemList().IndexOf(item);
     }
 
-    private List<InventoryItem> GetSameItems(InventoryItem source)
+    protected List<InventoryItem> GetSameItems(InventoryItem source)
     {
         List<InventoryItem> sameItems = new List<InventoryItem>();
         foreach (var item in GetItemList())

@@ -97,6 +97,11 @@ public class InventoryItem : MonoBehaviour
     {
         SuperItemRestore(item);
     }
+
+    public virtual void CleanToBaseClass()
+    {
+
+    }
     protected void SuperItemRestore(ItemMemento item)
     {
         SetName(item.GetName());

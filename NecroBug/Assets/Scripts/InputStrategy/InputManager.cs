@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
     {
         if (hasStrat(strat))
         {
-            Destroy(strat.transform.gameObject);
+            //Destroy(strat.transform.gameObject);
             //Vector3 tempPos = strat.transform.position;
             //strat.transform.parent = null;
             //strat.transform.position = tempPos;

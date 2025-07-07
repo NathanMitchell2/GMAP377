@@ -6,7 +6,7 @@ public class AddFirstCarItem : MonoBehaviour
     void Start()
     {
         //transform.GetChild(0).GetComponent<PlayerStats>().SetItem(GetComponent<InventoryManager>().GetItem(0));
-        transform.GetChild(0).GetComponent<PlayerHealth>().Initialize(GetComponent<StorageManager>().GetItemList(StorageManager.StorageKey.BotBuilder)[0]);
+        //transform.GetChild(0).GetComponent<PlayerHealth>().Initialize(GetComponent<StorageManager>().GetItemList(StorageManager.StorageKey.BotBuilder)[0]);
     }
 
     /* Procedure:

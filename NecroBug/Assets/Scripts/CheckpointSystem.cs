@@ -6,12 +6,9 @@ public class CheckpointSystem : MonoBehaviour
     public static CheckpointSystem Instance {get; private set; }
 
     public Transform[] checkpointList;
-    public GameObject playerParent;
     public GameObject carObject;
-    public BotBulider botBuilder;
 
-    public static List<InventoryItem> newInventoryItems;
-    public static List<InventoryItem> parts;
+    public static StorageManagerMemento managerMemento;
 
     private static int currentCheck = 0;
 
@@ -27,35 +24,28 @@ public class CheckpointSystem : MonoBehaviour
     void Start()
     {
         PlayerToCheckpoint();
-        foreach (InventoryItem part in parts)
-        {
-            if (part.GetName() == "Necrobug")
-                continue;
-            //playerParent.GetComponent<InventoryManager>().AddItem(part);
-        }
     }
 
     public void SetCheck(int check){
-        if (check >= 0 && check < checkpointList.Length){
+        if (check >= 0 && check < checkpointList.Length)
+        {
             currentCheck = check;
-            //newInventoryItems = playerParent.GetComponent<InventoryManager>().Copy();
-            Debug.Log("CheckpointSystem SetCheck Unimplemented");
-            //parts = botBuilder.IdealClone();
+            managerMemento = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().CreateMemento();
+            InstantAddItem.doCreate = false;
         }
 
     }
 
-    public void PlayerToCheckpoint (){
-        playerParent.GetComponentInChildren<carControler>().transform.position = checkpointList[currentCheck].position;
-        playerParent.GetComponentInChildren<carControler>().transform.rotation = checkpointList[currentCheck].rotation;
+    public void PlayerToCheckpoint ()
+    {
+        if(managerMemento != null)
+        {
+            BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;
+            BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
 
-        
-        //playerParent.GetComponent<InventoryManager>().Replace(newInventoryItems);
-        /*
-        PreBuildBot pre = GetComponent<PreBuildBot>();
-        pre.CustomBuild(parts);
-        pre.Build();
-        */
+            PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().RestoreMemento(managerMemento);
+        }
+        PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>().AlignAll();
     }
 }
 

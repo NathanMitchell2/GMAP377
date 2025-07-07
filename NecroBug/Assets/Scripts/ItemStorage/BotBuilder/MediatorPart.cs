@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI.Table;
 public class MediatorMemento : ItemMemento
 {
     private string itemName;
@@ -125,10 +127,10 @@ public class MediatorPart : InventoryItem
                 GetBugPart().RestoreMemento(med.GetBugPart());
             }
             customBinds = med.GetCustomBinds();
-            Debug.Log("MementoOverride");
             action.ApplyBindingOverride(0, med.GetBinding());
             defaultBind = med.GetBinding();
             binding = med.GetBinding();
+            AlignBugPart();
         }
         catch (Exception e)
         {
@@ -152,44 +154,8 @@ public class MediatorPart : InventoryItem
         if(bugPart != null)
             DestroyBugPart();
 
-        GameObject player = PlayerIdentifier.GetPlayer().gameObject;
-
-        if(HasBotPart())
-        {
-            BotPart bPart = GetBotPart();
-            Transform storage = bPart.GetPartStorage();
-            //that transform is a paramter btw
-            Vector3 pos = bPart.GetPos() + storage.localPosition;
-            Quaternion rot = storage.localRotation * transform.rotation;
-
-            bugPart = Instantiate(BugPartPrefab, pos, rot);
-
-            //GetBugPart().Initialize(this);
-            ModularBugPart part = GetBugPart();
-            //Debug.LogError("action binding");
-            //Debug.LogError(action.bindings[0].effectivePath);
-            //Debug.LogError(action.bindings[0].path);
-            //Debug.LogError(action.bindings[0].overridePath);
-            //Debug.LogError(binding);
-            //Debug.LogError("End action binding");
-            part.Initialize(this, action.bindings[0].effectivePath);
-            BindPart();
-
-            PlayerHealth partHealth = part.GetComponent<PlayerHealth>();
-            if (partHealth != null)
-            {
-                partHealth.Initialize(this);
-            }
-
-            InputStrategy strat = part.GetComponent<InputStrategy>();
-            if (strat != null)
-            {
-                player.GetComponent<InputManager>().SetStrat(strat);
-            }
-        }
-
-        //need to figure this
-        //part.GetComponent<Rigidbody>().centerOfMass = car.GetComponent<Rigidbody>().centerOfMass;
+        bugPart = Instantiate(BugPartPrefab);
+        AlignBugPart();
     }
 
     public void DestroyBotPart()
@@ -210,7 +176,7 @@ public class MediatorPart : InventoryItem
     }
     public void DestroyBugPart()
     {
-        if (bugPart == null)
+        if (!HasBugPart())
             return;
         GameObject player = PlayerIdentifier.GetPlayer().gameObject;
         BotBulider builder = player.GetComponentInChildren<BotBulider>();
@@ -219,14 +185,14 @@ public class MediatorPart : InventoryItem
 
         //builder.RemoveItem(this);
         //builder.RemoveBuiltPart(builder.BuiltIndexOf(this));
-
+        Debug.LogError("Destroying " + bugPart);
         Destroy(bugPart);
         bugPart = null;
     }
 
     public BotPart GetBotPart()
     {
-        if(botPart == null)
+        if(!HasBotPart())
         {
             botPart = Instantiate(BotPartPrefab);
             botPart.GetComponent<BotPart>().Initialize(this);
@@ -236,7 +202,7 @@ public class MediatorPart : InventoryItem
     }
     public ModularBugPart GetBugPart()
     {
-        if (bugPart == null)
+        if (!HasBugPart())
         {
             bugPart = Instantiate(BugPartPrefab);
             bugPart.GetComponent<ModularBugPart>().Initialize(this, binding);
@@ -257,6 +223,44 @@ public class MediatorPart : InventoryItem
         bugPart = part.gameObject;
         part.Initialize(this, action.bindings[0].effectivePath);
     }
+    public void AlignBugPart()
+    {
+        if (HasBotPart() && HasBugPart())
+        {
+            BotPart bPart = GetBotPart();
+            Transform storage = bPart.GetPartStorage();
+            //that transform is a paramter btw
+            Vector3 pos = bPart.GetPos() + storage.localPosition;
+            Quaternion rot = storage.localRotation * transform.rotation;
+
+            bugPart.transform.SetLocalPositionAndRotation(pos, rot);
+            
+            
+            ModularBugPart part = GetBugPart();
+            //Debug.LogError("action binding");
+            //Debug.LogError(action.bindings[0].effectivePath);
+            //Debug.LogError(action.bindings[0].path);
+            //Debug.LogError(action.bindings[0].overridePath);
+            //Debug.LogError(binding);
+            //Debug.LogError("End action binding");
+            part.Initialize(this, action.bindings[0].effectivePath);
+            BindPart();
+
+            
+            PlayerHealth partHealth = part.GetComponent<PlayerHealth>();
+            if (partHealth != null)
+            {
+                partHealth.Initialize(this);
+            }
+            
+            InputStrategy strat = part.GetComponent<InputStrategy>();
+            if (strat != null)
+            {
+                PlayerIdentifier.GetPlayer().GetComponent<InputManager>().SetStrat(strat);
+            }
+            
+        }
+    }
 
     public void OnDestroy()
     {
@@ -273,6 +277,12 @@ public class MediatorPart : InventoryItem
         Debug.Log("OutDestroyItem");
     }
 
+    public override void CleanToBaseClass()
+    {
+        DestroyBotPart();
+        DestroyBugPart();
+        binding = defaultBind;
+    }
     public void AddAction()
     {
         //Debug.Log("Added");

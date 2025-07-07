@@ -16,6 +16,27 @@ public class InventoryManager : ItemStorage
         }
         return output;
     }
+
+
+    public override InventoryItem AddItem(ItemMemento item)
+    {
+        if (item == null)
+            return null;
+        InventoryItem tItem = (InventoryItem)gameObject.AddComponent(item.GetItemType());
+        tItem.RestoreMemento(item);
+        tItem.CleanToBaseClass();
+
+        List<InventoryItem> compare = GetSameItems(tItem);
+        foreach (InventoryItem compareItem in compare)
+        {
+            if (compareItem.Combine(tItem))
+            {
+                if (tItem == null)
+                    return compareItem;
+            }
+        }
+        return tItem;
+    }
     /*
     public List<InventoryItem> items;
     [SerializeField] private GameObject invObj;

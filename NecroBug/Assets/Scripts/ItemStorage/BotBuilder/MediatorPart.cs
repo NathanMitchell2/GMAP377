@@ -154,6 +154,7 @@ public class MediatorPart : InventoryItem
         if(bugPart != null)
             DestroyBugPart();
 
+        Debug.LogError("Instantiate bug part");
         bugPart = Instantiate(BugPartPrefab);
         AlignBugPart();
     }
@@ -167,11 +168,12 @@ public class MediatorPart : InventoryItem
         {
             int index = builder.IndexOf(GetBotPart());
 
-            if (index != -1)
-                //builder.RemovePart(index);
+            //if (index != -1)
+            //builder.RemovePart(index);
 
-            Destroy(botPart);
+            GameObject temp = botPart;
             botPart = null;
+            Destroy(botPart);
         }    
     }
     public void DestroyBugPart()
@@ -185,9 +187,9 @@ public class MediatorPart : InventoryItem
 
         //builder.RemoveItem(this);
         //builder.RemoveBuiltPart(builder.BuiltIndexOf(this));
-        Debug.LogError("Destroying " + bugPart);
-        Destroy(bugPart);
+        GameObject temp = bugPart;
         bugPart = null;
+        Destroy(temp);
     }
 
     public BotPart GetBotPart()

@@ -22,10 +22,10 @@ public class BuiltBotStorage : ItemStorage
         if (!tItem.HasBugPart())
         {
             Debug.LogError("Create Bug Part");
-            tItem.CreateBugPart();
+            //tItem.CreateBugPart();
         }    
 
-        AlignAll();
+        //AlignAll();
 
         Debug.LogError("Buffer End");
         return tItem;
@@ -38,7 +38,7 @@ public class BuiltBotStorage : ItemStorage
             {
                 ModularBugPart part = p.GetBugPart();
 
-                if(part.GetType() == typeof(NecroBugPart))
+                if(part.name == "NecroBug")
                 {
                     return part.transform;
                 }
@@ -61,7 +61,6 @@ public class BuiltBotStorage : ItemStorage
         Transform source = GetSource();
         foreach (MediatorPart p in GetItemList())
         {
-            p.DestroyBugPart();
             p.CreateBugPart();
             Transform obj = p.GetBugPart().transform;
 

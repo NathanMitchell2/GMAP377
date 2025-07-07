@@ -21,6 +21,15 @@ public abstract class ModularBugPart : MonoBehaviour
     public abstract void Activate();
 
     private MediatorPart mediator;
+
+    private void OnDestroy()
+    {
+        Debug.LogError("Destroying " + this);
+    }
+    private void Awake()
+    {
+        Debug.LogError("Awake " + this);
+    }
     public void Initialize(MediatorPart mediator, string binding)
     {
         this.mediator = mediator;

@@ -27,6 +27,7 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           unityVersion: 6000.0.44f1
+          projectPath: NecroBug
           buildProfile: 'Assets/Misc/Settings/Build Profiles/New Windows Profile.asset'
       - uses: actions/upload-artifact@v4
         with:

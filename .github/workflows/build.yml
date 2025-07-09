@@ -26,9 +26,9 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
-          unityVersion: 6000.0.44f1
+          #unityVersion: 6000.0.44f1
           projectPath: NecroBug
-          buildProfile: 'Assets/Misc/Settings/Build Profiles/New Windows Profile.asset'
+          buildProfile: 'Assets/Misc/Settings/Build Profiles/dummy profile.asset'
       - uses: actions/upload-artifact@v4
         with:
           name: Build-StandaloneWindows64

@@ -8,6 +8,10 @@ using UnityEngine.InputSystem;
 
 public class BotBulider : ItemStorage
 {
+    //6x6x6 with 2x2x2 bot
+    //3x3x3 with 1x1x1 bot
+    //shorter 6x6x6?
+    //3x2x3 with 1x1x1 bot
     private const int x = 12;
     private const int y = 12;
     private const int z = 12;
@@ -49,11 +53,47 @@ public class BotBulider : ItemStorage
 
         if (!tItem.HasBotPart())
             tItem.CreateBotPart();
-        BotPart bPart = tItem.GetBotPart();
+        //BotPart bPart = tItem.GetBotPart();
 
-        bPart.Place(grid);
+        //bPart.Place(grid);
 
+        CreateBot();
         return tItem;
+    }
+    public override bool RemoveItem(InventoryItem item)
+    {
+        if (item == null || item.GetType() != typeof(MediatorPart))
+            return false;
+
+        Debug.LogError("Remove Item");
+        MediatorPart tItem = (MediatorPart)item;
+        tItem.DestroyItem();
+        return true;
+        if (tItem.HasBotPart())
+        {
+            BotPart part = tItem.GetBotPart();
+
+            //BotPart part = mPart.GetBotPart();
+            int index = GetPartList().IndexOf(part);
+
+            if (part.Remove(grid)) //HARD CODED, can't remove first item in list (for car)
+            {
+                //GetComponent<InventoryManager>().RecoverActiveItem(mPart);
+                Debug.LogError(manager.GetItemList(StorageManager.StorageKey.BuilderBuffer).ToCommaSeparatedString());
+                Debug.LogError(part.GetMediator());
+                if (GetItemList().Contains(part.GetMediator()))
+                {
+                    //manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.Inventory);
+                }
+                if (part != null)
+                    //part.GetMediator().DestroyBotPart();
+                //partList.RemoveAt(index);
+                return true;
+            }
+            return false;
+        }
+
+
     }
 
     public List<BotPart> GetPartList()
@@ -130,9 +170,6 @@ public class BotBulider : ItemStorage
 
         if (index != 0 && index != -1 && part.Remove(grid)) //HARD CODED, can't remove first item in list (for car)
         {
-            //GetComponent<InventoryManager>().RecoverActiveItem(mPart);
-            Debug.LogError(manager.GetItemList(StorageManager.StorageKey.BuilderBuffer).ToCommaSeparatedString());
-            Debug.LogError(part.GetMediator());
             if (GetItemList().Contains(part.GetMediator()))
             {
                 manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.Inventory);
@@ -152,10 +189,10 @@ public class BotBulider : ItemStorage
     public void CreateBot()
     {
         Debug.LogWarning("Create Bot");
+        List<BotPart> snapshot = GetPartList();
         if (!grid.Check())
             return;
 
-        List<BotPart> snapshot = GetPartList();
         
         foreach (BotPart part in snapshot)
         {

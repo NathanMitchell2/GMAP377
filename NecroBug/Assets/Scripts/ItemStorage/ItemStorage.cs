@@ -65,7 +65,7 @@ public abstract class ItemStorage : MonoBehaviour
         mItem.Reduce();
         return mItem;
     }
-    public bool RemoveItem(InventoryItem item)
+    public virtual bool RemoveItem(InventoryItem item)
     {
         if (!GetItemList().Contains(item))
             return false;

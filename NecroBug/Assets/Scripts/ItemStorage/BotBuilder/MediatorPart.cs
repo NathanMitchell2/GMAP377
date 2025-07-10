@@ -90,14 +90,23 @@ public class MediatorPart : InventoryItem
     private InputAction action;
     private string binding;
 
+    private Vector3 botPos;
+    private Vector3 storagePos;
+    private Quaternion storageRot;
+
+    //private bool isPrefabFlag = true;
+
 
     private void Awake()
     {
+        //isPrefabFlag = false;
         binding = defaultBind;
         AddAction();
     }
     public override ItemMemento CreateMemento()
     {
+        //if (isPrefabFlag)
+        //    binding = defaultBind;
         BotPartMemento botPart = HasBotPart() ? GetBotPart().CreateMemento() : null;
         BugPartMemento bugPart = HasBugPart() ? GetBugPart().CreateMemento() : null;
         return new MediatorMemento(itemName, icon, health, maxHealth, stackable, maxStack, count, BotPartPrefab, BugPartPrefab, botPart, bugPart, customBinds, defaultBind, binding);
@@ -128,7 +137,7 @@ public class MediatorPart : InventoryItem
             }
             customBinds = med.GetCustomBinds();
             action.ApplyBindingOverride(0, med.GetBinding());
-            defaultBind = med.GetBinding();
+            defaultBind = med.GetDefaultBinding();
             binding = med.GetBinding();
             AlignBugPart();
         }
@@ -136,6 +145,36 @@ public class MediatorPart : InventoryItem
         {
             return;
         }
+    }
+    public Vector3 GetBotPos()
+    {
+        if (!HasBotPart())
+            if (botPos != null)
+                return botPos;
+            else return new Vector3(0,0,0);
+
+        botPos = GetBotPart().GetPos();
+        return botPos;
+    }
+    private Vector3 GetStoragePos()
+    {
+        if (!HasBotPart())
+            if (storagePos != null)
+                return storagePos;
+            else return new Vector3(0,0,0);
+
+        storagePos = GetBotPart().GetPartStorage().localPosition;
+        return storagePos;
+    }
+    private Quaternion GetStorageRot()
+    {
+        if (!HasBotPart())
+            if (storageRot != null)
+                return storageRot;
+            else return Quaternion.identity;
+
+        storageRot = GetBotPart().GetPartStorage().localRotation;
+        return storageRot;
     }
     public bool HasBotPart() { return botPart != null; }
     public bool HasBugPart() { return bugPart != null; }
@@ -207,7 +246,7 @@ public class MediatorPart : InventoryItem
         if (!HasBugPart())
         {
             bugPart = Instantiate(BugPartPrefab);
-            bugPart.GetComponent<ModularBugPart>().Initialize(this, binding);
+            bugPart.GetComponent<ModularBugPart>().Initialize(this);
             Debug.LogError("MediatorPart " + this + " had to make a bug part");
         }
         return bugPart.GetComponent<ModularBugPart>();
@@ -223,21 +262,23 @@ public class MediatorPart : InventoryItem
     {
         DestroyBugPart();
         bugPart = part.gameObject;
-        part.Initialize(this, action.bindings[0].effectivePath);
+        part.Initialize(this);
     }
     public void AlignBugPart()
     {
-        if (HasBotPart() && HasBugPart())
+        if (HasBugPart())
         {
-            BotPart bPart = GetBotPart();
-            Transform storage = bPart.GetPartStorage();
             //that transform is a paramter btw
-            Vector3 pos = bPart.GetPos() + storage.localPosition;
-            Quaternion rot = storage.localRotation * transform.rotation;
+            //Transform parent = PlayerIdentifier.GetPlayer().transform;
+            Vector3 pos = GetBotPos() + GetStoragePos();
+            Quaternion rot = GetStorageRot();// * parent.rotation;
 
-            bugPart.transform.SetLocalPositionAndRotation(pos, rot);
-            
-            
+            Debug.LogError("Align Bug Part to " + pos + " and " + rot);
+            bugPart.transform.SetParent(null);
+            bugPart.transform.SetPositionAndRotation(pos, rot);
+            bugPart.transform.localScale = BugPartPrefab.transform.localScale;
+
+
             ModularBugPart part = GetBugPart();
             //Debug.LogError("action binding");
             //Debug.LogError(action.bindings[0].effectivePath);
@@ -245,7 +286,7 @@ public class MediatorPart : InventoryItem
             //Debug.LogError(action.bindings[0].overridePath);
             //Debug.LogError(binding);
             //Debug.LogError("End action binding");
-            part.Initialize(this, action.bindings[0].effectivePath);
+            part.Initialize(this);
             BindPart();
 
             

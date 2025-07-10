@@ -20,8 +20,9 @@ public abstract class ModularBugPart : MonoBehaviour
 {
     public abstract void Activate();
 
-    private MediatorPart mediator;
+    public MediatorPart mediator;
 
+    
     private void OnDestroy()
     {
         Debug.LogError("Destroying " + this);
@@ -30,7 +31,7 @@ public abstract class ModularBugPart : MonoBehaviour
     {
         Debug.LogError("Awake " + this);
     }
-    public void Initialize(MediatorPart mediator, string binding)
+    public void Initialize(MediatorPart mediator)
     {
         this.mediator = mediator;
     }

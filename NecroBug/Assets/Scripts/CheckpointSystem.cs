@@ -38,14 +38,28 @@ public class CheckpointSystem : MonoBehaviour
 
     public void PlayerToCheckpoint ()
     {
-        if(managerMemento != null)
+        BuiltBotStorage storage = PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>();
+        GameObject player = PlayerIdentifier.GetPlayer().gameObject;
+        if (managerMemento != null)
         {
-            BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;
-            BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
+            //BuiltBotStorage. = checkpointList[currentCheck].position;
+            //BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
 
-            PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().RestoreMemento(managerMemento);
+            player.GetComponent<StorageManager>().RestoreMemento(managerMemento);
         }
-        PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>().AlignAll();
+        //storage.GetSource().SetPositionAndRotation(checkpointList[currentCheck].position, checkpointList[currentCheck].rotation);
+        BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;//player.transform.InverseTransformPoint(checkpointList[currentCheck].position);
+        //BuiltBotStorage.sourceRot = player.transform.rotat checkpointList[currentCheck].rotation;
+        storage.AlignAll();
+        Debug.LogError("Out of plyaer checkpoint");
+        foreach(MediatorPart p in storage.GetItemList())
+        {
+            ModularBugPart obj = p.GetBugPart();
+            Debug.LogError("Checkpoint obst part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
+        }
+
+        //PlayerIdentifier.GetPlayer().GetComponentInChildren<BotBulider>().CreateBot();
+        
     }
 }
 

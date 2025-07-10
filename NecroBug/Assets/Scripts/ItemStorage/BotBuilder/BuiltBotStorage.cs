@@ -2,7 +2,9 @@ using System.Data.Common;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
+using static UnityEditor.PlayerSettings;
 using static UnityEditorInternal.ReorderableList;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class BuiltBotStorage : ItemStorage
 {
@@ -14,7 +16,7 @@ public class BuiltBotStorage : ItemStorage
             return null;
         Debug.LogError("Buffer Post null checks");
 
-        Transform source = GetSource();
+        //Transform source = GetSource();
 
         MediatorPart tItem = (MediatorPart)gameObject.AddComponent(item.GetItemType());
         tItem.RestoreMemento(item);
@@ -22,15 +24,15 @@ public class BuiltBotStorage : ItemStorage
         if (!tItem.HasBugPart())
         {
             Debug.LogError("Create Bug Part");
-            //tItem.CreateBugPart();
+            tItem.CreateBugPart();
         }    
 
-        //AlignAll();
+        AlignAll();
 
         Debug.LogError("Buffer End");
         return tItem;
     }
-    private Transform GetSource()
+    public Transform GetSource()
     {
         foreach(MediatorPart p in GetItemList())
         {
@@ -38,7 +40,7 @@ public class BuiltBotStorage : ItemStorage
             {
                 ModularBugPart part = p.GetBugPart();
 
-                if(part.name == "NecroBug")
+                if(part.GetType() == typeof(NecroBugPart))
                 {
                     return part.transform;
                 }
@@ -52,24 +54,37 @@ public class BuiltBotStorage : ItemStorage
         if (source == null)
             return;
 
-        //source.SetLocalPositionAndRotation(sourcePos, sourceRot);
-        source.localScale = Vector3.one;
+        source.SetPositionAndRotation(sourcePos, sourceRot);
+        source.SetParent(PlayerIdentifier.GetPlayer().transform);
+        //source.localScale = new Vector3(.8f,.8f,.8f);
     }
 
     public void AlignAll()
     {
-        Transform source = GetSource();
         foreach (MediatorPart p in GetItemList())
         {
-            p.CreateBugPart();
-            Transform obj = p.GetBugPart().transform;
-
-            if (source == null || source == obj)
-                obj.SetParent(PlayerIdentifier.GetPlayer().transform);
-            else
-                obj.SetParent(source);
             p.AlignBugPart();
         }
+        Transform source = GetSource();
+
         AlignSource();
+        foreach (MediatorPart p in GetItemList())
+        {
+            //p.CreateBugPart();
+            Transform obj = p.GetBugPart().transform;
+            Vector3 sourceBotPos = source.GetComponent<ModularBugPart>().GetMediator().GetBotPos();
+            //obj.SetLocalPositionAndRotation(obj.localPosition + sourcePos + sourceBotPos, sourceRot * obj.localRotation);
+            //obj.SetLocalPositionAndRotation(obj.localPosition + sourcePos + sourceBotPos, sourceRot * obj.localRotation);
+            Debug.LogError("Bug Pre Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
+
+            if (source == null || source == obj)
+                continue;// obj.SetParent(PlayerIdentifier.GetPlayer().transform);
+            else
+                obj.SetParent(source, false);
+            Debug.LogError("Bug Post Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
+            //p.AlignBugPart();
+
+            //source = GetSource();
+        }
     }
 }

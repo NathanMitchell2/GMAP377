@@ -71,6 +71,7 @@ public class StorageManager : MonoBehaviour
     }
     public InventoryItem Transfer(InventoryItem item, StorageKey keyFrom, StorageKey keyTo)
     {
+        //For recovery... maybe save memento 
         ItemMemento mem = GetMemento(item, keyFrom);
         if (mem == null)
             return null;

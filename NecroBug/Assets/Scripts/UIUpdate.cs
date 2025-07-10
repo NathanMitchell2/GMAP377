@@ -11,7 +11,7 @@ public class UIUpdate : MonoBehaviour
 
     private void Update()
     {
-        //healthBar.fillAmount = (float)GetStats().GetHealth() / 100;
+        healthBar.fillAmount = (float)GetStats().GetHealth() / 100;
     }
     private PlayerHealth GetStats()
     {

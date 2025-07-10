@@ -8,9 +8,9 @@ public class NecroBugPart : ModularBugPart
 
     private void Update()
     {
-        BuiltBotStorage.sourcePos = transform.localPosition;
+        BuiltBotStorage.sourcePos = transform.position;
 
-        Vector3 eRot = new Vector3(0, transform.localEulerAngles.y, 0);
+        Vector3 eRot = new Vector3(0, transform.eulerAngles.y, 0);
         Quaternion rot = Quaternion.Euler(eRot);
 
         BuiltBotStorage.sourceRot = rot;

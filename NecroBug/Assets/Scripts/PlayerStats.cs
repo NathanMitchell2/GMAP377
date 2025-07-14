@@ -22,7 +22,11 @@ public class PlayerStats : MonoBehaviour
         this.healthBar = healthBar;
         this.energyBar = energyBar;
         this.energyReductionBar = energyReductionBar;
-        playerHealth.SetHealth(inventoryItem.GetHealth());
+
+        if (inventoryItem != null)
+            playerHealth.SetHealth(inventoryItem.GetHealth());
+        else
+            Debug.LogWarning("PlayerStats: inventoryItem not set before Initialize().");
 
         UpdateHealth();
     }

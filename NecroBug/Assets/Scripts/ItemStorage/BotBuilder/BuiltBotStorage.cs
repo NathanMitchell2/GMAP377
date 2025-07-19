@@ -48,7 +48,7 @@ public class BuiltBotStorage : ItemStorage
 
         source.SetPositionAndRotation(sourcePos, sourceRot);
         source.SetParent(PlayerIdentifier.GetPlayer().transform);
-        //source.localScale = new Vector3(.8f,.8f,.8f);
+        source.localScale = new Vector3(.8f,.8f,.8f);
     }
 
     public void AlignAll()
@@ -59,7 +59,7 @@ public class BuiltBotStorage : ItemStorage
         }
 
         Transform source = GetSource();
-        AlignSource();
+
 
         foreach (MediatorPart p in GetItemList())
         {
@@ -70,14 +70,17 @@ public class BuiltBotStorage : ItemStorage
             //obj.SetLocalPositionAndRotation(obj.localPosition + sourcePos + sourceBotPos, sourceRot * obj.localRotation);
             //Debug.LogError("Bug Pre Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
 
+            Debug.LogError("Pre Scale " + p.GetBugPart().transform.localScale);
             if (source == null || source == obj)
                 continue;// obj.SetParent(PlayerIdentifier.GetPlayer().transform);
             else
-                obj.SetParent(source, false);
+                obj.SetParent(source);
+            Debug.LogError("Post Scale " + p.GetBugPart().transform.localScale);
             //Debug.LogError("Bug Post Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
             //p.AlignBugPart();
 
             //source = GetSource();
         }
+        AlignSource();
     }
 }

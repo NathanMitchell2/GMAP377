@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class ActionManager : MonoBehaviour
 {
+    /*
+     * DEPRECIATED by MediatorPart
+     * 
+     * 
     [SerializeField] private List<InputAction> actions = new List<InputAction>();
     private List<ModularBugPart> bugParts = new List<ModularBugPart>();
     private List<InputActionRebindingExtensions.RebindingOperation> rebinds = new List<InputActionRebindingExtensions.RebindingOperation>();
@@ -64,4 +68,5 @@ public class ActionManager : MonoBehaviour
         return action.bindings[0].ToDisplayString();
 
     }
+    */
 }

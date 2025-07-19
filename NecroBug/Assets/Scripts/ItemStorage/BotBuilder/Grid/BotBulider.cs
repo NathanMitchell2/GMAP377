@@ -65,10 +65,10 @@ public class BotBulider : ItemStorage
         if (item == null || item.GetType() != typeof(MediatorPart))
             return false;
 
-        Debug.LogError("Remove Item");
         MediatorPart tItem = (MediatorPart)item;
-        tItem.DestroyItem();
+        item.DestroyItem();
         return true;
+        /*
         if (tItem.HasBotPart())
         {
             BotPart part = tItem.GetBotPart();
@@ -92,6 +92,7 @@ public class BotBulider : ItemStorage
             }
             return false;
         }
+        */
 
 
     }
@@ -188,7 +189,6 @@ public class BotBulider : ItemStorage
     }
     public void CreateBot()
     {
-        Debug.LogWarning("Create Bot");
         List<BotPart> snapshot = GetPartList();
         if (!grid.Check())
             return;
@@ -198,9 +198,7 @@ public class BotBulider : ItemStorage
         {
             if (GetItemList().Contains(part.GetMediator()))
             {
-                Debug.LogError("Builder to Buffer Transfer");
                 manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.BuilderBuffer);
-                Debug.LogError("Post Transfer");
             }
         }
 
@@ -208,7 +206,6 @@ public class BotBulider : ItemStorage
         {
             if (!part.HasBotPart())
             {
-                Debug.LogError("Buffer to Inventory Transfer");
                 manager.Transfer(part, StorageManager.StorageKey.BuilderBuffer, StorageManager.StorageKey.Inventory);
                 //part.DestroyBugPart();
             }

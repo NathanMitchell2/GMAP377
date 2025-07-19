@@ -6,7 +6,6 @@ public class CheckpointSystem : MonoBehaviour
     public static CheckpointSystem Instance {get; private set; }
 
     public Transform[] checkpointList;
-    public GameObject carObject;
 
     public static StorageManagerMemento managerMemento;
 
@@ -14,7 +13,7 @@ public class CheckpointSystem : MonoBehaviour
 
     private void Awake(){
         if (Instance == null){
-            Instance = this;
+            //Instance = this;
         }
         else{
             Destroy(gameObject);
@@ -24,6 +23,13 @@ public class CheckpointSystem : MonoBehaviour
     void Start()
     {
         PlayerToCheckpoint();
+    }
+
+    public static void ResetStatics(bool fullReset)
+    {
+        if (fullReset)
+            managerMemento = null;
+        currentCheck = 0;
     }
 
     public void SetCheck(int check){
@@ -40,25 +46,42 @@ public class CheckpointSystem : MonoBehaviour
     {
         BuiltBotStorage storage = PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>();
         GameObject player = PlayerIdentifier.GetPlayer().gameObject;
+
+        BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;
+        BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
+
+
         if (managerMemento != null)
         {
             //BuiltBotStorage. = checkpointList[currentCheck].position;
             //BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
 
+            /*
+            foreach (var storages in managerMemento.GetStorages())
+            {
+                Debug.LogError("Storage Recorder " + storages.Key);
+                foreach(ItemMemento item in storages.Value.GetItems())
+                {
+                    Debug.LogError("Item Recorder " + item.GetName());
+                }
+            }
+            */
             player.GetComponent<StorageManager>().RestoreMemento(managerMemento);
         }
         //storage.GetSource().SetPositionAndRotation(checkpointList[currentCheck].position, checkpointList[currentCheck].rotation);
-        BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;//player.transform.InverseTransformPoint(checkpointList[currentCheck].position);
+        //player.transform.InverseTransformPoint(checkpointList[currentCheck].position);
         //BuiltBotStorage.sourceRot = player.transform.rotat checkpointList[currentCheck].rotation;
         storage.AlignAll();
-        Debug.LogError("Out of plyaer checkpoint");
-        foreach(MediatorPart p in storage.GetItemList())
-        {
-            ModularBugPart obj = p.GetBugPart();
-            Debug.LogError("Checkpoint obst part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
-        }
 
-        //PlayerIdentifier.GetPlayer().GetComponentInChildren<BotBulider>().CreateBot();
+        /*
+        Debug.LogError("Checkpoint list start");
+        foreach(InventoryItem item in storage.GetItemList())
+        {
+            Debug.LogError("Checkpoint List " + item.GetName());
+        }
+        Debug.LogError("Checkpoint list end");
+        Debug.Log(InstantAddItem.doCreate);
+        */
         
     }
 }

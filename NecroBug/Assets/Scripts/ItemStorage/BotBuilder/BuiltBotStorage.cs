@@ -1,10 +1,5 @@
 using System.Data.Common;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
-using static UnityEditor.PlayerSettings;
-using static UnityEditorInternal.ReorderableList;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class BuiltBotStorage : ItemStorage
 {
@@ -14,7 +9,6 @@ public class BuiltBotStorage : ItemStorage
     {
         if (item == null || item.GetItemType() != typeof(MediatorPart))
             return null;
-        Debug.LogError("Buffer Post null checks");
 
         //Transform source = GetSource();
 
@@ -23,13 +17,11 @@ public class BuiltBotStorage : ItemStorage
 
         if (!tItem.HasBugPart())
         {
-            Debug.LogError("Create Bug Part");
             tItem.CreateBugPart();
         }    
 
         AlignAll();
 
-        Debug.LogError("Buffer End");
         return tItem;
     }
     public Transform GetSource()
@@ -65,23 +57,24 @@ public class BuiltBotStorage : ItemStorage
         {
             p.AlignBugPart();
         }
-        Transform source = GetSource();
 
+        Transform source = GetSource();
         AlignSource();
+
         foreach (MediatorPart p in GetItemList())
         {
             //p.CreateBugPart();
             Transform obj = p.GetBugPart().transform;
-            Vector3 sourceBotPos = source.GetComponent<ModularBugPart>().GetMediator().GetBotPos();
+            //Vector3 sourceBotPos = source.GetComponent<ModularBugPart>().GetMediator().GetBotPos();
             //obj.SetLocalPositionAndRotation(obj.localPosition + sourcePos + sourceBotPos, sourceRot * obj.localRotation);
             //obj.SetLocalPositionAndRotation(obj.localPosition + sourcePos + sourceBotPos, sourceRot * obj.localRotation);
-            Debug.LogError("Bug Pre Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
+            //Debug.LogError("Bug Pre Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
 
             if (source == null || source == obj)
                 continue;// obj.SetParent(PlayerIdentifier.GetPlayer().transform);
             else
                 obj.SetParent(source, false);
-            Debug.LogError("Bug Post Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
+            //Debug.LogError("Bug Post Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
             //p.AlignBugPart();
 
             //source = GetSource();

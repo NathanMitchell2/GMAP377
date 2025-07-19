@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LegsPartIdentifier : ModularBugPart
 {
+    //35 mass
     public override void Activate()
     {
         

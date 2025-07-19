@@ -22,15 +22,6 @@ public abstract class ModularBugPart : MonoBehaviour
 
     public MediatorPart mediator;
 
-    
-    private void OnDestroy()
-    {
-        Debug.LogError("Destroying " + this);
-    }
-    private void Awake()
-    {
-        Debug.LogError("Awake " + this);
-    }
     public void Initialize(MediatorPart mediator)
     {
         this.mediator = mediator;
@@ -45,5 +36,28 @@ public abstract class ModularBugPart : MonoBehaviour
     }
     public MediatorPart GetMediator()
     { return mediator; }
+
+    private void Update()
+    {
+        ConnectAnchor();
+    }
+    protected void ConnectAnchor()
+    {
+        MediatorPart med = GetMediator();
+        Joint joint = GetComponent<FixedJoint>();
+        if (med != null && joint != null)
+        {
+            Vector3 pos = med.GetBotPos();// + med.GetStoragePos();
+                                          //Quaternion rot = med.GetStorageRot();// * parent.rotation;
+
+            Debug.LogError("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + med.GetName());
+            joint.connectedAnchor = pos;
+            joint.connectedAnchor = overridePos;
+            joint.anchor = pos;
+            joint.anchor = overridePos;
+        }
+    }
+
+    public Vector3 overridePos;
 
 }

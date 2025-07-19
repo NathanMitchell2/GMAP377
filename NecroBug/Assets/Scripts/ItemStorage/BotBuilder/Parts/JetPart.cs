@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class JetPart : ModularBugPart
 {
+    //93.75 mass
     [SerializeField] static private float dashForce = 20f;
     public override void Activate()
     {

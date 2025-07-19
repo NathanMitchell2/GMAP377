@@ -14,5 +14,7 @@ public class NecroBugPart : ModularBugPart
         Quaternion rot = Quaternion.Euler(eRot);
 
         BuiltBotStorage.sourceRot = rot;
+
+        ConnectAnchor();
     }
 }

@@ -146,11 +146,10 @@ GameObject:
   - component: {fileID: 8181076889940989138}
   - component: {fileID: 1959578597101852060}
   - component: {fileID: 3762435927103694938}
-  - component: {fileID: 7938049187057636569}
-  - component: {fileID: -4157631099688506351}
-  - component: {fileID: 6255968246385573115}
   - component: {fileID: 8445334415122534047}
   - component: {fileID: 511308347746217770}
+  - component: {fileID: 5290588659718747558}
+  - component: {fileID: 5493218026632588874}
   m_Layer: 6
   m_Name: AcidHornBugPart
   m_TagString: Player
@@ -229,62 +228,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &7938049187057636569
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9074463265164639541}
-  serializedVersion: 4
-  m_Mass: 375
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!138 &-4157631099688506351
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9074463265164639541}
-  serializedVersion: 1
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
---- !u!114 &6255968246385573115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9074463265164639541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1841aa489e4172c4bb3107c4ee0d30db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joint: {fileID: -4157631099688506351}
 --- !u!114 &8445334415122534047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986685cd6727d0d419f29e739c05d429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  rotOffset: {x: 0, y: 0, z: 0}
+  mediator: {fileID: 0}
+  overridePos: {x: 0, y: 0, z: 0}
   projectilePrefab: {fileID: 4671630421458197730, guid: c54a705514862c247a4fd3d2c62aa4ba, type: 3}
   shootForce: 20
   firePoint: {fileID: 337256221634243063}
@@ -413,6 +356,18 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5290588659718747558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074463265164639541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5493218026632588874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,18 +383,6 @@ MonoBehaviour:
   priority: 1
   distributeFactor: 0.2
   doOverdamage: 0
---- !u!114 &5290588659718747558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9074463265164639541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3268522988862598555
 PrefabInstance:
   m_ObjectHideFlags: 0

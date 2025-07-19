@@ -33,6 +33,7 @@ public class BotPart : MonoBehaviour
     public void Initialize(MediatorPart mediator)
     {
         this.mediator = mediator;
+        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
     void Awake()
     {
@@ -46,7 +47,7 @@ public class BotPart : MonoBehaviour
     }
     private void Update()
     {
-        transform.SetLocalPositionAndRotation( pos, Quaternion.identity);
+        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
 
     public BotPartMemento CreateMemento()
@@ -59,6 +60,7 @@ public class BotPart : MonoBehaviour
         orientation = mem.GetOri();
         ResetOrientations();
         orientations[orientation].SetActive(true);
+        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
 
     public MediatorPart GetMediator()

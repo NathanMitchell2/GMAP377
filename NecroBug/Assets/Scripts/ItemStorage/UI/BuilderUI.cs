@@ -48,6 +48,7 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] GameObject cell;
     [SerializeField] Transform gridTransform;
 
+    private bool lateUpdate = false;
     private void Awake()
     {
         GameObject player = PlayerIdentifier.GetPlayer().gameObject;
@@ -79,6 +80,14 @@ public class BuilderUI : MonoBehaviour
     private void OnEnable()
     {
         UpdateAll();
+    }
+    private void LateUpdate()
+    {
+        if (lateUpdate)
+        {
+            UpdateAll();
+            lateUpdate = false;
+        }    
     }
 
     public void MoveSelected(int dir)
@@ -180,6 +189,8 @@ public class BuilderUI : MonoBehaviour
         //inventory.AddItem(builder.GetGridParts()[selectedIndex]);
         builder.RemovePart(selectedIndex);
         UpdateAll();
+        lateUpdate = true;
+
     }
 
     public void CreateBot()

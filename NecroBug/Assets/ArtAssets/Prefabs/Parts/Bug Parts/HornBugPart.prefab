@@ -182,9 +182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7750489798096026027}
   - component: {fileID: 5538618956465946129}
-  - component: {fileID: 2202367363753059916}
-  - component: {fileID: -7875094499103097227}
-  - component: {fileID: -3617985093642396114}
   - component: {fileID: -7992299366031152958}
   - component: {fileID: 9187988650772554472}
   - component: {fileID: -5593645736801312565}
@@ -229,66 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbee7b5c576aec24a96b8335fe70e1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mediator: {fileID: 0}
+  overridePos: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 2}
-  rotOffset: {x: 0, y: 270, z: 0}
   hornHitbox: {fileID: 7211149645743359647, guid: 6aa2a00ba0c53be4589743e4319c6597, type: 3}
   effect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
---- !u!54 &2202367363753059916
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  serializedVersion: 4
-  m_Mass: 375
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!138 &-7875094499103097227
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  serializedVersion: 1
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
---- !u!114 &-3617985093642396114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1841aa489e4172c4bb3107c4ee0d30db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joint: {fileID: -7875094499103097227}
 --- !u!114 &-7992299366031152958
 MonoBehaviour:
   m_ObjectHideFlags: 0

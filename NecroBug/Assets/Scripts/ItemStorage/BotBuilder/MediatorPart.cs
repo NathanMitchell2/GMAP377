@@ -41,6 +41,7 @@ public class MediatorMemento : ItemMemento
     {
         return typeof(MediatorPart);
     }
+    /*
     public string GetName()
     {
         return itemName;
@@ -65,7 +66,7 @@ public class MediatorMemento : ItemMemento
     }
     public bool GetStackable() { return this.stackable; }
 
-    public int GetMaxStack() { return maxStack; }
+    public int GetMaxStack() { return maxStack; }*/
 
     public GameObject GetBotPrefab() { return botPrefab; }
     public GameObject GetBugPrefab() { return bugPrefab; }
@@ -94,6 +95,8 @@ public class MediatorPart : InventoryItem
     private Vector3 storagePos;
     private Quaternion storageRot;
 
+    private bool destroying = false;
+
     //private bool isPrefabFlag = true;
 
 
@@ -107,6 +110,7 @@ public class MediatorPart : InventoryItem
     {
         //if (isPrefabFlag)
         //    binding = defaultBind;
+        if(destroying) return null;
         BotPartMemento botPart = HasBotPart() ? GetBotPart().CreateMemento() : null;
         BugPartMemento bugPart = HasBugPart() ? GetBugPart().CreateMemento() : null;
         return new MediatorMemento(itemName, icon, health, maxHealth, stackable, maxStack, count, BotPartPrefab, BugPartPrefab, botPart, bugPart, customBinds, defaultBind, binding);
@@ -131,7 +135,7 @@ public class MediatorPart : InventoryItem
             }
             if (med.GetBugPart() != null)
             {
-                if(!HasBugPart())
+                if (!HasBugPart())
                     CreateBugPart();
                 GetBugPart().RestoreMemento(med.GetBugPart());
             }
@@ -143,6 +147,7 @@ public class MediatorPart : InventoryItem
         }
         catch (Exception e)
         {
+            Debug.LogError(e);
             return;
         }
     }
@@ -193,7 +198,6 @@ public class MediatorPart : InventoryItem
         if(bugPart != null)
             DestroyBugPart();
 
-        Debug.LogError("Instantiate bug part");
         bugPart = Instantiate(BugPartPrefab);
         AlignBugPart();
     }
@@ -210,8 +214,8 @@ public class MediatorPart : InventoryItem
             //if (index != -1)
             //builder.RemovePart(index);
 
-            GameObject temp = botPart;
-            botPart = null;
+            //GameObject temp = botPart;
+            //botPart = null;
             Destroy(botPart);
         }    
     }
@@ -226,9 +230,9 @@ public class MediatorPart : InventoryItem
 
         //builder.RemoveItem(this);
         //builder.RemoveBuiltPart(builder.BuiltIndexOf(this));
-        GameObject temp = bugPart;
-        bugPart = null;
-        Destroy(temp);
+        //GameObject temp = bugPart;
+        //bugPart = null;
+        Destroy(bugPart);
     }
 
     public BotPart GetBotPart()
@@ -273,9 +277,9 @@ public class MediatorPart : InventoryItem
             Vector3 pos = GetBotPos() + GetStoragePos();
             Quaternion rot = GetStorageRot();// * parent.rotation;
 
-            Debug.LogError("Align Bug Part to " + pos + " and " + rot);
+            //Debug.LogError("Align Bug Part to " + pos + " and " + rot);
             bugPart.transform.SetParent(null);
-            bugPart.transform.SetPositionAndRotation(pos, rot);
+            bugPart.transform.SetLocalPositionAndRotation(pos, rot);
             bugPart.transform.localScale = BugPartPrefab.transform.localScale;
 
 
@@ -304,7 +308,12 @@ public class MediatorPart : InventoryItem
             
         }
     }
-
+    private void Update()
+    {
+        GetBotPos();
+        GetStoragePos();
+        GetStorageRot();
+    }
     public void OnDestroy()
     {
         Debug.Log("MediatorPart OnDestroy, auto cleanup may have unexpected behavior");
@@ -315,9 +324,8 @@ public class MediatorPart : InventoryItem
         DestroyBotPart();
         DestroyBugPart();
         RemoveAction();
-        Debug.Log("InDestroyItem");
         Destroy(this);
-        Debug.Log("OutDestroyItem");
+        destroying = true;
     }
 
     public override void CleanToBaseClass()

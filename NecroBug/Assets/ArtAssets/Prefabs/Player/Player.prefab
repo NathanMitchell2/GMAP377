@@ -40,7 +40,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9125894543685590602}
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959910666126545718}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acf9288ce62206c4da4fb4002d0d1acb, type: 3}
   m_Name: 
@@ -313,9 +313,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7342530988706264442}
   - component: {fileID: 7275751603142700135}
-  - component: {fileID: 3623622016624728841}
-  - component: {fileID: 5611721471409838714}
-  - component: {fileID: 5651626963851587024}
+  - component: {fileID: 2235335787734983286}
+  - component: {fileID: 8660351782339546634}
+  - component: {fileID: 8314755412522927926}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Player
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d4e0a549f705e45b4cc6316c90f3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3623622016624728841
+--- !u!114 &2235335787734983286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,20 +359,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2327365740643717233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8547cc47636707f49a0960d60fbb4429, type: 3}
+  m_Script: {fileID: 11500000, guid: ae33465a5689375488471d29d88ebe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Horn
-  icon: {fileID: 21300000, guid: aca7cff0d058e3c409480cb3be5a0f82, type: 3}
-  maxHealth: 60
-  stackable: 1
-  maxStack: 99
+  item: {fileID: 3997798886352531281, guid: a4ffc38872603cf46bbd8d24d8bffa09, type: 3}
   count: 1
-  BotPartPrefab: {fileID: 3997798886352531281, guid: 820de3f89e13b46469b68295562103b9, type: 3}
-  BugPartPrefab: {fileID: 6788982746073355530, guid: ef1277e8476db1b4984517d2ac35417c, type: 3}
-  customBinds: 0
-  defaultBind: 
---- !u!114 &5611721471409838714
+  botPos: {x: 0, y: 0, z: 0}
+--- !u!114 &8660351782339546634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,20 +374,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2327365740643717233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8547cc47636707f49a0960d60fbb4429, type: 3}
+  m_Script: {fileID: 11500000, guid: ae33465a5689375488471d29d88ebe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Generic
-  icon: {fileID: 21300000, guid: 8e38c6fc099e115418415aa156c31f1a, type: 3}
-  maxHealth: 10
-  stackable: 1
-  maxStack: 99
+  item: {fileID: 2025769284591637103, guid: a027b5b42ce171d46acaed4f947cfb42, type: 3}
   count: 99
-  BotPartPrefab: {fileID: 2025769284591637103, guid: 88613fd13e0fe4644b8b2cd8c013338c, type: 3}
-  BugPartPrefab: {fileID: 6788982746073355530, guid: 56c22b82b4431c348803ba99ccfea23e, type: 3}
-  customBinds: 0
-  defaultBind: 
---- !u!114 &5651626963851587024
+  botPos: {x: 0, y: 0, z: 0}
+--- !u!114 &8314755412522927926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,19 +389,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2327365740643717233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8547cc47636707f49a0960d60fbb4429, type: 3}
+  m_Script: {fileID: 11500000, guid: ae33465a5689375488471d29d88ebe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Mandibles
-  icon: {fileID: 21300000, guid: 44d09b4ed24b0ee4a974a49c2cb0fa9d, type: 3}
-  maxHealth: 50
-  stackable: 1
-  maxStack: 99
+  item: {fileID: 3997798886352531281, guid: 2b07ed9febf36564ea68b40f3d76e9bc, type: 3}
   count: 1
-  BotPartPrefab: {fileID: 3997798886352531281, guid: 0d8fb7f6c513f254cad89b5fffdf13c9, type: 3}
-  BugPartPrefab: {fileID: 6788982746073355530, guid: add0e156ddc321448a82dd1de8b38901, type: 3}
-  customBinds: 1
-  defaultBind: <Mouse>/leftButton
+  botPos: {x: 0, y: 0, z: 0}
 --- !u!1 &4521078891256376265
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4786184704765350431}
   - component: {fileID: 7620797688617839953}
-  - component: {fileID: 7085338607624448275}
+  - component: {fileID: 253890654132468496}
   m_Layer: 0
   m_Name: BotBuilder
   m_TagString: Untagged
@@ -506,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe33426caf37d05438e73824036ac98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7085338607624448275
+--- !u!114 &253890654132468496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -515,19 +494,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637711812678295727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8547cc47636707f49a0960d60fbb4429, type: 3}
+  m_Script: {fileID: 11500000, guid: ae33465a5689375488471d29d88ebe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: NecroBug
-  icon: {fileID: 21300000, guid: a2beb5a7ddebd0d4882723cc0ec7755b, type: 3}
-  maxHealth: 100
-  stackable: 0
-  maxStack: 99
+  item: {fileID: 2025769284591637103, guid: d4a0cf9fdf67ec947958bb5f336698e3, type: 3}
   count: 1
-  BotPartPrefab: {fileID: 6509350073755414380, guid: 8026d39836e2c2b46b02db6fe8c57841, type: 3}
-  BugPartPrefab: {fileID: 2475575991783323239, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
-  customBinds: 0
-  defaultBind: 
+  botPos: {x: 4, y: 4, z: 4}
 --- !u!1 &8752553343143161662
 GameObject:
   m_ObjectHideFlags: 0

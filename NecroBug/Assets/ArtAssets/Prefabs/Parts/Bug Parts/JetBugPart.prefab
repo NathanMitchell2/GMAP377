@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 7750489798096026027}
   - component: {fileID: 3954378017648843528}
   - component: {fileID: 2494816712472840680}
-  - component: {fileID: -5808847918911752708}
-  - component: {fileID: -6417996360395769660}
-  - component: {fileID: -6877971919189419059}
   - component: {fileID: -41495023230227417}
   - component: {fileID: 7613185335547546705}
   - component: {fileID: 8882492452500397492}
@@ -73,64 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff17e90cb671094ea82b0eaeaadab49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  rotOffset: {x: 0, y: 0, z: 0}
---- !u!114 &-5808847918911752708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1841aa489e4172c4bb3107c4ee0d30db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joint: {fileID: -6877971919189419059}
---- !u!54 &-6417996360395769660
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  serializedVersion: 4
-  m_Mass: 93.75
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!138 &-6877971919189419059
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788982746073355530}
-  serializedVersion: 1
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  mediator: {fileID: 0}
+  overridePos: {x: 0, y: 0, z: 0}
 --- !u!114 &-41495023230227417
 MonoBehaviour:
   m_ObjectHideFlags: 0

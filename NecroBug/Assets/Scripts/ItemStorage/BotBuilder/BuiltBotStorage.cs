@@ -70,12 +70,10 @@ public class BuiltBotStorage : ItemStorage
             //obj.SetLocalPositionAndRotation(obj.localPosition + sourcePos + sourceBotPos, sourceRot * obj.localRotation);
             //Debug.LogError("Bug Pre Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
 
-            Debug.LogError("Pre Scale " + p.GetBugPart().transform.localScale);
             if (source == null || source == obj)
                 continue;// obj.SetParent(PlayerIdentifier.GetPlayer().transform);
             else
                 obj.SetParent(source);
-            Debug.LogError("Post Scale " + p.GetBugPart().transform.localScale);
             //Debug.LogError("Bug Post Part at " + obj.transform.localPosition + " and " + obj.transform.localRotation);
             //p.AlignBugPart();
 

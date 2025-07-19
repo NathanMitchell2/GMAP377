@@ -1,5 +1,4 @@
 using UnityEngine;
-using FMODUnity;
 using System.Collections.Generic;
 
 public class MushroomExplosion : MonoBehaviour
@@ -9,8 +8,7 @@ public class MushroomExplosion : MonoBehaviour
     public float explosionRadius = 5f;
     private bool exploding = false;
 
-    [SerializeField]
-    private string bombSound = "event:/Other/mushroom explosion";
+
 
     private void OnCollisionEnter(Collision other)
     {
@@ -27,8 +25,7 @@ public class MushroomExplosion : MonoBehaviour
         exploding = true;
 
         Instantiate(explosion, transform.position, Quaternion.identity);
-        RuntimeManager.PlayOneShot(bombSound, Camera.main.transform.position);
-        Debug.Log("bomb sound played");
+ 
         List<GameObject> targets = new List<GameObject>();
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 

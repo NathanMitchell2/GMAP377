@@ -7,23 +7,17 @@ public class UIUpdate : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image energyBar;
     [SerializeField] private Image energyReductionBar;
-    private PlayerStats playerStats;
-
-    public void StatInitialize()
-    {
-        //PlayerStats carObject = playerObject.GetComponentInChildren<PlayerStats>();
-        //carObject.Initialize(healthBar, energyBar, energyReductionBar);
-    }
+    private PlayerHealth playerStats;
 
     private void Update()
     {
-        healthBar.fillAmount = (float)GetStats().health / 100;
+        healthBar.fillAmount = (float)GetStats().GetHealth() / 100;
     }
-    private PlayerStats GetStats()
+    private PlayerHealth GetStats()
     {
         if(playerStats == null)
         {
-            return playerObject.GetComponentInChildren<PlayerStats>();
+            return playerObject.GetComponentInChildren<PlayerHealth>();
         }
         return playerStats;
     }

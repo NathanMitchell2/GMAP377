@@ -32,7 +32,7 @@ public class BuilderUI : MonoBehaviour
     [SerializeField] private GameObject inventoryUIObj;
     [SerializeField] private Transform inventoryUILoc;
     [SerializeField] private GameObject inventoryUIPrefab;
-    [SerializeField] private GameObject inventoryNoneUIPrefab;
+    //[SerializeField] private GameObject inventoryNoneUIPrefab;
     //[SerializeField] private InventoryManager inventory;
     private InventoryItem selectedItem;
     //private int axis = 0;
@@ -247,8 +247,8 @@ public class BuilderUI : MonoBehaviour
         //int selected = builder.IndexOf(builder.GetSelected());
         //Vector3 rootPos = selectUILoc.GetComponent<RectTransform>().position;
 
-        GameObject noneUI = Instantiate(inventoryNoneUIPrefab, inventoryUILoc);
-        noneUI.GetComponent<SelectableInventoryUI>().SetUI(this);
+        //GameObject noneUI = Instantiate(inventoryNoneUIPrefab, inventoryUILoc);
+        //noneUI.GetComponent<SelectableInventoryUI>().SetUI(this);
 
         List<InventoryItem> inventory = ((InventoryManager)storageManager.GetStorage(StorageManager.StorageKey.Inventory)).FilterInUse();
 
@@ -257,7 +257,7 @@ public class BuilderUI : MonoBehaviour
             if (i == 0) ;
                 //continue;
 
-            Vector3 pos = new Vector3(0, -height * (i+1), 0);
+            Vector3 pos = new Vector3(0, -height * (i), 0);
             GameObject selectUITemp = Instantiate(inventoryUIPrefab, inventoryUILoc);
             selectUITemp.GetComponent<RectTransform>().SetLocalPositionAndRotation(pos, Quaternion.identity);
             SelectableInventoryUI selectableUI = selectUITemp.GetComponent<SelectableInventoryUI>();
@@ -347,6 +347,10 @@ public class BuilderUI : MonoBehaviour
     public void RotateGrid(float rotation)
     {
         gridRotatePivot.transform.Rotate(new Vector3(0, rotation, 0));
+    }
+    public void RotateGrid(Vector3 rotation)
+    {
+        gridRotatePivot.transform.Rotate(rotation);
     }
 
     /*

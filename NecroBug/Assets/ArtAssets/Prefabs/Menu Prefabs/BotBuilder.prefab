@@ -1378,7 +1378,6 @@ GameObject:
   - component: {fileID: 4470878560398348498}
   - component: {fileID: 1289468039890998467}
   - component: {fileID: 5910178336071308272}
-  - component: {fileID: 4887485975714897892}
   - component: {fileID: 8130331959745066589}
   m_Layer: 5
   m_Name: BotBuilder
@@ -1495,25 +1494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 5
---- !u!114 &4887485975714897892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317961405623352928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe33426caf37d05438e73824036ac98a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cell: {fileID: 7928002304169728791, guid: a0046fd1bf28a984797909a8c1c4d5a7, type: 3}
-  gridTransform: {fileID: 0}
-  buildTransform: {fileID: 0}
-  playerCar: {fileID: 0}
-  playerObject: {fileID: 0}
-  uiObject: {fileID: 0}
-  actionManager: {fileID: 0}
 --- !u!114 &8130331959745066589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,28 +1503,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1317961405623352928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3224ebbf401ecc84db0c61d39edeec67, type: 3}
+  m_Script: {fileID: 11500000, guid: a1cf062c0dc82a7478a04632528c8d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partDropdown: {fileID: 4206349894558875995}
-  posX: {fileID: 1152809017053727072}
-  posY: {fileID: 456479990625482830}
-  posZ: {fileID: 2515289606560219139}
-  removeIndex: {fileID: 2302393508213198961}
-  selectIndex: {fileID: 7161071713881556030}
-  rotationEnum: {fileID: 8315342496701433226}
-  parts:
-  - {fileID: 6509350073755414380, guid: 8026d39836e2c2b46b02db6fe8c57841, type: 3}
-  - {fileID: 3997798886352531281, guid: 820de3f89e13b46469b68295562103b9, type: 3}
-  - {fileID: 2025769284591637103, guid: a6a88172b08880546a41eb55f021427f, type: 3}
-  - {fileID: 2025769284591637103, guid: 137390f8488f1c140bee126072be2b39, type: 3}
-  - {fileID: 2025769284591637103, guid: 88613fd13e0fe4644b8b2cd8c013338c, type: 3}
-  - {fileID: 2025769284591637103, guid: 52887c2faa6570e4f9cbb3b8e81b67c3, type: 3}
-  - {fileID: 2025769284591637103, guid: 943497d1e29115c48a3a8a71fd8e1ea5, type: 3}
-  - {fileID: 3997798886352531281, guid: 82272f0ab2364be418bf1e19560d305e, type: 3}
-  - {fileID: 3997798886352531281, guid: 0d8fb7f6c513f254cad89b5fffdf13c9, type: 3}
-  tipController: {fileID: 0}
-  partTransform: {fileID: 0}
   selectUILoc: {fileID: 8776665456594672264}
   selectUIPrefab: {fileID: 3233218267484049203, guid: 056b482b7f338d645ad3398883aacf32, type: 3}
   builtBotUI: {fileID: 4334060661285312112}
@@ -1553,7 +1514,8 @@ MonoBehaviour:
   inventoryUILoc: {fileID: 9105924053618276921}
   inventoryUIPrefab: {fileID: 3233218267484049203, guid: e7888ac8196bce643bfd255e6012f5aa, type: 3}
   inventoryNoneUIPrefab: {fileID: 3233218267484049203, guid: b2f9d1a1d5e2b7c468dde97c55026ce2, type: 3}
-  inventory: {fileID: 0}
+  cell: {fileID: 7928002304169728791, guid: a0046fd1bf28a984797909a8c1c4d5a7, type: 3}
+  gridTransform: {fileID: 0}
 --- !u!1 &1399125127510068640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1550230762860012119
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1849,8 +1811,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38a895c029fd304895fe440bbbf825a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  builder: {fileID: 4887485975714897892}
+  partsP: []
+  builder: {fileID: 0}
   UI: {fileID: 8130331959745066589}
+  parts: []
+  poss: []
+  orientations: 
 --- !u!1 &1786932577614300261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,7 +2556,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720544304614588859}
   m_HandleRect: {fileID: 2849141910974091193}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4089,17 +4055,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3015541180385735223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59936d4430f3de64b967fc586de655d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a394041eecea9644a805538a7bbeb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  successText: Build Success
-  processingText: In Progress
-  failText: Build Failed
-  successImg: {fileID: 21300000, guid: 1fc4cd48b8250574bab238e6e82eadf2, type: 3}
-  processingImg: {fileID: 21300000, guid: 2fa72b2284c00f641bd9880dbe489a76, type: 3}
-  failImg: {fileID: 21300000, guid: f06edadd8788aca4dbd0d01e4e91b37a, type: 3}
-  img: {fileID: 4615366137133357847}
-  text: {fileID: 1992085715382765583}
+  successText: 
+  processingText: 
+  failText: 
+  successImg: {fileID: 0}
+  processingImg: {fileID: 0}
+  failImg: {fileID: 0}
+  img: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &3078066653864582836
 GameObject:
   m_ObjectHideFlags: 0

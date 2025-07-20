@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
+    /*
     public float health = 100;
     [SerializeField] private HitFlash hitFlash;
     [SerializeField] private Image healthBar;
@@ -31,10 +32,12 @@ public class PlayerStats : MonoBehaviour
         health = playerHealth.GetHealth();
         UpdateHealth();
     }
+    */
     
+    // this should be // out I'm just lazy
     public void TakeDamage(int dmg)
     {
-        DamageObject.Damage(dmg, playerHealth);
+        //DamageObject.Damage(dmg, playerHealth);
         /*
         health -= dmg;
         Debug.Log($"[After Damage] Health: {health}");
@@ -47,6 +50,8 @@ public class PlayerStats : MonoBehaviour
         UpdateHealth();
         */
     }
+
+    /*
     
     private void CheckDeath()
     {
@@ -70,4 +75,5 @@ public class PlayerStats : MonoBehaviour
 
     public void SetItem(InventoryItem item)
         { this.inventoryItem = item; }
+    */
 }

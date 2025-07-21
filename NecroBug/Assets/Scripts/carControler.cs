@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,13 +15,14 @@ public class carControler : MonoBehaviour
     public bool wingsPickedUp = false;
     public SpiderLegTestMovement legScript;
     public carControler carScript;
-
+   
     public List<GameObject> wheelList;
 
     private bool legsDetected = false;
 
     public float totalMass;
 
+    private Coroutine slowRoutine;
     void Awake()
     {
         baseDriverSpeed = driverSpeed;
@@ -114,4 +116,29 @@ public class carControler : MonoBehaviour
         */
     }
 
+
+    public void ApplySlow(float duration, float slowFactor)
+    {
+        // Stop any existing slow effect
+        if (slowRoutine != null)
+            StopCoroutine(slowRoutine);
+
+        slowRoutine = StartCoroutine(SlowEffect(duration, slowFactor));
+    }
+
+    private IEnumerator SlowEffect(float duration, float slowFactor)
+    {
+        float originalDrive = driverSpeed;
+        float originalSteer = steerSpeed;
+
+        driverSpeed *= slowFactor;
+        steerSpeed *= slowFactor;
+
+        yield return new WaitForSeconds(duration);
+
+        driverSpeed = baseDriverSpeed;
+        steerSpeed = baseSteerSpeed;
+
+        slowRoutine = null;
+    }
 }

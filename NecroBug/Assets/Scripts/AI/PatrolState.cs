@@ -33,7 +33,12 @@ public class PatrolState : IState
         if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge && enemy.stamina >= enemy.staminaDrainPerCharge && enemy.attackCooldown <= 0f)
             enemy.ChangeState(new TransitionState(0.5f, enemy.GetAttackState()));
         else if (playerInSightRange)
-            enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
+        {
+            if (enemy.enemyType == EnemyAI.EnemyType.OrbWeaver)
+                enemy.ChangeState(new TransitionState(0.5f, new OrbWeaverAgroState()));
+            else
+                enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
+        }
         else if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
             enemy.ChangeState(new TransitionState(0.5f, new RetreatState()));
     }

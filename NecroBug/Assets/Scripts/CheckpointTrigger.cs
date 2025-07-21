@@ -5,7 +5,7 @@ public class CheckpointTrigger : MonoBehaviour
     public int checkpointNum;
     public CheckpointSystem checkpointSystem;
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerStay(Collider other){
         if (other.CompareTag("Player")){
             checkpointSystem.SetCheck(checkpointNum);
             Debug.Log("this is checkpoint " + checkpointNum);

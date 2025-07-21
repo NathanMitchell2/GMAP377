@@ -6,18 +6,14 @@ public class CheckpointSystem : MonoBehaviour
     public static CheckpointSystem Instance {get; private set; }
 
     public Transform[] checkpointList;
-    public GameObject playerParent;
-    public GameObject carObject;
-    public BotBulider botBuilder;
 
-    public static List<InventoryItem> newInventoryItems;
-    public static List<InventoryItem> parts;
+    public static StorageManagerMemento managerMemento;
 
     private static int currentCheck = 0;
 
     private void Awake(){
         if (Instance == null){
-            Instance = this;
+            //Instance = this;
         }
         else{
             Destroy(gameObject);
@@ -27,34 +23,66 @@ public class CheckpointSystem : MonoBehaviour
     void Start()
     {
         PlayerToCheckpoint();
-        foreach (InventoryItem part in parts)
-        {
-            if (part.GetName() == "Necrobug")
-                continue;
-            playerParent.GetComponent<InventoryManager>().AddItem(part);
-        }
+    }
+
+    public static void ResetStatics(bool fullReset)
+    {
+        if (fullReset)
+            managerMemento = null;
+        currentCheck = 0;
     }
 
     public void SetCheck(int check){
-        if (check >= 0 && check < checkpointList.Length){
+        if (check >= 0 && check < checkpointList.Length)
+        {
             currentCheck = check;
-            newInventoryItems = playerParent.GetComponent<InventoryManager>().Copy();
-            parts = botBuilder.IdealClone();
+            managerMemento = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().CreateMemento();
+            InstantAddItem.doCreate = false;
         }
 
     }
 
-    public void PlayerToCheckpoint (){
-        playerParent.GetComponentInChildren<carControler>().transform.position = checkpointList[currentCheck].position;
-        playerParent.GetComponentInChildren<carControler>().transform.rotation = checkpointList[currentCheck].rotation;
+    public void PlayerToCheckpoint ()
+    {
+        BuiltBotStorage storage = PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>();
+        GameObject player = PlayerIdentifier.GetPlayer().gameObject;
 
-        
-        playerParent.GetComponent<InventoryManager>().Replace(newInventoryItems);
+        BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;
+        BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
+
+
+        if (managerMemento != null)
+        {
+            //BuiltBotStorage. = checkpointList[currentCheck].position;
+            //BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
+
+            /*
+            foreach (var storages in managerMemento.GetStorages())
+            {
+                Debug.LogError("Storage Recorder " + storages.Key);
+                foreach(ItemMemento item in storages.Value.GetItems())
+                {
+                    Debug.LogError("Item Recorder " + item.GetName());
+                }
+            }
+            */
+            player.GetComponent<StorageManager>().RestoreMemento(managerMemento);
+        }
+        //storage.GetSource().SetPositionAndRotation(checkpointList[currentCheck].position, checkpointList[currentCheck].rotation);
+        //player.transform.InverseTransformPoint(checkpointList[currentCheck].position);
+        //BuiltBotStorage.sourceRot = player.transform.rotat checkpointList[currentCheck].rotation;
+        storage.AlignAll();
+
         /*
-        PreBuildBot pre = GetComponent<PreBuildBot>();
-        pre.CustomBuild(parts);
-        pre.Build();
+        Debug.LogError("Checkpoint list start");
+        foreach(InventoryItem item in storage.GetItemList())
+        {
+            Debug.LogError("Checkpoint List " + item.GetName());
+        }
+        Debug.LogError("Checkpoint list end");
+        Debug.Log(InstantAddItem.doCreate);
         */
+        
     }
 }
 

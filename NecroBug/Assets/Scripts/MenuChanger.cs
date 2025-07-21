@@ -54,7 +54,16 @@ public class MenuChanger : MonoBehaviour
         Off();
 
         menus[index].SetActive(true);
-        camManager.SetCamera(cameras[index]);
+        //this sets the cam to the build cam when the build menu is selected
+        //for now its hard coded that the build menu is at index two
+        //maybe get better comparison later
+        if (index == 2){
+            camManager.SetCamera(1);
+        }
+        else{
+            camManager.SetCamera(0);
+        }
+       
     }
     public void Off()
     {

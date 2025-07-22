@@ -49,7 +49,7 @@ public class OrbWeaverAttackState : IState
         float timeToTarget = 0.8f;
 
         Vector3 velocity = CalculateParabolicJump(startPos, targetPos, jumpHeight, timeToTarget);
-        enemy.rb.velocity = velocity;
+        enemy.rb.linearVelocity = velocity;
 
         // Wait for landing
         yield return new WaitForSeconds(timeToTarget);
@@ -63,7 +63,7 @@ public class OrbWeaverAttackState : IState
 
         // Reset
         enemy.webStack = 0;
-        enemy.rb.velocity = Vector3.zero;
+        enemy.rb.linearVelocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;

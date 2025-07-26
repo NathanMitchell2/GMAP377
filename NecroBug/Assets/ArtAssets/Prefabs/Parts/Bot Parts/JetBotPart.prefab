@@ -203,8 +203,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1327840962710449889}
   - {fileID: 6135024257744464720}
+  - {fileID: 1327840962710449889}
   - {fileID: 3190570119434766330}
   - {fileID: 5448892566537744703}
   m_Father: {fileID: 0}
@@ -222,9 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0, z: 0}
-  orientations: []
-  customBinds: 1
-  defaultBind: <Keyboard>/LeftShift
 --- !u!1 &2737241078531579365
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6135024257744464720
 Transform:
   m_ObjectHideFlags: 0
@@ -965,7 +962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1327840962710449889
 Transform:
   m_ObjectHideFlags: 0

@@ -149,7 +149,13 @@ public class BotBulider : ItemStorage
     
     private bool MovePart(BotPart part, Vector3 pos)
     {
-        return part.Move(pos, grid);
+        int index = GetPartList().IndexOf(part);
+
+        if (index != 0 && index != -1) //HARD CODED, can't remove first item in list (for car)
+        {
+            return part.Move(pos, grid);
+        }
+        return false;
     }
     public bool MovePart(int i, Vector3 pos)
     {

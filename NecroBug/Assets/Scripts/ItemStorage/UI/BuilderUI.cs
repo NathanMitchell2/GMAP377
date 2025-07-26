@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -331,7 +332,56 @@ public class BuilderUI : MonoBehaviour
             {
                 for (int k = 0; k < size.z; k++)
                 {
+                    GridDisplayCell cell = gridDisplayCells[i, j, k];
+                    List<Tile> stack = builder.GetCell(i, j, k);
+
+                    Tile firstTile = stack[stack.Count - 1];
+                    if (stack.Count == 0 || firstTile.GetTileType() == Tile.TileType.Empty)
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Empty);
+                        continue;
+                    }
+
+                    bool tempCheck = Tile.CheckCell(stack);
+
+
+                    if (!tempCheck)
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Invalid);
+                        continue;
+                    }
+
+                    if (builder.GetPart(selectedIndex).IsInCell(new Vector3(i, j, k)))
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Selected);
+                        continue;
+                    }
+
+                    if(tempCheck)
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Valid);
+                        continue;
+                    }
+                    /*
+                    if (tile != null)
+                    {
+                        if (tile.GetTileType() == Tile.TileType.Empty)
+                        {
+                            material.color = emptyColor;
+                        }
+                        else if (Tile.CheckCell(stack))
+                        {
+                            material.color = trueColor;
+                        }
+                        else
+                        {
+                            material.color = falseColor;
+                        }
+                    }
+
+
                     gridDisplayCells[i, j, k].ProcessStack(builder.GetCell(i,j,k));
+                    */
                 }
             }
         }

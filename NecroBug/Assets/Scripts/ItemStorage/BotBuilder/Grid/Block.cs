@@ -179,6 +179,29 @@ public class Block : MonoBehaviour
         return true;
     }
 
+    public bool IsInCell(Vector3 curPos, Vector3 checkPos)
+    {
+        Vector3 size = GetSizeByAxis(Vector3.right);
+        Vector3 rPos = this.pos;
+
+        for (int i = 0; i < Math.Abs(size.x); i++)
+        {
+            for (int j = 0; j < Math.Abs(size.y); j++)
+            {
+                for (int k = 0; k < Math.Abs(size.z); k++)
+                {
+                    int x = (int)curPos.x + (int)rPos.x + i * Math.Sign(size.x);
+                    int y = (int)curPos.y + (int)rPos.y + j * Math.Sign(size.y);
+                    int z = (int)curPos.z + (int)rPos.z + k * Math.Sign(size.z);
+
+                    if (checkPos.x == x && checkPos.y == y && checkPos.z == z)
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public bool Check(Vector3 pos, BotGrid grid)
     {
         Vector3 size = GetSizeByAxis(Vector3.right);

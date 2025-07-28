@@ -23,6 +23,7 @@ public class InstantAddItem : MonoBehaviour
             try
             {
                 MediatorPart part = (MediatorPart)nItem;
+                part.CreateBotPart();
                 part.GetBotPart().SetPos(botPos);
                 /*
                 BotBulider builder = GetComponent<BotBulider>();

@@ -1,7 +1,11 @@
 using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Prebuilder : MonoBehaviour
 {
@@ -17,6 +21,9 @@ public class Prebuilder : MonoBehaviour
     BotBulider builder;
     StorageManager storageManager;
     Dictionary<string, PrebuildStorageMemento> storageMementos = new Dictionary<string, PrebuildStorageMemento>();
+
+
+    private bool working = false;
 
     private void Awake()
     {
@@ -60,29 +67,45 @@ public class Prebuilder : MonoBehaviour
 
     public void UsePrebuild(string name)
     {
-        Debug.LogError("InPrebuild");
         if (!storageMementos.ContainsKey(name))
             return;
-        Debug.LogError("past return");
 
-        foreach (BotPart part in builder.GetPartList())
+        if (!working)
         {
-            Debug.LogError("removing");
-            builder.RemovePart(builder.IndexOf(part));
+            foreach (BotPart part in builder.GetPartList())
+            {
+                builder.RemovePart(builder.IndexOf(part));
+            }
+            StartCoroutine(FrameAdvanceTransfer(name));
         }
+
+    }
+    private IEnumerator HardCodeLockout()
+    {
+        working = true;
+        yield return new WaitForSecondsRealtime(.5f);
+        working = false;
+    }
+    private IEnumerator FrameAdvanceTransfer(string name)
+    {
+        working = true;
+        yield return new WaitForEndOfFrame();
+
         builder.CreateBot();
 
-        foreach(ItemMemento memItem in storageMementos[name].GetItems())
+        foreach (ItemMemento memItem in storageMementos[name].GetItems())
         {
             InventoryItem invItem = storageManager.GetStorage(StorageManager.StorageKey.Inventory).GetItem(memItem);
             if (invItem != null)
             {
-                Debug.LogError("adding");
                 InventoryItem tempItem = storageManager.Transfer(invItem, StorageManager.StorageKey.Inventory, StorageManager.StorageKey.BotBuilder);
                 tempItem.RestoreMemento(memItem);
             }
         }
+        GetComponent<BuilderUI>().UpdateAll();
 
-        Debug.LogError("EndPrebuild");
+        StartCoroutine(HardCodeLockout());
+
+        yield return null;
     }
 }

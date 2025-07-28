@@ -75,6 +75,16 @@ public class BotPart : MonoBehaviour
         }
         return null;
     }
+    
+    public bool IsInCell(Vector3 pos)
+    {
+        foreach (var block in GetBlocks())
+        {
+            if (block.IsInCell(this.pos, pos))
+                return true;
+        }
+        return false;
+    }
 
     public bool Check(BotGrid grid)
     {

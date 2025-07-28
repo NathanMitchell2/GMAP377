@@ -5,57 +5,77 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    // ========== COMPONENT REFERENCES ==========
     public NavMeshAgent agent;
     public Rigidbody rb;
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public PlayerStats playerStats;
+    public LineRenderer lineRenderer;
+    public Transform spitPoint;
+    public carControler carController;
 
+    // ========== LAYER DETECTION ==========
+    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask visionObstacles;
+
+    // ========== GENERAL DETECTION & BEHAVIOR ==========
     public float fieldOfView;
     public float viewDistance;
-    public int rayCount;
-    public LayerMask visionObstacles;
-    public float noiseDetectionSpeed;
     public float sightRange, attackRange, retreatRange;
+    public float noiseDetectionSpeed;
     public float walkPointRange;
     public float timeBetweenAttacks;
     public float idleDuration;
     public float chargeUpTime;
     public float jumpForce;
     public float maxPlayerSpeedCharge;
+    public int rayCount;
 
+    // ========== PATROLLING ==========
     public Vector3 patrolCenter;
     public Vector3 walkPoint;
     public bool walkPointSet;
+
+    // ========== COMBAT STATE ==========
     public bool alreadyAttacked;
     public bool isCharging;
     public bool isInCombat = false;
-    public Vector3 lastPlayerPosition;
-    public float playerSpeed;
-
-    private IState currentState;
-
     public bool playerInSightRange, playerInAttackRange;
+    public float playerSpeed;
+    public float attackCooldown = 0f;
+    public float damageCooldown = 0.5f;
+    private float lastHitTime = 0.5f;
 
+    // ========== STAMINA SYSTEM ==========
     public float stamina = 100f;
     public float staminaDrainPerCharge = 30f;
     public float staminaRecoverRate = 10f;
     public bool isExhausted => stamina <= 0f;
-    public float attackCooldown = 0f;
 
-    public enum EnemyType { JetBeetle, AcidBeetle }
+    // ========== AI CONTROL ==========
+    private IState currentState;
+    public Vector3 lastPlayerPosition;
+
+    // ========== ENEMY TYPE ==========
+    public enum EnemyType { JetBeetle, AcidBeetle, OrbWeaver }
     public EnemyType enemyType;
 
+    // ========== JET BEETLE STATS ==========
+    [Header("Jet Beetle")]
+    public int chargeDamage = 20;
 
-    public Transform spitPoint;
+    // ========== ACID BEETLE STATS ==========
+    [Header("Acid Beetle")]
     public GameObject acidProjectilePrefab;
     public float acidSpitForce = 20f;
 
-    public PlayerStats playerStats;
-    public LineRenderer lineRenderer;
-    public int chargeDamage = 20;
-    // public int acidDamage = 10;
-    public float damageCooldown = 0.5f;
-    private float lastHitTime = 0.5f;
+    // ========== ORB WEAVER STATS ==========
+    [Header("Orb Weaver")]
+    public int webStack = 0;
+    public int maxWebStacks = 3;
+    public bool wasRecentlyHit = false;
+    public int biteDamage = 15;
+    public GameObject webProjectilePrefab;
 
 
     private void Awake()
@@ -69,8 +89,19 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        patrolCenter = gameObject.GetComponent<Transform>().position;
-        ChangeState(new IdleState());
+        patrolCenter = transform.position;
+
+        switch (enemyType)
+        {
+            case EnemyType.OrbWeaver:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.AcidBeetle:
+            case EnemyType.JetBeetle:
+            default:
+                ChangeState(new IdleState());
+                break;
+        }
     }
 
     private void Update()
@@ -214,9 +245,23 @@ public class EnemyAI : MonoBehaviour
 
     public void DealDamage(int damageAmount)
     {
-        // Debug.Log(damageAmount);
-        playerStats.TakeDamage(damageAmount);
         lastHitTime = Time.time;
+
+        // Signal retreat behavior if orb weaver is in attack state
+        if (enemyType == EnemyType.OrbWeaver && currentState is OrbWeaverAgroState)
+        {
+            wasRecentlyHit = true;
+        }
+
+        // Apply damage to the player
+        if (playerStats != null)
+        {
+            playerStats.TakeDamage(damageAmount);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerStats not assigned!");
+        }
     }
 
     public void ResetAI()

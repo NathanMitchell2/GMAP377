@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -131,26 +132,26 @@ public class BuilderUI : MonoBehaviour
             left = Vector3.forward;
         }
 
-        Vector3 ogPos = builder.GetPart(selectedIndex).GetPos();
+        Vector3 ogPos = builder.GetPart(GetSelectedIndex()).GetPos();
         switch ((Directions)dir)
         {
             case Directions.Up:
-                builder.MovePart(selectedIndex, ogPos + Vector3.up);
+                builder.MovePart(GetSelectedIndex(), ogPos + Vector3.up);
                 break;
             case Directions.Down:
-                builder.MovePart(selectedIndex, ogPos + Vector3.down);
+                builder.MovePart(GetSelectedIndex(), ogPos + Vector3.down);
                 break;
             case Directions.Left:
-                builder.MovePart(selectedIndex, ogPos + left);
+                builder.MovePart(GetSelectedIndex(), ogPos + left);
                 break;
             case Directions.Right:
-                builder.MovePart(selectedIndex, ogPos + right);
+                builder.MovePart(GetSelectedIndex(), ogPos + right);
                 break;
             case Directions.Forward:
-                builder.MovePart(selectedIndex, ogPos + forward);
+                builder.MovePart(GetSelectedIndex(), ogPos + forward);
                 break;
             case Directions.Backward:
-                builder.MovePart(selectedIndex, ogPos + back);
+                builder.MovePart(GetSelectedIndex(), ogPos + back);
                 break;
 
         }
@@ -187,7 +188,8 @@ public class BuilderUI : MonoBehaviour
     public void RemovePart()
     {
         //inventory.AddItem(builder.GetGridParts()[selectedIndex]);
-        builder.RemovePart(selectedIndex);
+        builder.RemovePart(GetSelectedIndex());
+        selectedIndex--;
         UpdateAll();
         lateUpdate = true;
 
@@ -225,7 +227,7 @@ public class BuilderUI : MonoBehaviour
 
             selectableUI.SetKey(part.GetKeybindText());
 
-            if (selectedIndex == i)
+            if (GetSelectedIndex() == i)
             {
                 selectableUI.GetComponentInChildren<PartSelectUI>().Select();
             }
@@ -331,7 +333,56 @@ public class BuilderUI : MonoBehaviour
             {
                 for (int k = 0; k < size.z; k++)
                 {
+                    GridDisplayCell cell = gridDisplayCells[i, j, k];
+                    List<Tile> stack = builder.GetCell(i, j, k);
+
+                    Tile firstTile = stack[stack.Count - 1];
+                    if (stack.Count == 0 || firstTile.GetTileType() == Tile.TileType.Empty)
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Empty);
+                        continue;
+                    }
+
+                    bool tempCheck = Tile.CheckCell(stack);
+
+
+                    if (!tempCheck)
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Invalid);
+                        continue;
+                    }
+
+                    if (builder.GetPart(GetSelectedIndex()).IsInCell(new Vector3(i, j, k)))
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Selected);
+                        continue;
+                    }
+
+                    if(tempCheck)
+                    {
+                        cell.SetState(GridDisplayCell.CellState.Valid);
+                        continue;
+                    }
+                    /*
+                    if (tile != null)
+                    {
+                        if (tile.GetTileType() == Tile.TileType.Empty)
+                        {
+                            material.color = emptyColor;
+                        }
+                        else if (Tile.CheckCell(stack))
+                        {
+                            material.color = trueColor;
+                        }
+                        else
+                        {
+                            material.color = falseColor;
+                        }
+                    }
+
+
                     gridDisplayCells[i, j, k].ProcessStack(builder.GetCell(i,j,k));
+                    */
                 }
             }
         }
@@ -341,7 +392,7 @@ public class BuilderUI : MonoBehaviour
 
     public void Rotate()
     {
-        builder.ProgressOrientation(selectedIndex);
+        builder.ProgressOrientation(GetSelectedIndex());
         UpdateAll();
     }
     public void RotateGrid(float rotation)
@@ -359,4 +410,14 @@ public class BuilderUI : MonoBehaviour
         return partTransform;
     }
     */
+
+    private int GetSelectedIndex()
+    {
+        int count = builder.GetPartCount();
+        if (selectedIndex >= count)
+        {
+            selectedIndex = count - 1;
+        }
+        return selectedIndex;
+    }
 }

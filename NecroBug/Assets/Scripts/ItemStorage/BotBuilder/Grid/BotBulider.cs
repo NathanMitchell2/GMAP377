@@ -12,9 +12,9 @@ public class BotBulider : ItemStorage
     //3x3x3 with 1x1x1 bot
     //shorter 6x6x6?
     //3x2x3 with 1x1x1 bot
-    private const int x = 12;
-    private const int y = 12;
-    private const int z = 12;
+    private const int x = 6;
+    private const int y = 6;
+    private const int z = 6;
 
     private BotGrid grid;
     private StorageManager manager;

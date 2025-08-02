@@ -73,24 +73,23 @@ public class EnemyAI : MonoBehaviour
     [Header("Orb Weaver")]
     public int webStack = 0;
     public int maxWebStacks = 3;
+    public float webProjectileSpeed = 20f;
     public bool wasRecentlyHit = false;
     public int biteDamage = 15;
     public GameObject webProjectilePrefab;
 
-
+    // ========= AWAKE & START =========
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         lastPlayerPosition = player.position;
-        patrolCenter = gameObject.GetComponent<Transform>().position;
-        // Debug.Log(Time.time);
+        patrolCenter = transform.position;
     }
 
     private void Start()
     {
-        patrolCenter = transform.position;
-
+        // Initialize state based on type
         switch (enemyType)
         {
             case EnemyType.OrbWeaver:
@@ -104,6 +103,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    // ========= UPDATE LOOP =========
     private void Update()
     {
         RegenerateStamina();
@@ -114,36 +114,12 @@ public class EnemyAI : MonoBehaviour
         UpdatePlayerDetection();
         currentState.Update(this);
         lastPlayerPosition = player.position;
-
     }
 
-    public IState GetAttackState()
-    {
-        switch (enemyType)
-        {
-            case EnemyType.AcidBeetle:
-                return new AcidSpitState();
-            case EnemyType.JetBeetle:
-            default:
-                return new ChargeAttackState();
-        }
-    }
-
-    public void ChangeState(IState newState)
-    {
-        if (currentState != null)
-            currentState.Exit(this);
-
-        currentState = newState;
-
-        if (currentState != null)
-            currentState.Enter(this);
-    }
-
+    // ========= DETECTION =========
     private void UpdatePlayerDetection()
     {
         playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
-        lastPlayerPosition = player.position;
 
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
@@ -158,11 +134,8 @@ public class EnemyAI : MonoBehaviour
             Vector3 end = player.position + Vector3.up * 1.5f;
             Vector3 rayDir = (end - start).normalized;
 
-
             if (!Physics.SphereCast(start, 0.5f, rayDir, out RaycastHit hit, distanceToPlayer, visionObstacles))
-            {
                 inView = true;
-            }
         }
 
         playerInSightRange = inView;
@@ -171,99 +144,85 @@ public class EnemyAI : MonoBehaviour
         currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
     }
 
-    private void OnDrawGizmosSelected()
+    // ========= STATE MANAGEMENT =========
+    public void ChangeState(IState newState)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, viewDistance);
-
-        Vector3 leftLimit = Quaternion.Euler(0, -fieldOfView / 2, 0) * transform.forward;
-        Vector3 rightLimit = Quaternion.Euler(0, fieldOfView / 2, 0) * transform.forward;
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, leftLimit * viewDistance);
-        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, rightLimit * viewDistance);
+        if (currentState != null)
+            currentState.Exit(this);
+        currentState = newState;
+        currentState.Enter(this);
     }
-    public Coroutine ChangeStateCoroutine(IEnumerator coroutine)
+
+    public Coroutine ChangeStateCoroutine(System.Collections.IEnumerator coroutine)
     {
         return StartCoroutine(coroutine);
     }
+
+    // ========= GET ATTACK STATE =========
+    public IState GetAttackState()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.OrbWeaver:
+                return new OrbWeaverAttackState();
+            case EnemyType.AcidBeetle:
+                return new AcidSpitState();
+            case EnemyType.JetBeetle:
+            default:
+                return new ChargeAttackState();
+        }
+    }
+
+    // ========= STAMINA =========
     private void RegenerateStamina()
     {
         if (isInCombat) return;
-
         if (stamina < 100f)
         {
             stamina += staminaRecoverRate * Time.deltaTime;
             stamina = Mathf.Clamp(stamina, 0f, 100f);
         }
     }
-    public void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
 
-    // Added by Patrick, damage system
-
-    // Jet Beetle Damage
+    // ========= DAMAGE HANDLING =========
     void OnCollisionEnter(Collision other)
     {
         if (Time.time - lastHitTime < damageCooldown) return;
-
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
-            List<GameObject> list = new List<GameObject>();
-            list.Add(other.gameObject);
-
+            var list = new List<GameObject> { other.gameObject };
             GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(list));
-            /*
-            playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
-
-            if (pHealth != null)
-            {
-
-                DealDamage(chargeDamage);
-            }
-            else
-            {
-                Debug.LogWarning("PlayerStats not found on object!");
-            }
-            */
         }
     }
 
     public void DealAcidDamage(int damageAmount, PlayerStats otherPlayer)
     {
         if (Time.time - lastHitTime < damageCooldown) return;
-
         playerStats = otherPlayer;
         if (playerStats != null)
-        {
             DealDamage(damageAmount);
-        }
-        else { Debug.LogWarning("PlayerStats not found on object!"); }
+        else
+            Debug.LogWarning("PlayerStats not found on object!");
     }
 
     public void DealDamage(int damageAmount)
     {
         lastHitTime = Time.time;
-
-        // Signal retreat behavior if orb weaver is in attack state
         if (enemyType == EnemyType.OrbWeaver && currentState is OrbWeaverAgroState)
-        {
             wasRecentlyHit = true;
-        }
-
-        // Apply damage to the player
         if (playerStats != null)
-        {
             playerStats.TakeDamage(damageAmount);
-        }
         else
-        {
             Debug.LogWarning("PlayerStats not assigned!");
-        }
     }
 
+    // ========= RESET TIPS =========
+    public void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    // ========= RESET AI =========
     public void ResetAI()
     {
         alreadyAttacked = false;
@@ -274,8 +233,17 @@ public class EnemyAI : MonoBehaviour
         attackCooldown = 0f;
         agent.enabled = true;
         rb.isKinematic = true;
-
-        // Reset state machine
         ChangeState(new PatrolState());
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, viewDistance);
+        Vector3 leftLimit = Quaternion.Euler(0, -fieldOfView / 2, 0) * transform.forward;
+        Vector3 rightLimit = Quaternion.Euler(0, fieldOfView / 2, 0) * transform.forward;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, leftLimit * viewDistance);
+        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, rightLimit * viewDistance);
     }
 }

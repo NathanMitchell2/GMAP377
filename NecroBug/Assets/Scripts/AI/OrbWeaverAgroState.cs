@@ -1,78 +1,76 @@
+using System.Collections;
 using UnityEngine;
 
 public class OrbWeaverAgroState : IState
 {
-    private float shootCooldown = 2f;
-    private float lastShotTime = -10f;
+    private float shootInterval = 1.5f;
+    private float timer;
 
     public void Enter(EnemyAI enemy)
     {
-        enemy.agent.isStopped = false;
-        enemy.agent.updateRotation = false;
+        // First shot immediately
+        timer = shootInterval;
     }
 
     public void Update(EnemyAI enemy)
     {
-        Vector3 toPlayer = (enemy.player.position - enemy.transform.position).normalized;
-        Vector3 strafeDirection = Vector3.Cross(Vector3.up, toPlayer).normalized;
-        Vector3 moveTarget = enemy.transform.position + strafeDirection * 5f;
+        float dist = Vector3.Distance(enemy.transform.position, enemy.player.position);
+        // Face the player
+        Vector3 dir = (enemy.player.position - enemy.transform.position).normalized;
+        enemy.transform.rotation = Quaternion.LookRotation(dir);
 
-        enemy.agent.SetDestination(moveTarget);
-        enemy.transform.LookAt(new Vector3(enemy.player.position.x, enemy.transform.position.y, enemy.player.position.z));
-
-        if (Time.time - lastShotTime >= shootCooldown)
+        // Move into attack range, else stop
+        if (dist > enemy.attackRange)
         {
+            enemy.agent.isStopped = false;
+            enemy.agent.SetDestination(enemy.player.position);
+        }
+        else
+        {
+            enemy.agent.isStopped = true;
+        }
+
+        // Check if we should shoot and dart
+        timer += Time.deltaTime;
+        if (dist <= enemy.attackRange && timer >= shootInterval && enemy.webStack < enemy.maxWebStacks)
+        {
+            timer -= shootInterval;
+            // Fire and strafe, using coroutine to manage timing
             ShootWeb(enemy);
-            lastShotTime = Time.time;
+        }
+
+        // Transition to pounce when threshold reached
+        if (enemy.webStack >= enemy.maxWebStacks)
+        {
+            enemy.agent.isStopped = false;
+            enemy.ChangeState(enemy.GetAttackState());
         }
     }
 
     public void Exit(EnemyAI enemy)
     {
-        enemy.agent.updateRotation = true;
+        // Resume movement
+        enemy.agent.isStopped = false;
     }
 
-    public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
+    public void CheckTransitions(EnemyAI enemy, bool playerInSight, bool playerInAttack, float dist)
     {
-        if (playerInAttackRange && enemy.webStack >= enemy.maxWebStacks)
-        {
-            enemy.ChangeState(new TransitionState(0.3f, new OrbWeaverAttackState()));
-        }
-        else if (!playerInSightRange)
-        {
-            enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
-        }
+        // Handled in Update
     }
 
     private void ShootWeb(EnemyAI enemy)
     {
-        if (enemy.stamina < enemy.staminaDrainPerCharge) return;
-
-        enemy.stamina -= enemy.staminaDrainPerCharge;
-        enemy.stamina = Mathf.Clamp(enemy.stamina, 0f, 100f);
-
-        GameObject web = GameObject.Instantiate(enemy.webProjectilePrefab, enemy.spitPoint.position, Quaternion.identity);
+        if (enemy.stamina <= 0f) return;
+        enemy.stamina = Mathf.Clamp(enemy.stamina - enemy.staminaDrainPerCharge, 0f, 100f);
+        GameObject web = GameObject.Instantiate(enemy.webProjectilePrefab,
+                                               enemy.spitPoint.position,
+                                               Quaternion.identity);
         Rigidbody rb = web.GetComponent<Rigidbody>();
         web.GetComponent<WebProjectile>().spider = enemy;
-
-        Vector3 targetPos = enemy.player.position;
-        Vector3 parabola = CalculateArcVelocity(enemy.spitPoint.position, targetPos, 1f, 0.05f, Physics.gravity.y);
-
-        rb.linearDamping = 0f;
-        rb.angularDamping = 0f;
-        rb.linearVelocity = parabola;
+        Vector3 target = enemy.player.position + Vector3.up * 3f;
+        rb.velocity = (target - enemy.spitPoint.position).normalized * enemy.webProjectileSpeed;
+        // Actual hit counting should occur in WebProjectile.OnCollision
     }
 
-    private Vector3 CalculateArcVelocity(Vector3 start, Vector3 target, float baseTime, float timePerUnit, float gravity)
-    {
-        Vector3 displacement = target - start;
-        Vector3 displacementXZ = new Vector3(displacement.x, 0, displacement.z);
-        float horizontalDistance = displacementXZ.magnitude;
-
-        float timeToTarget = baseTime + horizontalDistance * timePerUnit;
-        Vector3 velocityXZ = displacementXZ / timeToTarget;
-        float verticalVelocity = (displacement.y + 0.5f * Mathf.Abs(gravity) * timeToTarget * timeToTarget) / timeToTarget;
-
-        return velocityXZ + Vector3.up * verticalVelocity;
-    }
 }
+

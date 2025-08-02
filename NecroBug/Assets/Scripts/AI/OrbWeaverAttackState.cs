@@ -3,147 +3,95 @@ using UnityEngine;
 
 public class OrbWeaverAttackState : IState
 {
-    private bool attacked = false;
     private Vector3 retreatTarget;
+    private float originalSpeed;
 
     public void Enter(EnemyAI enemy)
     {
-        enemy.agent.SetDestination(enemy.transform.position);
-        enemy.ChangeStateCoroutine(Attack(enemy));
+        // Cache original speed
+        originalSpeed = enemy.agent.speed;
+        // Allow rotation updates for facing player during retreat
+        enemy.agent.updateRotation = false;
+        // Start the attack sequence coroutine
+        enemy.ChangeStateCoroutine(AttackSequence(enemy));
     }
 
     public void Update(EnemyAI enemy)
     {
-        // Make spider face the player while retreating
+        // While retreating, keep looking at the player
         if (retreatTarget != Vector3.zero)
         {
-            Vector3 lookAtPos = new Vector3(enemy.player.position.x, enemy.transform.position.y, enemy.player.position.z);
-            enemy.transform.LookAt(lookAtPos);
+            Vector3 lookAt = enemy.player.position;
+            lookAt.y = enemy.transform.position.y;
+            enemy.transform.LookAt(lookAt);
         }
     }
 
     public void Exit(EnemyAI enemy)
     {
-        attacked = false;
-        enemy.agent.enabled = true;
-        enemy.rb.isKinematic = true;
+        // Restore original settings
+        enemy.agent.speed = originalSpeed;
+        enemy.agent.updateRotation = true;
         retreatTarget = Vector3.zero;
+        enemy.agent.isStopped = false;
     }
 
-    public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
+    public void CheckTransitions(EnemyAI enemy, bool playerInSight, bool playerInAttack, float dist)
     {
-        // Controlled via coroutine
+        // Handled in coroutine
     }
 
-    private IEnumerator Attack(EnemyAI enemy)
+    private IEnumerator AttackSequence(EnemyAI enemy)
     {
-        yield return new WaitForSeconds(0.3f); // charge delay
+        // Wind-up before pounce
+        yield return new WaitForSeconds(0.3f);
 
-        if (enemy.wasRecentlyHit)
-        {
-            enemy.wasRecentlyHit = false;
-            enemy.ChangeState(new TransitionState(0.3f, new RetreatState()));
-            yield break;
-        }
-
-        // Disable NavMesh and activate physics
+        // Pounce jump
         enemy.agent.enabled = false;
         enemy.rb.isKinematic = false;
-
-        Vector3 startPos = enemy.transform.position;
-        Vector3 targetPos = enemy.player.position + Vector3.up * 1.2f; // leap over head
-        Vector3 velocity = CalculateParabolicJump(startPos, targetPos, 4f, 0.8f);
-
-        enemy.rb.velocity = velocity;
+        Vector3 start = enemy.transform.position;
+        Vector3 end = enemy.player.position + Vector3.up * 1.2f;
+        enemy.rb.velocity = CalculateParabolicJump(start, end, 4f, 0.8f);
         yield return new WaitForSeconds(0.8f);
 
+        // Bite damage
         if (Vector3.Distance(enemy.transform.position, enemy.player.position) <= 2f)
-        {
             enemy.playerStats.TakeDamage(enemy.biteDamage);
-        }
 
+        // Reset physics and agent
         enemy.rb.velocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;
 
-        // Reset web stack after attack
+        // Reset web hit counter
         enemy.webStack = 0;
 
-        // Retreat directly opposite from player (fixed distance)
-        Vector3 retreatDir = (enemy.transform.position - enemy.player.position).normalized;
-        retreatTarget = enemy.transform.position + retreatDir * 10f;
+        // Retreat
+        Vector3 dir = (enemy.transform.position - enemy.player.position).normalized;
+        retreatTarget = enemy.transform.position + dir * enemy.retreatRange;
+        enemy.agent.isStopped = false;
         enemy.agent.SetDestination(retreatTarget);
 
-        while (Vector3.Distance(enemy.transform.position, retreatTarget) > 1f)
-        {
+        // Wait until path is valid
+        while (enemy.agent.pathPending)
             yield return null;
-        }
+        // Wait until reached target
+        while (enemy.agent.remainingDistance > enemy.agent.stoppingDistance)
+            yield return null;
 
-        // Quick dart left or right and shoot
-        yield return PerformDart(enemy);
-        ShootWeb(enemy);
-
-        yield return new WaitForSeconds(0.2f);
-
-        // Dart again
-        yield return PerformDart(enemy);
-
-        yield return new WaitForSeconds(0.3f);
-        enemy.ChangeState(new TransitionState(0.3f, new PatrolState()));
+        // Debug and return to agro state
+        yield return new WaitForSeconds(0.1f);
+        enemy.ChangeState(new OrbWeaverAgroState());
     }
 
-    private IEnumerator PerformDart(EnemyAI enemy)
-    {
-        Vector3 toPlayer = (enemy.player.position - enemy.transform.position).normalized;
-        Vector3 lateral = Random.value > 0.5f ? Vector3.Cross(Vector3.up, toPlayer) : Vector3.Cross(toPlayer, Vector3.up);
-        Vector3 dartTarget = enemy.transform.position + lateral.normalized * 4f;
-
-        enemy.agent.SetDestination(dartTarget);
-        yield return new WaitForSeconds(0.4f); // dart duration
-    }
-
-    private void ShootWeb(EnemyAI enemy)
-    {
-        if (enemy.stamina < enemy.staminaDrainPerCharge) return;
-
-        enemy.stamina -= enemy.staminaDrainPerCharge;
-        enemy.stamina = Mathf.Clamp(enemy.stamina, 0f, 100f);
-
-        GameObject web = GameObject.Instantiate(enemy.webProjectilePrefab, enemy.spitPoint.position, Quaternion.identity);
-        Rigidbody rb = web.GetComponent<Rigidbody>();
-        web.GetComponent<WebProjectile>().spider = enemy;
-
-        Vector3 targetPos = enemy.player.position;
-        Vector3 parabola = CalculateArcVelocity(enemy.spitPoint.position, targetPos, 1f, 0.05f, Physics.gravity.y);
-
-        rb.linearDamping = 0f;
-        rb.angularDamping = 0f;
-        rb.linearVelocity = parabola;
-    }
-
+    // Helper to compute parabolic jump velocity
     private Vector3 CalculateParabolicJump(Vector3 start, Vector3 end, float height, float duration)
     {
-        Vector3 displacement = end - start;
-        Vector3 horizontalDisplacement = new Vector3(displacement.x, 0, displacement.z);
-        float verticalDisplacement = displacement.y;
-
-        Vector3 horizontalVelocity = horizontalDisplacement / duration;
-        float verticalVelocity = (verticalDisplacement + 0.5f * Mathf.Abs(Physics.gravity.y) * duration * duration) / duration;
-
-        return horizontalVelocity + Vector3.up * verticalVelocity;
-    }
-
-    private Vector3 CalculateArcVelocity(Vector3 start, Vector3 target, float baseTime, float timePerUnit, float gravity)
-    {
-        Vector3 displacement = target - start;
-        Vector3 displacementXZ = new Vector3(displacement.x, 0, displacement.z);
-        float horizontalDistance = displacementXZ.magnitude;
-
-        float timeToTarget = baseTime + horizontalDistance * timePerUnit;
-        Vector3 velocityXZ = displacementXZ / timeToTarget;
-        float verticalVelocity = (displacement.y + 0.5f * Mathf.Abs(gravity) * timeToTarget * timeToTarget) / timeToTarget;
-
-        return velocityXZ + Vector3.up * verticalVelocity;
+        Vector3 disp = end - start;
+        Vector3 horiz = new Vector3(disp.x, 0, disp.z);
+        float vy = (disp.y + 0.5f * Mathf.Abs(Physics.gravity.y) * duration * duration) / duration;
+        Vector3 vxz = horiz / duration;
+        return vxz + Vector3.up * vy;
     }
 }

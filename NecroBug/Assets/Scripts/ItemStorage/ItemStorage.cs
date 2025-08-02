@@ -35,6 +35,15 @@ public abstract class ItemStorage : MonoBehaviour
             tItem.RestoreMemento(item);
         }
     }
+    public InventoryItem GetItem(ItemMemento memento)
+    {
+        foreach(InventoryItem item in GetItemList())
+        {
+            if(item.GetName().Equals(memento.GetName()))
+                return item;
+        }
+        return null;
+    }
     public List<InventoryItem> GetItemList()
     {
         return new List<InventoryItem>(GetComponents<InventoryItem>());

@@ -12,9 +12,9 @@ public class BotBulider : ItemStorage
     //3x3x3 with 1x1x1 bot
     //shorter 6x6x6?
     //3x2x3 with 1x1x1 bot
-    private const int x = 12;
-    private const int y = 12;
-    private const int z = 12;
+    private const int x = 6;
+    private const int y = 6;
+    private const int z = 6;
 
     private BotGrid grid;
     private StorageManager manager;
@@ -149,7 +149,13 @@ public class BotBulider : ItemStorage
     
     private bool MovePart(BotPart part, Vector3 pos)
     {
-        return part.Move(pos, grid);
+        int index = GetPartList().IndexOf(part);
+
+        if (index != 0 && index != -1) //HARD CODED, can't remove first item in list (for car)
+        {
+            return part.Move(pos, grid);
+        }
+        return false;
     }
     public bool MovePart(int i, Vector3 pos)
     {

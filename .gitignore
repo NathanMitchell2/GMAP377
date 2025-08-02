@@ -2,14 +2,28 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-# FMOD banks
-FMODProject/Build/
-FMODProject/*.bank
-FMODProject/*.fspro.user
+### FMOD Unity Integration ###
+# Never ignore DLLs in the FMOD subfolder, so make sure that the FMOD-folder is in the correct path.
+!/[Aa]ssets/Plugins/FMOD/**/*.dll
 
-# FMOD Logs
-fmod_editor.log
-Assets\Plugins\FMOD\Cache\Editor\FMODStudioCache.asset
+# Don't ignore images and gizmos used by FMOD in the Unity Editor
+!/[Aa}ssets/Gizmos/FMOD/*
+!/[Aa}ssets/Editor Default Resources/FMOD/*
+
+# Ignore the Cache-file since it is updated locally either way
+NecroBug/[Aa]ssets/**/FMODStudioCache.asset
+NecroBug/[Aa]ssets/**/FMODStudioCache.asset.meta
+NecroBug/[Aa]ssets/Plugins/FMOD/Cache.meta
+NecroBug/[Aa]ssets/Plugins/FMOD/Cache/Editor.meta
+
+# Log-files
+NecroBug/fmod.log
+NecroBug/fmod_editor.log
+
+# FMOD 1.10.x (Legacy)
+/Assets/FMODAssets/*
+/Assets/FMODStudioCache.meta
+
 
 .utmp/
 [Ll]ibrary/
@@ -81,5 +95,4 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-NecroBug/fmod_editor.log
-NecroBug/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+NecroBug/debug.log

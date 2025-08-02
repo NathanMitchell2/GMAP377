@@ -15,7 +15,7 @@ public class OrbWeaverAgroState : IState
     {
         Vector3 toPlayer = (enemy.player.position - enemy.transform.position).normalized;
         Vector3 strafeDirection = Vector3.Cross(Vector3.up, toPlayer).normalized;
-        Vector3 moveTarget = enemy.transform.position + strafeDirection*5;
+        Vector3 moveTarget = enemy.transform.position + strafeDirection * 5f;
 
         enemy.agent.SetDestination(moveTarget);
         enemy.transform.LookAt(new Vector3(enemy.player.position.x, enemy.transform.position.y, enemy.player.position.z));
@@ -48,23 +48,19 @@ public class OrbWeaverAgroState : IState
     {
         if (enemy.stamina < enemy.staminaDrainPerCharge) return;
 
-        // Drain stamina
         enemy.stamina -= enemy.staminaDrainPerCharge;
         enemy.stamina = Mathf.Clamp(enemy.stamina, 0f, 100f);
 
-        // Instantiate web projectile
         GameObject web = GameObject.Instantiate(enemy.webProjectilePrefab, enemy.spitPoint.position, Quaternion.identity);
         Rigidbody rb = web.GetComponent<Rigidbody>();
         web.GetComponent<WebProjectile>().spider = enemy;
 
-        // Calculate trajectory
         Vector3 targetPos = enemy.player.position;
         Vector3 parabola = CalculateArcVelocity(enemy.spitPoint.position, targetPos, 1f, 0.05f, Physics.gravity.y);
 
         rb.linearDamping = 0f;
         rb.angularDamping = 0f;
         rb.linearVelocity = parabola;
-
     }
 
     private Vector3 CalculateArcVelocity(Vector3 start, Vector3 target, float baseTime, float timePerUnit, float gravity)

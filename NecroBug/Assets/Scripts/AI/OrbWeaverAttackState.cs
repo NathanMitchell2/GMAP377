@@ -51,7 +51,7 @@ public class OrbWeaverAttackState : IState
         enemy.rb.isKinematic = false;
         Vector3 start = enemy.transform.position;
         Vector3 end = enemy.player.position + Vector3.up * 1.2f;
-        enemy.rb.velocity = CalculateParabolicJump(start, end, 4f, 0.8f);
+        enemy.rb.linearVelocity = CalculateParabolicJump(start, end, 4f, 0.8f);
         yield return new WaitForSeconds(0.8f);
 
         // Bite damage
@@ -59,7 +59,7 @@ public class OrbWeaverAttackState : IState
             enemy.playerStats.TakeDamage(enemy.biteDamage);
 
         // Reset physics and agent
-        enemy.rb.velocity = Vector3.zero;
+        enemy.rb.linearVelocity = Vector3.zero;
         enemy.rb.angularVelocity = Vector3.zero;
         enemy.rb.isKinematic = true;
         enemy.agent.enabled = true;

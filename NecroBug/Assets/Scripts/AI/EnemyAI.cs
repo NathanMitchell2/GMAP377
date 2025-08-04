@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     public Vector3 lastPlayerPosition;
 
     // ========== ENEMY TYPE ==========
-    public enum EnemyType { JetBeetle, AcidBeetle, OrbWeaver }
+    public enum EnemyType { JetBeetle, AcidBeetle, OrbWeaver, Bee }
     public EnemyType enemyType;
 
     // ========== JET BEETLE STATS ==========
@@ -106,6 +106,7 @@ public class EnemyAI : MonoBehaviour
     // ========= UPDATE LOOP =========
     private void Update()
     {
+        Debug.Log(currentState);
         RegenerateStamina();
 
         if (attackCooldown > 0f)
@@ -168,6 +169,9 @@ public class EnemyAI : MonoBehaviour
             case EnemyType.AcidBeetle:
                 return new AcidSpitState();
             case EnemyType.JetBeetle:
+                return new ChargeAttackState();
+            case EnemyType.Bee:
+                return new SwarmLeaderState();
             default:
                 return new ChargeAttackState();
         }
@@ -245,5 +249,10 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, leftLimit * viewDistance);
         Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, rightLimit * viewDistance);
+    }
+
+    public float getSpeed()
+    {
+        return this.GetComponent<NavMeshAgent>().speed;
     }
 }

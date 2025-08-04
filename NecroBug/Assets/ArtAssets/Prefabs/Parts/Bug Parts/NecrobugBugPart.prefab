@@ -596,8 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa76c92904806f2429ec143409987083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  rotOffset: {x: 0, y: 0, z: 0}
+  mediator: {fileID: 0}
+  overridePos: {x: 0, y: 0, z: 0}
 --- !u!135 &8467677399557758506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -695,11 +695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67de41bf7f8181347adce1e9db050275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  hitFlash: {fileID: 6824346051168408297}
-  healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
-  energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
-  energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
 --- !u!114 &197740465385301329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,7 +847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ee39317c1f0044abcd8af8f5b24c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
 --- !u!135 &5303832182605978300
 SphereCollider:
   m_ObjectHideFlags: 0

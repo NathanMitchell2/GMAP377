@@ -45,11 +45,10 @@ public class BotPart : MonoBehaviour
         orientations[orientation].SetActive(true);
         //For some reason when this is Start not Awake when Place is called this code hasnt been, but it has been for remove?? lol
     }
-    private void Update()
+    private void LateUpdate()
     {
         transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
-
     public BotPartMemento CreateMemento()
     {
         return new BotPartMemento(pos, orientation);

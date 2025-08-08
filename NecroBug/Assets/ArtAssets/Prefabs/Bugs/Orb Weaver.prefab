@@ -684,11 +684,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8157150256566750693}
   rb: {fileID: 3741564547394915647}
-  player: {fileID: 0}
-  playerStats: {fileID: 0}
+  player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  playerStats: {fileID: 3269585200964582630, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
   lineRenderer: {fileID: 6953699925495376551}
   spitPoint: {fileID: 3168799950663776629}
-  carController: {fileID: 0}
+  carController: {fileID: 7908505440710472612, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -699,10 +699,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   fieldOfView: 120
-  viewDistance: 25
+  viewDistance: 30
   sightRange: 25
-  attackRange: 20
-  retreatRange: 10
+  attackRange: 25
+  retreatRange: 15
   noiseDetectionSpeed: 3
   walkPointRange: 25
   timeBetweenAttacks: 1
@@ -732,6 +732,7 @@ MonoBehaviour:
   acidSpitForce: 20
   webStack: 0
   maxWebStacks: 3
+  webProjectileSpeed: 20
   wasRecentlyHit: 0
   biteDamage: 15
   webProjectilePrefab: {fileID: 1230252574902077909, guid: be4b6aa3b4b44a64f88afbab113a5a28, type: 3}

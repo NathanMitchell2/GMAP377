@@ -52,7 +52,8 @@ public class BotBulider : ItemStorage
         if (!tItem.HasBotPart())
             tItem.CreateBotPart();
         RestoreSavedPos(tItem.GetBotPart());
-        CreateBot();
+        CreateBot(true);
+        tItem.GetBotPart().transform.SetLocalPositionAndRotation(Vector3.down * -10, Quaternion.identity);
         return tItem;
     }
     public override bool RemoveItem(InventoryItem item)
@@ -194,6 +195,10 @@ public class BotBulider : ItemStorage
     }
     public void CreateBot()
     {
+        CreateBot(false);
+    }
+    public void CreateBot(bool hideTransferedPart)
+    {
         List<BotPart> snapshot = GetPartList();
         if (!grid.Check())
             return;
@@ -202,7 +207,9 @@ public class BotBulider : ItemStorage
         {
             if (GetItemList().Contains(part.GetMediator()))
             {
-                manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.BuilderBuffer);
+                InventoryItem temp = manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.BuilderBuffer);
+                if(hideTransferedPart)
+                    ((MediatorPart) temp).GetBotPart().transform.SetLocalPositionAndRotation(Vector3.down * -10, Quaternion.identity);
             }
         }
 
@@ -248,7 +255,7 @@ public class BotBulider : ItemStorage
     private void RestoreSavedPos(BotPart addedPart)
     {
         string key = addedPart.GetMediator().GetName();
-
+        
         if (!savedPartPositions.ContainsKey(key))
             return;
 

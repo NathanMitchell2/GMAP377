@@ -4,6 +4,7 @@ using UnityEngine.Animations;
 using System.Collections.Generic;
 using System;
 using TMPro.EditorUtilities;
+using System.Collections;
 
 public class BotPartMemento
 {
@@ -33,7 +34,7 @@ public class BotPart : MonoBehaviour
     public void Initialize(MediatorPart mediator)
     {
         this.mediator = mediator;
-        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
+        StartCoroutine(SetTransform());
     }
     void Awake()
     {
@@ -45,8 +46,13 @@ public class BotPart : MonoBehaviour
         orientations[orientation].SetActive(true);
         //For some reason when this is Start not Awake when Place is called this code hasnt been, but it has been for remove?? lol
     }
-    private void LateUpdate()
+    private void Update()
     {
+        //sStartCoroutine(SetTransform());
+    }
+    private IEnumerator SetTransform()
+    {
+        yield return new WaitForEndOfFrame();
         transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
     public BotPartMemento CreateMemento()
@@ -55,11 +61,18 @@ public class BotPart : MonoBehaviour
     }
     public void RestoreMemento(BotPartMemento mem)
     {
+        RestoreMemento(mem, true);
+    }
+    public void RestoreMemento(BotPartMemento mem, bool doDelay)
+    {
         SetPos(mem.GetPos());
         orientation = mem.GetOri();
         ResetOrientations();
         orientations[orientation].SetActive(true);
-        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
+        if (doDelay)
+            StartCoroutine(SetTransform());
+        else
+            transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
     }
 
     public MediatorPart GetMediator()
@@ -104,7 +117,7 @@ public class BotPart : MonoBehaviour
         {
             block.Place(pos, grid);
         }
-        transform.SetLocalPositionAndRotation(pos, Quaternion.identity);
+        StartCoroutine(SetTransform());
     }
 
     public bool Remove(BotGrid grid)

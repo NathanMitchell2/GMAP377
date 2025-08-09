@@ -14,7 +14,7 @@ public class ItemMemento
     {
         this.itemName = itemName;
         this.icon = icon;
-        this.health = health;
+        this.health = health==-1 ? maxHealth : health;
         this.maxHealth = maxHealth;
         this.stackable = stackable;
         this.maxStack = maxStack;
@@ -58,7 +58,7 @@ public class InventoryItem : MonoBehaviour
 {
     [SerializeField] protected string itemName;
     [SerializeField] protected Sprite icon;
-    protected float health = 100;
+    protected float health = -1;
     [SerializeField] protected float maxHealth = 100;
     [SerializeField] protected bool stackable = false;
     [SerializeField] protected int maxStack = 99;

@@ -24,7 +24,7 @@ public class MediatorMemento : ItemMemento
     {
         this.itemName = itemName;
         this.icon = icon;
-        this.health = health;
+        this.health = health == -1 ? maxHealth : health;
         this.maxHealth = maxHealth;
         this.stackable = stackable;
         this.maxStack = maxStack;

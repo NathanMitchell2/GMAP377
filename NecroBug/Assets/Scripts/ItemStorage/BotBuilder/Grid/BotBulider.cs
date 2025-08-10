@@ -15,7 +15,7 @@ public class BotBulider : ItemStorage
     private BotGrid grid;
     private StorageManager manager;
 
-    private Dictionary<string, List<BotPartMemento>> savedPartPositions = new Dictionary<string, List<BotPartMemento>>();
+    private static Dictionary<string, List<BotPartMemento>> savedPartPositions = new Dictionary<string, List<BotPartMemento>>();
 
     private void Awake()
     {

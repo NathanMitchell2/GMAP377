@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +9,17 @@ public class CrystalLogic : MonoBehaviour
     public enum CrystalType { Flash, Beam, Switch, Door }
     public CrystalType crystalType;
 
+    [Header("Beam")]
+    public Transform beamOrigin;
     public Laser laser;
+
+    [Header("Switch")]
+    public List<CrystalLogic> crystalDoorList;
+
+    [Header("Door")]
+    public Transform transformA;
+    public Transform transformB;
+    public bool onDoorA = true;
 
     private void Start()
     {
@@ -23,9 +35,16 @@ public class CrystalLogic : MonoBehaviour
                 break;
         }
     }
-    // Flip Flop
-    public void CrystalTriggered()
+
+    public void SetLaser(Laser incomingLaser)
     {
+        laser = incomingLaser;
+    }
+
+    // Flip Flop
+    public void CrystalTriggered(Laser strikingLaser)
+    {
+        SetLaser(strikingLaser);
         if (!isTriggered)
         {
             isTriggered = true;
@@ -53,7 +72,7 @@ public class CrystalLogic : MonoBehaviour
         }
         else if (crystalType  != CrystalType.Door)
         {
-            Door();
+            //Door(transformA);
         }
     }
     public void CrystalOff()
@@ -72,7 +91,7 @@ public class CrystalLogic : MonoBehaviour
         }
         else if (crystalType != CrystalType.Door)
         {
-            Door();
+            //Door(transformB);
         }
     }
 
@@ -83,8 +102,9 @@ public class CrystalLogic : MonoBehaviour
         // Crystal off
     }
 
-    void Beam()
+    public void Beam()
     {
+        laser.CastBeam(beamOrigin.position, beamOrigin.transform.up);
         // Play VFX
         // Coroutine
         // Instantiate new laser
@@ -94,12 +114,20 @@ public class CrystalLogic : MonoBehaviour
 
     void SwitchOn()
     {
+        foreach(CrystalLogic door in crystalDoorList)
+        {
+            door.Door();
+        }
         // Get Door
         // Open door
     }
 
     void SwitchOff()
     {
+        foreach (CrystalLogic door in crystalDoorList)
+        {
+            door.Door();
+        }
         // Get Door
         // Close Door
     }
@@ -107,6 +135,16 @@ public class CrystalLogic : MonoBehaviour
     void Door()
     {
         // Opens door
+        if (onDoorA)
+        {
+            onDoorA = false;
+            transform.position = transformA.position;
+        }
+        else if (!onDoorA)
+        {
+            onDoorA = true;
+            transform.position = transformB.position;
+        }
     }
 
 }

@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour
 
     Vector3 sourcePosition;
     const float farDistance = 1000f;
-    List<Vector3> bouncePositions;
+    List<Vector3> bouncePositions = new List<Vector3>();
     int maxBounces = 100;
 
     LaserSensor prevStruckLaserSensor = null;
@@ -22,11 +22,16 @@ public class Laser : MonoBehaviour
         laserRendererSettings.Apply(lineRenderer);
     }
 
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) { ToggleLaser(); }
+    }
+
     private void FixedUpdate()
     {
         if (!activated)
         {
-            Debug.Log("not activated");
+            // Debug.Log("not activated");
             lineRenderer.positionCount = 0;
             if (prevStruckLaserSensor != null)
             {
@@ -82,6 +87,12 @@ public class Laser : MonoBehaviour
                 prevStruckLaserSensor = currentLaserSensor;
             }
         }
+    }
+
+    public void ToggleLaser()
+    {
+        if (activated) { activated = false; }
+        else if (!activated) { activated=true; }
     }
     
 }

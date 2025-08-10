@@ -19,7 +19,7 @@ public class MovingPlatform : MonoBehaviour
         {
             if (mover != null)
             {
-                mover.AddPlatformDelta(delta);
+                //mover.AddPlatformDelta(delta);
             }
         }
 

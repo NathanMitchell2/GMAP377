@@ -306,22 +306,31 @@ public class BuilderUI : MonoBehaviour
             builtBotUI.SetBuildSuccess("success");
             yield return true;
         }
+        StartCoroutine(UpdateDisplay());
     }
     public void UpdateAll()
     {
-        BuildList();
-        UpdateDisplayCells();
+        StartCoroutine(UpdateDisplay());
+        //BuildList();
+        //UpdateDisplayCells();
 
         //builtBotUI.GetComponent<BotBuiltIUIFlipFlop>().SetBuildSuccess(builder.Check());
         //CreateBot();
 
-        if(checkAndBuild != null && !checkAndBuild.Current)
+        if (checkAndBuild != null && !checkAndBuild.Current)
         {
             //Debug.LogError("Reset");
             checkAndBuild.Dispose();
         }
         checkAndBuild = BuildBot();
         StartCoroutine(checkAndBuild);
+        //StartCoroutine(UpdateDisplay());
+    }
+    private IEnumerator UpdateDisplay()
+    {
+        yield return new WaitForEndOfFrame();
+        BuildList();
+        UpdateDisplayCells();
     }
     
     public void UpdateDisplayCells()

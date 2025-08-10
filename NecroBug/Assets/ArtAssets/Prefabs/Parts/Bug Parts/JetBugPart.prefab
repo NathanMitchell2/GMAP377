@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -41495023230227417}
   - component: {fileID: 7613185335547546705}
   - component: {fileID: 8882492452500397492}
+  - component: {fileID: -5847884384598443508}
   m_Layer: 6
   m_Name: JetBugPart
   m_TagString: Player
@@ -115,6 +116,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5847884384598443508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a3ba2c1da4bf74e96d0ae78ae7cbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCreate: {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
 --- !u!1001 &2894438859267003309
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,18 +7,23 @@ public class BuiltBotStorage : ItemStorage
     public static Quaternion sourceRot;
     public override InventoryItem AddItem(ItemMemento item)
     {
+        return AddItem(item, true);
+    }
+
+    public InventoryItem AddItem(ItemMemento item, bool doDelay)
+    {
         if (item == null || item.GetItemType() != typeof(MediatorPart))
             return null;
 
         //Transform source = GetSource();
 
         MediatorPart tItem = (MediatorPart)gameObject.AddComponent(item.GetItemType());
-        tItem.RestoreMemento(item);
+        tItem.RestoreMemento(item, doDelay);
 
         if (!tItem.HasBugPart())
         {
             tItem.CreateBugPart();
-        }    
+        }
 
         AlignAll();
 

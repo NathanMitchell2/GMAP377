@@ -143,7 +143,19 @@ public class carControler : MonoBehaviour
 
         slowRoutine = null;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        for (int i = 0; i<collision.contactCount; i++)
+        {
+            GameObject obj = collision.GetContact(i).thisCollider.gameObject;
+            if(obj != null && obj != gameObject)
+            {
+                obj.BroadcastMessage("OnCollisionEnter", collision);
+            }
+        }
 
+        //Debug.LogError("collision car");
+    }
     void OnCollisionStay(Collision other)
     {
         if (other.gameObject.CompareTag("MovingPlat"))

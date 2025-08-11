@@ -74,7 +74,19 @@ public class carControler : MonoBehaviour
         horizontalInput = hInput;
         verticalInput = vInput;
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            GameObject obj = collision.GetContact(i).thisCollider.gameObject;
+            if(obj != null && obj != gameObject)
+            {
+                Debug.LogError(obj);
+                obj.BroadcastMessage("OnCollisionEnter", collision);
+            }
+        }
+        //Debug.LogError("collision car");
+    }
     void FixedUpdate() {
         float totalMass = 0;
         List<InventoryItem> parts = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().GetItemList(StorageManager.StorageKey.BuilderBuffer);

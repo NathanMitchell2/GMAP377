@@ -1602,6 +1602,7 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: "The frenepede is a passive creature, eating away waste from other
     insects. They are not hostile and don\u2019t mind being ridden. "
+  enemyType: 
   dropsTextObj: {fileID: 2839128829500991969}
   dropsText: stuff
 --- !u!1 &2837280753683141704
@@ -1849,6 +1850,7 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: The bee can be found roaming around honeycombs. It will sting
     if provoked, so make sure to stay away!
+  enemyType: 
   dropsTextObj: {fileID: 2839128829500991969}
   dropsText: stuff
 --- !u!1 &2952657516250203037
@@ -3332,6 +3334,7 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: The Jet Beetle is a speedy insect, but watch out! If it dashes
     toward you it will impale you with its horn.
+  enemyType: jetBeetle
   dropsTextObj: {fileID: 2839128829500991969}
   dropsText: Jet Horn\nJet Wings
 --- !u!1 &6343591079810439536
@@ -3529,8 +3532,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2598794949548976740}
   m_HandleRect: {fileID: 3708821172079089079}
   m_Direction: 2
-  m_Value: 1.0000004
-  m_Size: 0.4827586
+  m_Value: 1.0000001
+  m_Size: 0.48275852
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4039,6 +4042,7 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: "The Spider is a cunning creature, trapping its prey using webs.
     Avoid these webs, or else you\u2019ll be in a sticky situation!"
+  enemyType: 
   dropsTextObj: {fileID: 2839128829500991969}
   dropsText: stuff
 --- !u!1 &7424581792485286293
@@ -4211,6 +4215,7 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: "The Acid Beetle is a fearsome beast, at least until you get close
     to it! It will spit acid at you if you\u2019re far away though, so be careful!  "
+  enemyType: 
   dropsTextObj: {fileID: 2839128829500991969}
   dropsText: Acid Horn
 --- !u!1 &7528401381519971488
@@ -4383,6 +4388,7 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: The queen bee is served by her loyal bee population. The bees
     follow her every order-including disposing of unwanted guests.
+  enemyType: 
   dropsTextObj: {fileID: 2839128829500991969}
   dropsText: stuff
 --- !u!1 &7588025397741320830

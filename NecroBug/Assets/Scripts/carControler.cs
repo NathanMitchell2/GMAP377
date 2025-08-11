@@ -77,11 +77,11 @@ public class carControler : MonoBehaviour
 
     void FixedUpdate() {
         float totalMass = 0;
-        List<Rigidbody> bodies = new List<Rigidbody>(GetComponentsInChildren<Rigidbody>());
+        List<InventoryItem> parts = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().GetItemList(StorageManager.StorageKey.BuilderBuffer);
 
-        for (int i = 0; i < bodies.Count; i++)
+        foreach (InventoryItem part in parts)
         {
-            totalMass += bodies[i].mass;
+            totalMass += ((MediatorPart)part).GetMass();
         }
 
 

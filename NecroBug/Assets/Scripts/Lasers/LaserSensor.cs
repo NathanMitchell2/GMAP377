@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class LaserSensor : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<Laser> onLaserEnter;
+    [SerializeField] private UnityEvent onLaserEnter;
     bool _isTriggered = false;
 
     List<Laser> strikingLasers;
@@ -37,7 +37,7 @@ public class LaserSensor : MonoBehaviour
     void AddLaser(Laser strikingLaser)
     {
         strikingLasers.Add(strikingLaser);
-        onLaserEnter.Invoke(strikingLaser);
+        onLaserEnter.Invoke();
         // onLaserAdded?.Invoke(strikingLaser);
         if (strikingLasers.Count == 1)
             _isTriggered = true;

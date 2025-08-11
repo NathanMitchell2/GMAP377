@@ -5,13 +5,14 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     public bool activated = true;
+    public bool playerLaser = false;
 
     LineRenderer lineRenderer;
     [SerializeField] LaserRendererSettings laserRendererSettings;
 
     Vector3 sourcePosition;
     const float farDistance = 1000f;
-    List<Vector3> bouncePositions = new List<Vector3>();
+    List<Vector3> bouncePositions;
     int maxBounces = 100;
 
     LaserSensor prevStruckLaserSensor = null;
@@ -20,11 +21,13 @@ public class Laser : MonoBehaviour
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         laserRendererSettings.Apply(lineRenderer);
+        sourcePosition = transform.position + transform.forward * 0.2501f;
+        bouncePositions = new List<Vector3>();
     }
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0)) { ToggleLaser(); }
+        if (Input.GetMouseButtonDown(0) && playerLaser) { ToggleLaser(); }
     }
 
     private void FixedUpdate()
@@ -42,6 +45,7 @@ public class Laser : MonoBehaviour
         }
         sourcePosition = transform.position + transform.forward * 0.2501f;
         bouncePositions = new List<Vector3>() { sourcePosition };
+        // Debug.Log(bouncePositions.Count);
 
         CastBeam(sourcePosition, transform.forward);
 

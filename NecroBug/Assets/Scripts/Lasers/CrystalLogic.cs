@@ -1,5 +1,7 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +14,9 @@ public class CrystalLogic : MonoBehaviour
     [Header("Beam")]
     public Transform beamOrigin;
     public Laser laser;
+    public ParticleSystem chargeParticles;
+    public ParticleSystem sparkleParticle;
+    // public Laser laser;
 
     [Header("Switch")]
     public List<CrystalLogic> crystalDoorList;
@@ -36,15 +41,11 @@ public class CrystalLogic : MonoBehaviour
         }
     }
 
-    public void SetLaser(Laser incomingLaser)
-    {
-        laser = incomingLaser;
-    }
-
     // Flip Flop
-    public void CrystalTriggered(Laser strikingLaser)
+    public void CrystalTriggered()
     {
-        SetLaser(strikingLaser);
+        // laser = strikingLaser;
+        // SetLaser(strikingLaser);
         if (!isTriggered)
         {
             isTriggered = true;
@@ -83,7 +84,7 @@ public class CrystalLogic : MonoBehaviour
         }
         else if (crystalType == CrystalType.Beam)
         {
-            // Enters Cooldown
+            Beam();
         }
         else if (crystalType == CrystalType.Switch)
         {
@@ -104,7 +105,15 @@ public class CrystalLogic : MonoBehaviour
 
     public void Beam()
     {
-        laser.CastBeam(beamOrigin.position, beamOrigin.transform.up);
+        StartCoroutine(ActivateLaser());
+        /* if (strikingLaser != null)
+        {
+            strikingLaser.CastBeam(beamOrigin.position, beamOrigin.transform.up);
+        }
+        else
+        {
+            Debug.LogError("Laser is null. Ensure that it is assigned correctly.");
+        }*/
         // Play VFX
         // Coroutine
         // Instantiate new laser
@@ -139,12 +148,36 @@ public class CrystalLogic : MonoBehaviour
         {
             onDoorA = false;
             transform.position = transformA.position;
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transformA.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
         else if (!onDoorA)
         {
             onDoorA = true;
             transform.position = transformB.position;
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transformB.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
+    }
+
+    private IEnumerator ActivateLaser()
+    {
+        if (laser.activated)
+        {
+            laser.activated = false;
+            yield break;
+        }
+
+        if (chargeParticles != null)
+        {
+            chargeParticles.Play();
+        }
+        yield return new WaitForSeconds(chargeParticles.main.duration);
+
+        sparkleParticle.Play();
+
+        yield return new WaitForSeconds(0.1f);
+
+        laser.activated = true;
+        
     }
 
 }

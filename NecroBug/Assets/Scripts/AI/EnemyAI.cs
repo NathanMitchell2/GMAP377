@@ -244,7 +244,7 @@ public class EnemyAI : MonoBehaviour
         if (Time.time - lastHitTime < damageCooldown) return;
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
-            var list = new List<GameObject> { other.gameObject };
+            var list = new List<GameObject> { other.collider.gameObject };
             GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(list));
         }
     }

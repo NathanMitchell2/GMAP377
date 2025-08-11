@@ -67,7 +67,7 @@ public class OrbWeaverAgroState : IState
                                                Quaternion.identity);
         Rigidbody rb = web.GetComponent<Rigidbody>();
         web.GetComponent<WebProjectile>().spider = enemy;
-        Vector3 target = enemy.player.position + Vector3.up * 3f;
+        Vector3 target = enemy.player.position + Vector3.up * 1.5f;
         rb.linearVelocity = (target - enemy.spitPoint.position).normalized * enemy.webProjectileSpeed;
         // Actual hit counting should occur in WebProjectile.OnCollision
     }

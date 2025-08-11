@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 3741564547394915647}
   - component: {fileID: 498141156984717155}
   - component: {fileID: 6953699925495376551}
+  - component: {fileID: 854337914762058105}
   m_Layer: 0
   m_Name: Orb Weaver
   m_TagString: Untagged
@@ -684,11 +685,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8157150256566750693}
   rb: {fileID: 3741564547394915647}
-  player: {fileID: 0}
-  playerStats: {fileID: 0}
+  player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  playerStats: {fileID: 3269585200964582630, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
   lineRenderer: {fileID: 6953699925495376551}
   spitPoint: {fileID: 3168799950663776629}
-  carController: {fileID: 0}
+  carController: {fileID: 7908505440710472612, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -699,10 +700,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   fieldOfView: 120
-  viewDistance: 25
+  viewDistance: 30
   sightRange: 25
-  attackRange: 20
-  retreatRange: 10
+  attackRange: 25
+  retreatRange: 15
   noiseDetectionSpeed: 3
   walkPointRange: 25
   timeBetweenAttacks: 1
@@ -732,9 +733,31 @@ MonoBehaviour:
   acidSpitForce: 20
   webStack: 0
   maxWebStacks: 3
+  webProjectileSpeed: 20
   wasRecentlyHit: 0
   biteDamage: 15
   webProjectilePrefab: {fileID: 1230252574902077909, guid: be4b6aa3b4b44a64f88afbab113a5a28, type: 3}
+  swarmRecruitRange: 25
+  swarmMaxMembers: 6
+  swarmRadius: 3.5
+  swarmReformLerp: 8
+  swarmMemberSpeed: 6
+  swarmAttackCooldown: 1.2
+  hoverHeight: 2
+  hoverBobAmplitude: 0.15
+  hoverBobSpeed: 3
+  diveWindup: 0.15
+  diveSpeed: 18
+  diveArcHeight: 1
+  diveHitRadius: 0.6
+  diveDamage: 12
+  robotMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  swarmAutoIssueOrders: 1
 --- !u!120 &6953699925495376551
 LineRenderer:
   serializedVersion: 2
@@ -880,6 +903,20 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &854337914762058105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014187249241143888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  type: 0
 --- !u!1 &1086234478188419154
 GameObject:
   m_ObjectHideFlags: 0

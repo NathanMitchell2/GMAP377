@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
-{
+{   
     // ========== COMPONENT REFERENCES ==========
     public NavMeshAgent agent;
     public Rigidbody rb;
@@ -78,17 +78,49 @@ public class EnemyAI : MonoBehaviour
     public int biteDamage = 15;
     public GameObject webProjectilePrefab;
 
+    // ========== SWARM/BEES STATS ==========
+    [Header("Bee / Swarm")]
+    public float swarmRecruitRange = 25f;      // how far leader can recruit members
+    public int swarmMaxMembers = 6;            // cap, tweakable in Inspector
+    public float swarmRadius = 3.5f;           // circle radius around leader
+    public float swarmReformLerp = 8f;         // how snappy members hold formation
+    public float swarmMemberSpeed = 6f;        // (if you ever use velocity move)
+    public float swarmAttackCooldown = 1.2f;   // regroup time between attack orders
+    public bool angered = false;
+
+    [Header("Bee Flight / Formation")]
+    public float hoverHeight = 2.0f;           // member flight height above ground
+    public float hoverBobAmplitude = 0.15f;    // subtle bobbing
+    public float hoverBobSpeed = 3.0f;
+
+    [Header("Bee Dive Attack")]
+    public float diveWindup = 0.15f;           // tiny delay before members dive
+    public float diveSpeed = 18f;              // dive travel speed
+    public float diveArcHeight = 1.0f;         // small lift at dive start
+    public float diveHitRadius = 0.6f;         // sphere hit radius during dive
+    public int diveDamage = 12;                // damage to robot on hit
+    public LayerMask robotMask;                // set to your robot/player layer
+    public LayerMask groundMask;               // set to ground layer
+
+    [Header("Leader Orders (optional auto)")]
+    public bool swarmAutoIssueOrders = true;   // auto-issue attack waves
+
+    private EnemyHealth _health;
+    private bool _promotedToSwarmLeader;
+
     // ========= AWAKE & START =========
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         lastPlayerPosition = player.position;
         patrolCenter = transform.position;
     }
 
+
     private void Start()
     {
+        player = PlayerIdentifier.GetPlayer().transform.Find("Center");
         // Initialize state based on type
         switch (enemyType)
         {
@@ -96,17 +128,32 @@ public class EnemyAI : MonoBehaviour
                 ChangeState(new PatrolState());
                 break;
             case EnemyType.AcidBeetle:
+                ChangeState(new PatrolState());
+                break;
             case EnemyType.JetBeetle:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.Bee:
+                ChangeState(new PatrolState());
+                break;
             default:
                 ChangeState(new IdleState());
                 break;
         }
     }
 
+    public void SetAgentEnabled(bool on)
+    {
+        if (agent == null) return;
+        if (agent.enabled == on) return;
+        if (!on) agent.ResetPath();
+        agent.enabled = on;
+    }
+
     // ========= UPDATE LOOP =========
     private void Update()
     {
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
         RegenerateStamina();
 
         if (attackCooldown > 0f)
@@ -141,6 +188,9 @@ public class EnemyAI : MonoBehaviour
 
         playerInSightRange = inView;
         playerInAttackRange = distanceToPlayer <= attackRange;
+
+        if (enemyType == EnemyType.Bee && angered)
+            ChangeState(new TransitionState(0.5f,new SwarmLeaderState()));
 
         currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
     }
@@ -194,7 +244,7 @@ public class EnemyAI : MonoBehaviour
         if (Time.time - lastHitTime < damageCooldown) return;
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
-            var list = new List<GameObject> { other.gameObject };
+            var list = new List<GameObject> { other.collider.gameObject };
             GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(list));
         }
     }
@@ -254,5 +304,12 @@ public class EnemyAI : MonoBehaviour
     public float getSpeed()
     {
         return this.GetComponent<NavMeshAgent>().speed;
+    }
+
+    public bool isSwarmLeader { get; private set; }
+
+    public void SetSwarmLeader(bool on)
+    {
+        isSwarmLeader = on;
     }
 }

@@ -23,6 +23,7 @@ public class TransitionState : IState
         timer += Time.deltaTime;
         if (timer >= transitionDuration)
         {
+            Debug.Log(nextState);
             enemy.ChangeState(nextState);
         }
     }

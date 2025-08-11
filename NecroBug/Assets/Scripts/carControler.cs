@@ -23,8 +23,11 @@ public class carControler : MonoBehaviour
     public float totalMass;
 
     private Coroutine slowRoutine;
+
     void Awake()
     {
+        // platformMover = GetComponent<platformMover>();
+
         baseDriverSpeed = driverSpeed;
         baseSteerSpeed = steerSpeed;
         rigid.centerOfMass = new Vector3(0, -0.5f, 0);
@@ -75,7 +78,8 @@ public class carControler : MonoBehaviour
         verticalInput = vInput;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         float totalMass = 0;
         List<Rigidbody> bodies = new List<Rigidbody>(GetComponentsInChildren<Rigidbody>());
 
@@ -84,15 +88,14 @@ public class carControler : MonoBehaviour
             totalMass += bodies[i].mass;
         }
 
-
-
-        float motor = verticalInput * driverSpeed * ogMass/totalMass;
+        float motor = verticalInput * driverSpeed * ogMass / totalMass;
         wheel1.motorTorque = motor;
         wheel2.motorTorque = motor;
         wheel3.motorTorque = motor;
         wheel4.motorTorque = motor;
         wheel1.steerAngle = steerSpeed * horizontalInput;
         wheel2.steerAngle = steerSpeed * horizontalInput;
+
     }
 
     void OnJump(InputValue value)

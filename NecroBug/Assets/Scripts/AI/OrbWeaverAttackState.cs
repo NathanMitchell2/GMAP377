@@ -54,9 +54,7 @@ public class OrbWeaverAttackState : IState
         enemy.rb.linearVelocity = CalculateParabolicJump(start, end, 4f, 0.8f);
         yield return new WaitForSeconds(0.8f);
 
-        // Bite damage
-        if (Vector3.Distance(enemy.transform.position, enemy.player.position) <= 2f)
-            enemy.playerStats.TakeDamage(enemy.biteDamage);
+        enemy.isCharging = true;
 
         // Reset physics and agent
         enemy.rb.linearVelocity = Vector3.zero;
@@ -81,6 +79,7 @@ public class OrbWeaverAttackState : IState
             yield return null;
 
         // Debug and return to agro state
+        enemy.isCharging = false;
         yield return new WaitForSeconds(0.1f);
         enemy.ChangeState(new OrbWeaverAgroState());
     }

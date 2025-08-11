@@ -71,7 +71,7 @@ public class DamageObject : MonoBehaviour
                         target = p;
                     }    
                 }
-
+                Debug.Log("Damaged");
                 target.TakeDamage(damage);
                 break;
 

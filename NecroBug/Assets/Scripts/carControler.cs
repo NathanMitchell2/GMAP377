@@ -15,7 +15,7 @@ public class carControler : MonoBehaviour
     public bool wingsPickedUp = false;
     public SpiderLegTestMovement legScript;
     public carControler carScript;
-   
+
     public List<GameObject> wheelList;
 
     private bool legsDetected = false;
@@ -53,7 +53,8 @@ public class carControler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         //horizontalInput = Input.GetAxis("Horizontal");
         //verticalInput = Input.GetAxis("Vertical");
         if (GetComponentInChildren<LegsPartIdentifier>() != null && legsDetected == false)
@@ -75,7 +76,8 @@ public class carControler : MonoBehaviour
         verticalInput = vInput;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         float totalMass = 0;
         List<Rigidbody> bodies = new List<Rigidbody>(GetComponentsInChildren<Rigidbody>());
 
@@ -86,7 +88,7 @@ public class carControler : MonoBehaviour
 
 
 
-        float motor = verticalInput * driverSpeed * ogMass/totalMass;
+        float motor = verticalInput * driverSpeed * ogMass / totalMass;
         wheel1.motorTorque = motor;
         wheel2.motorTorque = motor;
         wheel3.motorTorque = motor;
@@ -140,5 +142,13 @@ public class carControler : MonoBehaviour
         steerSpeed = baseSteerSpeed;
 
         slowRoutine = null;
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("MovingPlat"))
+        {
+            transform.SetPositionAndRotation(transform.position + other.gameObject.GetComponent<MovingPlatform>().GetVelocity(), transform.rotation);
+        }
     }
 }

@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 public class PartDeathHandler : MonoBehaviour
 {
     private BotBulider builder;
-    private BotPart part;
+    private ModularBugPart part;
 
     private void Awake()
     {
-        builder = PlayerIdentifier.GetPlayer().GetComponent<BotBulider>();
-        part = GetComponent<BotPart>();
+        builder = PlayerIdentifier.GetPlayer().GetComponentInChildren<BotBulider>();
+        part = GetComponent<ModularBugPart>();
     }
     public void Death()
     {

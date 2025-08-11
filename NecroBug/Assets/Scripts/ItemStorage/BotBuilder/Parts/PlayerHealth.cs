@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class PlayerHealth : MonoBehaviour
 {
 
-    private float health;
+    public float health;
     private float maxHealth;
 
     [SerializeField] private int priority;
@@ -17,6 +17,10 @@ public class PlayerHealth : MonoBehaviour
     private PlayerHealth parent;
     private HitFlash hitFlash;
     private InventoryItem inventoryItem;
+
+
+    [SerializeField] private bool damage;
+    [SerializeField] private bool kill;
 
     private void Awake()
     {
@@ -61,6 +65,16 @@ public class PlayerHealth : MonoBehaviour
         {
             inventoryItem.SetHealth(health);
             HealthCheck();
+        }
+        if (damage)
+        {
+            health--;
+            damage = false;
+        }
+        if (kill)
+        {
+            DoDeath();
+            kill = false;
         }
     }
     public float GetHealth() { return health; }

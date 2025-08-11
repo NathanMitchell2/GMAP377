@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 3269585200964582630}
   - component: {fileID: 197740465385301329}
   - component: {fileID: 6095668079882783201}
+  - component: {fileID: -8554726622313299244}
   m_Layer: 6
   m_Name: NecrobugBugPart
   m_TagString: Player
@@ -596,8 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa76c92904806f2429ec143409987083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  rotOffset: {x: 0, y: 0, z: 0}
+  mediator: {fileID: 0}
+  overridePos: {x: 0, y: 0, z: 0}
 --- !u!135 &8467677399557758506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -695,11 +696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67de41bf7f8181347adce1e9db050275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  hitFlash: {fileID: 6824346051168408297}
-  healthBar: {fileID: 7490650544092655376, guid: 98f2fb750052fcf4587f6a0c2b2885f7, type: 3}
-  energyBar: {fileID: 2882349672969651310, guid: 167fd704ddada3f4daf8568e32e46217, type: 3}
-  energyReductionBar: {fileID: 1391155757871924981, guid: 7983c18e08e84fe4fa5887c5344a4e32, type: 3}
 --- !u!114 &197740465385301329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +732,19 @@ MonoBehaviour:
     m_Bits: 8
   moveSpeed: 15
   turnSpeed: 180
+--- !u!114 &-8554726622313299244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475575991783323239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a3ba2c1da4bf74e96d0ae78ae7cbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCreate: {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
 --- !u!1 &3353813181373932821
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ee39317c1f0044abcd8af8f5b24c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
 --- !u!135 &5303832182605978300
 SphereCollider:
   m_ObjectHideFlags: 0

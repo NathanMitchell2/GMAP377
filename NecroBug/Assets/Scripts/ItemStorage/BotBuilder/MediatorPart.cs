@@ -24,7 +24,7 @@ public class MediatorMemento : ItemMemento
     {
         this.itemName = itemName;
         this.icon = icon;
-        this.health = health;
+        this.health = health == -1 ? maxHealth : health;
         this.maxHealth = maxHealth;
         this.stackable = stackable;
         this.maxStack = maxStack;
@@ -117,6 +117,10 @@ public class MediatorPart : InventoryItem
     }
     public override void RestoreMemento(ItemMemento item)
     {
+        RestoreMemento(item, true);
+    }
+    public void RestoreMemento(ItemMemento item, bool doDelay)
+    {
         SuperItemRestore(item);
         try
         {
@@ -125,13 +129,13 @@ public class MediatorPart : InventoryItem
             BugPartPrefab = med.GetBugPrefab();
             if (med.GetBotPart() != null)
             {
-                if(!HasBotPart())
+                if (!HasBotPart())
                     CreateBotPart();
-                GetBotPart().RestoreMemento(med.GetBotPart());
+                GetBotPart().RestoreMemento(med.GetBotPart(), doDelay);
                 //GameObject player = PlayerIdentifier.GetPlayer().gameObject;
                 //BotBulider builder = player.GetComponentInChildren<BotBulider>();
                 //builder.AddPart(GetBotPart());
-                
+
             }
             if (med.GetBugPart() != null)
             {

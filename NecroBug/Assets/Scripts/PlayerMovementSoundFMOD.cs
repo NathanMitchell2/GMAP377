@@ -52,7 +52,7 @@ public class PlayerMovementSoundFMOD : MonoBehaviour
         float distanceMoved = (trackedRigidbody.position - lastPosition).magnitude;
         bool currentlyMoving = distanceMoved > movementThreshold;
 
-        Debug.Log($"[FMOD] Distance moved (Rigidbody): {distanceMoved}");
+        //Debug.Log($"[FMOD] Distance moved (Rigidbody): {distanceMoved}");
 
         if (currentlyMoving && !isMoving)
         {

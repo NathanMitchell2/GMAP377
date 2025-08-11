@@ -77,7 +77,10 @@ public class StorageManager : MonoBehaviour
             return null;
 
         if (RemoveItem(item, keyFrom))
-            return AddItem(mem, keyTo);
+            if (keyFrom == StorageKey.BotBuilder && keyTo == StorageKey.BuilderBuffer)
+                return ((BuiltBotStorage)GetStorage(keyTo)).AddItem(mem, false); // This is the sole situation when instant transfer is used
+            else
+                return AddItem(mem, keyTo);
         return null;
     }
 

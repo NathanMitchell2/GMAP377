@@ -9,7 +9,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Prebuilder : MonoBehaviour
 {
-    private class PrebuildStorageMemento : MonoBehaviour
+    private class PrebuildStorageMemento
     {
         private List<ItemMemento> items;
         public PrebuildStorageMemento(List<ItemMemento> items)
@@ -20,7 +20,7 @@ public class Prebuilder : MonoBehaviour
     }
     BotBulider builder;
     StorageManager storageManager;
-    Dictionary<string, PrebuildStorageMemento> storageMementos = new Dictionary<string, PrebuildStorageMemento>();
+    static Dictionary<string, PrebuildStorageMemento> storageMementos = new Dictionary<string, PrebuildStorageMemento>();
 
 
     private bool working = false;

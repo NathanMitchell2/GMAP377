@@ -36,6 +36,8 @@ public class PatrolState : IState
         {
             if (enemy.enemyType == EnemyAI.EnemyType.OrbWeaver)
                 enemy.ChangeState(new TransitionState(0.5f, new OrbWeaverAgroState()));
+            else if (enemy.enemyType == EnemyAI.EnemyType.Bee)
+                enemy.ChangeState(new TransitionState(0.5f, new SwarmLeaderState()));
             else
                 enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
         }

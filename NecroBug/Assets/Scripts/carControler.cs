@@ -80,8 +80,7 @@ public class carControler : MonoBehaviour
         List<InventoryItem> parts = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().GetItemList(StorageManager.StorageKey.BuilderBuffer);
 
         foreach (InventoryItem part in parts)
-        { 
-            Debug.LogError(((MediatorPart)part).GetMass());
+        {
             totalMass += ((MediatorPart)part).GetMass();
         }
 

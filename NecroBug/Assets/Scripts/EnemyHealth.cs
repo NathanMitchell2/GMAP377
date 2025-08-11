@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using System;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -8,16 +9,19 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField]
     private EventReference damageSound;
+    public event Action<int> Damaged;
+
 
     public void dealDamage(int dmg)
     {
         health -= dmg;
         hitFlash.TriggerFlash();
 
-        if(damageSound.IsNull == false)
+        Damaged?.Invoke(dmg);   
+
+        if (damageSound.IsNull == false)
         {
             RuntimeManager.PlayOneShot(damageSound, Camera.main.transform.position);
-            //Debug.Log("Damage sound played");
         }
         checkDeath();
     }

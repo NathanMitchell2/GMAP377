@@ -84,8 +84,6 @@ public class carControler : MonoBehaviour
             totalMass += ((MediatorPart)part).GetMass();
         }
 
-
-
         float motor = verticalInput * driverSpeed * ogMass/totalMass;
         wheel1.motorTorque = motor;
         wheel2.motorTorque = motor;

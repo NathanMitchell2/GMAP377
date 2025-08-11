@@ -120,6 +120,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        player = PlayerIdentifier.GetPlayer().transform.Find("Center");
         // Initialize state based on type
         switch (enemyType)
         {

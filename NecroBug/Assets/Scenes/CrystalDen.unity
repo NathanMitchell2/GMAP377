@@ -1424,28 +1424,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd84927ceaf050b49bf384d76ec89a42, type: 3}
---- !u!64 &94475373
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148022234251}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4493585093827132993, guid: 0008d8f138bb67f488a698e58e1c58c5, type: 3}
 --- !u!1001 &98052631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34758,6 +34736,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2327365740643717233, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3570261232770212439, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -34773,10 +34755,6 @@ PrefabInstance:
     - target: {fileID: 4571442865685866250, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2327365740643717233, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4571442865685866250, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_IsActive
@@ -44625,10 +44603,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0008d8f138bb67f488a698e58e1c58c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 94475373}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0008d8f138bb67f488a698e58e1c58c5, type: 3}
 --- !u!1001 &1152499919
 PrefabInstance:
@@ -53963,6 +53938,7 @@ MonoBehaviour:
   toModelTest: Model Test
   manualSwap: 0
   resetStuff: 1
+  desiredCheckpoint: 0
 --- !u!135 &1474413258
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -57068,7 +57044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1324938976270015904, guid: c411a3369c976a546b7079717585f549, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 31.6
       objectReference: {fileID: 0}
     - target: {fileID: 1324938976270015904, guid: c411a3369c976a546b7079717585f549, type: 3}
       propertyPath: m_LocalPosition.z
@@ -85079,7 +85055,7 @@ GameObject:
   - component: {fileID: 543450652549944881}
   - component: {fileID: 3469287838615247252}
   - component: {fileID: 1711813854619397470}
-  - component: {fileID: 94475373}
+  - component: {fileID: 3469287838615247253}
   m_Layer: 3
   m_Name: CrystalCaveMap
   m_TagString: Floor
@@ -85277,6 +85253,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148022234251}
+  m_Mesh: {fileID: 4493585093827132993, guid: 0008d8f138bb67f488a698e58e1c58c5, type: 3}
+--- !u!64 &3469287838615247253
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148022234251}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 0008d8f138bb67f488a698e58e1c58c5, type: 3}
 --- !u!1 &3754850269342102855
 GameObject:
@@ -85523,3 +85521,4 @@ SceneRoots:
   - {fileID: 2026662237}
   - {fileID: 2126787534}
   - {fileID: 1626452932}
+  - {fileID: 1150087642}

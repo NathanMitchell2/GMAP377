@@ -15,7 +15,7 @@ public class carControler : MonoBehaviour
     public bool wingsPickedUp = false;
     public SpiderLegTestMovement legScript;
     public carControler carScript;
-   
+
     public List<GameObject> wheelList;
 
     private bool legsDetected = false;
@@ -53,7 +53,8 @@ public class carControler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         //horizontalInput = Input.GetAxis("Horizontal");
         //verticalInput = Input.GetAxis("Vertical");
         if (GetComponentInChildren<LegsPartIdentifier>() != null && legsDetected == false)
@@ -75,7 +76,8 @@ public class carControler : MonoBehaviour
         verticalInput = vInput;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         float totalMass = 0;
         List<InventoryItem> parts = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().GetItemList(StorageManager.StorageKey.BuilderBuffer);
 
@@ -84,7 +86,9 @@ public class carControler : MonoBehaviour
             totalMass += ((MediatorPart)part).GetMass();
         }
 
-        float motor = verticalInput * driverSpeed * ogMass/totalMass;
+
+
+        float motor = verticalInput * driverSpeed * ogMass / totalMass;
         wheel1.motorTorque = motor;
         wheel2.motorTorque = motor;
         wheel3.motorTorque = motor;
@@ -138,5 +142,25 @@ public class carControler : MonoBehaviour
         steerSpeed = baseSteerSpeed;
 
         slowRoutine = null;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        for (int i = 0; i<collision.contactCount; i++)
+        {
+            GameObject obj = collision.GetContact(i).thisCollider.gameObject;
+            if(obj != null && obj != gameObject)
+            {
+                obj.BroadcastMessage("OnCollisionEnter", collision);
+            }
+        }
+
+        //Debug.LogError("collision car");
+    }
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("MovingPlat"))
+        {
+            transform.SetPositionAndRotation(transform.position + other.gameObject.GetComponent<MovingPlatform>().GetVelocity(), transform.rotation);
+        }
     }
 }

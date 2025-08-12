@@ -10,6 +10,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private EventReference damageSound;
     public event Action<int> Damaged;
+    public string enemyType;
+
+    private BugopediaEvents events = new BugopediaEvents();
 
 
     public void dealDamage(int dmg)
@@ -29,8 +32,23 @@ public class EnemyHealth : MonoBehaviour
     {
         if(health <= 0)
         {
+            setKilledStatus(enemyType);
             BroadcastMessage("OnDeath");
             Destroy(gameObject);
+        }
+    }
+    private void setKilledStatus(string enemyType){
+        if(enemyType == "jetBeetle"){
+            BugopediaEvents.jetBeetleKilled = true;
+        }
+        else if(enemyType == "acidBeetle"){
+            BugopediaEvents.acidBeetleKilled = true;
+        }
+        else if (enemyType == "spider"){
+            BugopediaEvents.spiderKilled = true;
+        }
+        else if (enemyType== "bee"){
+            BugopediaEvents.beeKilled = true;
         }
     }
 }

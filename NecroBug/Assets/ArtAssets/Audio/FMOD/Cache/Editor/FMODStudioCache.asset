@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638905160091842026
+  lastModified: 638905224753450560
   FileSizes: []
   Exists: 1
 --- !u!114 &-8406969917288455444
@@ -99,6 +99,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7619054947166087961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cave/plants
+  m_EditorClassIdentifier: 
+  Path: event:/Cave/plants
+  Guid:
+    Data1: -165623917
+    Data2: 1276194944
+    Data3: 458408117
+    Data4: -1171907033
+  Banks:
+  - {fileID: -8564774612625581533}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14485
 --- !u!114 &-7319079676076266879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +316,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 152705
---- !u!114 &-3461432696612957256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,7 +330,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638905160091332973
+  lastModified: 638905224753119123
   FileSizes: []
   Exists: 1
 --- !u!114 &-3133212707652271727
@@ -334,6 +360,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 210
+--- !u!114 &-2887127080510745579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cave/crystal flashbang
+  m_EditorClassIdentifier: 
+  Path: event:/Cave/crystal flashbang
+  Guid:
+    Data1: 1340417302
+    Data2: 1184058697
+    Data3: 832118952
+    Data4: 117956094
+  Banks:
+  - {fileID: -8564774612625581533}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2600
+--- !u!114 &-2570694209832853275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cave/Water Drip
+  m_EditorClassIdentifier: 
+  Path: event:/Cave/Water Drip
+  Guid:
+    Data1: 1546490869
+    Data2: 1166552712
+    Data3: 1042808761
+    Data4: -2004880627
+  Banks:
+  - {fileID: -8564774612625581533}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6220
+--- !u!114 &-1468604412897484789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Spider/Bite
+  m_EditorClassIdentifier: 
+  Path: event:/Spider/Bite
+  Guid:
+    Data1: -1968629941
+    Data2: 1106309083
+    Data3: 104932530
+    Data4: 941189016
+  Banks:
+  - {fileID: -8564774612625581533}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3183
 --- !u!114 &-1272225867946503052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +537,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638905160091345240
+  lastModified: 638905224753119123
   FileSizes:
   - Name: 
     Value: 2456
@@ -494,7 +601,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -370053043916492027}
   cacheVersion: 131847
-  cacheTime: 638905160091865499
+  cacheTime: 638905224753460784
   SerializableEventsDict:
   - key: event:/Bug/bug hurt with scream
     index: 0
@@ -667,7 +774,7 @@ MonoBehaviour:
     Data4: 1801014461
   Banks:
   - {fileID: -8564774612625581533}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -701,6 +808,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 162
+--- !u!114 &3897470492447183658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Spider/Hiss
+  m_EditorClassIdentifier: 
+  Path: event:/Spider/Hiss
+  Guid:
+    Data1: -673979680
+    Data2: 1098237028
+    Data3: 1148038055
+    Data4: 1129919736
+  Banks:
+  - {fileID: -8564774612625581533}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1593
 --- !u!114 &4519691624282720618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,7 +931,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/test.bank
   Name: test
   StudioPath: bank:/test
-  lastModified: 638905160091865499
+  lastModified: 638905224753460784
   FileSizes: []
   Exists: 1
 --- !u!114 &5780789331237135346

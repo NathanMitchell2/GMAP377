@@ -43,7 +43,8 @@ public class LaserSpiderAttackState : IState
     private IEnumerator ShootLaser(EnemyAI enemy)
     {
         enemy.transform.LookAt(enemy.player);
-        float tiltDuration = 0.72f;
+        enemy.laserCharge.Play();
+        float tiltDuration = 1f;
         float elapsed = 0f;
         Quaternion startRot = enemy.transform.rotation;
         Quaternion targetRot = Quaternion.Euler(
@@ -74,6 +75,7 @@ public class LaserSpiderAttackState : IState
             enemy.transform.rotation = Quaternion.Lerp(startRot, targetRot, elapsed / resetDuration);
             yield return null;
         }
+        enemy.laserSparkle.Play();
         enemy.spiderLaser.activated = true;
         yield return new WaitForSeconds(2f);
         enemy.spiderLaser.activated = true;

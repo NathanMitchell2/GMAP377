@@ -186,7 +186,8 @@ Transform:
   m_LocalPosition: {x: -0.3, y: 0.27772644, z: 2.15}
   m_LocalScale: {x: 0.0033526171, y: 0.001982886, z: 0.0033526171}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 236273722357830725}
   m_Father: {fileID: 252975270961832091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3656675179985266129
@@ -203,6 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  chargeParticles: {fileID: 0}
+  sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 14e24f8a08f675e488a42f3bca91e3a6, type: 2}
 --- !u!1 &421220369572914115
 GameObject:
@@ -4031,9 +4034,12 @@ GameObject:
   - component: {fileID: 5914713867887529357}
   - component: {fileID: 6604320607649191026}
   - component: {fileID: 113348110268525339}
+  - component: {fileID: 4846946252669494005}
+  - component: {fileID: 9151201760976535364}
+  - component: {fileID: 102073926529517847}
   m_Layer: 0
   m_Name: Laser Spider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4148,6 +4154,8 @@ MonoBehaviour:
     m_Bits: 0
   swarmAutoIssueOrders: 0
   spiderLaser: {fileID: 3656675179985266129}
+  laserCharge: {fileID: 8756907866183120414}
+  laserSparkle: {fileID: 2370473308224089318}
 --- !u!195 &5914713867887529357
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4218,6 +4226,58 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4846946252669494005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375153165446484626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfff9f0d777ac714f95dec1729c2ebb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hitFlash: {fileID: 9151201760976535364}
+  damageSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  enemyType: 
+--- !u!114 &9151201760976535364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375153165446484626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce352a5d85d90d41b0d88587d560328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 8519433581140867626}
+  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  flashDuration: 0.5
+  playSpeed: 1
+--- !u!114 &102073926529517847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375153165446484626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032a15b7cb4065b4783ca5c3c6f47abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 3997798886352531281, guid: 5fa1d32148ac4384488eea7b009cb63b, type: 3}
 --- !u!1 &7447064988210673916
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,3 +5283,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipController: {fileID: 8329275456911602187, guid: 202c77d00feb3c84e8496ff33d146a56, type: 3}
   controllerGroup: {fileID: 5736003699324519058, guid: 28e2b68008f64d74caf45f1f03cfc60d, type: 3}
+--- !u!1001 &3976391095555858486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2587392881764554289}
+    m_Modifications:
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 141
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.49999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571462527752219443, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+      propertyPath: m_Name
+      value: LaserCharge
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+--- !u!4 &236273722357830725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3776711463352661107, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+  m_PrefabInstance: {fileID: 3976391095555858486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2370473308224089318 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1714576543316954320, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+  m_PrefabInstance: {fileID: 3976391095555858486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8756907866183120414 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5667837223308432936, guid: 98f62b7b18a9213438fa05c1581bb2a5, type: 3}
+  m_PrefabInstance: {fileID: 3976391095555858486}
+  m_PrefabAsset: {fileID: 0}

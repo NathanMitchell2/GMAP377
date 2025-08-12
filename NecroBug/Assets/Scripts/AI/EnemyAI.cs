@@ -110,6 +110,8 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Laser Spider")]
     public Laser spiderLaser;
+    public ParticleSystem laserCharge;
+    public ParticleSystem laserSparkle;
     // ========= AWAKE & START =========
     private void Awake()
     {

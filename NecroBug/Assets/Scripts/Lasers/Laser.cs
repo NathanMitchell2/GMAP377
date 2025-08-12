@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class Laser : MonoBehaviour
 {
     public bool activated = true;
     public bool playerLaser = false;
+
+    public ParticleSystem chargeParticles;
+    public ParticleSystem sparkleParticle;
 
     LineRenderer lineRenderer;
     [SerializeField] LaserRendererSettings laserRendererSettings;
@@ -27,7 +31,7 @@ public class Laser : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && playerLaser) { ToggleLaser(); }
+        // if (Input.GetMouseButtonDown(0) && playerLaser) { StartCoroutine(ActivateLaser()); }
     }
 
     private void FixedUpdate()
@@ -98,5 +102,37 @@ public class Laser : MonoBehaviour
         if (activated) { activated = false; }
         else if (!activated) { activated=true; }
     }
-    
+
+    public void PlayerShoot()
+    {
+        StartCoroutine(ActivateLaser());
+    }
+
+    private IEnumerator ActivateLaser()
+    {
+        // Debug.Log("laser shooting");
+        if (this.activated)
+        {
+            this.activated = false;
+            yield break;
+        }
+
+        if (chargeParticles != null)
+        {
+            chargeParticles.Play();
+        }
+        yield return new WaitForSeconds(chargeParticles.main.duration);
+
+        sparkleParticle.Play();
+
+        yield return new WaitForSeconds(0.1f);
+
+        this.activated = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        this.activated = false;
+
+    }
+
 }

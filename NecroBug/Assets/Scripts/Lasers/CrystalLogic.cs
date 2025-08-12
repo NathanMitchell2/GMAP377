@@ -183,6 +183,11 @@ public class CrystalLogic : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         laser.activated = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        laser.activated = false;
+        isTriggered = false;
         
     }
 

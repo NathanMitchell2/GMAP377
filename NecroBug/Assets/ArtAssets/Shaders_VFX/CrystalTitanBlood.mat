@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5692139527379642713
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrystalMaterial
+  m_Name: CrystalTitanBlood
   m_Shader: {fileID: -6465566751694194690, guid: bda4b1dfe9e81754682e06d74d79450f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,18 +38,31 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BottomLine: 0.617
-    - _Emission_Strength: 2
+    - _BottomLine: 0.311
+    - _Emission_Strength: 1.76
     - _Metallic: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 50
-    - _Smoothness: 0.373
-    - _TopLine: 0.318
+    - _Scale: 152.3
+    - _Smoothness: 0.7
+    - _TopLine: 0.758
     - _Transparency: 0.95
     m_Colors:
-    - _BaseColor: {r: 0.101301014, g: 0.085751146, b: 0.4433962, a: 1}
-    - _BottomColor: {r: 2.3209062, g: 0, b: 24.251463, a: 1}
-    - _TopColor: {r: 0.685638, g: 0.47001058, b: 0.9924528, a: 1}
+    - _BaseColor: {r: 0.046818506, g: 0.009211458, b: 0.21698111, a: 1}
+    - _BottomColor: {r: 0.47058824, g: 0.08822794, b: 0, a: 1}
+    - _TopColor: {r: 0.5647059, g: 0.22352941, b: 0.43507606, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &4407342824172176809
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9

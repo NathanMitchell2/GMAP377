@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     public Vector3 lastPlayerPosition;
 
     // ========== ENEMY TYPE ==========
-    public enum EnemyType { JetBeetle, AcidBeetle, OrbWeaver, Bee }
+    public enum EnemyType { JetBeetle, AcidBeetle, OrbWeaver, Bee, LaserSpider}
     public EnemyType enemyType;
 
     // ========== JET BEETLE STATS ==========
@@ -108,6 +108,10 @@ public class EnemyAI : MonoBehaviour
     private EnemyHealth _health;
     private bool _promotedToSwarmLeader;
 
+    [Header("Laser Spider")]
+    public Laser spiderLaser;
+    public ParticleSystem laserCharge;
+    public ParticleSystem laserSparkle;
     // ========= AWAKE & START =========
     private void Awake()
     {
@@ -134,6 +138,9 @@ public class EnemyAI : MonoBehaviour
                 ChangeState(new PatrolState());
                 break;
             case EnemyType.Bee:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.LaserSpider:
                 ChangeState(new PatrolState());
                 break;
             default:
@@ -222,6 +229,8 @@ public class EnemyAI : MonoBehaviour
                 return new ChargeAttackState();
             case EnemyType.Bee:
                 return new SwarmLeaderState();
+            case EnemyType.LaserSpider:
+                return new LaserSpiderAttackState();
             default:
                 return new ChargeAttackState();
         }

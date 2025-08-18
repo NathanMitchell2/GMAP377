@@ -10,6 +10,7 @@ public class CrystalLogic : MonoBehaviour
     public bool isTriggered = false;
     public enum CrystalType { Flash, Beam, Switch, Door }
     public CrystalType crystalType;
+    public HitFlash hitFlash;
 
     [Header("Beam")]
     public Transform beamOrigin;
@@ -127,6 +128,9 @@ public class CrystalLogic : MonoBehaviour
         {
             door.Door();
         }
+
+        if (hitFlash != null) { hitFlash.TriggerFlash(); }
+        
         // Get Door
         // Open door
     }
@@ -137,6 +141,8 @@ public class CrystalLogic : MonoBehaviour
         {
             door.Door();
         }
+
+        if (hitFlash != null) { hitFlash.TriggerFlash(); }
         // Get Door
         // Close Door
     }
@@ -148,13 +154,13 @@ public class CrystalLogic : MonoBehaviour
         {
             onDoorA = false;
             transform.position = transformA.position;
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transformA.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = transformA.rotation;
         }
         else if (!onDoorA)
         {
             onDoorA = true;
             transform.position = transformB.position;
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transformB.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = transformB.rotation;
         }
     }
 
@@ -177,6 +183,11 @@ public class CrystalLogic : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         laser.activated = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        laser.activated = false;
+        isTriggered = false;
         
     }
 

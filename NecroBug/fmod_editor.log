@@ -2,15 +2,13 @@
 [LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0000000000000000.
 [LOG] SystemI::init                            : Initialize version=20307 (150747), maxchannels=256, flags=0x00020000
 [LOG] SystemI::setOutputInternal               : Setting output to 'FMOD WASAPI Output'
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=8, nSamplesPerSec=48000, nAvgBytesPerSec=1536000, nBlockAlign=32, wBitsPerSample=32, cbSize=22.
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x0000063F, SubFormat=00000003-0000-0010-8000-00AA00389B71.
+[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
+[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
 [LOG] OutputWASAPI::init                       : Output buffer size: 2048 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 512 * 4
-[LOG] DownMix::init                            : dspbuffersize: 512  rate: 48000. output speaker mode: 7, input speaker mode 3
-[LOG] DownMix::init                            : done.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001F855E32048 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001D6F17918A8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -22,7 +20,262 @@
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
-[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D0C6DC8E48
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D0C6DC8E48
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D0C6DCA108
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D0C6DCA108
+[LOG] SoundI::release                          : 263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D420C93528)
+[LOG] SoundI::release                          :     263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D2E7AC0AC8)
+[LOG] SoundI::release                          :     263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D0C6DCA108)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D0C8A8E078, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D0C8A8E078
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D4734127D8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='195137__glueisobar__cavernous-drone', format=5, channels=2, frequency=48000, lengthbytes=124768, lengthpcm=583965, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.489105.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D0C8A8E078
+[LOG] SoundI::release                          : 195137__glueisobar__cavernous-drone (000001D420C97218)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D2E7AC16C8)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D0C6DC8E48)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D64F0CF998, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D64F0CF998
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2EBA335B8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 1000
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='95052__plamdi1__ambient-bubbling-liquid', format=5, channels=2, frequency=48000, lengthbytes=274656, lengthpcm=1056000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.529938.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D64F0CF998
+[LOG] SoundI::release                          : 95052__plamdi1__ambient-bubbling-liquid (000001D64F0D26E8)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D2E7AC1CC8)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D0C6DCABF8)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D64F0CEEA8, queue head = 000001D64F0D2518, queue count = 0
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D64F0D1D88, queue head = 000001D64F0D2518, queue count = 1
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D64F0CEEA8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2B554F0D8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='263500__lwdickens__rock-on-rock-on-wood-table-foley', format=5, channels=2, frequency=48000, lengthbytes=231904, lengthpcm=899072, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.290586.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D64F0CEEA8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D64F0D1D88
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2B554F398
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='195137__glueisobar__cavernous-drone', format=5, channels=2, frequency=48000, lengthbytes=124768, lengthpcm=583965, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.489105.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D64F0D1D88
+[LOG] SoundI::release                          : 195137__glueisobar__cavernous-drone (000001D0C8A8E078)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D6A1A39148)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D37839DFB8)
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D37843CC48
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D37843CC48
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D37843C798
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D37843C798
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D379D3FFE8, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D379D3FFE8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D0CB247CA8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 1000
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='95052__plamdi1__ambient-bubbling-liquid', format=5, channels=2, frequency=48000, lengthbytes=274656, lengthpcm=1056000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.529938.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D379D3FFE8
+[LOG] SoundI::release                          : 95052__plamdi1__ambient-bubbling-liquid (000001D64F0CF998)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D6A1A395C8)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D37839E148)
+[LOG] SoundI::release                          : 263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D64F0CEEA8)
+[LOG] SoundI::release                          :     263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D6A1A3B3C8)
+[LOG] SoundI::release                          :     263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D37843C798)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D0C67F7B28, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D0C67F7B28
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D0D1ADE458
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='195137__glueisobar__cavernous-drone', format=5, channels=2, frequency=48000, lengthbytes=124768, lengthpcm=583965, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.489105.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D0C67F7B28
+[LOG] SoundI::release                          : 195137__glueisobar__cavernous-drone (000001D64F0D1D88)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D6A1A389C8)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D37843CC48)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D475C83F48, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D475C83F48
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2D8344CB8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 1000
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='95052__plamdi1__ambient-bubbling-liquid', format=5, channels=2, frequency=48000, lengthbytes=274656, lengthpcm=1056000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.529938.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D475C83F48
+[LOG] SoundI::release                          : 95052__plamdi1__ambient-bubbling-liquid (000001D379D3FFE8)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D6A1A39148)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D37843D288)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D378EC9E98, queue head = 000001D64F0D2518, queue count = 0
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D378EC9E98
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D378ECA348, queue head = 000001D64F0D2518, queue count = 0
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D0D1ADE5B8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='263500__lwdickens__rock-on-rock-on-wood-table-foley', format=5, channels=2, frequency=48000, lengthbytes=231904, lengthpcm=899072, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.290586.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D378EC9E98
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D378ECA348
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D0D1ADE718
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='195137__glueisobar__cavernous-drone', format=5, channels=2, frequency=48000, lengthbytes=124768, lengthpcm=583965, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.489105.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D378ECA348
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D378257118
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D378257118
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D378256628
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D378256628
+[LOG] SoundI::release                          : 195137__glueisobar__cavernous-drone (000001D0C67F7B28)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D0D74BE0C8)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D378256178)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D37843B028, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D37843B028
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2EB955498
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 1000
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='95052__plamdi1__ambient-bubbling-liquid', format=5, channels=2, frequency=48000, lengthbytes=274656, lengthpcm=1056000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.529938.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D37843B028
+[LOG] SoundI::release                          : 95052__plamdi1__ambient-bubbling-liquid (000001D475C83F48)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D0D74BF748)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D3782554F8)
+[LOG] SoundI::release                          : 263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D378EC9E98)
+[LOG] SoundI::release                          :     263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D0D74BECC8)
+[LOG] SoundI::release                          :     263500__lwdickens__rock-on-rock-on-wood-table-foley (000001D378256628)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D0D19FC8C8, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D0D19FC8C8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2B554F398
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='195137__glueisobar__cavernous-drone', format=5, channels=2, frequency=48000, lengthbytes=124768, lengthpcm=583965, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.489105.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D0D19FC8C8
+[LOG] SoundI::release                          : 195137__glueisobar__cavernous-drone (000001D378ECA348)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D0D74BE848)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D378257118)
+[LOG] SystemI::createSound                     : filename = Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001D37839E788, queue head = 000001D64F0D2518, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D37839E788
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7263520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 65024
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D2EB955A18
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 1000
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='95052__plamdi1__ambient-bubbling-liquid', format=5, channels=2, frequency=48000, lengthbytes=274656, lengthpcm=1056000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.529938.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D37839E788
+[LOG] SoundI::release                          : 95052__plamdi1__ambient-bubbling-liquid (000001D37843B028)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D0D74BEFC8)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D378257438)
+[LOG] SoundI::release                          : 195137__glueisobar__cavernous-drone (000001D0D19FC8C8)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D0D74BE0C8)
+[LOG] SoundI::release                          :     195137__glueisobar__cavernous-drone (000001D3782554F8)
+[LOG] SoundI::release                          : 95052__plamdi1__ambient-bubbling-liquid (000001D37839E788)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D0D74BF448)
+[LOG] SoundI::release                          :     95052__plamdi1__ambient-bubbling-liquid (000001D378255688)
+[LOG] SoundI::release                          :  (000001D42082C278)
+[LOG] SoundI::release                          :     768184__valerie-vivegnis__pain-groan-man-1 (000001D6E5305B58)
+[LOG] SoundI::release                          :  (000001D42082C3D8)
+[LOG] SoundI::release                          :     169859__timbre__low-pulsating-hum (000001D6E5303758)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::closeInternal                   : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -30,3 +283,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::closeInternal                   : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

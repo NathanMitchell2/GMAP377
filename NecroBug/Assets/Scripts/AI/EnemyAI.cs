@@ -196,9 +196,6 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = inView;
         playerInAttackRange = distanceToPlayer <= attackRange;
 
-        if (enemyType == EnemyType.Bee && angered)
-            ChangeState(new TransitionState(0.5f,new SwarmLeaderState()));
-
         currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
     }
 
@@ -228,7 +225,7 @@ public class EnemyAI : MonoBehaviour
             case EnemyType.JetBeetle:
                 return new ChargeAttackState();
             case EnemyType.Bee:
-                return new SwarmLeaderState();
+                return new SwarmAttackState();
             case EnemyType.LaserSpider:
                 return new LaserSpiderAttackState();
             default:

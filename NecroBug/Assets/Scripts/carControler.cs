@@ -144,37 +144,13 @@ public class carControler : MonoBehaviour
         slowRoutine = null;
     }
 
-    void OnCollisionStay(Collision other)
+    void OnTriggerStay(Collider other)
     {
-        Debug.Log("colliding");
-
         if (other.gameObject.CompareTag("MovingPlat"))
         {
-            Debug.Log("does this work?");
-            //previous line
-            //transform.SetPositionAndRotation(transform.position + other.gameObject.GetComponent<MovingPlatform>().GetVelocity(), transform.rotation);
+            transform.SetPositionAndRotation(transform.position + other.gameObject.GetComponent<MovingPlatform>().GetVelocity(), transform.rotation);
             
             MovingPlatform platform = other.gameObject.GetComponent<MovingPlatform>();
-            if (platform != null)
-            {
-                /*
-                transform.rotation = platform.deltaRotation * transform.rotation;
-                Debug.LogError(transform.rotation);
-                transform.position += platform.deltaRotation * (transform.position - platform.transform.position) + platform.transform.position + platform.deltaPosition;
-                Debug.LogError(transform.position);
-                */
-
-                // with rigidbody
-                Debug.Log("Platform Delta: " + platform.deltaPosition + " | " + platform.deltaRotation.eulerAngles);
-                Quaternion newRotation = platform.deltaRotation * rigid.rotation;
-                rigid.MoveRotation(newRotation);
-
-                Vector3 relativePos = rigid.position - platform.transform.position;
-                Vector3 rotatedPos = platform.deltaRotation * relativePos;
-                Vector3 newPosition = platform.transform.position + rotatedPos + platform.deltaPosition;
-
-                rigid.MovePosition(newPosition);
-            }
         }
     }
 }

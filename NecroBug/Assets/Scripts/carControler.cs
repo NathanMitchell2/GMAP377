@@ -143,24 +143,14 @@ public class carControler : MonoBehaviour
 
         slowRoutine = null;
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        for (int i = 0; i<collision.contactCount; i++)
-        {
-            GameObject obj = collision.GetContact(i).thisCollider.gameObject;
-            if(obj != null && obj != gameObject)
-            {
-                obj.BroadcastMessage("OnCollisionEnter", collision);
-            }
-        }
 
-        //Debug.LogError("collision car");
-    }
-    void OnCollisionStay(Collision other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("MovingPlat"))
         {
             transform.SetPositionAndRotation(transform.position + other.gameObject.GetComponent<MovingPlatform>().GetVelocity(), transform.rotation);
+            
+            MovingPlatform platform = other.gameObject.GetComponent<MovingPlatform>();
         }
     }
 }

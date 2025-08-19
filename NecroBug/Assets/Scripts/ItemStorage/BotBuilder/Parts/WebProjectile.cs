@@ -4,7 +4,7 @@ public class WebProjectile : MonoBehaviour
 {
     public float lifeTime = 5f;
     public float splashRange = 0.5f;
-    public float slowDuration = 1.5f;
+    public float slowDuration = 3f;
     public float slowFactor = 0.5f;
     public EnemyAI spider;
 
@@ -18,7 +18,7 @@ public class WebProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // Apply slow + add to web stack
-            carControler carControler = spider.carController;
+            carControler carControler = other.gameObject.GetComponentInChildren<carControler>();
             if (carControler != null)
             {
                 carControler.ApplySlow(slowDuration, slowFactor);

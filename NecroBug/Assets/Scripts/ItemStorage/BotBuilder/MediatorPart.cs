@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.PlayerSettings;
@@ -20,7 +22,8 @@ public class MediatorMemento : ItemMemento
     private bool customBinds;
     private string defaultBinding;
     private string binding;
-    public MediatorMemento(string itemName, Sprite icon, float health, float maxHealth, bool stackable, int maxStack, int count, GameObject botPrefab, GameObject bugPrefab, BotPartMemento botPart, BugPartMemento bugPart, bool customBinds, string defaultBinding, string binding) : base(itemName, icon, health, maxHealth, stackable, maxStack, count)
+    private float mass;
+    public MediatorMemento(string itemName, Sprite icon, float health, float maxHealth, bool stackable, int maxStack, int count, GameObject botPrefab, GameObject bugPrefab, BotPartMemento botPart, BugPartMemento bugPart, bool customBinds, string defaultBinding, string binding, float mass) : base(itemName, icon, health, maxHealth, stackable, maxStack, count)
     {
         this.itemName = itemName;
         this.icon = icon;
@@ -36,6 +39,8 @@ public class MediatorMemento : ItemMemento
         this.customBinds = customBinds;
         this.defaultBinding = defaultBinding;
         this.binding = binding;
+        this.mass = mass;
+        this.mass = mass;
     }
     public override System.Type GetItemType()
     {
@@ -75,6 +80,7 @@ public class MediatorMemento : ItemMemento
     public bool GetCustomBinds() { return customBinds; }
     public String GetDefaultBinding() { return defaultBinding; }
     public String GetBinding() { return binding; }
+    public float GetMass() { return mass; }
 }
 
 public class MediatorPart : InventoryItem
@@ -85,6 +91,7 @@ public class MediatorPart : InventoryItem
     [SerializeField] private GameObject BugPartPrefab;
     [SerializeField] private bool customBinds = true;
     [SerializeField] private string defaultBind = "";
+    [SerializeField] private float mass = 0;
     private GameObject botPart;
     private GameObject bugPart;
 
@@ -113,7 +120,7 @@ public class MediatorPart : InventoryItem
         if(destroying) return null;
         BotPartMemento botPart = HasBotPart() ? GetBotPart().CreateMemento() : null;
         BugPartMemento bugPart = HasBugPart() ? GetBugPart().CreateMemento() : null;
-        return new MediatorMemento(itemName, icon, health, maxHealth, stackable, maxStack, count, BotPartPrefab, BugPartPrefab, botPart, bugPart, customBinds, defaultBind, binding);
+        return new MediatorMemento(itemName, icon, health, maxHealth, stackable, maxStack, count, BotPartPrefab, BugPartPrefab, botPart, bugPart, customBinds, defaultBind, binding, mass);
     }
     public override void RestoreMemento(ItemMemento item)
     {
@@ -147,6 +154,7 @@ public class MediatorPart : InventoryItem
             action.ApplyBindingOverride(0, med.GetBinding());
             defaultBind = med.GetDefaultBinding();
             binding = med.GetBinding();
+            mass = med.GetMass();
             AlignBugPart();
         }
         catch (Exception e)
@@ -412,6 +420,10 @@ public class MediatorPart : InventoryItem
     public bool GetCustomBinds()
     {
         return customBinds;
+    }
+    public float GetMass()
+    {
+        return mass;
     }
 
 }

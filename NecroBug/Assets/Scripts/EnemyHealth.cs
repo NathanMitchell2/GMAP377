@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using System;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -8,16 +9,22 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField]
     private EventReference damageSound;
+    public event Action<int> Damaged;
+    public string enemyType;
+
+    private BugopediaEvents events = new BugopediaEvents();
+
 
     public void dealDamage(int dmg)
     {
         health -= dmg;
         hitFlash.TriggerFlash();
 
-        if(damageSound.IsNull == false)
+        Damaged?.Invoke(dmg);   
+
+        if (damageSound.IsNull == false)
         {
             RuntimeManager.PlayOneShot(damageSound, Camera.main.transform.position);
-            //Debug.Log("Damage sound played");
         }
         checkDeath();
     }
@@ -25,8 +32,23 @@ public class EnemyHealth : MonoBehaviour
     {
         if(health <= 0)
         {
+            setKilledStatus(enemyType);
             BroadcastMessage("OnDeath");
             Destroy(gameObject);
+        }
+    }
+    private void setKilledStatus(string enemyType){
+        if(enemyType == "jetBeetle"){
+            BugopediaEvents.jetBeetleKilled = true;
+        }
+        else if(enemyType == "acidBeetle"){
+            BugopediaEvents.acidBeetleKilled = true;
+        }
+        else if (enemyType == "spider"){
+            BugopediaEvents.spiderKilled = true;
+        }
+        else if (enemyType== "bee"){
+            BugopediaEvents.beeKilled = true;
         }
     }
 }

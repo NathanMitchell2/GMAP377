@@ -22,8 +22,9 @@ public class AcidSplashProjectile : MonoBehaviour
         if (other.CompareTag("Player") && !isPlayer)
         {
             // Debug.Log("Splash Damage");
-            PlayerStats playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
-            acidBeetle.DealAcidDamage(damage, playerStats);
+            DamageObject.Damage(damage, other.gameObject.GetComponent<PlayerHealth>());
+            //PlayerStats playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
+            //acidBeetle.DealAcidDamage(damage, playerStats);
             particle.Stop();
             particle.transform.parent = null;
             Destroy(gameObject);

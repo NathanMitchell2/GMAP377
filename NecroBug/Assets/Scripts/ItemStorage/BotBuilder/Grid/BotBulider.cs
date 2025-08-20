@@ -8,16 +8,14 @@ using UnityEngine.InputSystem;
 
 public class BotBulider : ItemStorage
 {
-    //6x6x6 with 2x2x2 bot
-    //3x3x3 with 1x1x1 bot
-    //shorter 6x6x6?
-    //3x2x3 with 1x1x1 bot
     private const int x = 6;
     private const int y = 6;
     private const int z = 6;
 
     private BotGrid grid;
     private StorageManager manager;
+
+    private static Dictionary<string, List<BotPartMemento>> savedPartPositions = new Dictionary<string, List<BotPartMemento>>();
 
     private void Awake()
     {
@@ -53,11 +51,9 @@ public class BotBulider : ItemStorage
 
         if (!tItem.HasBotPart())
             tItem.CreateBotPart();
-        //BotPart bPart = tItem.GetBotPart();
-
-        //bPart.Place(grid);
-
-        CreateBot();
+        RestoreSavedPos(tItem.GetBotPart());
+        CreateBot(true);
+        tItem.GetBotPart().transform.SetLocalPositionAndRotation(Vector3.down * -10, Quaternion.identity);
         return tItem;
     }
     public override bool RemoveItem(InventoryItem item)
@@ -67,6 +63,7 @@ public class BotBulider : ItemStorage
 
         MediatorPart tItem = (MediatorPart)item;
         item.DestroyItem();
+        MaintainSavedParts();
         return true;
         /*
         if (tItem.HasBotPart())
@@ -153,6 +150,7 @@ public class BotBulider : ItemStorage
 
         if (index != 0 && index != -1) //HARD CODED, can't remove first item in list (for car)
         {
+            MaintainSavedParts();
             return part.Move(pos, grid);
         }
         return false;
@@ -183,6 +181,8 @@ public class BotBulider : ItemStorage
             }
             if(part!=null)
                 part.GetMediator().DestroyBotPart();
+
+            MaintainSavedParts();
             //partList.RemoveAt(index);
             return true;
         }
@@ -195,16 +195,21 @@ public class BotBulider : ItemStorage
     }
     public void CreateBot()
     {
+        CreateBot(false);
+    }
+    public void CreateBot(bool hideTransferedPart)
+    {
         List<BotPart> snapshot = GetPartList();
         if (!grid.Check())
             return;
 
-        
         foreach (BotPart part in snapshot)
         {
             if (GetItemList().Contains(part.GetMediator()))
             {
-                manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.BuilderBuffer);
+                InventoryItem temp = manager.Transfer(part.GetMediator(), StorageManager.StorageKey.BotBuilder, StorageManager.StorageKey.BuilderBuffer);
+                if(hideTransferedPart)
+                    ((MediatorPart) temp).GetBotPart().transform.SetLocalPositionAndRotation(Vector3.down * -10, Quaternion.identity);
             }
         }
 
@@ -216,7 +221,8 @@ public class BotBulider : ItemStorage
                 //part.DestroyBugPart();
             }
         }
-        transform.parent.GetComponentInChildren<BuiltBotStorage>().AlignAll();
+        ((BuiltBotStorage)manager.GetStorage(StorageManager.StorageKey.BuilderBuffer)).AlignAll();
+        //transform.parent.GetComponentInChildren<BuiltBotStorage>().AlignAll();
     }
 
     public int IndexOf(MediatorPart part)
@@ -246,4 +252,71 @@ public class BotBulider : ItemStorage
         }
     }
 
+    private void RestoreSavedPos(BotPart addedPart)
+    {
+        string key = addedPart.GetMediator().GetName();
+        
+        if (!savedPartPositions.ContainsKey(key))
+            return;
+
+        BotGrid tempBuiltGrid = new BotGrid(x, y, z);
+        List<BotPart> parts = GetPartList();
+
+        foreach (BotPart part in parts)
+        {
+            part.Place(tempBuiltGrid);
+        }
+
+        int index = 0;
+        List<BotPartMemento> savedPoses = savedPartPositions[key];
+
+        addedPart.RestoreMemento(savedPoses[index]);
+        addedPart.Place(tempBuiltGrid);
+        index++;
+
+        while (!tempBuiltGrid.Check() && index < savedPoses.Count)
+        {
+            addedPart.Remove(tempBuiltGrid);
+
+            addedPart.RestoreMemento(savedPoses[index]);
+            addedPart.Place(tempBuiltGrid);
+            index++;
+        }
+    }
+    private void MaintainSavedParts()
+    {
+        List<BotPart> parts = GetPartList();
+        Dictionary<string, int> partTypeToCurrentIndexPairs = new Dictionary<string, int>();
+
+        foreach (BotPart part in parts)
+        {
+            string key = part.GetMediator().GetName();
+
+            if (savedPartPositions.ContainsKey(key))
+            {
+                if (!partTypeToCurrentIndexPairs.ContainsKey(key))
+                    partTypeToCurrentIndexPairs.Add(key, 0);
+
+                int curIndex = partTypeToCurrentIndexPairs[key];
+                List<BotPartMemento> savedPoses = savedPartPositions[key];
+
+                if (curIndex < savedPartPositions[key].Count)
+                {
+                    savedPartPositions[key][curIndex] = part.CreateMemento();
+                }
+                else
+                {
+                    savedPartPositions[key].Add(part.CreateMemento());
+                }
+            }
+            else
+            {
+                List<BotPartMemento> newPartPosList = new List<BotPartMemento>();
+                newPartPosList.Add(part.CreateMemento());
+
+                savedPartPositions.Add(key, newPartPosList);
+                partTypeToCurrentIndexPairs.Add(key, 1);
+            }
+        }
+    }
 }

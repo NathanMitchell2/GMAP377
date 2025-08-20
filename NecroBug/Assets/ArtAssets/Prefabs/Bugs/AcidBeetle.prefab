@@ -310,50 +310,79 @@ MonoBehaviour:
   agent: {fileID: 9145772680418755016}
   rb: {fileID: 1132233513294500524}
   player: {fileID: 0}
+  playerStats: {fileID: 0}
+  lineRenderer: {fileID: 8020869570514876939}
+  spitPoint: {fileID: 2904826544043532939}
+  carController: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  fieldOfView: 120
-  viewDistance: 25
-  rayCount: 30
   visionObstacles:
     serializedVersion: 2
     m_Bits: 128
-  noiseDetectionSpeed: 0
+  fieldOfView: 120
+  viewDistance: 25
   sightRange: 25
   attackRange: 15
   retreatRange: 15
+  noiseDetectionSpeed: 0
   walkPointRange: 25
   timeBetweenAttacks: 1
   idleDuration: 3
   chargeUpTime: 1.5
   jumpForce: 40
   maxPlayerSpeedCharge: 3
+  rayCount: 30
   patrolCenter: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   alreadyAttacked: 0
   isCharging: 0
   isInCombat: 0
-  lastPlayerPosition: {x: 0, y: 0, z: 0}
-  playerSpeed: 0
   playerInSightRange: 0
   playerInAttackRange: 0
+  playerSpeed: 0
+  attackCooldown: 0.5
+  damageCooldown: 0.5
   stamina: 100
   staminaDrainPerCharge: 30
   staminaRecoverRate: 10
-  attackCooldown: 0.5
+  lastPlayerPosition: {x: 0, y: 0, z: 0}
   enemyType: 1
-  spitPoint: {fileID: 2904826544043532939}
+  chargeDamage: 20
   acidProjectilePrefab: {fileID: 4671630421458197730, guid: 6a1a1f3b5ec7fdb48ba92c83b5bb4b84, type: 3}
   acidSpitForce: 10
-  playerStats: {fileID: 0}
-  lineRenderer: {fileID: 8020869570514876939}
-  chargeDamage: 20
-  damageCooldown: 0.5
+  webStack: 0
+  maxWebStacks: 3
+  webProjectileSpeed: 20
+  wasRecentlyHit: 0
+  biteDamage: 15
+  webProjectilePrefab: {fileID: 0}
+  swarmRecruitRange: 25
+  swarmMaxMembers: 6
+  swarmRadius: 3.5
+  swarmReformLerp: 8
+  swarmMemberSpeed: 6
+  swarmAttackCooldown: 1.2
+  angered: 0
+  hoverHeight: 2
+  hoverBobAmplitude: 0.15
+  hoverBobSpeed: 3
+  diveWindup: 0.15
+  diveSpeed: 18
+  diveArcHeight: 1
+  diveHitRadius: 0.6
+  diveDamage: 12
+  robotMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  swarmAutoIssueOrders: 1
 --- !u!195 &9145772680418755016
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -397,6 +426,7 @@ MonoBehaviour:
       Data3: -326204783
       Data4: 1927383931
     Path: event:/Bug/bug hurt with scream
+  enemyType: acidBeetle
 --- !u!114 &4493602745022670497
 MonoBehaviour:
   m_ObjectHideFlags: 0

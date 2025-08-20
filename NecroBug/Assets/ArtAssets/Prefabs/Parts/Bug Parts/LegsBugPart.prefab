@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8958019035381454838}
   - component: {fileID: 1409690868527388286}
   - component: {fileID: -8978120193029299006}
+  - component: {fileID: 2158569461191286388}
   m_Layer: 6
   m_Name: LegsBugPart
   m_TagString: Player
@@ -134,6 +135,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ad6fb87d4762746a5c5de8d9385ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2158569461191286388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067303973213785497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a3ba2c1da4bf74e96d0ae78ae7cbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCreate: {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
 --- !u!1001 &941866023870592343
 PrefabInstance:
   m_ObjectHideFlags: 0

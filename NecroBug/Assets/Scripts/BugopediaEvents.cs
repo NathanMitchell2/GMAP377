@@ -1,0 +1,12 @@
+using UnityEngine;
+
+public class BugopediaEvents : MonoBehaviour
+{
+    static public bool jetBeetleKilled = false;
+    static public bool acidBeetleKilled = false;
+    static public bool spiderKilled = false;
+    static public bool frenepedeDiscovered = false;
+    static public bool beeKilled = false;
+    static public bool queenKilled = false;
+
+}

@@ -257,7 +257,84 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dd8f165bba29f4794792b02b3e4b87, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3304453314099544526}
+    - targetCorrespondingSourceObject: {fileID: -2739039408061667453, guid: c0dd8f165bba29f4794792b02b3e4b87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2557213425862749304}
+    - targetCorrespondingSourceObject: {fileID: -2739039408061667453, guid: c0dd8f165bba29f4794792b02b3e4b87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7495249914219183306}
   m_SourcePrefab: {fileID: 100100000, guid: c0dd8f165bba29f4794792b02b3e4b87, type: 3}
+--- !u!1 &3481568950899623786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2739039408061667453, guid: c0dd8f165bba29f4794792b02b3e4b87, type: 3}
+  m_PrefabInstance: {fileID: 7615022544136364265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2557213425862749304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481568950899623786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa33ef4a18052b40b7b1ccd35d822a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentInteractionMode: 0
+  ParticleSpecies: 0
+  Friction: 0
+  ForceInteraction: 0
+  ForceInteractionCallback:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7495249914219183306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481568950899623786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29932643e258154cb05a101c43070ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InvertSDF: 0
+  SurfaceDistance: 0
+  ObjectRepresentation:
+    BoundingBoxCenter: {x: 0, y: 0, z: 0}
+    BoundingBoxSize: {x: 0, y: 0, z: 0}
+    ObjectTransform:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
+    CurrentRepresentationV3:
+      embeds: 
+      sd_grid: 
+      transform:
+        Q: 
+        T: 
+        S: 
+    HasRepresentationV3: 0
+    VoxelInfo:
+      embeds: []
+      grid: 
+    EmbeddingResolution: 0
+    GridResolution: 0
 --- !u!1 &7308382843541642680 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c0dd8f165bba29f4794792b02b3e4b87, type: 3}

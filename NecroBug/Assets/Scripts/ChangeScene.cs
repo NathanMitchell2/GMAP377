@@ -7,6 +7,7 @@ public class ChangeScene : MonoBehaviour
     [SerializeField] private string toModelTest = "Model Test";
     [SerializeField] private bool manualSwap = false;
     [SerializeField] private bool resetStuff = true;
+    [SerializeField] private int desiredCheckpoint = 0;
 
     public void LoadScene(string sceneName)
     {
@@ -29,9 +30,12 @@ public class ChangeScene : MonoBehaviour
     {
         if (resetStuff)
         {
-
             InstantAddItem.doCreate = true;
             CheckpointSystem.ResetStatics(resetStuff);
+        }
+        else
+        {
+            CheckpointSystem.Instance.SetCheck(desiredCheckpoint);
         }
         SceneManager.LoadScene(toModelTest);
     }

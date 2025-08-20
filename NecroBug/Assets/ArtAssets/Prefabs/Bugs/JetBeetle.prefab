@@ -137,50 +137,79 @@ MonoBehaviour:
   agent: {fileID: 604390345361080852}
   rb: {fileID: 186762200383192340}
   player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+  playerStats: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+  lineRenderer: {fileID: 0}
+  spitPoint: {fileID: 0}
+  carController: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  fieldOfView: 120
-  viewDistance: 25
-  rayCount: 30
   visionObstacles:
     serializedVersion: 2
     m_Bits: 0
-  noiseDetectionSpeed: 0
+  fieldOfView: 120
+  viewDistance: 25
   sightRange: 25
   attackRange: 10.5
   retreatRange: 10
+  noiseDetectionSpeed: 0
   walkPointRange: 25
   timeBetweenAttacks: 1
   idleDuration: 3
   chargeUpTime: 1.5
   jumpForce: 40
   maxPlayerSpeedCharge: 3
+  rayCount: 30
   patrolCenter: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   alreadyAttacked: 0
   isCharging: 0
   isInCombat: 0
-  lastPlayerPosition: {x: 0, y: 0, z: 0}
-  playerSpeed: 0
   playerInSightRange: 0
   playerInAttackRange: 0
+  playerSpeed: 0
+  attackCooldown: 0
+  damageCooldown: 0.5
   stamina: 100
   staminaDrainPerCharge: 30
   staminaRecoverRate: 10
-  attackCooldown: 0
+  lastPlayerPosition: {x: 0, y: 0, z: 0}
   enemyType: 0
-  spitPoint: {fileID: 0}
+  chargeDamage: 60
   acidProjectilePrefab: {fileID: 0}
   acidSpitForce: 20
-  playerStats: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
-  lineRenderer: {fileID: 0}
-  chargeDamage: 60
-  damageCooldown: 0.5
+  webStack: 0
+  maxWebStacks: 3
+  webProjectileSpeed: 20
+  wasRecentlyHit: 0
+  biteDamage: 15
+  webProjectilePrefab: {fileID: 0}
+  swarmRecruitRange: 25
+  swarmMaxMembers: 6
+  swarmRadius: 3.5
+  swarmReformLerp: 8
+  swarmMemberSpeed: 6
+  swarmAttackCooldown: 1.2
+  angered: 0
+  hoverHeight: 2
+  hoverBobAmplitude: 0.15
+  hoverBobSpeed: 3
+  diveWindup: 0.15
+  diveSpeed: 18
+  diveArcHeight: 1
+  diveHitRadius: 0.6
+  diveDamage: 12
+  robotMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  swarmAutoIssueOrders: 1
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -224,6 +253,7 @@ MonoBehaviour:
       Data3: -1461718862
       Data4: 1801014461
     Path: event:/Bug/bug hurt
+  enemyType: jetBeetle
 --- !u!114 &6631373023061904936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc6690f76cec534cada05c27b4fe41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 60
+  damage: 30
   type: 0
 --- !u!1001 &3914111548149233913
 PrefabInstance:

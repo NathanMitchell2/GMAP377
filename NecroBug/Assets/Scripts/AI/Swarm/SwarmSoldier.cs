@@ -9,6 +9,9 @@ public class SwarmSoldier : MonoBehaviour
     private bool _diving;
     private Vector3 _diveTarget;
 
+    // NEW: local velocity for smoothing
+    private Vector3 _smoothVel;
+
     public bool CanHoldFormation => !_charging && !_diving;
     public bool CanDive => !_charging && !_diving;
 
@@ -20,14 +23,33 @@ public class SwarmSoldier : MonoBehaviour
         {
             rb.isKinematic = true;
             rb.useGravity = false;
+#if UNITY_2022_3_OR_NEWER
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+#else
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+#endif
         }
     }
 
     public void MoveTo(Vector3 worldPos, float lerp)
     {
-        transform.position = Vector3.Lerp(transform.position, worldPos, Time.deltaTime * Mathf.Max(1f, lerp));
+        // Map your "lerp" factor to a SmoothDamp time. Higher lerp => snappier.
+        // Tweak the scaling (0.25f) to taste.
+        float smoothTime = Mathf.Clamp01(1f / Mathf.Max(0.001f, lerp)) * 0.25f;
+
+        // Cap the max speed so they don’t teleport if far away
+        float maxSpeed = Mathf.Lerp(6f, 24f, Mathf.Clamp01(lerp));
+
+        transform.position = Vector3.SmoothDamp(
+            transform.position,
+            worldPos,
+            ref _smoothVel,
+            smoothTime,
+            maxSpeed,
+            Time.deltaTime
+        );
     }
 
     public void Face(Vector3 forwardXZ)
@@ -42,7 +64,6 @@ public class SwarmSoldier : MonoBehaviour
         _chargeTimer = 0f;
         _chargeUpTime = chargeUp;
         _diveTarget = playerPos;
-
     }
 
     void Update()
@@ -84,15 +105,26 @@ public class SwarmSoldier : MonoBehaviour
 
         Vector3 seg = next - start;
         float segLen = Mathf.Max(seg.magnitude, 0.0001f);
-        if (Physics.SphereCast(start, _leader.diveHitRadius, seg / segLen, out var hit, segLen, _leader.robotMask))
+        Vector3 segDir = seg / segLen;
+
+        // Player hit -> damage + die (unchanged)
+        if (Physics.SphereCast(start, _leader.diveHitRadius, segDir, out var hit, segLen, _leader.robotMask))
         {
             DealDamageViaTeamSystem(hit.collider, _leader.diveDamage);
             Destroy(gameObject);
             return;
         }
 
+        // NEW: Ground hit along path -> die
+        if (Physics.SphereCast(start, _leader.diveHitRadius, segDir, out var gAlong, segLen, _leader.groundMask))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         transform.position = next;
 
+        // Fallback: reached ground level -> die
         if (next.y <= groundY + 0.05f)
         {
             Destroy(gameObject);

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SwarmUnit : MonoBehaviour
 {
-    private EnemyAI _leader;                 
+    private EnemyAI _leader;
     private readonly List<SwarmSoldier> _soldiers = new();
 
-    private readonly Dictionary<SwarmSoldier, float> _bobPhase = new();
+    // Per-soldier phase/jitter and a global orbit angle for smooth rotation
+    private readonly Dictionary<SwarmSoldier, float> _angleJitter = new();
+    private float _orbitAngle;
 
     public bool AllSoldiersDead => _soldiers.All(s => s == null);
 
@@ -15,8 +17,10 @@ public class SwarmUnit : MonoBehaviour
     {
         _leader = leader;
         _soldiers.Clear();
-        _bobPhase.Clear();
+        _angleJitter.Clear();
 
+        // Collect only objects named EXACTLY "Bee Soldier" (keeps your strict filter)
+        // (Matches original selection logic):contentReference[oaicite:1]{index=1}
         var trs = leader.GetComponentsInChildren<Transform>(true);
         foreach (var tr in trs)
         {
@@ -27,15 +31,28 @@ public class SwarmUnit : MonoBehaviour
             if (!s) s = tr.gameObject.AddComponent<SwarmSoldier>();
             s.Bind(leader);
 
+            // Detach from leader so hierarchy/parent transforms don't make motion rigid
+            // We retain the soldier's world position.
+            s.transform.SetParent(null, true);
+
             _soldiers.Add(s);
-            _bobPhase[s] = Random.value * Mathf.PI * 2f;
+            // Small per-soldier jitter to avoid perfect robotic spacing
+            _angleJitter[s] = Random.Range(-0.35f, 0.35f);
         }
 
+        // Start orbit neutral
+        _orbitAngle = 0f;
     }
 
     public void TickFormation()
     {
         PurgeNulls();
+        if (_soldiers.Count == 0 || _leader == null) return;
+
+        // Smooth orbit around leader; tweak speed via leader.swarmReformLerp as a multiplier
+        // If you prefer a dedicated field, add e.g. _leader.swarmOrbitSpeed.
+        float orbitSpeed = Mathf.Max(0.2f, _leader.swarmReformLerp) * 0.8f;
+        _orbitAngle += orbitSpeed * Time.deltaTime;
 
         int count = Mathf.Max(1, _soldiers.Count);
         for (int i = 0; i < _soldiers.Count; i++)
@@ -43,27 +60,28 @@ public class SwarmUnit : MonoBehaviour
             var s = _soldiers[i];
             if (!s || !s.CanHoldFormation) continue;
 
-            float angle = (Mathf.PI * 2f) * (i / (float)count);
-            Vector3 ring = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * _leader.swarmRadius;
+            // Base even spacing + global orbit + per-soldier jitter
+            float baseAngle = (Mathf.PI * 2f) * (i / (float)count);
+            float angle = baseAngle + _orbitAngle + _angleJitter[s];
 
-            Vector3 target = _leader.transform.position + ring;
+            // Ring around the leader at the SAME HEIGHT as the leader (no ground raycast/bobbing)
+            Vector3 ringXZ = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * _leader.swarmRadius;
+            Vector3 target = _leader.transform.position + ringXZ;
+            target.y = _leader.transform.position.y;  // lock altitude to leader
 
-            float y = target.y;
-            if (Physics.Raycast(target + Vector3.up * 20f, Vector3.down, out var hit, 60f, _leader.groundMask))
-                y = hit.point.y + _leader.hoverHeight;
-            else
-                y = _leader.transform.position.y + _leader.hoverHeight;
-
-            float phase = _bobPhase[s] += Time.deltaTime * _leader.hoverBobSpeed;
-            y += Mathf.Sin(phase) * _leader.hoverBobAmplitude;
-
-            target.y = y;
-
+            // Smooth follow toward ring position (smooth inside SwarmSoldier.MoveTo)
             s.MoveTo(target, _leader.swarmReformLerp);
 
-            Vector3 outward = s.transform.position - _leader.transform.position; outward.y = 0;
-            if (outward.sqrMagnitude > 0.0001f)
-                s.Face(outward.normalized);
+            // Face tangentially along the orbit for a more “alive” feel
+            // Tangent = rotate radial by 90deg in XZ plane
+            Vector3 radial = s.transform.position - _leader.transform.position; radial.y = 0f;
+            if (radial.sqrMagnitude > 0.0001f)
+            {
+                Vector3 tangent = new Vector3(-radial.z, 0f, radial.x).normalized; // 90° left-hand
+                // Blend tangent facing with slight outward bias to keep a dynamic posture
+                Vector3 faceDir = Vector3.Slerp(tangent, radial.normalized, 0.2f);
+                s.Face(faceDir);
+            }
         }
     }
 

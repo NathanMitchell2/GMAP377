@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
-{   
+{
     // ========== COMPONENT REFERENCES ==========
+    [SerializeField] private string currentStateName;
     public NavMeshAgent agent;
     public Rigidbody rb;
     public Transform player;
@@ -160,8 +161,9 @@ public class EnemyAI : MonoBehaviour
     // ========= UPDATE LOOP =========
     private void Update()
     {
-        //Debug.Log(currentState);
-        RegenerateStamina();
+        currentStateName = currentState?.GetType().Name ?? "null";
+    //Debug.Log(currentState);
+    RegenerateStamina();
 
         if (attackCooldown > 0f)
             attackCooldown -= Time.deltaTime;

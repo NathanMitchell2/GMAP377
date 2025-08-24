@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class OrbWeaverAttackState : IState
 {
     private Vector3 retreatTarget;
     private float originalSpeed;
+
+    [SerializeField]
+    private string pounceSound = "event:/Spider/Bite";
 
     public void Enter(EnemyAI enemy)
     {
@@ -52,6 +56,8 @@ public class OrbWeaverAttackState : IState
         Vector3 start = enemy.transform.position;
         Vector3 end = enemy.player.position + Vector3.up * 1.2f;
         enemy.rb.linearVelocity = CalculateParabolicJump(start, end, 4f, 0.8f);
+        RuntimeManager.PlayOneShot(pounceSound, Camera.main.transform.position);
+        Debug.Log("pounce sound played");
         yield return new WaitForSeconds(0.8f);
 
         enemy.isCharging = true;

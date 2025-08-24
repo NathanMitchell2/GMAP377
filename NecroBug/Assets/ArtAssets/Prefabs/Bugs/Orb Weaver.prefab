@@ -761,6 +761,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   swarmAutoIssueOrders: 1
+  spiderLaser: {fileID: 0}
+  laserCharge: {fileID: 0}
+  laserSparkle: {fileID: 0}
 --- !u!120 &6953699925495376551
 LineRenderer:
   serializedVersion: 2
@@ -950,11 +953,12 @@ MonoBehaviour:
   hitFlash: {fileID: 404746511652296621}
   damageSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 913406459
+      Data2: 1306540302
+      Data3: -305337946
+      Data4: -1081016221
+    Path: event:/Spider/Hurt
+  enemyType: 
 --- !u!1 &1086234478188419154
 GameObject:
   m_ObjectHideFlags: 0

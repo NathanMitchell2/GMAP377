@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class OrbWeaverAgroState : IState
 {
     private float shootInterval = 1.5f;
     private float timer;
+
+    [SerializeField]
+    private string orbShotSound = "event:/Spider/web";
 
     public void Enter(EnemyAI enemy)
     {
@@ -37,6 +41,9 @@ public class OrbWeaverAgroState : IState
             timer -= shootInterval;
             // Fire and strafe, using coroutine to manage timing
             ShootWeb(enemy);
+            RuntimeManager.PlayOneShot(orbShotSound, Camera.main.transform.position);
+            Debug.Log("orb shot sound played");
+
         }
 
         // Transition to pounce when threshold reached
@@ -69,6 +76,7 @@ public class OrbWeaverAgroState : IState
         web.GetComponent<WebProjectile>().spider = enemy;
         Vector3 target = enemy.player.position + Vector3.up * 1.5f;
         rb.linearVelocity = (target - enemy.spitPoint.position).normalized * enemy.webProjectileSpeed;
+        
         // Actual hit counting should occur in WebProjectile.OnCollision
     }
 

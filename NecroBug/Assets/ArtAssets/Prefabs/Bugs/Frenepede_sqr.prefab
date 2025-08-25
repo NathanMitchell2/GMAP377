@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3618057068565068325}
   - component: {fileID: 6456195621468470351}
   - component: {fileID: 574803486567654961}
-  - component: {fileID: 5877277933493332573}
   - component: {fileID: 7445689555040809222}
+  - component: {fileID: 4488800553156239793}
   m_Layer: 0
   m_Name: Frenepede_sqr
   m_TagString: MovingPlat
@@ -334,8 +334,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2273865105386096622}
   m_Mesh: {fileID: 0}
---- !u!64 &5877277933493332573
-MeshCollider:
+--- !u!114 &7445689555040809222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273865105386096622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0666f2d7507be428609668f30c194a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &4488800553156239793
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -352,22 +364,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
---- !u!114 &7445689555040809222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2273865105386096622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0666f2d7507be428609668f30c194a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Size: {x: 14, y: 15.037853, z: 40}
+  m_Center: {x: 1.8338545e-26, y: 0.5189266, z: -8.595843e-28}
 --- !u!1001 &4935542798595582710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -416,6 +415,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9598355e22bb4bf4db83b720413e9aa7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b4002d5807e93d449c172a5db645fbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 9598355e22bb4bf4db83b720413e9aa7, type: 3}
       propertyPath: m_Name
       value: frenipedeMiddle
@@ -478,10 +481,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8440594325484252691, guid: 1acf738764ad9b842a1ce0dde4e0b0ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 758d48469c131524aad378965726391a, type: 2}
+    - target: {fileID: -7886333102234487374, guid: 1acf738764ad9b842a1ce0dde4e0b0ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3878876973ee9914faed6fed615dd79f, type: 2}
+    - target: {fileID: -6755321902585923197, guid: 1acf738764ad9b842a1ce0dde4e0b0ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 758d48469c131524aad378965726391a, type: 2}
     - target: {fileID: 919132149155446097, guid: 1acf738764ad9b842a1ce0dde4e0b0ac, type: 3}
       propertyPath: m_Name
       value: frenipedeFront
       objectReference: {fileID: 0}
+    - target: {fileID: 8028520689744615374, guid: 1acf738764ad9b842a1ce0dde4e0b0ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3878876973ee9914faed6fed615dd79f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -540,6 +559,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c5ac3d42fbc21b4a83a0819b0ed1ce7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fe211c65732c9734d827953059988887, type: 2}
     - target: {fileID: 919132149155446097, guid: 0c5ac3d42fbc21b4a83a0819b0ed1ce7, type: 3}
       propertyPath: m_Name
       value: frenipedeBack

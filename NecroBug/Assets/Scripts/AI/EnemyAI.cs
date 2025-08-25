@@ -102,6 +102,8 @@ public class EnemyAI : MonoBehaviour
     public int diveDamage = 12;                // damage to robot on hit
     public LayerMask robotMask;                // set to your robot/player layer
     public LayerMask groundMask;               // set to ground layer
+    public GameObject leaderExplosion;
+    public GameObject soldierExplosion;
 
     [Header("Leader Orders (optional auto)")]
     public bool swarmAutoIssueOrders = true;   // auto-issue attack waves

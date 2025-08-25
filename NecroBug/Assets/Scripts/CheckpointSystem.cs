@@ -33,7 +33,7 @@ public class CheckpointSystem : MonoBehaviour
     }
 
     public void SetCheck(int check){
-        if (check >= 0 && check < checkpointList.Length)
+        //if (check >= 0 && check < checkpointList.Length)
         {
             currentCheck = check;
             managerMemento = PlayerIdentifier.GetPlayer().GetComponent<StorageManager>().CreateMemento();
@@ -44,6 +44,8 @@ public class CheckpointSystem : MonoBehaviour
 
     public void PlayerToCheckpoint ()
     {
+        if (currentCheck >= 0 && currentCheck < checkpointList.Length)
+            return;
         BuiltBotStorage storage = PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>();
         GameObject player = PlayerIdentifier.GetPlayer().gameObject;
 

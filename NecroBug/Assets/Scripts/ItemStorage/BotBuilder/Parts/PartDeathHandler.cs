@@ -14,8 +14,8 @@ public class PartDeathHandler : MonoBehaviour
     }
     public void Death()
     {
-        if (GetComponent<carControler>() != null)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //if (GetComponent<carControler>() != null)
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         part.GetMediator().DestroyItem();
         builder.UpdateBuilt();

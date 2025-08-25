@@ -8128,6 +8128,10 @@ PrefabInstance:
       propertyPath: 'wheelList.Array.data[5]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8224301065842759806, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
+      propertyPath: referenceObject
+      value: 
+      objectReference: {fileID: 1961697394}
     - target: {fileID: 8683380946242739185, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -8156,14 +8160,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
-      insertIndex: -1
+      insertIndex: 11
       addedObject: {fileID: 595512108}
     - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
-      insertIndex: -1
+      insertIndex: 12
       addedObject: {fileID: 595512111}
-    - targetCorrespondingSourceObject: {fileID: 1959910666126545718, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 595512121}
   m_SourcePrefab: {fileID: 100100000, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
 --- !u!4 &482691561 stripped
 Transform:
@@ -10411,19 +10412,6 @@ MonoBehaviour:
   target: {fileID: 0}
   lineRenderer: {fileID: 0}
   shootCooldown: 0
---- !u!114 &595512121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595512099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457d546c599f4824b8fc2155c065f485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  referenceObject: {fileID: 1961697394}
 --- !u!1001 &596814981
 PrefabInstance:
   m_ObjectHideFlags: 0

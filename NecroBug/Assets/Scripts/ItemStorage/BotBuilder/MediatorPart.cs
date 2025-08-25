@@ -328,7 +328,7 @@ public class MediatorPart : InventoryItem
     }
     public void OnDestroy()
     {
-        Debug.Log("MediatorPart OnDestroy, auto cleanup may have unexpected behavior");
+        // Debug.Log("MediatorPart OnDestroy, auto cleanup may have unexpected behavior");
         DestroyItem();
     }
     public override void DestroyItem()

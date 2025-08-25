@@ -7,7 +7,6 @@ public class SpiderLegTestMovement : MonoBehaviour
     public float floatForce = 10f;
     public float floatDamping = 5f;
     public LayerMask groundMask;
-    public float maxSlopeAngle = 45f;
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -19,11 +18,8 @@ public class SpiderLegTestMovement : MonoBehaviour
     Vector3 lastMoveDirection = Vector3.forward;
     void Start()
     {
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        rb.drag = 2f;
-        rb.angularDrag = 5f;
     }
 
     void Update()
@@ -55,12 +51,9 @@ public class SpiderLegTestMovement : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, floatingHeight * 2f, groundMask))
         {
-            float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
-            if (slopeAngle > maxSlopeAngle) return;
-
             float currentHeight = hit.distance;
             float difference = floatingHeight - currentHeight;
-            float verticalSpeed = rb.velocity.y;
+            float verticalSpeed = rb.linearVelocity.y;
             float force = (difference * floatForce) - (verticalSpeed * floatDamping);
 
             rb.AddForce(Vector3.up * force, ForceMode.Acceleration);
@@ -104,7 +97,7 @@ public class SpiderLegTestMovement : MonoBehaviour
             if (forward.sqrMagnitude > 0.001f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(forward, groundNormal);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
             }
         }
     }

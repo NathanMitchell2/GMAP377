@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HornDamageMultiplier : MonoBehaviour
@@ -36,7 +35,7 @@ public class HornDamageMultiplier : MonoBehaviour
             }
             else
             {
-                GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(new List<GameObject> { gameObject }));
+                GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(gameObject));
             }
             if (collision.transform.GetComponent<EnemyHealth>()) 
                 collision.transform.GetComponent<EnemyHealth>().dealDamage(damage);

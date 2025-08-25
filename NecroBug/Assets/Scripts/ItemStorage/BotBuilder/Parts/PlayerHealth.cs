@@ -70,22 +70,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (inventoryItem != null)
         {
-            hitFlash.playSpeed = GetFlashSpeed();
-        }
-    }
-
-    private float GetFlashSpeed()
-    {
-        return (maxHealth / health) - 1;
-    }
-    void DoDeath()
-    {
-        Debug.Log("Part is deceased");
-        SendMessage("Death");
-        health = 0;
-        if (parent != null && parent.Has(this))
-        {
-            parent.Remove(this);
+            inventoryItem.SetHealth(health);
+            HealthCheck();
         }
         if (damage)
         {
@@ -98,159 +84,94 @@ public class PlayerHealth : MonoBehaviour
             kill = false;
         }
     }
-    public void Initialize(InventoryItem item)
-    {
-        inventoryItem = item;
-        health = item.GetHealth();
-        maxHealth = item.GetMaxHealth();
-    }
-
-
-    public void ApplyDirectDamage(float damage)
-    {
-        float remaining = damage;
-        health -= remaining;
-
-        if (health <= 0)
-        {
-            remaining = -health;
-            DoDeath();
-
-            if (doOverdamage && parent != null)
-                parent.ApplyDirectDamage(remaining);
-        }
-    }
-
-    public void Heal(float healing)
-    {
-        health += healing;
-        if (health > maxHealth)
-            health = maxHealth;
-    }
-
-    private void HealthCheck()
-    {
-        if (health < 1)
-        {
-            DoDeath();
-        }
-
-        if(health != 0 && hitFlash != null)
-        {
-            hitFlash.playSpeed = GetFlashSpeed();
-        }
-    }
-
-    private float GetFlashSpeed()
-    {
-        return (maxHealth / health) - 1;
-    }
-    void DoDeath()
-    {
-        Debug.Log("Part is deceased");
-        SendMessage("Death");
-        health = 0;
-        if (parent != null && parent.Has(this))
-        {
-            parent.Remove(this);
-        }
-    }
     public float GetHealth() { return health; }
-    public void SetHealth(float health) { this.health = health; }
+    public void SetHealth(float health) {  this.health = health; }
     public int GetPriority() { return priority; }
     public float GetDistribute() { return distributeFactor; }
     public PlayerHealth GetParent() { return parent; }
 
-    public void Remove(PlayerHealth distribute)
-    {
-        if (distributes.Contains(distribute))
-            distributes.Remove(distribute);
-    }
+    public void Remove(PlayerHealth distribute) { distributes.Remove(distribute); }
     public bool Has(PlayerHealth distribute) { return distributes.Contains(distribute); }
 
-    /* public float TakeDamage(float damage)
-   {
-       float overdamage = DistributeDamage(damage);
 
-       if (overdamage != 0 && doOverdamage && parent != null)
-       {
-           //Can fit Destroy trigger here?
-           //parent.Remove(this);
-           parent.TakeDamage(overdamage);
-           return 0;
-       }
-       else
-       {
-           return overdamage;
-       }
-   }
+    public float TakeDamage(float damage)
+    {
+        float overdamage = DistributeDamage(damage);
 
-   private float DistributeDamage(float damage)
-   {
-       float maxDistrubute = 0;
+        if (overdamage != 0 && doOverdamage && parent != null)
+        {
+            //Can fit Destroy trigger here?
+            //parent.Remove(this);
+            parent.TakeDamage(overdamage);
+            return 0;
+        }
+        else
+        {
+            return overdamage;
+        }
+    }
 
-       foreach (PlayerHealth p in distributes)
-       {
-           maxDistrubute += p.GetDistribute();
-       }
+    private float DistributeDamage(float damage)
+    {
+        float maxDistrubute = 0;
 
-       float selfDistribute = Mathf.Max(1f - maxDistrubute, 0f);
-       maxDistrubute += selfDistribute;
+        foreach (PlayerHealth p in distributes)
+        {
+            maxDistrubute += p.GetDistribute();
+        }
 
-       while (damage > 0)
-       {
-           bool backdamageFlag = true;
+        float selfDistribute = Mathf.Max(1f - maxDistrubute, 0f);
+        maxDistrubute += selfDistribute;
 
-           float tDamage = damage;
+        while (damage > 0)
+        {
+            bool backdamageFlag = true;
 
-           int intialCount = distributes.Count;
+            float tDamage = damage;
 
-           for(int i = 0; i < distributes.Count; i++) {
-               if(distributes.Count != intialCount)
-               {
-                   i -= intialCount - distributes.Count;
-                   intialCount = distributes.Count;
-               }
-               PlayerHealth p = distributes[i];
+            int intialCount = distributes.Count;
 
-               float dDamage = tDamage * (p.GetDistribute() / maxDistrubute);
+            for(int i = 0; i < distributes.Count; i++) {
+                if(distributes.Count != intialCount)
+                {
+                    i -= intialCount - distributes.Count;
+                    intialCount = distributes.Count;
+                }
+                PlayerHealth p = distributes[i];
 
-               float backdamage = p.DistributeDamage(dDamage);
+                float dDamage = tDamage * (p.GetDistribute() / maxDistrubute);
 
-               if (backdamage == 0)
-                   backdamageFlag = false;
+                float backdamage = p.DistributeDamage(dDamage);
 
-               damage = damage - dDamage + backdamage;
-           }
+                if (backdamage == 0)
+                    backdamageFlag = false;
 
-           health -= tDamage * (selfDistribute / maxDistrubute);
-           damage -= tDamage * (selfDistribute / maxDistrubute);
+                damage = damage - dDamage + backdamage;
+            }
+            
+            health -= tDamage * (selfDistribute / maxDistrubute);
+            damage -= tDamage * (selfDistribute / maxDistrubute);
 
-           //if (backdamageFlag)
-           //    health -= tDamage * (1 - (selfDistribute / maxDistrubute));
+            //if (backdamageFlag)
+            //    health -= tDamage * (1 - (selfDistribute / maxDistrubute));
 
-           if (health < 0)
-           {
-               float temp = health;
-               DoDeath();
-               return 0;
-               return damage - temp;
-           }
-       }
-       if (health < 0)
-       {
-           DoDeath();
-       }
-       return 0;
-   }
-  */
-    /* public float Heal(float healing)
-   {
+            if (health < 0)
+            {
+                float temp = health;
+                DoDeath();
+                return 0;
+                return damage - temp;
+            }
+        }
+        if (health < 0)
+        {
+            DoDeath();
+        }
+        return 0;
+    }
 
-       health += healing;
-       if (health > maxHealth)
-           health = maxHealth;
-
+    public float Heal(float healing)
+    {
         health += healing;
 
         if (health > maxHealth)

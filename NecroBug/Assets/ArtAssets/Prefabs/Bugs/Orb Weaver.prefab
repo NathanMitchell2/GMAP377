@@ -685,6 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120f148602b33248b03b265634f4f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStateName: 
   agent: {fileID: 8157150256566750693}
   rb: {fileID: 3741564547394915647}
   player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
@@ -761,6 +762,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   swarmAutoIssueOrders: 1
+  spiderLaser: {fileID: 0}
+  laserCharge: {fileID: 0}
+  laserSparkle: {fileID: 0}
 --- !u!120 &6953699925495376551
 LineRenderer:
   serializedVersion: 2
@@ -933,7 +937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 3997798886352531281, guid: 83ee1216286031342add0283ab574ad8, type: 3}
+  - {fileID: 2262796982022293376, guid: b92ca209863cc71408449e23db056142, type: 3}
+  - {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
 --- !u!114 &6467516036482518182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,11 +955,12 @@ MonoBehaviour:
   hitFlash: {fileID: 404746511652296621}
   damageSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 913406459
+      Data2: 1306540302
+      Data3: -305337946
+      Data4: -1081016221
+    Path: event:/Spider/Hurt
+  enemyType: 
 --- !u!1 &1086234478188419154
 GameObject:
   m_ObjectHideFlags: 0

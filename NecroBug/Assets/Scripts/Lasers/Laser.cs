@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Laser : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Laser : MonoBehaviour
     int maxBounces = 100;
 
     LaserSensor prevStruckLaserSensor = null;
+
+    [SerializeField]
+    public string laserSound = "event:/Spider/Spider charge and Laser";
 
     private void Awake()
     {
@@ -65,7 +69,9 @@ public class Laser : MonoBehaviour
         var ray = new Ray(origin, direction);
 
         bool didHit = Physics.Raycast(ray, out RaycastHit hitInfo, farDistance);
-
+        
+        RuntimeManager.PlayOneShot(laserSound, Camera.main.transform.position);
+        Debug.Log("laser sound played");
         if (!didHit)
         {
             var endPoint = origin + direction * farDistance;

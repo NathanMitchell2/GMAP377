@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638911050269783874
+  lastModified: 638916653165165270
   FileSizes: []
   Exists: 1
 --- !u!114 &-8406969917288455444
@@ -145,8 +145,8 @@ MonoBehaviour:
     Data3: -1132783180
     Data4: -1990037338
   Banks:
-  - {fileID: 5190698032619869694}
   - {fileID: -8564774612625581533}
+  - {fileID: 5190698032619869694}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -218,9 +218,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Spider/Walk
+  m_Name: event:/Spider/walk
   m_EditorClassIdentifier: 
-  Path: event:/Spider/Walk
+  Path: event:/Spider/walk
   Guid:
     Data1: -1209585722
     Data2: 1119119524
@@ -235,6 +235,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
+--- !u!114 &-6057595916461756065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Spider/web
+  m_EditorClassIdentifier: 
+  Path: event:/Spider/web
+  Guid:
+    Data1: -221195932
+    Data2: 1294554159
+    Data3: 1827176838
+    Data4: -2101183722
+  Banks:
+  - {fileID: -8564774612625581533}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
 --- !u!114 &-4813041802533928783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,10 +574,10 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638911045270355342
+  lastModified: 638916653164836535
   FileSizes:
   - Name: 
-    Value: 2562
+    Value: 2606
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -607,13 +634,14 @@ MonoBehaviour:
   - {fileID: -976398717217539204}
   - {fileID: 6851923876269519522}
   - {fileID: -3832166265686370953}
+  - {fileID: -6057595916461756065}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8576927007208101844}
   StringsBanks:
   - {fileID: -370053043916492027}
   cacheVersion: 131847
-  cacheTime: 638911050269783874
+  cacheTime: 638916653165165270
   SerializableEventsDict:
   - key: event:/Bug/bug hurt with scream
     index: 0
@@ -673,7 +701,7 @@ MonoBehaviour:
     index: 27
   - key: event:/Other/viscera
     index: 28
-  - key: event:/Spider/Walk
+  - key: event:/Spider/walk
     index: 29
   - key: event:/Other/bugpedia page
     index: 30
@@ -689,6 +717,8 @@ MonoBehaviour:
     index: 35
   - key: event:/Acid Cave/acid waterfall
     index: 36
+  - key: event:/Spider/web
+    index: 37
 --- !u!114 &440834851746867146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,7 +977,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/test.bank
   Name: test
   StudioPath: bank:/test
-  lastModified: 638911039818042421
+  lastModified: 638905224753460784
   FileSizes: []
   Exists: 1
 --- !u!114 &5780789331237135346
@@ -1321,7 +1351,7 @@ MonoBehaviour:
   Path: Assets/ArtAssets/Audio/Banks/Desktop/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638911045270343576
+  lastModified: 638905224753119123
   FileSizes: []
   Exists: 1
 --- !u!114 &8947735187080082964

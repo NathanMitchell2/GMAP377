@@ -236,6 +236,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Part is deceased");
         SendMessage("Death");
+        menuChanger.SetMenu(6);
         health = 0;
         if (parent != null && parent.Has(this))
         {

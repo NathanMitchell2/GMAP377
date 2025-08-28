@@ -137,7 +137,7 @@ MonoBehaviour:
   agent: {fileID: 604390345361080852}
   rb: {fileID: 186762200383192340}
   player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
-  playerStats: {fileID: 1631552486043401826, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
+  playerStats: {fileID: 0}
   lineRenderer: {fileID: 0}
   spitPoint: {fileID: 0}
   carController: {fileID: 0}
@@ -210,6 +210,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   swarmAutoIssueOrders: 1
+  spiderLaser: {fileID: 0}
+  laserCharge: {fileID: 0}
+  laserSparkle: {fileID: 0}
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -267,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 3997798886352531281, guid: 57a878ccd85c45744a2dea4c0433f60a, type: 3}
-  - {fileID: 2025769284591637103, guid: d3bb72758e9efda45b5e61c903295b14, type: 3}
+  - {fileID: 2262796982022293376, guid: d2ba898e9ae37254385a81b82e1596e0, type: 3}
+  - {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
 --- !u!65 &1786034286995834412
 BoxCollider:
   m_ObjectHideFlags: 0

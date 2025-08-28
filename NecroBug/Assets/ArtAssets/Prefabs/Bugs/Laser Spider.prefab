@@ -207,6 +207,7 @@ MonoBehaviour:
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 14e24f8a08f675e488a42f3bca91e3a6, type: 2}
+  laserSound: event:/Spider/Spider charge and Laser
 --- !u!1 &421220369572914115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,11 +4243,11 @@ MonoBehaviour:
   hitFlash: {fileID: 9151201760976535364}
   damageSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 913406459
+      Data2: 1306540302
+      Data3: -305337946
+      Data4: -1081016221
+    Path: event:/Spider/Hurt
   enemyType: 
 --- !u!114 &9151201760976535364
 MonoBehaviour:
@@ -4277,7 +4278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 3997798886352531281, guid: 5fa1d32148ac4384488eea7b009cb63b, type: 3}
+  - {fileID: 2262796982022293376, guid: 0c22a78eebb343a4abe6d9c31db54f7c, type: 3}
+  - {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
 --- !u!1 &7447064988210673916
 GameObject:
   m_ObjectHideFlags: 0

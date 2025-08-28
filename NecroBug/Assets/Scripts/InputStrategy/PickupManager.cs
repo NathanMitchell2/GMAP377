@@ -1,11 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-
-    private List<Collider> pickups = new List<Collider>();
+    private Dictionary<GameObject, int> pickups = new Dictionary<GameObject, int>();
 
     private InputManager manager;
     private StorageManager storageManager;
@@ -14,34 +14,47 @@ public class PickupManager : MonoBehaviour
         manager = transform.parent.GetComponent<InputManager>();
         storageManager = GetComponentInParent<StorageManager>();
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider c)
     {
+        GameObject other = c.gameObject;
         if(other.GetComponent<PickupIdentifier>())
         {
-            //Destroy(other);
-            pickups.Add(other);
+            if (pickups.ContainsKey(other))
+                pickups[other]++;
+            else
+                pickups.Add(other, 1);
         }
     }
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider c)
     {
-        if(other.GetComponent<PickupIdentifier>())
+        GameObject other = c.gameObject;
+        if (other.GetComponent<PickupIdentifier>())
         {
-            pickups.Remove(other);
+            if (pickups[other] == 0)
+                pickups.Remove(other);
+            else
+                pickups[other]--;
         }
     }
 
     public void pickup()
     {
-        foreach(Collider pickup in pickups)
+        foreach(var kvp in pickups)
         {
             //pickups.Remove(pickup);
+            GameObject pickup = kvp.Key;
             GameObject item = pickup.GetComponent<PickupIdentifier>().item;
-            if(item != null)
+            if (item != null)
             {
                 ItemMemento mem = item.GetComponent<InventoryItem>().CreateMemento();
 
                 storageManager.AddItem(mem, StorageManager.StorageKey.Inventory);
             }
+            else if (pickup.GetComponent<BodyPickup>() != null) {
+                pickup.GetComponent<BodyPickup>().Pickup();
+                continue;
+            }
+            
             Destroy(pickup.gameObject);
             //pickup.transform.parent = transform.parent;
             //manager.SetStrat(pickup.GetComponent<InputStrategy>());

@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
-{   
+{
     // ========== COMPONENT REFERENCES ==========
+    [SerializeField] private string currentStateName;
     public NavMeshAgent agent;
     public Rigidbody rb;
     public Transform player;
@@ -101,6 +102,8 @@ public class EnemyAI : MonoBehaviour
     public int diveDamage = 12;                // damage to robot on hit
     public LayerMask robotMask;                // set to your robot/player layer
     public LayerMask groundMask;               // set to ground layer
+    public GameObject leaderExplosion;
+    public GameObject soldierExplosion;
 
     [Header("Leader Orders (optional auto)")]
     public bool swarmAutoIssueOrders = true;   // auto-issue attack waves
@@ -160,8 +163,9 @@ public class EnemyAI : MonoBehaviour
     // ========= UPDATE LOOP =========
     private void Update()
     {
-        //Debug.Log(currentState);
-        RegenerateStamina();
+        currentStateName = currentState?.GetType().Name ?? "null";
+    //Debug.Log(currentState);
+    RegenerateStamina();
 
         if (attackCooldown > 0f)
             attackCooldown -= Time.deltaTime;
@@ -196,9 +200,6 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = inView;
         playerInAttackRange = distanceToPlayer <= attackRange;
 
-        if (enemyType == EnemyType.Bee && angered)
-            ChangeState(new TransitionState(0.5f,new SwarmLeaderState()));
-
         currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
     }
 
@@ -228,7 +229,7 @@ public class EnemyAI : MonoBehaviour
             case EnemyType.JetBeetle:
                 return new ChargeAttackState();
             case EnemyType.Bee:
-                return new SwarmLeaderState();
+                return new SwarmAttackState();
             case EnemyType.LaserSpider:
                 return new LaserSpiderAttackState();
             default:

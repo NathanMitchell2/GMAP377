@@ -111,12 +111,14 @@ public class SwarmAttackState : IState
                 if (parentHealth != null) list.Add(parentHealth);
             }
             if (list.Count > 0) DamageObject.Damage(enemy.diveDamage, list[0]);
+            Object.Instantiate(enemy.leaderExplosion, enemy.transform.position, Quaternion.identity);
             Object.Destroy(enemy.gameObject);
             return;
         }
 
         if (Physics.SphereCast(start, enemy.diveHitRadius, segDir, out var gAlong, segLen, enemy.groundMask))
         {
+            Object.Instantiate(enemy.leaderExplosion, enemy.transform.position, Quaternion.identity);
             Object.Destroy(enemy.gameObject);
             return;
         }
@@ -128,6 +130,7 @@ public class SwarmAttackState : IState
 
         if (next.y <= groundY + 0.05f)
         {
+            Object.Instantiate(enemy.leaderExplosion, enemy.transform.position, Quaternion.identity);
             Object.Destroy(enemy.gameObject);
             return;
         }

@@ -111,6 +111,7 @@ public class SwarmSoldier : MonoBehaviour
         if (Physics.SphereCast(start, _leader.diveHitRadius, segDir, out var hit, segLen, _leader.robotMask))
         {
             DealDamageViaTeamSystem(hit.collider, _leader.diveDamage);
+            Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
@@ -118,6 +119,7 @@ public class SwarmSoldier : MonoBehaviour
         // NEW: Ground hit along path -> die
         if (Physics.SphereCast(start, _leader.diveHitRadius, segDir, out var gAlong, segLen, _leader.groundMask))
         {
+            Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
@@ -127,6 +129,7 @@ public class SwarmSoldier : MonoBehaviour
         // Fallback: reached ground level -> die
         if (next.y <= groundY + 0.05f)
         {
+            Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }

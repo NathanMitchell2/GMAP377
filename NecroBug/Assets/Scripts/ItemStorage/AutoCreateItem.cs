@@ -20,7 +20,8 @@ public class AutoCreateItem : MonoBehaviour
 
             Destroy(temp);
 
-            gameObject.AddComponent<InventoryItem>().RestoreMemento(mem);
+            Component comp = gameObject.AddComponent(mem.GetItemType());
+            ((InventoryItem)comp).RestoreMemento(mem);
         }
         Destroy(this);
     }

@@ -148,7 +148,7 @@ public class carControler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MovingPlat"))
         {
-            Debug.Log("mobin");   
+            //Debug.Log("mobin");   
 
             transform.SetPositionAndRotation(transform.position + other.gameObject.GetComponent<MovingPlatform>().GetVelocity(), transform.rotation);
             

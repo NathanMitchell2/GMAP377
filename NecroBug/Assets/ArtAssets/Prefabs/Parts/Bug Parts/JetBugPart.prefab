@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7613185335547546705}
   - component: {fileID: 8882492452500397492}
   - component: {fileID: -5847884384598443508}
+  - component: {fileID: 234749754623011881}
   m_Layer: 6
   m_Name: JetBugPart
   m_TagString: Player
@@ -85,9 +86,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6d6f5f89397e49a43f925f5ddc395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   priority: 1
   distributeFactor: 0.7
   doOverdamage: 0
+  damage: 0
+  kill: 0
 --- !u!114 &7613185335547546705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalFilter: {fileID: 8169357341937754130}
-  hitFlashMaterial: {fileID: 2100000, guid: d2653a684c4a3634bb5f7c35898524d8, type: 2}
+  hitFlashMaterial: {fileID: 2100000, guid: 6e839c7a50ab08249a1ffd23d7c1d7aa, type: 2}
   flashDuration: 1e+38
   playSpeed: 1
 --- !u!114 &8882492452500397492
@@ -129,6 +133,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToCreate: {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
+--- !u!114 &234749754623011881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788982746073355530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143cd18064d6107459ebd6e254dd43c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 0}
+  hitFlashMaterial: {fileID: 2100000, guid: 6e839c7a50ab08249a1ffd23d7c1d7aa, type: 2}
+  maxFlashPerSecond: 10
 --- !u!1001 &2894438859267003309
 PrefabInstance:
   m_ObjectHideFlags: 0

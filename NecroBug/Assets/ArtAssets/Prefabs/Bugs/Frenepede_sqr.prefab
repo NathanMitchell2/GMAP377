@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 574803486567654961}
   - component: {fileID: 7445689555040809222}
   - component: {fileID: 4488800553156239793}
+  - component: {fileID: 3151817853940459413}
   m_Layer: 0
   m_Name: Frenepede_sqr
   m_TagString: MovingPlat
@@ -367,6 +368,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14, y: 15.037853, z: 40}
   m_Center: {x: 1.8338545e-26, y: 0.5189266, z: -8.595843e-28}
+--- !u!114 &3151817853940459413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273865105386096622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 250282799
+      Data2: 1149164376
+      Data3: 484035772
+      Data4: -1542711582
+    Path: event:/Acid Cave/frenepede
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &4935542798595582710
 PrefabInstance:
   m_ObjectHideFlags: 0

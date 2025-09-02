@@ -253,10 +253,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: -50
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 75.45
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -609,7 +609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5334408270231336032}
   - component: {fileID: 450642931166006510}
-  - component: {fileID: 5710568927527031251}
+  - component: {fileID: 7370468973429444109}
   m_Layer: 5
   m_Name: BugRender
   m_TagString: Untagged
@@ -626,7 +626,7 @@ RectTransform:
   m_GameObject: {fileID: 1535782258959215215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2393, y: 2.4331, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1648367552425732406}
@@ -644,7 +644,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535782258959215215}
   m_CullTransparentMesh: 1
---- !u!114 &5710568927527031251
+--- !u!114 &7370468973429444109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1535782258959215215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -664,77 +664,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bug Render
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 447370be205decc499c78c2561c4be1b, type: 2}
-  m_sharedMaterial: {fileID: 6122534638808541047, guid: 447370be205decc499c78c2561c4be1b, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  m_Sprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1593668315533137253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b105c5c2df9947f4e954b62666c3b334, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6814ad88d82cf0a4b926313ed7274a4c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1431,9 +1370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partDescriptionTextObj: {fileID: 7630085114234049823}
-  partDescriptionText: An eye from the Spider. Seems to be able to discharge large
-    amounts of light energy.\n\nUpon use, the eye shoots a laser beam that can activate
-    crystals.
+  partDescriptionText: An eye from the Laser Spider. Seems to be able to discharge
+    large amounts of light energy.\n\nUpon use, the eye shoots a laser beam that
+    can activate crystals.
 --- !u!1 &2013623181196182218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1384,7 @@ GameObject:
   - component: {fileID: 3910539115325482774}
   - component: {fileID: 6108774002912434007}
   m_Layer: 5
-  m_Name: spiderDrops
+  m_Name: laserSpiderDrops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1563,7 +1502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spider
+  m_text: Orb Weaver
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 447370be205decc499c78c2561c4be1b, type: 2}
   m_sharedMaterial: {fileID: 6122534638808541047, guid: 447370be205decc499c78c2561c4be1b, type: 2}
@@ -1699,7 +1638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: hello
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 447370be205decc499c78c2561c4be1b, type: 2}
   m_sharedMaterial: {fileID: 6122534638808541047, guid: 447370be205decc499c78c2561c4be1b, type: 2}
@@ -1906,6 +1845,191 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2651803963305368404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9127938831979681957}
+  - component: {fileID: 4028670355642391365}
+  - component: {fileID: 6963678409354193311}
+  - component: {fileID: 5599516079825136885}
+  - component: {fileID: 8892550899594928334}
+  - component: {fileID: 5471032991186385160}
+  m_Layer: 5
+  m_Name: LaserSpider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9127938831979681957
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651803963305368404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4313, y: 1.2315, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 529667526374402837}
+  m_Father: {fileID: 5622445208390433809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4028670355642391365
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651803963305368404}
+  m_CullTransparentMesh: 1
+--- !u!114 &6963678409354193311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651803963305368404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5599516079825136885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651803963305368404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 6963678409354193311}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5471032991186385160}
+        m_TargetAssemblyTypeName: SetDescText, Assembly-CSharp
+        m_MethodName: ChangeTextOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8892550899594928334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651803963305368404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 30
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &5471032991186385160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651803963305368404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740ddaeee37051e43aea75525fbecca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionTextObj: {fileID: 4799458737299168423}
+  descriptionText: The Laser Spider is a cunning creature, using its eye to shoot
+    beams of light. Perhaps this light can reflect off of other objects?
+  enemyType: laserSpider
+  enemyIndex: 3
+  partDescriptionTextObj: {fileID: 7630085114234049823}
+  partButtons:
+  - {fileID: 57786719792579792}
+  - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
+  - {fileID: 2013623181196182218}
+  - {fileID: 6037184492059991824}
+  - {fileID: 824498021087284360}
+  - {fileID: 377561917027126643}
+  - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: d247ffc097c871747baca93263a4a3e1, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &2674053595391176248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,16 +2473,20 @@ MonoBehaviour:
   descriptionText: "The frenepede is a passive creature, eating away waste from other
     insects. They are not hostile and don\u2019t mind being ridden. "
   enemyType: frenepede
-  enemyIndex: 4
+  enemyIndex: 5
   partDescriptionTextObj: {fileID: 7630085114234049823}
   partButtons:
   - {fileID: 57786719792579792}
   - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
   - {fileID: 2013623181196182218}
   - {fileID: 6037184492059991824}
   - {fileID: 824498021087284360}
   - {fileID: 377561917027126643}
   - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: f948bff52fd16dd4bbea7a51faa867ef, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &2837280753683141704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,16 +2733,20 @@ MonoBehaviour:
   descriptionText: The bee can be found roaming around honeycombs. It will sting
     if provoked, so make sure to stay away!
   enemyType: bee
-  enemyIndex: 3
+  enemyIndex: 4
   partDescriptionTextObj: {fileID: 7630085114234049823}
   partButtons:
   - {fileID: 57786719792579792}
   - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
   - {fileID: 2013623181196182218}
   - {fileID: 6037184492059991824}
   - {fileID: 824498021087284360}
   - {fileID: 377561917027126643}
   - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: 669d80bd6a36a2c418e8667f1d4ef8b7, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &2952657516250203037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,7 +3209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 133fe1345576dd5498233105bd7ee9c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90516c2f08b594b488bfbce874631d3c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3663,6 +3795,7 @@ RectTransform:
   - {fileID: 8453244724501728541}
   - {fileID: 6309466998585453858}
   - {fileID: 4235142325999369709}
+  - {fileID: 2232788494716606273}
   - {fileID: 3910539115325482774}
   - {fileID: 7853308497263948540}
   - {fileID: 7813171387067670397}
@@ -3961,6 +4094,7 @@ RectTransform:
   - {fileID: 2193283039261882916}
   - {fileID: 3272637372432669681}
   - {fileID: 1748582913985258802}
+  - {fileID: 9127938831979681957}
   - {fileID: 4774897458205362639}
   - {fileID: 457446784837618233}
   - {fileID: 8436898907676858961}
@@ -5087,6 +5221,279 @@ MonoBehaviour:
   partDescriptionTextObj: {fileID: 7630085114234049823}
   partDescriptionText: Wings from the Jet Beetle. Potentially responsible for its
     rapid propulsion.\n\nUpon use, gives the player a burst of movement speed.
+--- !u!1 &5704515933471127155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834116405503226539}
+  - component: {fileID: 608532853106403252}
+  - component: {fileID: 5732964463671409342}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &834116405503226539
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704515933471127155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6533105, y: 0.41715, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6816185345673458553}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: -18.3}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &608532853106403252
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704515933471127155}
+  m_CullTransparentMesh: 1
+--- !u!114 &5732964463671409342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704515933471127155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Mandibles
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 447370be205decc499c78c2561c4be1b, type: 2}
+  m_sharedMaterial: {fileID: 6122534638808541047, guid: 447370be205decc499c78c2561c4be1b, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5962237248303571785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816185345673458553}
+  - component: {fileID: 7958742713486238264}
+  - component: {fileID: 5315970579620208745}
+  - component: {fileID: 4982764498929057239}
+  - component: {fileID: 1103463827570430186}
+  m_Layer: 5
+  m_Name: mandibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6816185345673458553
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962237248303571785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5377319, y: 2.3565922, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 834116405503226539}
+  m_Father: {fileID: 2232788494716606273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -50}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7958742713486238264
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962237248303571785}
+  m_CullTransparentMesh: 1
+--- !u!114 &5315970579620208745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962237248303571785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 44d09b4ed24b0ee4a974a49c2cb0fa9d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4982764498929057239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962237248303571785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 5315970579620208745}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1103463827570430186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962237248303571785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8340927c729ae642a6ebaf53ebe2be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partDescriptionTextObj: {fileID: 7630085114234049823}
+  partDescriptionText: Mandibles from the orb weaver. They seem to be quite sharp.\n\nUpon
+    use, the mandible deals physical damage
 --- !u!1 &6037184492059991824
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,6 +5539,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5708097749635989516}
+  - component: {fileID: 5840202211914970934}
+  - component: {fileID: 5012380860925081697}
   m_Layer: 5
   m_Name: Sliding Area
   m_TagString: Untagged
@@ -5156,9 +5565,47 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -0.000061035156}
+  m_AnchoredPosition: {x: 212.2, y: 211}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5840202211914970934
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052394033630777873}
+  m_CullTransparentMesh: 1
+--- !u!114 &5012380860925081697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052394033630777873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6190166121525472460
 GameObject:
   m_ObjectHideFlags: 0
@@ -5335,11 +5782,15 @@ MonoBehaviour:
   partButtons:
   - {fileID: 57786719792579792}
   - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
   - {fileID: 2013623181196182218}
   - {fileID: 6037184492059991824}
   - {fileID: 824498021087284360}
   - {fileID: 377561917027126643}
   - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: 6d0cefe1fe5f82d46b9da42f512e9244, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &6343591079810439536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,7 +5829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 21.299805, y: -0.20000076}
+  m_AnchoredPosition: {x: 21.299805, y: -0.19999695}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &355603997855611271
@@ -5451,7 +5902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 254.6, y: -55.3}
+  m_AnchoredPosition: {x: 257, y: -55.3}
   m_SizeDelta: {x: 20, y: 124.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5488914120786983881
@@ -5535,12 +5986,48 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2598794949548976740}
   m_HandleRect: {fileID: 3708821172079089079}
   m_Direction: 2
-  m_Value: 0.99999994
-  m_Size: 0.48275858
+  m_Value: 0.9999999
+  m_Size: 0.41250178
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &6618875471135804795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2232788494716606273}
+  m_Layer: 5
+  m_Name: orbWeaverDrops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2232788494716606273
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618875471135804795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.78589, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6816185345673458553}
+  m_Father: {fileID: 1607762253235120570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6858509340043914286
 GameObject:
   m_ObjectHideFlags: 0
@@ -5890,7 +6377,7 @@ GameObject:
   - component: {fileID: 4619529454224490440}
   - component: {fileID: 2428169716621219219}
   m_Layer: 5
-  m_Name: Spider
+  m_Name: OrbWeaver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6043,19 +6530,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionTextObj: {fileID: 4799458737299168423}
-  descriptionText: "The Spider is a cunning creature, trapping its prey using webs.
-    Avoid these webs, or else you\u2019ll be in a sticky situation!"
-  enemyType: spider
+  descriptionText: 'The Orb Weaver attacks with webs, as well as pouncing with its
+    sharp bite. This beast is a threat from any distance! '
+  enemyType: orbWeaver
   enemyIndex: 2
   partDescriptionTextObj: {fileID: 7630085114234049823}
   partButtons:
   - {fileID: 57786719792579792}
   - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
   - {fileID: 2013623181196182218}
   - {fileID: 6037184492059991824}
   - {fileID: 824498021087284360}
   - {fileID: 377561917027126643}
   - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: 8b3569b0a4c29c549bef5e5d0a4c52cf, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &7424581792485286293
 GameObject:
   m_ObjectHideFlags: 0
@@ -6226,17 +6717,21 @@ MonoBehaviour:
   descriptionTextObj: {fileID: 4799458737299168423}
   descriptionText: "The Acid Beetle is a fearsome beast, at least until you get close
     to it! It will spit acid at you if you\u2019re far away though, so be careful!  "
-  enemyType: acidBettle
+  enemyType: acidBeetle
   enemyIndex: 1
   partDescriptionTextObj: {fileID: 7630085114234049823}
   partButtons:
   - {fileID: 57786719792579792}
   - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
   - {fileID: 2013623181196182218}
   - {fileID: 6037184492059991824}
   - {fileID: 824498021087284360}
   - {fileID: 377561917027126643}
   - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: 60ddb945faa351f4e8a96eed5ff07464, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &7528401381519971488
 GameObject:
   m_ObjectHideFlags: 0
@@ -6408,16 +6903,20 @@ MonoBehaviour:
   descriptionText: The queen bee is served by her loyal bee population. The bees
     follow her every order-including disposing of unwanted guests.
   enemyType: queenBee
-  enemyIndex: 5
+  enemyIndex: 6
   partDescriptionTextObj: {fileID: 7630085114234049823}
   partButtons:
   - {fileID: 57786719792579792}
   - {fileID: 4708554010599261273}
+  - {fileID: 6618875471135804795}
   - {fileID: 2013623181196182218}
   - {fileID: 6037184492059991824}
   - {fileID: 824498021087284360}
   - {fileID: 377561917027126643}
   - {fileID: 4297901893866497895}
+  enemySprite: {fileID: 21300000, guid: dfba416c41d2bd0408e70ea38d5baa11, type: 3}
+  unknownSprite: {fileID: 21300000, guid: 7cd7d9903642ff04e963f5ce90f2f1f4, type: 3}
+  bugRender: {fileID: 7370468973429444109}
 --- !u!1 &7588025397741320830
 GameObject:
   m_ObjectHideFlags: 0
@@ -6924,6 +7423,142 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8372948588506585081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529667526374402837}
+  - component: {fileID: 8595999631467595216}
+  - component: {fileID: 4800039807966343683}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &529667526374402837
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372948588506585081}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9127938831979681957}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0.000015258789}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8595999631467595216
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372948588506585081}
+  m_CullTransparentMesh: 1
+--- !u!114 &4800039807966343683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372948588506585081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Laser Spider
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 447370be205decc499c78c2561c4be1b, type: 2}
+  m_sharedMaterial: {fileID: 6122534638808541047, guid: 447370be205decc499c78c2561c4be1b, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8572207974846857586
 GameObject:
   m_ObjectHideFlags: 0

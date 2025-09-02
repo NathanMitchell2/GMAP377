@@ -70,8 +70,7 @@ public class Laser : MonoBehaviour
 
         bool didHit = Physics.Raycast(ray, out RaycastHit hitInfo, farDistance);
         
-        RuntimeManager.PlayOneShot(laserSound, Camera.main.transform.position);
-        Debug.Log("laser sound played");
+ 
         if (!didHit)
         {
             var endPoint = origin + direction * farDistance;
@@ -116,6 +115,8 @@ public class Laser : MonoBehaviour
 
     private IEnumerator ActivateLaser()
     {
+        RuntimeManager.PlayOneShot(laserSound, Camera.main.transform.position);
+        Debug.Log("laser sound played");
         // Debug.Log("laser shooting");
         if (this.activated)
         {

@@ -21,7 +21,7 @@ public class AcidSpitState : IState
 
     public void Exit(EnemyAI enemy)
     {
-        enemy.isInCombat = true;
+        enemy.isInCombat = false;
     }
 
     public void Update(EnemyAI enemy)

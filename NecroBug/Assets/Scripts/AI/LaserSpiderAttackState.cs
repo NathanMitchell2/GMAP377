@@ -22,7 +22,7 @@ public class LaserSpiderAttackState : IState
 
     public void Exit(EnemyAI enemy)
     {
-        enemy.isInCombat = true;
+        enemy.isInCombat = false;
         enemy.spiderLaser.activated = false;
     }
 
@@ -86,7 +86,6 @@ public class LaserSpiderAttackState : IState
         enemy.laserSparkle.Play();
         enemy.spiderLaser.activated = true;
         yield return new WaitForSeconds(2f);
-        enemy.spiderLaser.activated = true;
         enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
     }
 

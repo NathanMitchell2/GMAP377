@@ -18353,9 +18353,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 9811d68523873b24dbd1af5f46a5bbb0, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
   laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &555289764
 Transform:
@@ -23950,9 +23955,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 9811d68523873b24dbd1af5f46a5bbb0, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
   laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &675489833
 Transform:

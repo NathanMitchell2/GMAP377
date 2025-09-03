@@ -44,8 +44,11 @@ public class EnemyHealth : MonoBehaviour
         else if(enemyType == "acidBeetle"){
             BugopediaEvents.acidBeetleKilled = true;
         }
-        else if (enemyType == "spider"){
-            BugopediaEvents.spiderKilled = true;
+        else if (enemyType == "orbWeaver"){
+            BugopediaEvents.orbWeaverKilled = true;
+        }
+        else if (enemyType == "laserSpider"){
+            BugopediaEvents.laserSpiderKilled = true;
         }
         else if (enemyType== "bee"){
             BugopediaEvents.beeKilled = true;

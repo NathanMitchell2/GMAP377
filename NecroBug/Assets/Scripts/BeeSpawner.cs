@@ -3,7 +3,7 @@ using UnityEngine;
 public class BeeSpawner : MonoBehaviour
 {
     public GameObject prefabToSpawn;
-    public int maxPrefabs = 5;
+    public int maxPrefabs = 2;
     private int currentPrefabs = 0;
 
     public Transform spawnPoint;
@@ -12,35 +12,40 @@ public class BeeSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (currentPrefabs < maxPrefabs)
+            Ray ray = new Ray(other.transform.position, Vector3.down);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                SpawnPrefab();
-            }
-            else
-            {
-                Debug.Log("Maximum number of prefabs reached!");
+                if (hit.collider.CompareTag("Floor") && currentPrefabs < maxPrefabs)
+                {
+                    SpawnPrefab(hit.point.y);
+                }
             }
         }
     }
 
-    private void SpawnPrefab()
+    private void SpawnPrefab(float floorY)
     {
         if (prefabToSpawn != null)
         {
             Transform spawnTransform = spawnPoint != null ? spawnPoint : transform;
-            Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
+
+            Vector3 spawnPos = new Vector3(
+                spawnTransform.position.x,
+                floorY,
+                spawnTransform.position.z
+            );
+
+            Instantiate(prefabToSpawn, spawnPos, spawnTransform.rotation);
             currentPrefabs++;
-            Debug.Log("Spawned prefab. Current count: " + currentPrefabs);
-        }
-        else
-        {
-            Debug.LogWarning("No prefab assigned in PrefabSpawner!");
+            Debug.Log("Spawned bees. Current count: " + currentPrefabs);
         }
     }
 
     public void PrefabDestroyed()
     {
         currentPrefabs = Mathf.Max(0, currentPrefabs - 1);
-        Debug.Log("Prefab destroyed. Current count: " + currentPrefabs);
+        Debug.Log("Bees destroyed. Current count: " + currentPrefabs);
     }
 }

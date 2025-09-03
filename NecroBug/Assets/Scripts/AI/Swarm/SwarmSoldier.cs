@@ -39,7 +39,7 @@ public class SwarmSoldier : MonoBehaviour
         // Tweak the scaling (0.25f) to taste.
         float smoothTime = Mathf.Clamp01(1f / Mathf.Max(0.001f, lerp)) * 0.25f;
 
-        // Cap the max speed so they don’t teleport if far away
+        // Cap the max speed so they donï¿½t teleport if far away
         float maxSpeed = Mathf.Lerp(6f, 24f, Mathf.Clamp01(lerp));
 
         transform.position = Vector3.SmoothDamp(
@@ -113,6 +113,8 @@ public class SwarmSoldier : MonoBehaviour
             DealDamageViaTeamSystem(hit.collider, _leader.diveDamage);
             Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            BugopediaEvents.beeKilled = true;
+            BugopediaEvents.queenKilled = true;
             return;
         }
 
@@ -121,6 +123,8 @@ public class SwarmSoldier : MonoBehaviour
         {
             Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            BugopediaEvents.beeKilled = true;
+            BugopediaEvents.queenKilled = true;
             return;
         }
 
@@ -131,6 +135,8 @@ public class SwarmSoldier : MonoBehaviour
         {
             Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            BugopediaEvents.beeKilled = true;
+            BugopediaEvents.queenKilled = true;
             return;
         }
 

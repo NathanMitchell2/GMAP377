@@ -5,7 +5,6 @@ using FMODUnity;
 public class ChargeAttackState : IState
 {
     
-    private bool isChargingStarted = false;
 
     [SerializeField]
     private string chargeSound = "event:/Bug/bug hurt with scream";
@@ -18,7 +17,6 @@ public class ChargeAttackState : IState
         enemy.isCharging = true;
         enemy.isInCombat = true;
         enemy.ChangeStateCoroutine(ChargeAndSmash(enemy));
-        RuntimeManager.PlayOneShot(chargeSound, Camera.main.transform.position);
         Debug.Log("Charge sound played");
     }
 
@@ -27,7 +25,7 @@ public class ChargeAttackState : IState
     public void Exit(EnemyAI enemy)
     {
         enemy.isCharging = false;
-        enemy.isInCombat = true;
+        enemy.isInCombat = false;
     }
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
@@ -37,8 +35,7 @@ public class ChargeAttackState : IState
 
     private IEnumerator ChargeAndSmash(EnemyAI enemy)
     {
-        isChargingStarted = true;
-
+        RuntimeManager.PlayOneShot(chargeSound, Camera.main.transform.position);
         if (enemy.stamina < enemy.staminaDrainPerCharge)
         {
             enemy.ChangeState(new TransitionState(0.5f, new RetreatState()));

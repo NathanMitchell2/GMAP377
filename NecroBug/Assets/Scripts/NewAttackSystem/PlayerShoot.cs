@@ -13,6 +13,8 @@ public class PlayerShoot : ModularBugPart
     private float timer;
     public float shootCooldown;
 
+    //mass 375
+
     void Update()
     {
         timer += 1 * Time.deltaTime;

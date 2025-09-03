@@ -5,16 +5,23 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    // ========== COMPONENT REFERENCES ==========
+    [SerializeField] private string currentStateName;
     public NavMeshAgent agent;
     public Rigidbody rb;
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public PlayerStats playerStats;
+    public LineRenderer lineRenderer;
+    public Transform spitPoint;
+    public carControler carController;
 
+    // ========== LAYER DETECTION ==========
+    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask visionObstacles;
+
+    // ========== GENERAL DETECTION & BEHAVIOR ==========
     public float fieldOfView;
     public float viewDistance;
-    public int rayCount;
-    public LayerMask visionObstacles;
-    public float noiseDetectionSpeed;
     public float sightRange, attackRange, retreatRange;
     public float walkPointRange;
     public float timeBetweenAttacks;
@@ -23,59 +30,127 @@ public class EnemyAI : MonoBehaviour
     public float jumpForce;
     public float maxPlayerSpeedCharge;
 
+    // ========== PATROLLING ==========
     public Vector3 patrolCenter;
     public Vector3 walkPoint;
     public bool walkPointSet;
+
+    // ========== COMBAT STATE ==========
     public bool alreadyAttacked;
     public bool isCharging;
     public bool isInCombat = false;
-    public Vector3 lastPlayerPosition;
-    public float playerSpeed;
-
-    private IState currentState;
-
     public bool playerInSightRange, playerInAttackRange;
+    public float playerSpeed;
+    public float attackCooldown = 0f;
+    public float damageCooldown = 0.5f;
+    private float lastHitTime = 0.5f;
 
+    // ========== STAMINA SYSTEM ==========
     public float stamina = 100f;
     public float staminaDrainPerCharge = 30f;
     public float staminaRecoverRate = 10f;
     public bool isExhausted => stamina <= 0f;
-    public float attackCooldown = 0f;
 
-    public enum EnemyType { JetBeetle, AcidBeetle }
+    // ========== AI CONTROL ==========
+    private IState currentState;
+    public Vector3 lastPlayerPosition;
+
+    // ========== ENEMY TYPE ==========
+    public enum EnemyType { JetBeetle, AcidBeetle, OrbWeaver, Bee, LaserSpider}
     public EnemyType enemyType;
 
+    // ========== JET BEETLE STATS ==========
+    [Header("Jet Beetle")]
+    public int chargeDamage = 20;
 
-    public Transform spitPoint;
+    // ========== ACID BEETLE STATS ==========
+    [Header("Acid Beetle")]
     public GameObject acidProjectilePrefab;
     public float acidSpitForce = 20f;
 
-    public PlayerStats playerStats;
-    public LineRenderer lineRenderer;
-    public int chargeDamage = 20;
-    // public int acidDamage = 10;
-    public float damageCooldown = 0.5f;
-    private float lastHitTime = 0.5f;
+    // ========== ORB WEAVER STATS ==========
+    [Header("Orb Weaver")]
+    public int webStack = 0;
+    public int maxWebStacks = 3;
+    public float webProjectileSpeed = 20f;
+    public bool wasRecentlyHit = false;
+    public int biteDamage = 15;
+    public GameObject webProjectilePrefab;
 
+    // ========== SWARM/BEES STATS ==========
+    [Header("Bee / Swarm")]
+    public int swarmMaxMembers = 6;            // cap, tweakable in Inspector
+    public float swarmRadius = 3.5f;           // circle radius around leader
+    public float swarmReformLerp = 8f;         // how snappy members hold formation
+    public float swarmAttackCooldown = 1.2f;   // regroup time between attack orders
+    public bool angered = false;
 
+    [Header("Bee Dive Attack")]
+    public float diveWindup = 0.15f;           // tiny delay before members dive
+    public float diveSpeed = 18f;              // dive travel speed
+    public float diveArcHeight = 1.0f;         // small lift at dive start
+    public float diveHitRadius = 0.6f;         // sphere hit radius during dive
+    public int diveDamage = 12;                // damage to robot on hit
+    public LayerMask robotMask;                // set to your robot/player layer
+    public LayerMask groundMask;               // set to ground layer
+    public GameObject leaderExplosion;
+    public GameObject soldierExplosion;
+
+    [Header("Laser Spider")]
+    public Laser spiderLaser;
+    public ParticleSystem laserCharge;
+    public ParticleSystem laserSparkle;
+    // ========= AWAKE & START =========
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         lastPlayerPosition = player.position;
-        patrolCenter = gameObject.GetComponent<Transform>().position;
-        // Debug.Log(Time.time);
+        patrolCenter = transform.position;
     }
+
 
     private void Start()
     {
-        patrolCenter = gameObject.GetComponent<Transform>().position;
-        ChangeState(new IdleState());
+        player = PlayerIdentifier.GetPlayer().transform.Find("Center");
+        // Initialize state based on type
+        switch (enemyType)
+        {
+            case EnemyType.OrbWeaver:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.AcidBeetle:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.JetBeetle:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.Bee:
+                ChangeState(new PatrolState());
+                break;
+            case EnemyType.LaserSpider:
+                ChangeState(new PatrolState());
+                break;
+            default:
+                ChangeState(new IdleState());
+                break;
+        }
     }
 
+    public void SetAgentEnabled(bool on)
+    {
+        if (agent == null) return;
+        if (agent.enabled == on) return;
+        if (!on) agent.ResetPath();
+        agent.enabled = on;
+    }
+
+    // ========= UPDATE LOOP =========
     private void Update()
     {
-        RegenerateStamina();
+        currentStateName = currentState?.GetType().Name ?? "null";
+    //Debug.Log(currentState);
+    RegenerateStamina();
 
         if (attackCooldown > 0f)
             attackCooldown -= Time.deltaTime;
@@ -83,36 +158,12 @@ public class EnemyAI : MonoBehaviour
         UpdatePlayerDetection();
         currentState.Update(this);
         lastPlayerPosition = player.position;
-
     }
 
-    public IState GetAttackState()
-    {
-        switch (enemyType)
-        {
-            case EnemyType.AcidBeetle:
-                return new AcidSpitState();
-            case EnemyType.JetBeetle:
-            default:
-                return new ChargeAttackState();
-        }
-    }
-
-    public void ChangeState(IState newState)
-    {
-        if (currentState != null)
-            currentState.Exit(this);
-
-        currentState = newState;
-
-        if (currentState != null)
-            currentState.Enter(this);
-    }
-
+    // ========= DETECTION =========
     private void UpdatePlayerDetection()
     {
         playerSpeed = (player.position - lastPlayerPosition).magnitude / Time.deltaTime;
-        lastPlayerPosition = player.position;
 
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
@@ -127,11 +178,8 @@ public class EnemyAI : MonoBehaviour
             Vector3 end = player.position + Vector3.up * 1.5f;
             Vector3 rayDir = (end - start).normalized;
 
-
             if (!Physics.SphereCast(start, 0.5f, rayDir, out RaycastHit hit, distanceToPlayer, visionObstacles))
-            {
                 inView = true;
-            }
         }
 
         playerInSightRange = inView;
@@ -140,85 +188,90 @@ public class EnemyAI : MonoBehaviour
         currentState.CheckTransitions(this, playerInSightRange, playerInAttackRange, distanceToPlayer);
     }
 
-    private void OnDrawGizmosSelected()
+    // ========= STATE MANAGEMENT =========
+    public void ChangeState(IState newState)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, viewDistance);
-
-        Vector3 leftLimit = Quaternion.Euler(0, -fieldOfView / 2, 0) * transform.forward;
-        Vector3 rightLimit = Quaternion.Euler(0, fieldOfView / 2, 0) * transform.forward;
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, leftLimit * viewDistance);
-        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, rightLimit * viewDistance);
+        if (currentState != null)
+            currentState.Exit(this);
+        currentState = newState;
+        currentState.Enter(this);
     }
-    public Coroutine ChangeStateCoroutine(IEnumerator coroutine)
+
+    public Coroutine ChangeStateCoroutine(System.Collections.IEnumerator coroutine)
     {
         return StartCoroutine(coroutine);
     }
+
+    // ========= GET ATTACK STATE =========
+    public IState GetAttackState()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.OrbWeaver:
+                return new OrbWeaverAttackState();
+            case EnemyType.AcidBeetle:
+                return new AcidSpitState();
+            case EnemyType.JetBeetle:
+                return new ChargeAttackState();
+            case EnemyType.Bee:
+                return new SwarmAttackState();
+            case EnemyType.LaserSpider:
+                return new LaserSpiderAttackState();
+            default:
+                return new ChargeAttackState();
+        }
+    }
+
+    // ========= STAMINA =========
     private void RegenerateStamina()
     {
         if (isInCombat) return;
-
         if (stamina < 100f)
         {
             stamina += staminaRecoverRate * Time.deltaTime;
             stamina = Mathf.Clamp(stamina, 0f, 100f);
         }
     }
-    public void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
 
-    // Added by Patrick, damage system
-
-    // Jet Beetle Damage
+    // ========= DAMAGE HANDLING =========
     void OnCollisionEnter(Collision other)
     {
         if (Time.time - lastHitTime < damageCooldown) return;
-
         if (other.gameObject.CompareTag("Player") && isCharging)
         {
-            List<GameObject> list = new List<GameObject>();
-            list.Add(other.gameObject);
-
+            var list = new List<GameObject> { other.collider.gameObject };
             GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(list));
-            /*
-            playerStats = other.gameObject.GetComponentInParent<PlayerStats>();
-
-            if (pHealth != null)
-            {
-
-                DealDamage(chargeDamage);
-            }
-            else
-            {
-                Debug.LogWarning("PlayerStats not found on object!");
-            }
-            */
         }
     }
 
     public void DealAcidDamage(int damageAmount, PlayerStats otherPlayer)
     {
         if (Time.time - lastHitTime < damageCooldown) return;
-
         playerStats = otherPlayer;
         if (playerStats != null)
-        {
             DealDamage(damageAmount);
-        }
-        else { Debug.LogWarning("PlayerStats not found on object!"); }
+        else
+            Debug.LogWarning("PlayerStats not found on object!");
     }
 
     public void DealDamage(int damageAmount)
     {
-        // Debug.Log(damageAmount);
-        playerStats.TakeDamage(damageAmount);
         lastHitTime = Time.time;
+        if (enemyType == EnemyType.OrbWeaver && currentState is OrbWeaverAgroState)
+            wasRecentlyHit = true;
+        if (playerStats != null)
+            playerStats.TakeDamage(damageAmount);
+        else
+            Debug.LogWarning("PlayerStats not assigned!");
     }
 
+    // ========= RESET TIPS =========
+    public void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    // ========= RESET AI =========
     public void ResetAI()
     {
         alreadyAttacked = false;
@@ -229,8 +282,29 @@ public class EnemyAI : MonoBehaviour
         attackCooldown = 0f;
         agent.enabled = true;
         rb.isKinematic = true;
-
-        // Reset state machine
         ChangeState(new PatrolState());
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, viewDistance);
+        Vector3 leftLimit = Quaternion.Euler(0, -fieldOfView / 2, 0) * transform.forward;
+        Vector3 rightLimit = Quaternion.Euler(0, fieldOfView / 2, 0) * transform.forward;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, leftLimit * viewDistance);
+        Gizmos.DrawRay(transform.position + Vector3.up * 1.5f, rightLimit * viewDistance);
+    }
+
+    public float getSpeed()
+    {
+        return this.GetComponent<NavMeshAgent>().speed;
+    }
+
+    public bool isSwarmLeader { get; private set; }
+
+    public void SetSwarmLeader(bool on)
+    {
+        isSwarmLeader = on;
     }
 }

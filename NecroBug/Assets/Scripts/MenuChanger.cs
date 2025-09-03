@@ -7,7 +7,7 @@ public class MenuChanger : MonoBehaviour
     [SerializeField] private List<GameObject> menus = new List<GameObject>();
     [SerializeField] private List<int> cameras = new List<int>();
 
-    private bool flipFlop = true;
+    private bool flipFlop = false;
     private bool activePopup = true;
     private CameraManager camManager;
     private void Awake()
@@ -21,13 +21,13 @@ public class MenuChanger : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
     }
-    public void FlipFlopMenus()
+    public void FlipFlopMenus(int menu = 0)
     {
         flipFlop = !flipFlop;
         if (flipFlop)
         {
             Time.timeScale = 0;
-            camManager.SetMenu(0);
+            camManager.SetMenu(menu);
             Cursor.lockState = CursorLockMode.Confined;
         }
         else
@@ -54,7 +54,16 @@ public class MenuChanger : MonoBehaviour
         Off();
 
         menus[index].SetActive(true);
-        camManager.SetCamera(cameras[index]);
+        //this sets the cam to the build cam when the build menu is selected
+        //for now its hard coded that the build menu is at index two
+        //maybe get better comparison later
+        if (index == 2){
+            camManager.SetCamera(1);
+        }
+        else{
+            camManager.SetCamera(0);
+        }
+       
     }
     public void Off()
     {

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HornDamageMultiplier : MonoBehaviour
@@ -8,15 +7,12 @@ public class HornDamageMultiplier : MonoBehaviour
     private Rigidbody rb;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInParent<Rigidbody>();
     }
     private void Update()
     {
         timer += Time.deltaTime;
     }
-
-
-
     public void OnCollisionEnter(Collision collision)
     {
         Rigidbody otherRb = collision.rigidbody;
@@ -25,7 +21,7 @@ public class HornDamageMultiplier : MonoBehaviour
         {
             timer = 0;
             Vector3 relativeVelocity = collision.relativeVelocity;
-            float mass = rb.mass;
+            float mass = 1500;//rb.mass;
 
             // Optional: Check if the collision was with the horn part
             float impactMagnitude = mass * relativeVelocity.magnitude;
@@ -39,7 +35,7 @@ public class HornDamageMultiplier : MonoBehaviour
             }
             else
             {
-                GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(new List<GameObject> { gameObject }));
+                GetComponent<DamageObject>().Damage(DamageObject.GetPlayerHealths(gameObject));
             }
             if (collision.transform.GetComponent<EnemyHealth>()) 
                 collision.transform.GetComponent<EnemyHealth>().dealDamage(damage);

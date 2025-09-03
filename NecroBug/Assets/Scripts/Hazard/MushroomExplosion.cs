@@ -42,13 +42,16 @@ public class MushroomExplosion : MonoBehaviour
                     {
                         if (hit.GetComponent<carControler>() != null)
                             rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
-                        targets.Add(hit.gameObject);
                     }
                     else
                     {
                         rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
                     }
                 }
+            }
+            if (hit.gameObject.tag == "Player")
+            {
+                targets.Add(hit.gameObject);
             }
 
             if (hit.gameObject.tag == "Enemy")

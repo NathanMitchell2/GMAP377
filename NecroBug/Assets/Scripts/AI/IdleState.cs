@@ -40,7 +40,10 @@ public class IdleState : IState
         }
         else if (playerInSightRange)
         {
-            enemy.ChangeState(new TransitionState(0.5f,new ChaseState()));
+            if (enemy.enemyType == EnemyAI.EnemyType.OrbWeaver)
+                enemy.ChangeState(new TransitionState(0.5f, new OrbWeaverAgroState()));
+            else
+                enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
         }
     }
 }

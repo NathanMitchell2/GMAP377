@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3997798886352531281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5966692069196124457}
+  - component: {fileID: 3248695555726808000}
+  m_Layer: 0
+  m_Name: MandiblesMediator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5966692069196124457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997798886352531281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3248695555726808000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997798886352531281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8547cc47636707f49a0960d60fbb4429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Mandibles
+  icon: {fileID: 21300000, guid: 44d09b4ed24b0ee4a974a49c2cb0fa9d, type: 3}
+  maxHealth: 50
+  stackable: 1
+  maxStack: 99
+  count: 1
+  BotPartPrefab: {fileID: 3997798886352531281, guid: 0d8fb7f6c513f254cad89b5fffdf13c9, type: 3}
+  BugPartPrefab: {fileID: 6788982746073355530, guid: add0e156ddc321448a82dd1de8b38901, type: 3}
+  customBinds: 1
+  defaultBind: <Mouse>/leftButton
+  mass: 112.5

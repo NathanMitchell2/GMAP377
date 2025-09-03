@@ -45,6 +45,9 @@ public class SetDescText : MonoBehaviour
         else if (enemyType == "bee" && BugopediaEvents.beeKilled == true){
             return true;
         }
+        else if (enemyType == "queenBee" && BugopediaEvents.queenKilled == true){
+            return true;
+        }
         else if (enemyType == "frenepede" && BugopediaEvents.frenepedeDiscovered == true){
             return true;
         }

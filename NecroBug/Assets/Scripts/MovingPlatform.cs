@@ -12,6 +12,7 @@ public class MovingPlatform : MonoBehaviour
     {
         previousPosition = transform.position;
         previousRotation = transform.rotation;
+        BugopediaEvents.frenepedeDiscovered = true;
     }
 
     private void Update()

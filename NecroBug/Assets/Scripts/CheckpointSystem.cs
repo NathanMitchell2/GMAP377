@@ -44,13 +44,22 @@ public class CheckpointSystem : MonoBehaviour
 
     public void PlayerToCheckpoint ()
     {
-        if (currentCheck >= 0 && currentCheck < checkpointList.Length)
+        if (currentCheck < 0 && currentCheck >= checkpointList.Length)
             return;
         BuiltBotStorage storage = PlayerIdentifier.GetPlayer().GetComponentInChildren<BuiltBotStorage>();
         GameObject player = PlayerIdentifier.GetPlayer().gameObject;
 
         BuiltBotStorage.sourcePos = checkpointList[currentCheck].position;
         BuiltBotStorage.sourceRot = checkpointList[currentCheck].rotation;
+
+        NecroBugPart temp = player.GetComponentInChildren<NecroBugPart>();
+
+        if (temp != null)
+        {
+            Debug.LogError(checkpointList[currentCheck].position);
+            temp.transform.position = checkpointList[currentCheck].position;
+            temp.transform.rotation = checkpointList[currentCheck].rotation;
+        }
 
 
         if (managerMemento != null)

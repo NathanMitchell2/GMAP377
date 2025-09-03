@@ -13,14 +13,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float distributeFactor;
     [SerializeField] private bool doOverdamage;
 
-    private GameObject cameraObject;
-
     private List<PlayerHealth> distributes;
     private PlayerHealth parent;
     private HitFlash hitFlash;
     private InventoryItem inventoryItem;
 
-    private MenuChanger menuChanger;
 
 
     [SerializeField] private bool damage;
@@ -29,8 +26,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         hitFlash = GetComponent<HitFlash>();
-        cameraObject = GameObject.Find("/Camera");
-        menuChanger = cameraObject.GetComponentInChildren<MenuChanger>();
+        
         
     }
     private void Start()
@@ -237,7 +233,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Part is deceased");
         SendMessage("Death");
-        menuChanger.SetMenu(6);
         health = 0;
         if (parent != null && parent.Has(this))
         {

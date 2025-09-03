@@ -23,14 +23,12 @@ public class EnemyAI : MonoBehaviour
     public float fieldOfView;
     public float viewDistance;
     public float sightRange, attackRange, retreatRange;
-    public float noiseDetectionSpeed;
     public float walkPointRange;
     public float timeBetweenAttacks;
     public float idleDuration;
     public float chargeUpTime;
     public float jumpForce;
     public float maxPlayerSpeedCharge;
-    public int rayCount;
 
     // ========== PATROLLING ==========
     public Vector3 patrolCenter;
@@ -81,18 +79,11 @@ public class EnemyAI : MonoBehaviour
 
     // ========== SWARM/BEES STATS ==========
     [Header("Bee / Swarm")]
-    public float swarmRecruitRange = 25f;      // how far leader can recruit members
     public int swarmMaxMembers = 6;            // cap, tweakable in Inspector
     public float swarmRadius = 3.5f;           // circle radius around leader
     public float swarmReformLerp = 8f;         // how snappy members hold formation
-    public float swarmMemberSpeed = 6f;        // (if you ever use velocity move)
     public float swarmAttackCooldown = 1.2f;   // regroup time between attack orders
     public bool angered = false;
-
-    [Header("Bee Flight / Formation")]
-    public float hoverHeight = 2.0f;           // member flight height above ground
-    public float hoverBobAmplitude = 0.15f;    // subtle bobbing
-    public float hoverBobSpeed = 3.0f;
 
     [Header("Bee Dive Attack")]
     public float diveWindup = 0.15f;           // tiny delay before members dive
@@ -104,12 +95,6 @@ public class EnemyAI : MonoBehaviour
     public LayerMask groundMask;               // set to ground layer
     public GameObject leaderExplosion;
     public GameObject soldierExplosion;
-
-    [Header("Leader Orders (optional auto)")]
-    public bool swarmAutoIssueOrders = true;   // auto-issue attack waves
-
-    private EnemyHealth _health;
-    private bool _promotedToSwarmLeader;
 
     [Header("Laser Spider")]
     public Laser spiderLaser;

@@ -114,6 +114,7 @@ public class SwarmSoldier : MonoBehaviour
             Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             BugopediaEvents.beeKilled = true;
+            BugopediaEvents.queenKilled = true;
             return;
         }
 
@@ -123,6 +124,7 @@ public class SwarmSoldier : MonoBehaviour
             Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             BugopediaEvents.beeKilled = true;
+            BugopediaEvents.queenKilled = true;
             return;
         }
 
@@ -134,6 +136,7 @@ public class SwarmSoldier : MonoBehaviour
             Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             BugopediaEvents.beeKilled = true;
+            BugopediaEvents.queenKilled = true;
             return;
         }
 

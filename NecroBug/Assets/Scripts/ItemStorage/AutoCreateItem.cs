@@ -11,6 +11,7 @@ public class AutoCreateItem : MonoBehaviour
     {
         if (item != null && item.GetComponent<InventoryItem>())
         {
+            //Git break avoid
             GameObject temp = Instantiate(item);
 
             InventoryItem nItem = temp.GetComponent<InventoryItem>();

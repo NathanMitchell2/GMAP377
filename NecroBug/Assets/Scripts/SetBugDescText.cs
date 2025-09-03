@@ -11,15 +11,20 @@ public class SetDescText : MonoBehaviour
     public int enemyIndex;
     public TextMeshProUGUI partDescriptionTextObj; 
     [SerializeField] private List<GameObject> partButtons = new List<GameObject>();
+    public Sprite enemySprite;
+    public Sprite unknownSprite;
+    public Image bugRender;
     public void ChangeTextOnClick()
     {
         if (showDesc()){
             descriptionTextObj.text = descriptionText;
             diplayButtons(enemyIndex);
+            bugRender.sprite = enemySprite;
         }
         else {
             descriptionTextObj.text = "?????";
-            diplayButtons(6);
+            diplayButtons(7);
+            bugRender.sprite = unknownSprite;
         }
         partDescriptionTextObj.text = "";
     }
@@ -31,7 +36,10 @@ public class SetDescText : MonoBehaviour
         else if(enemyType == "acidBeetle" && BugopediaEvents.acidBeetleKilled == true){
             return true;
         }
-        else if (enemyType == "spider" && BugopediaEvents.spiderKilled == true){
+        else if (enemyType == "orbWeaver" && BugopediaEvents.orbWeaverKilled == true){
+            return true;
+        }
+        else if (enemyType == "laserSpider" && BugopediaEvents.laserSpiderKilled == true){
             return true;
         }
         else if (enemyType == "bee" && BugopediaEvents.beeKilled == true){

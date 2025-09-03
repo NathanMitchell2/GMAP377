@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5290588659718747558}
   - component: {fileID: 5493218026632588874}
   - component: {fileID: -3879828696710036541}
+  - component: {fileID: -8314041479769811566}
   m_Layer: 6
   m_Name: AcidHornBugPart
   m_TagString: Player
@@ -400,6 +401,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToCreate: {fileID: 2127942923553181380, guid: 7be011f3d7e7f084393ae1d6ed7c9c4d, type: 3}
+--- !u!114 &-8314041479769811566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074463265164639541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143cd18064d6107459ebd6e254dd43c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalFilter: {fileID: 0}
+  hitFlashMaterial: {fileID: 2100000, guid: 6e839c7a50ab08249a1ffd23d7c1d7aa, type: 2}
+  maxFlashPerSecond: 10
 --- !u!1001 &3268522988862598555
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,16 +6,20 @@ public class PartDeathHandler : MonoBehaviour
 {
     private BotBulider builder;
     private ModularBugPart part;
+    private GameObject cameraObject;
+    private MenuChanger menuChanger;
 
     private void Awake()
     {
         builder = PlayerIdentifier.GetPlayer().GetComponentInChildren<BotBulider>();
         part = GetComponent<ModularBugPart>();
+        cameraObject = GameObject.Find("/Camera");
+        menuChanger = cameraObject.GetComponentInChildren<MenuChanger>();
     }
     public void Death()
     {
-        //if (GetComponent<carControler>() != null)
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (GetComponent<carControler>() != null)
+            menuChanger.SetMenu(5);
 
         part.GetMediator().DestroyItem();
         builder.UpdateBuilt();

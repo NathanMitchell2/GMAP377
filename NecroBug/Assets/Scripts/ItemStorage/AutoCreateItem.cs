@@ -11,6 +11,7 @@ public class AutoCreateItem : MonoBehaviour
     {
         if (item != null && item.GetComponent<InventoryItem>())
         {
+            //Git break avoid
             GameObject temp = Instantiate(item);
 
             InventoryItem nItem = temp.GetComponent<InventoryItem>();
@@ -20,7 +21,8 @@ public class AutoCreateItem : MonoBehaviour
 
             Destroy(temp);
 
-            gameObject.AddComponent<InventoryItem>().RestoreMemento(mem);
+            Component comp = gameObject.AddComponent(mem.GetItemType());
+            ((InventoryItem)comp).RestoreMemento(mem);
         }
         Destroy(this);
     }

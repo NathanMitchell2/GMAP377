@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using FMODUnity;
 public class LaserSpiderAttackState : IState
 {
 
@@ -9,6 +9,10 @@ public class LaserSpiderAttackState : IState
     private float yawVel;          
     private float lookLag = 0.5f; 
     private float maxYawSpeed = 200f;
+
+    [SerializeField]
+    public string laserSound = "event:/Spider/Spider charge and Laser";
+
     public void Enter(EnemyAI enemy)
     {
         enemy.agent.SetDestination(enemy.transform.position);
@@ -18,7 +22,7 @@ public class LaserSpiderAttackState : IState
 
     public void Exit(EnemyAI enemy)
     {
-        enemy.isInCombat = true;
+        enemy.isInCombat = false;
         enemy.spiderLaser.activated = false;
     }
 
@@ -43,7 +47,11 @@ public class LaserSpiderAttackState : IState
     private IEnumerator ShootLaser(EnemyAI enemy)
     {
         enemy.transform.LookAt(enemy.player);
+        RuntimeManager.PlayOneShot(laserSound, Camera.main.transform.position);
+        Debug.Log("laser sound played");
         enemy.laserCharge.Play();
+       
+
         float tiltDuration = 1f;
         float elapsed = 0f;
         Quaternion startRot = enemy.transform.rotation;
@@ -78,7 +86,6 @@ public class LaserSpiderAttackState : IState
         enemy.laserSparkle.Play();
         enemy.spiderLaser.activated = true;
         yield return new WaitForSeconds(2f);
-        enemy.spiderLaser.activated = true;
         enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
     }
 

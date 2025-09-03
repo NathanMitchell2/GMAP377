@@ -18353,9 +18353,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 9811d68523873b24dbd1af5f46a5bbb0, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
   laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &555289764
 Transform:
@@ -23950,9 +23955,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 9811d68523873b24dbd1af5f46a5bbb0, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
   laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &675489833
 Transform:
@@ -43225,6 +43235,7 @@ GameObject:
   - component: {fileID: 1100728800}
   - component: {fileID: 1100728799}
   - component: {fileID: 1100728798}
+  - component: {fileID: 1100728806}
   m_Layer: 0
   m_Name: FMOD
   m_TagString: Untagged
@@ -43447,6 +43458,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1100728806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100728797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1607227617
+      Data2: 1258380110
+      Data3: 2091625871
+      Data4: 961714473
+    Path: event:/Cave/crystal ambience
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1104378221
 GameObject:
   m_ObjectHideFlags: 0
@@ -80296,6 +80338,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1912910789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6272958631518868943, guid: ab894c6fb00696d439954f2ecae51933, type: 3}
+  m_PrefabInstance: {fileID: 371592181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabbed29649ae724a81824ef3f032da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1915963010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86107,7 +86160,7 @@ MonoBehaviour:
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   crystalDoorList:
-  - {fileID: 1993719865}
+  - {fileID: 1912910789}
   transformA: {fileID: 0}
   transformB: {fileID: 0}
   onDoorA: 1
@@ -91320,6 +91373,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab894c6fb00696d439954f2ecae51933, type: 3}
+--- !u!114 &2408789813433483457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6272958631518868943, guid: ab894c6fb00696d439954f2ecae51933, type: 3}
+  m_PrefabInstance: {fileID: 2408789813433483456}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabbed29649ae724a81824ef3f032da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2567234009478174410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91830,7 +91894,7 @@ MonoBehaviour:
   chargeParticles: {fileID: 0}
   sparkleParticle: {fileID: 0}
   crystalDoorList:
-  - {fileID: 0}
+  - {fileID: 2408789813433483457}
   transformA: {fileID: 0}
   transformB: {fileID: 0}
   onDoorA: 1

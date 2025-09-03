@@ -82,6 +82,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public float GetHealth() { return health; }
     public void SetHealth(float health) {  this.health = health; }
+    public float GetMaxHealth() { return maxHealth; }
     public int GetPriority() { return priority; }
     public float GetDistribute() { return distributeFactor; }
     public PlayerHealth GetParent() { return parent; }

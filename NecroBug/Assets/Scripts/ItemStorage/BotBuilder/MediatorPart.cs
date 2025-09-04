@@ -211,6 +211,7 @@ public class MediatorPart : InventoryItem
             DestroyBugPart();
 
         bugPart = Instantiate(BugPartPrefab);
+        action.Enable();
         AlignBugPart();
     }
 
@@ -237,6 +238,7 @@ public class MediatorPart : InventoryItem
             return;
         GameObject player = PlayerIdentifier.GetPlayer().gameObject;
         BotBulider builder = player.GetComponentInChildren<BotBulider>();
+        action.Disable();
 
         //GetBugPart().CleanUp();
 

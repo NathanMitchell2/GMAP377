@@ -57,7 +57,7 @@ public class MenuChanger : MonoBehaviour
         //this sets the cam to the build cam when the build menu is selected
         //for now its hard coded that the build menu is at index two
         //maybe get better comparison later
-        if (index == 2){
+        if (index == 1){
             camManager.SetCamera(1);
         }
         else{

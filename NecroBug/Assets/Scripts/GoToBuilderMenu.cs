@@ -13,7 +13,7 @@ public class GoToBuilderMenu : MonoBehaviour
 
     void OnGoToBuilderMenu(){
         Debug.Log("Go to Builder Menu called");
-        changer.FlipFlopMenus(2);
+        changer.FlipFlopMenus(1);
         //changer.SetMenu(2);
 
     }

@@ -4078,6 +4078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120f148602b33248b03b265634f4f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStateName: 
   agent: {fileID: 5914713867887529357}
   rb: {fileID: 113348110268525339}
   player: {fileID: 0}
@@ -4153,6 +4154,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
+  leaderExplosion: {fileID: 0}
+  soldierExplosion: {fileID: 0}
   swarmAutoIssueOrders: 0
   spiderLaser: {fileID: 3656675179985266129}
   laserCharge: {fileID: 8756907866183120414}
@@ -4248,7 +4251,7 @@ MonoBehaviour:
       Data3: -305337946
       Data4: -1081016221
     Path: event:/Spider/Hurt
-  enemyType: 
+  enemyType: laserSpider
 --- !u!114 &9151201760976535364
 MonoBehaviour:
   m_ObjectHideFlags: 0

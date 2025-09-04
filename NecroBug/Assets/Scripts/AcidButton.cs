@@ -5,9 +5,9 @@ public class AcidButton : MonoBehaviour
     [SerializeField] private GameObject roadblock;
     [SerializeField] private string playerTag = "Player";
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(playerTag) && roadblock != null)
+        if (other.CompareTag(playerTag) && roadblock != null)
         {
             roadblock.SetActive(false);
         }

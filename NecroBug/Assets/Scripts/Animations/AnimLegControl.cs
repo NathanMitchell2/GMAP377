@@ -14,10 +14,13 @@ public class AnimLegControl : MonoBehaviour
     public AnimationCurve heightCurve;
     public float postResetDelay = 0.05f;
     [SerializeField] private float snapDistanceVariance = 0f;
+    public float overshootDistance = 0.4f;
+
+    public int legIndex; // 0,1,2,3,4,5,6,7 for spiders
 
     private float resetCooldown = 0f;
     private float tipDistance = 1;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private Vector3 startPosition;
     private Vector3 defaultTipLocalPosition;
     private float timer = 0;
@@ -62,7 +65,14 @@ public class AnimLegControl : MonoBehaviour
 
             float t = Mathf.Clamp01(timer / moveTime);
 
-            Vector3 flatPosition = Vector3.Lerp(startPosition, transform.position, t);
+            // Direction of the step in world space
+            Vector3 moveDirection = (transform.position - startPosition).normalized;
+
+            // Overshoot target
+            Vector3 overshootTarget = transform.position + moveDirection * overshootDistance;
+
+            // Lerp toward overshoot position instead of exact position
+            Vector3 flatPosition = Vector3.Lerp(startPosition, overshootTarget, t);
             float heightOffset = heightCurve.Evaluate(t);
 
             Vector3 finalPosition = new Vector3(flatPosition.x, flatPosition.y + heightOffset, flatPosition.z);

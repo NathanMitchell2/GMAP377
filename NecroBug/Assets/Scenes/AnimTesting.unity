@@ -1455,7 +1455,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  chargeParticles: {fileID: 0}
+  sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 14e24f8a08f675e488a42f3bca91e3a6, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
+  laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &395239526
 Transform:
   m_ObjectHideFlags: 0
@@ -1776,59 +1784,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0939414
+      value: 4.2651277
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0611252
+      value: 1.7803447
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.33412457
+      value: 0.53612995
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99684536
+      value: 0.9747467
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.07922546
+      value: -0.04197753
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0047438936
+      value: -0.21912971
       objectReference: {fileID: 0}
     - target: {fileID: 1149651790502503942, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00037702656
+      value: -0.009436835
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0939414
+      value: 3.0804858
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0611252
+      value: 2.0189126
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.33412457
+      value: 3.03485
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99684536
+      value: 0.9747467
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.07922546
+      value: -0.04197753
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0047438936
+      value: -0.21912971
       objectReference: {fileID: 0}
     - target: {fileID: 2049710232737570691, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00037702656
+      value: -0.009436835
       objectReference: {fileID: 0}
     - target: {fileID: 2840740983622357725, guid: d64ae422e86095143bf0fa0633c55c26, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3019,7 +3027,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  chargeParticles: {fileID: 0}
+  sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 14e24f8a08f675e488a42f3bca91e3a6, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
+  laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &1048147557
 Transform:
   m_ObjectHideFlags: 0
@@ -4225,7 +4241,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  chargeParticles: {fileID: 0}
+  sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 14e24f8a08f675e488a42f3bca91e3a6, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
+  laserSound: event:/Spider/Spider charge and Laser
 --- !u!4 &1959480919
 Transform:
   m_ObjectHideFlags: 0
@@ -4287,7 +4311,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activated: 0
   playerLaser: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  chargeParticles: {fileID: 0}
+  sparkleParticle: {fileID: 0}
   laserRendererSettings: {fileID: 11400000, guid: 14e24f8a08f675e488a42f3bca91e3a6, type: 2}
+  damagePerTick: 2
+  tickInterval: 0.1
+  laserSound: event:/Spider/Spider charge and Laser
 --- !u!1 &2056132644
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,6 +4550,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2527959684103404151, guid: a0623dfd5e92dbd47bfc8ebd502ef2a0, type: 3}
   m_PrefabInstance: {fileID: 525348355}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2140422434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4181941081240036352, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: activated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181941081240036352, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: chargeParticles
+      value: 
+      objectReference: {fileID: 1170637965}
+    - target: {fileID: 4181941081240036352, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: sparkleParticle
+      value: 
+      objectReference: {fileID: 116457648}
+    - target: {fileID: 6418789066550604715, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_Name
+      value: PlayerLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7601762
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511719992330678960, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b56e05020370b44fb8d6a2dbcc3376f, type: 3}
 --- !u!4 &543450653299186167
 Transform:
   m_ObjectHideFlags: 0
@@ -5285,3 +5386,4 @@ SceneRoots:
   - {fileID: 683593177}
   - {fileID: 1152978282}
   - {fileID: 2317337606473116028}
+  - {fileID: 2140422434}

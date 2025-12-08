@@ -38,6 +38,15 @@ public class AnimLegControl : MonoBehaviour
     public GameObject tipController;
     public GameObject car;
 
+    public int legGroup; // 0 = Group A, 1 = Group B
+    public bool IsMoving() => isMoving;
+    public bool IsReadyToStep() => tipDistance > distanceBeforeSnap && resetCooldown <= 0f;
+
+    // Called by LegManager
+    public void ForceStep()
+    {
+        MoveLegController();
+    }
     private void Awake()
     {
         if (tipController != null)

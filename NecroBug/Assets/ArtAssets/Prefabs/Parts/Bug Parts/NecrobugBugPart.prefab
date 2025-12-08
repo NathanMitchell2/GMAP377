@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 5303832182605978300}
   m_Layer: 6
   m_Name: PickupRange
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -876,14 +876,14 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 7.83
+  m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!1 &6554057467296882378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1400,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2557213425862749304, guid: f911f724d34f6e943be809ad26c16627, type: 3}
+    - {fileID: 7495249914219183306, guid: f911f724d34f6e943be809ad26c16627, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -51,7 +51,7 @@ public class EnemyActivationManager : MonoBehaviour
 
     private void Start()
     {
-        allEnemies.AddRange(FindObjectsOfType<EnemyAI>());
+        allEnemies.AddRange(FindObjectsByType<EnemyAI>(FindObjectsSortMode.None));
 
         foreach (var enemy in allEnemies)
             enemy.enabled = false;

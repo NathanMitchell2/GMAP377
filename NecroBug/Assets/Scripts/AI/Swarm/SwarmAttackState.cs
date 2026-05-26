@@ -32,13 +32,13 @@ public class SwarmAttackState : IState
             {
                 enemy.agent.ResetPath();
                 enemy.agent.isStopped = true;
-                enemy.agent.enabled = false;
+                enemy.agent.enabled   = false;
             }
         }
 
-        _cooldown = Mathf.Max(0.05f, enemy.swarmAttackCooldown);
-        _leaderCharging = false;
-        _leaderDiving = false;
+        _cooldown        = Mathf.Max(0.05f, enemy.data.swarmAttackCooldown);
+        _leaderCharging  = false;
+        _leaderDiving    = false;
         _leaderChargeTimer = 0f;
     }
 
@@ -52,7 +52,7 @@ public class SwarmAttackState : IState
             if (_leaderChargeTimer <= 0f)
             {
                 _leaderCharging = false;
-                _leaderDiving = true;
+                _leaderDiving   = true;
             }
             return;
         }
@@ -68,14 +68,14 @@ public class SwarmAttackState : IState
         {
             if (_unit != null && _unit.TryOrderOneDive())
             {
-                _cooldown = enemy.swarmAttackCooldown;
+                _cooldown = enemy.data.swarmAttackCooldown;
             }
             else
             {
-                _leaderCharging = true;
-                _leaderChargeTimer = enemy.diveWindup;
-                _leaderDiveTarget = enemy.player.position;
-                _cooldown = enemy.swarmAttackCooldown;
+                _leaderCharging    = true;
+                _leaderChargeTimer = enemy.data.diveWindup;
+                _leaderDiveTarget  = enemy.player.position;
+                _cooldown          = enemy.data.swarmAttackCooldown;
             }
         }
     }
@@ -85,24 +85,24 @@ public class SwarmAttackState : IState
         Vector3 start = enemy.transform.position;
 
         float groundY = _leaderDiveTarget.y;
-        if (Physics.Raycast(_leaderDiveTarget + Vector3.up * 20f, Vector3.down, out var gHit, 60f, enemy.groundMask))
+        if (Physics.Raycast(_leaderDiveTarget + Vector3.up * 20f, Vector3.down, out var gHit, 60f, enemy.data.groundMask))
             groundY = gHit.point.y;
 
-        Vector3 toTarget = (_leaderDiveTarget - start);
-        Vector3 dir = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : Vector3.forward;
+        Vector3 toTarget = _leaderDiveTarget - start;
+        Vector3 dir      = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : Vector3.forward;
 
-        Vector3 step = dir * enemy.diveSpeed * Time.deltaTime;
+        Vector3 step = dir * enemy.data.diveSpeed * Time.deltaTime;
         if (Vector3.Distance(start, _leaderDiveTarget) > 3f)
-            step += Vector3.up * (enemy.diveArcHeight * 0.5f) * Time.deltaTime;
+            step += Vector3.up * (enemy.data.diveArcHeight * 0.5f) * Time.deltaTime;
         else
             step += Vector3.down * 0.5f * Time.deltaTime;
 
-        Vector3 next = start + step;
-        Vector3 seg = next - start;
-        float segLen = Mathf.Max(seg.magnitude, 0.0001f);
+        Vector3 next   = start + step;
+        Vector3 seg    = next - start;
+        float   segLen = Mathf.Max(seg.magnitude, 0.0001f);
         Vector3 segDir = seg / segLen;
 
-        if (Physics.SphereCast(start, enemy.diveHitRadius, segDir, out var hit, segLen, enemy.robotMask))
+        if (Physics.SphereCast(start, enemy.data.diveHitRadius, segDir, out var hit, segLen, enemy.data.robotMask))
         {
             var list = DamageObject.GetPlayerHealths(hit.collider.gameObject);
             if (list.Count == 0)
@@ -110,15 +110,15 @@ public class SwarmAttackState : IState
                 var parentHealth = hit.collider.GetComponentInParent<PlayerHealth>();
                 if (parentHealth != null) list.Add(parentHealth);
             }
-            if (list.Count > 0) DamageObject.Damage(enemy.diveDamage, list[0]);
-            Object.Instantiate(enemy.leaderExplosion, enemy.transform.position, Quaternion.identity);
+            if (list.Count > 0) DamageObject.Damage(enemy.data.diveDamage, list[0]);
+            Object.Instantiate(enemy.data.leaderExplosion, enemy.transform.position, Quaternion.identity);
             Object.Destroy(enemy.gameObject);
             return;
         }
 
-        if (Physics.SphereCast(start, enemy.diveHitRadius, segDir, out var gAlong, segLen, enemy.groundMask))
+        if (Physics.SphereCast(start, enemy.data.diveHitRadius, segDir, out var gAlong, segLen, enemy.data.groundMask))
         {
-            Object.Instantiate(enemy.leaderExplosion, enemy.transform.position, Quaternion.identity);
+            Object.Instantiate(enemy.data.leaderExplosion, enemy.transform.position, Quaternion.identity);
             Object.Destroy(enemy.gameObject);
             return;
         }
@@ -130,9 +130,8 @@ public class SwarmAttackState : IState
 
         if (next.y <= groundY + 0.05f)
         {
-            Object.Instantiate(enemy.leaderExplosion, enemy.transform.position, Quaternion.identity);
+            Object.Instantiate(enemy.data.leaderExplosion, enemy.transform.position, Quaternion.identity);
             Object.Destroy(enemy.gameObject);
-            return;
         }
     }
 
@@ -142,7 +141,7 @@ public class SwarmAttackState : IState
 
         if (_hadAgent && _agentWasEnabled && enemy && enemy.agent)
         {
-            enemy.agent.enabled = true;
+            enemy.agent.enabled   = true;
             enemy.agent.Warp(enemy.transform.position);
             enemy.agent.isStopped = false;
         }

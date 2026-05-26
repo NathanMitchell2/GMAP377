@@ -685,6 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120f148602b33248b03b265634f4f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f965a540e64da8649b462f245f0b8f51, type: 2}
   currentStateName: 
   agent: {fileID: 8157150256566750693}
   rb: {fileID: 3741564547394915647}
@@ -693,28 +694,9 @@ MonoBehaviour:
   lineRenderer: {fileID: 6953699925495376551}
   spitPoint: {fileID: 3168799950663776629}
   carController: {fileID: 7908505440710472612, guid: 0ff8791a34c0f4945bc58cf58050bfbe, type: 3}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  visionObstacles:
-    serializedVersion: 2
-    m_Bits: 128
-  fieldOfView: 120
-  viewDistance: 30
-  sightRange: 25
-  attackRange: 25
-  retreatRange: 15
-  noiseDetectionSpeed: 3
-  walkPointRange: 25
-  timeBetweenAttacks: 1
-  idleDuration: 3
-  chargeUpTime: 1.5
-  jumpForce: 20
-  maxPlayerSpeedCharge: 0
-  rayCount: 30
+  spiderLaser: {fileID: 0}
+  laserCharge: {fileID: 0}
+  laserSparkle: {fileID: 0}
   patrolCenter: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
@@ -725,48 +707,11 @@ MonoBehaviour:
   playerInAttackRange: 0
   playerSpeed: 0
   attackCooldown: 1
-  damageCooldown: 0.5
-  stamina: 100
-  staminaDrainPerCharge: 30
-  staminaRecoverRate: 10
-  lastPlayerPosition: {x: 0, y: 0, z: 0}
-  enemyType: 2
-  chargeDamage: 20
-  acidProjectilePrefab: {fileID: 0}
-  acidSpitForce: 20
-  webStack: 0
-  maxWebStacks: 3
-  webProjectileSpeed: 20
   wasRecentlyHit: 0
-  biteDamage: 15
-  webProjectilePrefab: {fileID: 1230252574902077909, guid: be4b6aa3b4b44a64f88afbab113a5a28, type: 3}
-  swarmRecruitRange: 25
-  swarmMaxMembers: 6
-  swarmRadius: 3.5
-  swarmReformLerp: 8
-  swarmMemberSpeed: 6
-  swarmAttackCooldown: 1.2
   angered: 0
-  hoverHeight: 2
-  hoverBobAmplitude: 0.15
-  hoverBobSpeed: 3
-  diveWindup: 0.15
-  diveSpeed: 18
-  diveArcHeight: 1
-  diveHitRadius: 0.6
-  diveDamage: 12
-  robotMask:
-    serializedVersion: 2
-    m_Bits: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  leaderExplosion: {fileID: 0}
-  soldierExplosion: {fileID: 0}
-  swarmAutoIssueOrders: 1
-  spiderLaser: {fileID: 0}
-  laserCharge: {fileID: 0}
-  laserSparkle: {fileID: 0}
+  stamina: 100
+  webStack: 0
+  lastPlayerPosition: {x: 0, y: 0, z: 0}
 --- !u!120 &6953699925495376551
 LineRenderer:
   serializedVersion: 2

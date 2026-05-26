@@ -7,6 +7,7 @@ public class WebProjectile : MonoBehaviour
     public float slowDuration = 3f;
     public float slowFactor = 0.5f;
     public EnemyAI spider;
+    public EnemyData spider_Data;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class WebProjectile : MonoBehaviour
                 carControler.ApplySlow(slowDuration, slowFactor);
 
                 if (spider != null)
-                    spider.webStack = Mathf.Min(spider.webStack + 1, spider.maxWebStacks);
+                    spider.webStack = Mathf.Min(spider.webStack + 1, spider_Data.maxWebStacks);
             }
         }
 

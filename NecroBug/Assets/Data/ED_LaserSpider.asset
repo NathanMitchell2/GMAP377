@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf58c6ee5c008a408d1f1db1cf9b465, type: 3}
+  m_Name: ED_LaserSpider
+  m_EditorClassIdentifier: 
+  enemyType: 4
+  fieldOfView: 85
+  viewDistance: 24
+  visionObstacles:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  sightRange: 15
+  attackRange: 15
+  retreatRange: 5
+  walkPointRange: 10
+  idleDuration: 2
+  timeBetweenAttacks: 4
+  chargeUpTime: 0.5
+  damageCooldown: 0.5
+  maxPlayerSpeedCharge: 10
+  staminaDrainPerCharge: 40
+  staminaRecoverRate: 10
+  chargeDamage: 20
+  jumpForce: 15
+  acidProjectilePrefab: {fileID: 0}
+  acidSpitForce: 20
+  maxWebStacks: 3
+  webProjectileSpeed: 20
+  biteDamage: 15
+  webProjectilePrefab: {fileID: 0}
+  swarmMaxMembers: 6
+  swarmRadius: 3.5
+  swarmReformLerp: 8
+  swarmAttackCooldown: 1.2
+  diveWindup: 0.15
+  diveSpeed: 18
+  diveArcHeight: 1
+  diveHitRadius: 0.6
+  diveDamage: 12
+  robotMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  leaderExplosion: {fileID: 0}
+  soldierExplosion: {fileID: 0}

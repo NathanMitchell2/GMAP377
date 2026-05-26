@@ -9,7 +9,6 @@ public class SwarmSoldier : MonoBehaviour
     private bool _diving;
     private Vector3 _diveTarget;
 
-    // NEW: local velocity for smoothing
     private Vector3 _smoothVel;
 
     public bool CanHoldFormation => !_charging && !_diving;
@@ -35,11 +34,10 @@ public class SwarmSoldier : MonoBehaviour
 
     public void MoveTo(Vector3 worldPos, float lerp)
     {
-        // Map your "lerp" factor to a SmoothDamp time. Higher lerp => snappier.
-        // Tweak the scaling (0.25f) to taste.
+        // Map lerp factor to SmoothDamp time; higher value = snappier movement.
         float smoothTime = Mathf.Clamp01(1f / Mathf.Max(0.001f, lerp)) * 0.25f;
 
-        // Cap the max speed so they don’t teleport if far away
+        // Cap the max speed so they don't teleport if far away
         float maxSpeed = Mathf.Lerp(6f, 24f, Mathf.Clamp01(lerp));
 
         transform.position = Vector3.SmoothDamp(
@@ -89,15 +87,15 @@ public class SwarmSoldier : MonoBehaviour
         Vector3 start = transform.position;
 
         float groundY = _diveTarget.y;
-        if (Physics.Raycast(_diveTarget + Vector3.up * 20f, Vector3.down, out var gHit, 60f, _leader.groundMask))
+        if (Physics.Raycast(_diveTarget + Vector3.up * 20f, Vector3.down, out var gHit, 60f, _leader.data.groundMask))
             groundY = gHit.point.y;
 
         Vector3 toTarget = (_diveTarget - start);
         Vector3 dir = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : Vector3.forward;
 
-        Vector3 step = dir * _leader.diveSpeed * Time.deltaTime;
+        Vector3 step = dir * _leader.data.diveSpeed * Time.deltaTime;
         if (Vector3.Distance(start, _diveTarget) > 3f)
-            step += Vector3.up * (_leader.diveArcHeight * 0.5f) * Time.deltaTime;
+            step += Vector3.up * (_leader.data.diveArcHeight * 0.5f) * Time.deltaTime;
         else
             step += Vector3.down * 0.5f * Time.deltaTime;
 
@@ -107,19 +105,19 @@ public class SwarmSoldier : MonoBehaviour
         float segLen = Mathf.Max(seg.magnitude, 0.0001f);
         Vector3 segDir = seg / segLen;
 
-        // Player hit -> damage + die (unchanged)
-        if (Physics.SphereCast(start, _leader.diveHitRadius, segDir, out var hit, segLen, _leader.robotMask))
+        // Player hit -> damage + die
+        if (Physics.SphereCast(start, _leader.data.diveHitRadius, segDir, out var hit, segLen, _leader.data.robotMask))
         {
-            DealDamageViaTeamSystem(hit.collider, _leader.diveDamage);
-            Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
+            DealDamageViaTeamSystem(hit.collider, _leader.data.diveDamage);
+            Instantiate(_leader.data.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
 
-        // NEW: Ground hit along path -> die
-        if (Physics.SphereCast(start, _leader.diveHitRadius, segDir, out var gAlong, segLen, _leader.groundMask))
+        // Ground hit along path -> die
+        if (Physics.SphereCast(start, _leader.data.diveHitRadius, segDir, out var gAlong, segLen, _leader.data.groundMask))
         {
-            Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
+            Instantiate(_leader.data.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
@@ -129,7 +127,7 @@ public class SwarmSoldier : MonoBehaviour
         // Fallback: reached ground level -> die
         if (next.y <= groundY + 0.05f)
         {
-            Instantiate(_leader.soldierExplosion, transform.position, Quaternion.identity);
+            Instantiate(_leader.data.soldierExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }

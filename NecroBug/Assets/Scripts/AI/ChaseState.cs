@@ -13,17 +13,20 @@ public class ChaseState : IState
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
     {
-        if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
-            enemy.ChangeState(new TransitionState(0.5f,new RetreatState()));
-        else if (playerInAttackRange &&
-                enemy.playerSpeed < enemy.maxPlayerSpeedCharge &&
-                enemy.stamina >= enemy.staminaDrainPerCharge &&
-                enemy.attackCooldown <= 0f)
+        if (distance < enemy.data.retreatRange && enemy.stamina < enemy.data.staminaDrainPerCharge)
         {
-            Debug.Log("entered");
+            enemy.ChangeState(new TransitionState(0.5f, new RetreatState()));
+        }
+        else if (playerInAttackRange &&
+                 enemy.playerSpeed < enemy.data.maxPlayerSpeedCharge &&
+                 enemy.stamina >= enemy.data.staminaDrainPerCharge &&
+                 enemy.attackCooldown <= 0f)
+        {
             enemy.ChangeState(new TransitionState(0.5f, enemy.GetAttackState()));
         }
-        else if (!playerInSightRange && !playerInAttackRange && distance > enemy.retreatRange)
-            enemy.ChangeState(new TransitionState(0.5f,new PatrolState()));
+        else if (!playerInSightRange && !playerInAttackRange && distance > enemy.data.retreatRange)
+        {
+            enemy.ChangeState(new TransitionState(0.5f, new PatrolState()));
+        }
     }
 }

@@ -42,7 +42,7 @@ public class SwarmUnit : MonoBehaviour
         PurgeNulls();
         if (_soldiers.Count == 0 || _leader == null) return;
 
-        float orbitSpeed = Mathf.Max(0.2f, _leader.swarmReformLerp) * 0.8f;
+        float orbitSpeed = Mathf.Max(0.2f, _leader.data.swarmReformLerp) * 0.8f;
         _orbitAngle += orbitSpeed * Time.deltaTime;
 
         int count = Mathf.Max(1, _soldiers.Count);
@@ -54,16 +54,16 @@ public class SwarmUnit : MonoBehaviour
             float baseAngle = (Mathf.PI * 2f) * (i / (float)count);
             float angle = baseAngle + _orbitAngle + _angleJitter[s];
 
-            Vector3 ringXZ = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * _leader.swarmRadius;
+            Vector3 ringXZ = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * _leader.data.swarmRadius;
             Vector3 target = _leader.transform.position + ringXZ;
-            target.y = _leader.transform.position.y;  // lock altitude to leader
+            target.y       = _leader.transform.position.y; // lock altitude to leader
 
-             s.MoveTo(target, _leader.swarmReformLerp);
+            s.MoveTo(target, _leader.data.swarmReformLerp);
 
             Vector3 radial = s.transform.position - _leader.transform.position; radial.y = 0f;
             if (radial.sqrMagnitude > 0.0001f)
             {
-                Vector3 tangent = new Vector3(-radial.z, 0f, radial.x).normalized; // 90° left-hand
+                Vector3 tangent = new Vector3(-radial.z, 0f, radial.x).normalized; // 90-degree left-hand tangent
                 Vector3 faceDir = Vector3.Slerp(tangent, radial.normalized, 0.2f);
                 s.Face(faceDir);
             }
@@ -76,7 +76,7 @@ public class SwarmUnit : MonoBehaviour
         var next = _soldiers.FirstOrDefault(s => s && s.CanDive);
         if (!next) return false;
 
-        next.StartDive(_leader.player.position, _leader.diveWindup);
+        next.StartDive(_leader.player.position, _leader.data.diveWindup);
         return true;
     }
 

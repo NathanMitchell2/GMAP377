@@ -10,8 +10,7 @@ public class LaserSpiderAttackState : IState
     private float lookLag = 0.5f; 
     private float maxYawSpeed = 200f;
 
-    [SerializeField]
-    public string laserSound = "event:/Spider/Spider charge and Laser";
+    private const string LaserSound = "event:/Spider/Spider charge and Laser";
 
     public void Enter(EnemyAI enemy)
     {
@@ -47,8 +46,7 @@ public class LaserSpiderAttackState : IState
     private IEnumerator ShootLaser(EnemyAI enemy)
     {
         enemy.transform.LookAt(enemy.player);
-        RuntimeManager.PlayOneShot(laserSound, Camera.main.transform.position);
-        Debug.Log("laser sound played");
+        RuntimeManager.PlayOneShot(LaserSound, Camera.main.transform.position);
         enemy.laserCharge.Play();
        
 

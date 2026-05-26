@@ -19,8 +19,8 @@ public class PatrolState : IState
             enemy.agent.updatePosition = true;
             enemy.agent.updateRotation = true;
             enemy.agent.isStopped = false;
-            enemy.agent.autoBraking = false;         
-            if (enemy.agent.stoppingDistance < 0.5f)  
+            enemy.agent.autoBraking = false;
+            if (enemy.agent.stoppingDistance < 0.5f)
                 enemy.agent.stoppingDistance = 0.6f;
         }
 
@@ -47,14 +47,14 @@ public class PatrolState : IState
             float moved = (enemy.transform.position - _lastPos).sqrMagnitude;
             _lastPos = enemy.transform.position;
 
-            bool pathReady = !enemy.agent.pathPending;
-            bool farFromGoal = enemy.agent.remainingDistance > enemy.agent.stoppingDistance + 0.2f;
+            bool pathReady    = !enemy.agent.pathPending;
+            bool farFromGoal  = enemy.agent.remainingDistance > enemy.agent.stoppingDistance + 0.2f;
             bool barelyMoving = enemy.agent.velocity.sqrMagnitude < 0.02f && moved < 0.0004f;
 
             if (pathReady && farFromGoal && barelyMoving)
             {
                 _stuckTimer += Time.deltaTime;
-                if (_stuckTimer > 1.0f)   
+                if (_stuckTimer > 1.0f)
                 {
                     enemy.agent.ResetPath();
                     enemy.walkPointSet = false;
@@ -68,9 +68,7 @@ public class PatrolState : IState
             }
 
             if (pathReady && enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.2f)
-            {
                 enemy.ChangeState(new TransitionState(0.5f, new IdleState()));
-            }
         }
     }
 
@@ -78,26 +76,26 @@ public class PatrolState : IState
     {
         enemy.walkPointSet = false;
         if (enemy.agent != null && enemy.agent.enabled)
-        {
-            enemy.agent.autoBraking = true; 
-        }
+            enemy.agent.autoBraking = true;
     }
 
     public void CheckTransitions(EnemyAI enemy, bool playerInSightRange, bool playerInAttackRange, float distance)
     {
-        if (playerInAttackRange && enemy.playerSpeed < enemy.maxPlayerSpeedCharge &&
-            enemy.stamina >= enemy.staminaDrainPerCharge && enemy.attackCooldown <= 0f)
+        if (playerInAttackRange &&
+            enemy.playerSpeed < enemy.data.maxPlayerSpeedCharge &&
+            enemy.stamina >= enemy.data.staminaDrainPerCharge &&
+            enemy.attackCooldown <= 0f)
         {
             enemy.ChangeState(new TransitionState(0.5f, enemy.GetAttackState()));
         }
         else if (playerInSightRange)
         {
-            if (enemy.enemyType == EnemyAI.EnemyType.OrbWeaver)
+            if (enemy.data.enemyType == EnemyType.OrbWeaver)
                 enemy.ChangeState(new TransitionState(0.5f, new OrbWeaverAgroState()));
             else
                 enemy.ChangeState(new TransitionState(0.5f, new ChaseState()));
         }
-        else if (distance < enemy.retreatRange && enemy.stamina < enemy.staminaDrainPerCharge)
+        else if (distance < enemy.data.retreatRange && enemy.stamina < enemy.data.staminaDrainPerCharge)
         {
             enemy.ChangeState(new TransitionState(0.5f, new RetreatState()));
         }
@@ -107,8 +105,8 @@ public class PatrolState : IState
     {
         for (int i = 0; i < 6; i++)
         {
-            float randomZ = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
-            float randomX = Random.Range(-enemy.walkPointRange, enemy.walkPointRange);
+            float randomZ = Random.Range(-enemy.data.walkPointRange, enemy.data.walkPointRange);
+            float randomX = Random.Range(-enemy.data.walkPointRange, enemy.data.walkPointRange);
 
             Vector3 candidate = new Vector3(
                 enemy.patrolCenter.x + randomX,
@@ -123,7 +121,6 @@ public class PatrolState : IState
                 {
                     enemy.walkPoint = hit.position;
                     enemy.walkPointSet = true;
-
                     enemy.agent.SetDestination(enemy.walkPoint);
                     _repathTimer = _repathCooldown;
                     return;

@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120f148602b33248b03b265634f4f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: d92f95554a934d244bc0064924209955, type: 2}
+  currentStateName: 
   agent: {fileID: 604390345361080852}
   rb: {fileID: 186762200383192340}
   player: {fileID: 6128923531922490511, guid: 15174a2c48c8abb45ac617dcc024254e, type: 3}
@@ -141,28 +143,9 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   spitPoint: {fileID: 0}
   carController: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  visionObstacles:
-    serializedVersion: 2
-    m_Bits: 0
-  fieldOfView: 120
-  viewDistance: 25
-  sightRange: 25
-  attackRange: 10.5
-  retreatRange: 10
-  noiseDetectionSpeed: 0
-  walkPointRange: 25
-  timeBetweenAttacks: 1
-  idleDuration: 3
-  chargeUpTime: 1.5
-  jumpForce: 40
-  maxPlayerSpeedCharge: 3
-  rayCount: 30
+  spiderLaser: {fileID: 0}
+  laserCharge: {fileID: 0}
+  laserSparkle: {fileID: 0}
   patrolCenter: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
@@ -173,46 +156,11 @@ MonoBehaviour:
   playerInAttackRange: 0
   playerSpeed: 0
   attackCooldown: 0
-  damageCooldown: 0.5
-  stamina: 100
-  staminaDrainPerCharge: 30
-  staminaRecoverRate: 10
-  lastPlayerPosition: {x: 0, y: 0, z: 0}
-  enemyType: 0
-  chargeDamage: 60
-  acidProjectilePrefab: {fileID: 0}
-  acidSpitForce: 20
-  webStack: 0
-  maxWebStacks: 3
-  webProjectileSpeed: 20
   wasRecentlyHit: 0
-  biteDamage: 15
-  webProjectilePrefab: {fileID: 0}
-  swarmRecruitRange: 25
-  swarmMaxMembers: 6
-  swarmRadius: 3.5
-  swarmReformLerp: 8
-  swarmMemberSpeed: 6
-  swarmAttackCooldown: 1.2
   angered: 0
-  hoverHeight: 2
-  hoverBobAmplitude: 0.15
-  hoverBobSpeed: 3
-  diveWindup: 0.15
-  diveSpeed: 18
-  diveArcHeight: 1
-  diveHitRadius: 0.6
-  diveDamage: 12
-  robotMask:
-    serializedVersion: 2
-    m_Bits: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  swarmAutoIssueOrders: 1
-  spiderLaser: {fileID: 0}
-  laserCharge: {fileID: 0}
-  laserSparkle: {fileID: 0}
+  stamina: 100
+  webStack: 0
+  lastPlayerPosition: {x: 0, y: 0, z: 0}
 --- !u!195 &604390345361080852
 NavMeshAgent:
   m_ObjectHideFlags: 0
